@@ -1,6 +1,10 @@
 # Werewolf Card Dealer
+[![Netlify Status](https://api.netlify.com/api/v1/badges/71200d24-eda9-4bd5-bc5e-ec9b4ec6b36c/deploy-status)](https://app.netlify.com/sites/werewolfcd/deploys)
 
 🃏 PWA to deal werewolf cards
+
+Use it here: https://werewolfcd.netlify.app/
+
 
 
 ## Project Setup
@@ -43,3 +47,7 @@ npm run test:e2e # or `npm run test:e2e:ci` for headless testing
 ```sh
 npm run lint
 ```
+
+## Deployment
+
+Automatically by Netlify
