@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { MinusIcon, PlusIcon } from "@heroicons/vue/solid";
-import { ref, watch, defineEmits, computed } from "vue";
+import { ref, watch, computed } from "vue";
 
 interface Props {
   default?: number;
@@ -33,21 +33,11 @@ watch(number, () => {
 
 <template>
   <div class="wrapper">
-    <div
-      class="button button--left"
-      :class="{ 'button--disabled': isZero }"
-      @click="decrease"
-    >
+    <div class="button button--left" :class="{ 'button--disabled': isZero }" @click="decrease">
       <MinusIcon class="button__icon" />
     </div>
 
-    <input
-      class="input"
-      :class="{ 'input--zero': isZero }"
-      type="number"
-      v-model="number"
-      :id="id"
-    />
+    <input class="input" :class="{ 'input--zero': isZero }" type="number" v-model="number" :id="id" />
 
     <div class="button button--right" @click="increase">
       <PlusIcon class="button__icon" />

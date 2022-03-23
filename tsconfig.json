@@ -1,5 +1,6 @@
 {
   "extends": "@vue/tsconfig/tsconfig.web.json",
+  "lib": ["esnext"],
   "include": ["env.d.ts", "src/**/*", "src/**/*.vue"],
   "compilerOptions": {
     "baseUrl": ".",

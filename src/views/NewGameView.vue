@@ -1,49 +1,76 @@
 <script setup lang="ts">
-import { useGameConfigStore } from "@/stores/gameConfig";
+import type { CharacterId } from "@/data/characters.types";
+import { useGameConfigStore, type CharacterConfig } from "@/stores/gameConfig";
 import { SparklesIcon } from "@heroicons/vue/solid";
 import { storeToRefs } from "pinia";
+import { computed, reactive } from "vue";
+import { useRouter } from "vue-router";
 import IconButton from "../components/IconButton.vue";
 import InputNumber from "../components/InputNumber.vue";
 import { default as charactersInfo } from "../data/characters";
 
-const store = useGameConfigStore();
+const gameConfigStore = useGameConfigStore();
 
-const { characters, totalCharacters } = storeToRefs(store);
+const { characters } = storeToRefs(gameConfigStore);
 
-const { setCharacterAmount } = store;
+const newCharacters = reactive<CharacterConfig[]>(characters.value);
+const newCharacterCount = computed<number>(() =>
+  newCharacters.reduce((total, { amount }) => total + amount, 0)
+);
 
-function createGame(): void {}
+const { createNewGame } = gameConfigStore;
+
+const router = useRouter();
+
+function setCharacterAmount(characterId: CharacterId, amount: number): void {
+  const character = newCharacters.find(
+    (character) => character.id === characterId
+  );
+
+  if (amount === 0) {
+    if (!character) return;
+
+    newCharacters.splice(newCharacters.indexOf(character), 1);
+    return;
+  }
+
+  if (!character) {
+    newCharacters.push({ id: characterId, amount });
+    return;
+  }
+
+  character.amount = amount;
+}
+
+function handleCreateGame(): void {
+  createNewGame(newCharacters);
+  router.push({ name: "dealer" });
+}
 </script>
 
 <template>
   <main class="main">
     <h1>New Game</h1>
 
-    <h2>Choose characters (total {{ totalCharacters }})</h2>
+    <h2>Choose characters (total {{ newCharacterCount }})</h2>
 
     <div class="list">
-      <div
-        v-for="character in charactersInfo"
-        :key="character.id"
-        class="list__item-wrapper"
-      >
-        <label :for="character.id" class="list__item-label">{{
-          character.name
-        }}</label>
+      <div v-for="character in charactersInfo" :key="character.id" class="list__item-wrapper">
+        <label :for="character.id" class="list__item-label">{{ character.name }}</label>
         <InputNumber
           @input="setCharacterAmount(character.id, $event)"
           :id="character.id"
-          :default="characters.find((c) => c.id === character.id)?.amount ?? 0"
+          :default="
+            newCharacters.find((c) => c.id === character.id)?.amount ?? 0
+          "
         />
       </div>
     </div>
 
-    <IconButton
-      @click="createGame"
-      :disabled="totalCharacters <= 1"
-      class="create-button"
-    >
-      <template v-slot:icon> <SparklesIcon /> </template>Create game
+    <IconButton @click="handleCreateGame" :disabled="newCharacterCount <= 1" class="create-button">
+      <template v-slot:icon>
+        <SparklesIcon />
+      </template>Create game
     </IconButton>
   </main>
 </template>
