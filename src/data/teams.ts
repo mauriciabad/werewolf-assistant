@@ -14,7 +14,8 @@ const teams: Team[] = [
     name: "Villagers",
     description:
       "The villagers are the good guys. They are the ones who survive the night.",
-    image: "https://static.turbosquid.com/Preview/2019/01/16__08_45_08/1.pngC5B98C2C-BEF9-4171-BF71-56B581223F17Large.jpg",
+    image:
+      "https://static.turbosquid.com/Preview/2019/01/16__08_45_08/1.pngC5B98C2C-BEF9-4171-BF71-56B581223F17Large.jpg",
   },
 ];
 

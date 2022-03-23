@@ -16,7 +16,8 @@ const characters: Character[] = [
     description:
       "During the day votes to kill someone with everyone. \nYour objective is to kill all werewolfs.",
     team: "villagers",
-    image: "https://static.turbosquid.com/Preview/2019/01/16__08_45_08/1.pngC5B98C2C-BEF9-4171-BF71-56B581223F17Large.jpg",
+    image:
+      "https://static.turbosquid.com/Preview/2019/01/16__08_45_08/1.pngC5B98C2C-BEF9-4171-BF71-56B581223F17Large.jpg",
   },
 ];
 
