@@ -1,4 +1,4 @@
-import type { Character } from "./characters.types";
+import type { Character, CharacterId } from "./characters.types";
 
 const characters: Character[] = [
   {
@@ -16,5 +16,10 @@ const characters: Character[] = [
     team: "villagers",
   },
 ];
+
+export function getCharacter(id: CharacterId): Character;
+export function getCharacter(id: string): Character | undefined {
+  return characters.find((character) => character.id === id);
+}
 
 export default characters;

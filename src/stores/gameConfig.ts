@@ -39,7 +39,7 @@ function createPlayers(characters: CharacterConfig[]): PlayerConfig[] {
   }
   shuffle(allCharacters);
 
-  let lastId = 0;
+  let lastId = 1;
   const result: PlayerConfig[] = [];
   for (const characterId of allCharacters) {
     const playerId = lastId++;

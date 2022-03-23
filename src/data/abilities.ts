@@ -1,4 +1,4 @@
-import type { Ability } from "./abilities.types";
+import type { Ability, AbilityId } from "./abilities.types";
 
 const abilities: Ability[] = [
   {
@@ -12,5 +12,10 @@ const abilities: Ability[] = [
     description: "In one voting session, you can emit another vote. \n1 usage.",
   },
 ];
+
+export function getAbility(id: AbilityId): Ability;
+export function getAbility(id: string): Ability | undefined {
+  return abilities.find((ability) => ability.id === id);
+}
 
 export default abilities;

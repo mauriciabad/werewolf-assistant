@@ -1,26 +1,13 @@
 <script setup lang="ts">
-import { RouterLink } from "vue-router";
-import { RefreshIcon } from "@heroicons/vue/solid";
 import { useGameConfigStore } from "@/stores/gameConfig";
-import type { Character, CharacterId } from "@/data/characters.types";
-import characters from "@/data/characters";
+import { RefreshIcon } from "@heroicons/vue/solid";
 import { storeToRefs } from "pinia";
-import type { Ability, AbilityId } from "@/data/abilities.types";
-import abilities from "@/data/abilities";
+import { RouterLink } from "vue-router";
+import PlayerCard from "../components/PlayerCard.vue";
 
 const gameConfigStore = useGameConfigStore();
 
 const { players } = storeToRefs(gameConfigStore);
-
-function getCharacter(id: CharacterId): Character;
-function getCharacter(id: string): Character | undefined {
-  return characters.find((character) => character.id === id);
-}
-
-function getAbility(id: AbilityId): Ability;
-function getAbility(id: string): Ability | undefined {
-  return abilities.find((ability) => ability.id === id);
-}
 </script>
 
 <template>
@@ -32,17 +19,7 @@ function getAbility(id: string): Ability | undefined {
       <h1>Player list</h1>
 
       <div class="player-list">
-        <div v-for="player in players" :key="player.id" class="player">
-          <div>Name: {{ player.name }}</div>
-          <div>Character: {{ getCharacter(player.character).name }}</div>
-
-          <div>Abilities:</div>
-          <ul>
-            <li v-for="abilityId in player.abilities" :key="abilityId">
-              {{ getAbility(abilityId).name }}
-            </li>
-          </ul>
-        </div>
+        <PlayerCard v-for="player in players" :key="player.id" :player="player" />
       </div>
     </div>
   </main>
@@ -83,18 +60,5 @@ function getAbility(id: string): Ability | undefined {
 
 .player-list {
   width: 100%;
-}
-
-.player {
-  margin-bottom: 1rem;
-  border: 1px solid var(--color-border);
-  background-color: var(--color-background-soft);
-
-  padding: 1.5rem;
-  border-radius: 0.5rem;
-  max-width: 30rem;
-  width: 100%;
-  margin: 1rem auto 0;
-  text-align: left;
 }
 </style>
