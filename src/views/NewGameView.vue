@@ -12,7 +12,7 @@ const { characters, totalCharacters } = storeToRefs(store);
 
 const { setCharacterAmount } = store;
 
-function createGame(): void { }
+function createGame(): void {}
 </script>
 
 <template>
@@ -22,8 +22,14 @@ function createGame(): void { }
     <h2>Choose characters (total {{ totalCharacters }})</h2>
 
     <div class="list">
-      <div v-for="character in charactersInfo" :key="character.id" class="list__item-wrapper">
-        <label :for="character.id" class="list__item-label">{{ character.name }}</label>
+      <div
+        v-for="character in charactersInfo"
+        :key="character.id"
+        class="list__item-wrapper"
+      >
+        <label :for="character.id" class="list__item-label">{{
+          character.name
+        }}</label>
         <InputNumber
           @input="setCharacterAmount(character.id, $event)"
           :id="character.id"
@@ -32,10 +38,12 @@ function createGame(): void { }
       </div>
     </div>
 
-    <IconButton @click="createGame" :disabled="totalCharacters <= 1" class="create-button">
-      <template v-slot:icon>
-        <SparklesIcon />
-      </template>Create game
+    <IconButton
+      @click="createGame"
+      :disabled="totalCharacters <= 1"
+      class="create-button"
+    >
+      <template v-slot:icon> <SparklesIcon /> </template>Create game
     </IconButton>
   </main>
 </template>
