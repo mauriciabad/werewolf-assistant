@@ -11,6 +11,11 @@ const abilities: Ability[] = [
     name: "Extra vote",
     description: "In one voting session, you can emit another vote. \n1 usage.",
   },
+  {
+    id: "cupid",
+    name: "Cupid",
+    description: "The first night, you have to choose two players to be lovers.",
+  },
 ];
 
 export function getAbility(id: AbilityId): Ability;
