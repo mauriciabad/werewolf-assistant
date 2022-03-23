@@ -12,10 +12,10 @@ interface Props {
 const props = defineProps<Props>();
 
 const url = computed<string>(() => {
-  const { character, abilities } = props.player;
   const url = new URL(`${location.origin}/player`);
-  url.searchParams.append("character", character);
-  url.searchParams.append("abilities", abilities.join(","));
+  url.searchParams.append("player", props.player.name);
+  url.searchParams.append("character", props.player.character);
+  url.searchParams.append("abilities", props.player.abilities.join(","));
 
   return url.toString();
 });
