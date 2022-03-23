@@ -14,6 +14,7 @@ const abilities: Ability[] = [
 ];
 
 export function getAbility(id: AbilityId): Ability;
+export function getAbility(id: string): Ability | undefined;
 export function getAbility(id: string): Ability | undefined {
   return abilities.find((ability) => ability.id === id);
 }

@@ -7,14 +7,14 @@ const teams: Team[] = [
     description:
       "The werewolfs are the bad guys. They are the ones who kill the villagers.",
     image:
-      "https://static.wikia.nocookie.net/powerlisting/images/c/c6/Gadreal2.jpg/revision/latest?cb=20210529045015",
+      "https://www.storynory.com/wp-content/uploads/2021/08/howling-werewolf.jpg",
   },
   {
     id: "villagers",
     name: "Villagers",
     description:
       "The villagers are the good guys. They are the ones who survive the night.",
-    image: "https://static1.bigstockphoto.com/6/7/2/large1500/276917269.jpg",
+    image: "https://static.turbosquid.com/Preview/2019/01/16__08_45_08/1.pngC5B98C2C-BEF9-4171-BF71-56B581223F17Large.jpg",
   },
 ];
 
