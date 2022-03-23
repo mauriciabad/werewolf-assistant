@@ -16,6 +16,7 @@
     "@heroicons/vue": "^1.0.6",
     "@vueuse/core": "^8.1.2",
     "pinia": "^2.0.11",
+    "qrcode.vue": "^3.3.3",
     "vue": "^3.2.31",
     "vue-router": "^4.0.12"
   },
