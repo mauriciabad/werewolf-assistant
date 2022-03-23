@@ -17,7 +17,9 @@ defineProps<Props>();
 
     <div>Abilities:</div>
     <ul>
-      <li v-for="abilityId in player.abilities" :key="abilityId">{{ getAbility(abilityId).name }}</li>
+      <li v-for="abilityId in player.abilities" :key="abilityId">
+        {{ getAbility(abilityId).name }}
+      </li>
     </ul>
   </div>
 </template>
