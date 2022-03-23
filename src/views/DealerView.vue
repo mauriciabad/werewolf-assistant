@@ -38,10 +38,9 @@ function getAbility(id: string): Ability | undefined {
 
           <div>Abilities:</div>
           <ul>
-            <li
-              v-for="abilityId in player.abilities"
-              :key="abilityId"
-            >{{ getAbility(abilityId).name }}</li>
+            <li v-for="abilityId in player.abilities" :key="abilityId">
+              {{ getAbility(abilityId).name }}
+            </li>
           </ul>
         </div>
       </div>
