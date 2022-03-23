@@ -6,8 +6,8 @@ import { RouterLink } from "vue-router";
   <main class="main">
     <h1 class="title">Who are you?</h1>
     <div class="links">
-      <router-link class="link" :to="{ name: 'dealer' }">Dealer</router-link>
-      <router-link class="link" :to="{ name: 'player' }">Player</router-link>
+      <RouterLink class="link" :to="{ name: 'dealer' }">Dealer</RouterLink>
+      <RouterLink class="link" :to="{ name: 'player' }">Player</RouterLink>
     </div>
   </main>
 </template>

@@ -17,9 +17,9 @@ if (players.value.length === 0) {
 
 <template>
   <main class="dealer">
-    <router-link class="link" :to="{ name: 'newGame' }">
+    <RouterLink class="link" :to="{ name: 'newGame' }">
       <RefreshIcon class="link__icon" />New game
-    </router-link>
+    </RouterLink>
     <div class="content">
       <h1>Player list</h1>
 
