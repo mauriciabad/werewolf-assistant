@@ -24,7 +24,11 @@ if (players.value.length === 0) {
       <h1>Player list</h1>
 
       <div class="player-list">
-        <PlayerCard v-for="player in players" :key="player.id" :player="player" />
+        <PlayerCard
+          v-for="player in players"
+          :key="player.id"
+          :player="player"
+        />
       </div>
     </div>
   </main>
