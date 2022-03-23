@@ -2,12 +2,17 @@
 import { useGameConfigStore } from "@/stores/gameConfig";
 import { RefreshIcon } from "@heroicons/vue/solid";
 import { storeToRefs } from "pinia";
-import { RouterLink } from "vue-router";
+import { RouterLink, useRouter } from "vue-router";
 import PlayerCard from "../components/PlayerCard.vue";
 
 const gameConfigStore = useGameConfigStore();
 
 const { players } = storeToRefs(gameConfigStore);
+
+const router = useRouter();
+if (players.value.length === 0) {
+  router.replace({ name: "newGame" });
+}
 </script>
 
 <template>
@@ -19,11 +24,7 @@ const { players } = storeToRefs(gameConfigStore);
       <h1>Player list</h1>
 
       <div class="player-list">
-        <PlayerCard
-          v-for="player in players"
-          :key="player.id"
-          :player="player"
-        />
+        <PlayerCard v-for="player in players" :key="player.id" :player="player" />
       </div>
     </div>
   </main>
