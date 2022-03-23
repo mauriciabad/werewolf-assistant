@@ -35,11 +35,13 @@ function setCharacterAmount(characterId: CharacterId, amount: number): void {
     <h2>Choose characters (total {{ totalCharacters }})</h2>
 
     <div class="list">
-      <div v-for="character in characters" :key="character.id" class="list__item-wrapper">
+      <div
+        v-for="character in characters"
+        :key="character.id"
+        class="list__item-wrapper"
+      >
         <label :for="character.id" class="list__item-label">
-          {{
-            character.name
-          }}
+          {{ character.name }}
         </label>
         <InputNumber
           @input="setCharacterAmount(character.id, $event)"
