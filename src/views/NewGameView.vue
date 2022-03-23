@@ -1,31 +1,18 @@
 <script setup lang="ts">
-import type { CharacterId } from "@/data/characters.types";
-import { computed, reactive } from "vue";
-import characters from "../data/characters";
+import { useGameConfigStore } from "@/stores/gameConfig";
+import { SparklesIcon } from "@heroicons/vue/solid";
+import { storeToRefs } from "pinia";
+import IconButton from "../components/IconButton.vue";
 import InputNumber from "../components/InputNumber.vue";
+import { default as charactersInfo } from "../data/characters";
 
-type GameConfig = {
-  characters: { id: CharacterId; amount: number }[];
-};
+const store = useGameConfigStore();
 
-const gameConfig = reactive<GameConfig>({
-  characters: [],
-});
+const { characters, totalCharacters } = storeToRefs(store);
 
-const totalCharacters = computed<number>(() =>
-  gameConfig.characters.reduce((total, { amount }) => total + amount, 0)
-);
+const { setCharacterAmount } = store;
 
-function setCharacterAmount(characterId: CharacterId, amount: number): void {
-  const character = gameConfig.characters.find(
-    (character) => character.id === characterId
-  );
-  if (character) {
-    character.amount = amount;
-  } else {
-    gameConfig.characters.push({ id: characterId, amount });
-  }
-}
+function createGame(): void { }
 </script>
 
 <template>
@@ -35,7 +22,7 @@ function setCharacterAmount(characterId: CharacterId, amount: number): void {
     <h2>Choose characters (total {{ totalCharacters }})</h2>
 
     <div class="list">
-      <div v-for="character in characters" :key="character.id" class="list__item-wrapper">
+      <div v-for="character in charactersInfo" :key="character.id" class="list__item-wrapper">
         <label :for="character.id" class="list__item-label">
           {{
             character.name
@@ -44,10 +31,16 @@ function setCharacterAmount(characterId: CharacterId, amount: number): void {
         <InputNumber
           @input="setCharacterAmount(character.id, $event)"
           :id="character.id"
-          :default="0"
+          :default="characters.find((c) => c.id === character.id)?.amount ?? 0"
         />
       </div>
     </div>
+
+    <IconButton @click="createGame" :disabled="totalCharacters <= 1" class="create-button">
+      <template v-slot:icon>
+        <SparklesIcon />
+      </template>Create game
+    </IconButton>
   </main>
 </template>
 
@@ -81,5 +74,9 @@ function setCharacterAmount(characterId: CharacterId, amount: number): void {
       flex: 1;
     }
   }
+}
+
+.create-button {
+  margin-top: 1rem;
 }
 </style>

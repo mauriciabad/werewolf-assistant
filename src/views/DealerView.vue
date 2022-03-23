@@ -6,7 +6,7 @@ import { RefreshIcon } from "@heroicons/vue/solid";
 <template>
   <main class="dealer">
     <router-link class="link" :to="{ name: 'newGame' }">
-      <RefreshIcon class="link__icon" />New game
+      <RefreshIcon class="link__icon" />Edit game
     </router-link>
     <div class="content">
       <h1>You are the dealer</h1>
