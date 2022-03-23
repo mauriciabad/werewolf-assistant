@@ -23,11 +23,7 @@ function createGame(): void { }
 
     <div class="list">
       <div v-for="character in charactersInfo" :key="character.id" class="list__item-wrapper">
-        <label :for="character.id" class="list__item-label">
-          {{
-            character.name
-          }}
-        </label>
+        <label :for="character.id" class="list__item-label">{{ character.name }}</label>
         <InputNumber
           @input="setCharacterAmount(character.id, $event)"
           :id="character.id"
