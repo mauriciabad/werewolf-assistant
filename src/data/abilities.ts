@@ -14,7 +14,8 @@ const abilities: Ability[] = [
   {
     id: "cupid",
     name: "Cupid",
-    description: "The first night, you have to choose two players to be lovers.",
+    description:
+      "The first night, you have to choose two players to be lovers.",
   },
 ];
 
