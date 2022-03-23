@@ -13,7 +13,7 @@ const props = defineProps<Props>();
 
 const url = computed<string>(() => {
   const { character, abilities } = props.player;
-  const url = new URL(`${location.host}/player`);
+  const url = new URL(`${location.origin}/player`);
   url.searchParams.append("character", character);
   url.searchParams.append("abilities", abilities.join(","));
 
@@ -24,16 +24,12 @@ const url = computed<string>(() => {
 <template>
   <div class="player">
     <div class="name">Name: {{ player.name }}</div>
-    <div class="character">
-      Character: {{ getCharacter(player.character).name }}
-    </div>
+    <div class="character">Character: {{ getCharacter(player.character).name }}</div>
 
     <div class="abilities">
       <div>Abilities:</div>
       <ul>
-        <li v-for="abilityId in player.abilities" :key="abilityId">
-          {{ getAbility(abilityId).name }}
-        </li>
+        <li v-for="abilityId in player.abilities" :key="abilityId">{{ getAbility(abilityId).name }}</li>
       </ul>
     </div>
 
