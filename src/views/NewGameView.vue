@@ -91,15 +91,17 @@ function handleCreateGame(): void {
     <p>Total {{ newCharacterCount }}</p>
 
     <div class="list">
-      <div v-for="character in charactersInfo" :key="character.id" class="list__item-wrapper">
+      <div
+        v-for="character in charactersInfo"
+        :key="character.id"
+        class="list__item-wrapper"
+      >
         <Popper hover arrow>
           <template #content>
             <span class="toltip-content">{{ character.description }}</span>
           </template>
           <label :for="character.id" class="list__item-label">
-            {{
-              character.name
-            }}
+            {{ character.name }}
           </label>
           <InformationCircleIcon class="info-icon" />
         </Popper>
@@ -120,15 +122,17 @@ function handleCreateGame(): void {
     </p>
 
     <div class="list">
-      <div v-for="ability in abilitiesInfo" :key="ability.id" class="list__item-wrapper">
+      <div
+        v-for="ability in abilitiesInfo"
+        :key="ability.id"
+        class="list__item-wrapper"
+      >
         <Popper hover arrow>
           <template #content>
             <span class="toltip-content">{{ ability.description }}</span>
           </template>
           <label :for="ability.id" class="list__item-label">
-            {{
-              ability.name
-            }}
+            {{ ability.name }}
           </label>
           <InformationCircleIcon class="info-icon" />
         </Popper>
@@ -140,10 +144,12 @@ function handleCreateGame(): void {
       </div>
     </div>
 
-    <IconButton @click="handleCreateGame" :disabled="newCharacterCount <= 1" class="create-button">
-      <template v-slot:icon>
-        <SparklesIcon />
-      </template>Create game
+    <IconButton
+      @click="handleCreateGame"
+      :disabled="newCharacterCount <= 1"
+      class="create-button"
+    >
+      <template v-slot:icon> <SparklesIcon /> </template>Create game
     </IconButton>
   </main>
 </template>
