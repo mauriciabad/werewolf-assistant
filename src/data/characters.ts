@@ -34,6 +34,51 @@ const characters: Character[] = [
     description: "You can see the role of a player during the night.",
     team: "villagers",
   },
+  {
+    id: "suicide",
+    name: "Suicide",
+    description: "Your objective is to be killed in the first voting.",
+    team: "alone",
+  },
+  {
+    id: "feral-kid",
+    name: "Feral kid",
+    description:
+      "The first night you choose your adoptive parent. You start as a villager but when your parent dies, you become a werewolf.",
+    team: "other",
+  },
+  {
+    id: "baker",
+    name: "Baker",
+    description:
+      "Every night you wake someone up and reveal your role in secret.",
+    team: "villagers",
+  },
+  {
+    id: "triplet",
+    name: "Triplet",
+    description: "You know who your siblings are.",
+    team: "villagers",
+  },
+  {
+    id: "twin",
+    name: "Twin",
+    description: "You know who your siblings are.",
+    team: "villagers",
+  },
+  {
+    id: "witch",
+    name: "Witch",
+    description:
+      "Can save 1 person during the night, also can kill 1 person.\n Only 1 of each per game.",
+    team: "villagers",
+  },
+  {
+    id: "doctor",
+    name: "Doctor",
+    description: "Can save 1 person during the night. \n Only 1 use per game.",
+    team: "villagers",
+  },
 ];
 
 export function getCharacter(id: CharacterId): Character;
