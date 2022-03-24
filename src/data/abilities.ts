@@ -17,6 +17,12 @@ const abilities: Ability[] = [
     description:
       "The first night, you have to choose two players to be lovers.",
   },
+  {
+    id: "major",
+    name: "Major",
+    description:
+      "In case of a tie during the day, you're vote is counted as a majority vote.",
+  },
 ];
 
 export function getAbility(id: AbilityId): Ability;
