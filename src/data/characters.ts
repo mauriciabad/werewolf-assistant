@@ -19,6 +19,15 @@ const characters: Character[] = [
     image:
       "https://static.turbosquid.com/Preview/2019/01/16__08_45_08/1.pngC5B98C2C-BEF9-4171-BF71-56B581223F17Large.jpg",
   },
+  {
+    id: "villager-villager",
+    name: "Villager Villager",
+    description:
+      "Everyone knows your role, you have to tell you're the Villager Villager.",
+    team: "villagers",
+    image:
+      "https://thecamford.org/wp-content/uploads/2021/07/top-and-best-CBSE-school-in-Coimbatore_honesty-is-the-best-policy_The-Camford-International-School.jpeg",
+  },
 ];
 
 export function getCharacter(id: CharacterId): Character;
