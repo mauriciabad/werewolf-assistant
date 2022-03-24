@@ -68,25 +68,29 @@ function createPlayers(
     }
   }
   shuffle(allAbilities);
-  const abilitiesPerPlayer = Math.floor(
-    allAbilities.length / characters.length
-  );
+
+  const abilitiesPerPlayer =
+    characters.length === 0
+      ? 0
+      : Math.floor(allAbilities.length / characters.length);
 
   let lastId = 1;
   let lastAbilityAssignedIndex = 0;
   const result: PlayerConfig[] = [];
   for (const characterId of allCharacters) {
     const playerId = lastId++;
+    const nextAbilityAssignedIndex =
+      (lastAbilityAssignedIndex + abilitiesPerPlayer) % abilitiesPerPlayer;
     result.push({
       id: playerId,
       name: `Player ${playerId}`,
       character: characterId,
       abilities: allAbilities.slice(
         lastAbilityAssignedIndex,
-        lastAbilityAssignedIndex + abilitiesPerPlayer
+        nextAbilityAssignedIndex
       ),
     });
-    lastAbilityAssignedIndex += abilitiesPerPlayer;
+    lastAbilityAssignedIndex = nextAbilityAssignedIndex;
   }
 
   return result;
