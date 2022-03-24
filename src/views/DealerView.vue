@@ -7,7 +7,8 @@ import PlayerCard from "../components/PlayerCard.vue";
 
 const gameConfigStore = useGameConfigStore();
 
-const { players } = storeToRefs(gameConfigStore);
+const { players, firstNightActions, nightActions } =
+  storeToRefs(gameConfigStore);
 
 const router = useRouter();
 if (players.value.length === 0) {
@@ -24,24 +25,38 @@ if (players.value.length === 0) {
       <h1>Player list</h1>
 
       <div class="player-list">
-        <PlayerCard
-          v-for="player in players"
-          :key="player.id"
-          :player="player"
-        />
+        <PlayerCard v-for="player in players" :key="player.id" :player="player" />
       </div>
+
+      <h1>First night actions</h1>
+      <ol class="action-list">
+        <li v-for="action in firstNightActions" :key="action.name" class="action-list__item">
+          <strong>{{ action.name }}:</strong>
+          {{ action.description }}
+        </li>
+      </ol>
+
+      <h1>Night actions</h1>
+      <ol class="action-list">
+        <li v-for="action in nightActions" :key="action.name" class="action-list__item">
+          <strong>{{ action.name }}:</strong>
+          {{ action.description }}
+        </li>
+      </ol>
     </div>
   </main>
 </template>
 
 <style scoped lang="scss">
+h1 {
+  margin-top: 2rem;
+}
 .dealer {
   text-align: center;
   min-height: 100vh;
   display: grid;
   grid-template: auto 1fr / auto;
   padding: 1rem;
-  gap: 1rem;
 }
 .content {
   display: flex;
@@ -69,5 +84,18 @@ if (players.value.length === 0) {
 
 .player-list {
   width: 100%;
+}
+
+.action-list {
+  text-align: left;
+  width: 100%;
+
+  &__item {
+    margin-bottom: 0.5rem;
+
+    strong {
+      font-weight: bold;
+    }
+  }
 }
 </style>
