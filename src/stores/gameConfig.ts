@@ -80,7 +80,8 @@ function createPlayers(
   for (const characterId of allCharacters) {
     const playerId = lastId++;
     const nextAbilityAssignedIndex =
-      (lastAbilityAssignedIndex + abilitiesPerPlayer) % abilitiesPerPlayer;
+      (lastAbilityAssignedIndex + abilitiesPerPlayer) %
+      (allAbilities.length + 1);
     result.push({
       id: playerId,
       name: `Player ${playerId}`,
