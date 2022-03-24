@@ -87,8 +87,14 @@ function handleCreateGame(): void {
     <p>Total {{ newCharacterCount }}</p>
 
     <div class="list">
-      <div v-for="character in charactersInfo" :key="character.id" class="list__item-wrapper">
-        <label :for="character.id" class="list__item-label">{{ character.name }}</label>
+      <div
+        v-for="character in charactersInfo"
+        :key="character.id"
+        class="list__item-wrapper"
+      >
+        <label :for="character.id" class="list__item-label">{{
+          character.name
+        }}</label>
         <InputNumber
           @input="setCharacterAmount(character.id, $event)"
           :id="character.id"
@@ -106,8 +112,14 @@ function handleCreateGame(): void {
     </p>
 
     <div class="list">
-      <div v-for="ability in abilitiesInfo" :key="ability.id" class="list__item-wrapper">
-        <label :for="ability.id" class="list__item-label">{{ ability.name }}</label>
+      <div
+        v-for="ability in abilitiesInfo"
+        :key="ability.id"
+        class="list__item-wrapper"
+      >
+        <label :for="ability.id" class="list__item-label">{{
+          ability.name
+        }}</label>
         <InputNumber
           @input="setAbilityAmount(ability.id, $event)"
           :id="ability.id"
@@ -116,10 +128,12 @@ function handleCreateGame(): void {
       </div>
     </div>
 
-    <IconButton @click="handleCreateGame" :disabled="newCharacterCount <= 1" class="create-button">
-      <template v-slot:icon>
-        <SparklesIcon />
-      </template>Create game
+    <IconButton
+      @click="handleCreateGame"
+      :disabled="newCharacterCount <= 1"
+      class="create-button"
+    >
+      <template v-slot:icon> <SparklesIcon /> </template>Create game
     </IconButton>
   </main>
 </template>
