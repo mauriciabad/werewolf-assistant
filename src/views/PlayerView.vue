@@ -9,8 +9,7 @@ import { useRoute } from "vue-router";
 const route = useRoute();
 
 const hasData = computed<boolean>(
-  () =>
-    !!route.query.player && !!route.query.character && !!route.query.abilities
+  () => !!route.query.player && !!route.query.character
 );
 
 const character = computed<Character>(() => {
@@ -26,8 +25,10 @@ const abilities = computed<Ability[]>(() => {
     return route.query.abilities.map((abilityId) =>
       getAbility(abilityId as AbilityId)
     );
-  } else {
+  } else if (route.query.abilities) {
     return [getAbility(route.query.abilities as AbilityId)];
+  } else {
+    return [];
   }
 });
 </script>
@@ -37,12 +38,7 @@ const abilities = computed<Ability[]>(() => {
     <template v-if="hasData">
       <p>{{ route.query.player }}</p>
 
-      <img
-        v-if="character.image"
-        :src="character.image"
-        :alt="''"
-        class="image"
-      />
+      <img v-if="character.image" :src="character.image" :alt="''" class="image" />
 
       <div class="character">
         <h1>{{ character.name }}</h1>
@@ -62,9 +58,7 @@ const abilities = computed<Ability[]>(() => {
 
     <template v-else>
       <h1>Scan the QR code</h1>
-      <p>
-        Open your camera and scan the QR code that the narrator will show you.
-      </p>
+      <p>Open your camera and scan the QR code that the narrator will show you.</p>
     </template>
   </main>
 </template>
