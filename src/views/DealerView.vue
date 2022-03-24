@@ -25,12 +25,20 @@ if (players.value.length === 0) {
       <h1>Player list</h1>
 
       <div class="player-list">
-        <PlayerCard v-for="player in players" :key="player.id" :player="player" />
+        <PlayerCard
+          v-for="player in players"
+          :key="player.id"
+          :player="player"
+        />
       </div>
 
       <h1>First night actions</h1>
       <ol class="action-list">
-        <li v-for="action in firstNightActions" :key="action.name" class="action-list__item">
+        <li
+          v-for="action in firstNightActions"
+          :key="action.name"
+          class="action-list__item"
+        >
           <strong>{{ action.name }}:</strong>
           {{ action.description }}
         </li>
@@ -38,7 +46,11 @@ if (players.value.length === 0) {
 
       <h1>Night actions</h1>
       <ol class="action-list">
-        <li v-for="action in nightActions" :key="action.name" class="action-list__item">
+        <li
+          v-for="action in nightActions"
+          :key="action.name"
+          class="action-list__item"
+        >
           <strong>{{ action.name }}:</strong>
           {{ action.description }}
         </li>
