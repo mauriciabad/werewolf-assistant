@@ -11,6 +11,15 @@ export const firstNightActions: Action[] = [
     description: "Werewolfs just see each other, no killing",
     requiredCharacters: ["werewolf"],
   },
+  {
+    name: "Village wakes up",
+    description: "Everyone opens their eyes",
+  },
+  {
+    name: "Villager-Villager",
+    description: "Villager-Villager is revealed",
+    requiredCharacters: ["villager-villager"],
+  },
 ];
 
 export const nightActions: Action[] = [

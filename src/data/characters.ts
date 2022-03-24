@@ -21,9 +21,9 @@ const characters: Character[] = [
   },
   {
     id: "villager-villager",
-    name: "Villager Villager",
+    name: "Villager-Villager",
     description:
-      "Everyone knows your role, you have to tell you're the Villager Villager.",
+      "Everyone knows your role, you have to tell you're the Villager-Villager.",
     team: "villagers",
     image:
       "https://thecamford.org/wp-content/uploads/2021/07/top-and-best-CBSE-school-in-Coimbatore_honesty-is-the-best-policy_The-Camford-International-School.jpeg",
