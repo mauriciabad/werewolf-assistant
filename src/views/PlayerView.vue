@@ -38,7 +38,12 @@ const abilities = computed<Ability[]>(() => {
     <template v-if="hasData">
       <p>{{ route.query.player }}</p>
 
-      <img v-if="character.image" :src="character.image" :alt="''" class="image" />
+      <img
+        v-if="character.image"
+        :src="character.image"
+        :alt="''"
+        class="image"
+      />
 
       <div class="character">
         <h1>{{ character.name }}</h1>
@@ -58,7 +63,9 @@ const abilities = computed<Ability[]>(() => {
 
     <template v-else>
       <h1>Scan the QR code</h1>
-      <p>Open your camera and scan the QR code that the narrator will show you.</p>
+      <p>
+        Open your camera and scan the QR code that the narrator will show you.
+      </p>
     </template>
   </main>
 </template>
