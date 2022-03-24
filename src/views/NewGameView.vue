@@ -14,6 +14,8 @@ import InputNumber from "../components/InputNumber.vue";
 import { default as charactersInfo } from "../data/characters";
 import { default as abilitiesInfo } from "../data/abilities";
 import type { AbilityId } from "@/data/abilities.types";
+import Popper from "vue3-popper";
+import { InformationCircleIcon } from "@heroicons/vue/outline";
 
 const gameConfigStore = useGameConfigStore();
 
@@ -89,14 +91,18 @@ function handleCreateGame(): void {
     <p>Total {{ newCharacterCount }}</p>
 
     <div class="list">
-      <div
-        v-for="character in charactersInfo"
-        :key="character.id"
-        class="list__item-wrapper"
-      >
-        <label :for="character.id" class="list__item-label">
-          {{ character.name }}
-        </label>
+      <div v-for="character in charactersInfo" :key="character.id" class="list__item-wrapper">
+        <Popper hover arrow>
+          <template #content>
+            <span class="toltip-content">{{ character.description }}</span>
+          </template>
+          <label :for="character.id" class="list__item-label">
+            {{
+              character.name
+            }}
+          </label>
+          <InformationCircleIcon class="info-icon" />
+        </Popper>
         <InputNumber
           @input="setCharacterAmount(character.id, $event)"
           :id="character.id"
@@ -114,14 +120,18 @@ function handleCreateGame(): void {
     </p>
 
     <div class="list">
-      <div
-        v-for="ability in abilitiesInfo"
-        :key="ability.id"
-        class="list__item-wrapper"
-      >
-        <label :for="ability.id" class="list__item-label">
-          {{ ability.name }}
-        </label>
+      <div v-for="ability in abilitiesInfo" :key="ability.id" class="list__item-wrapper">
+        <Popper hover arrow>
+          <template #content>
+            <span class="toltip-content">{{ ability.description }}</span>
+          </template>
+          <label :for="ability.id" class="list__item-label">
+            {{
+              ability.name
+            }}
+          </label>
+          <InformationCircleIcon class="info-icon" />
+        </Popper>
         <InputNumber
           @input="setAbilityAmount(ability.id, $event)"
           :id="ability.id"
@@ -130,12 +140,10 @@ function handleCreateGame(): void {
       </div>
     </div>
 
-    <IconButton
-      @click="handleCreateGame"
-      :disabled="newCharacterCount <= 1"
-      class="create-button"
-    >
-      <template v-slot:icon> <SparklesIcon /> </template>Create game
+    <IconButton @click="handleCreateGame" :disabled="newCharacterCount <= 1" class="create-button">
+      <template v-slot:icon>
+        <SparklesIcon />
+      </template>Create game
     </IconButton>
   </main>
 </template>
@@ -174,5 +182,15 @@ function handleCreateGame(): void {
 
 .create-button {
   margin-top: 1rem;
+}
+
+.info-icon {
+  margin-left: 0.5rem;
+  width: 24px;
+  vertical-align: -25%;
+}
+.toltip-content {
+  width: 25rem;
+  display: block;
 }
 </style>
