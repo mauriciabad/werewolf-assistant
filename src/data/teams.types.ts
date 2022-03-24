@@ -4,5 +4,6 @@ export interface Team<T extends TeamId = TeamId> {
   id: T;
   name: string;
   description: string;
+  objective: string;
   image?: string;
 }
