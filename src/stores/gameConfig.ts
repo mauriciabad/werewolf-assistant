@@ -4,6 +4,7 @@ import { useStorage } from "@vueuse/core";
 import type { AbilityId } from "@/data/abilities.types";
 
 export type CharacterConfig = { id: CharacterId; amount: number };
+export type AbilitiesConfig = { id: AbilityId; amount: number };
 export type PlayerConfig = {
   id: number;
   name: string;
@@ -16,21 +17,26 @@ export const useGameConfigStore = defineStore({
 
   state: () => ({
     characters: useStorage<CharacterConfig[]>("characters", []),
+    abilities: useStorage<AbilitiesConfig[]>("abilities", []),
     players: useStorage<PlayerConfig[]>("players", []),
   }),
 
   getters: {},
 
   actions: {
-    createNewGame(characters: CharacterConfig[]): void {
+    createNewGame(characters: CharacterConfig[], abilities: AbilitiesConfig[]) {
       this.characters = characters;
+      this.abilities = abilities;
 
-      this.players = createPlayers(characters);
+      this.players = createPlayers(characters, abilities);
     },
   },
 });
 
-function createPlayers(characters: CharacterConfig[]): PlayerConfig[] {
+function createPlayers(
+  characters: CharacterConfig[],
+  abilities: AbilitiesConfig[]
+): PlayerConfig[] {
   const allCharacters: CharacterId[] = [];
   for (const character of characters) {
     for (let i = 0; i < character.amount; i++) {
@@ -39,7 +45,19 @@ function createPlayers(characters: CharacterConfig[]): PlayerConfig[] {
   }
   shuffle(allCharacters);
 
+  const allAbilities: AbilityId[] = [];
+  for (const ability of abilities) {
+    for (let i = 0; i < ability.amount; i++) {
+      allAbilities.push(ability.id);
+    }
+  }
+  shuffle(allAbilities);
+  const abilitiesPerPlayer = Math.floor(
+    allAbilities.length / characters.length
+  );
+
   let lastId = 1;
+  let lastAbilityAssignedIndex = 0;
   const result: PlayerConfig[] = [];
   for (const characterId of allCharacters) {
     const playerId = lastId++;
@@ -47,8 +65,12 @@ function createPlayers(characters: CharacterConfig[]): PlayerConfig[] {
       id: playerId,
       name: `Player ${playerId}`,
       character: characterId,
-      abilities: ["extra-vote"],
+      abilities: allAbilities.slice(
+        lastAbilityAssignedIndex,
+        lastAbilityAssignedIndex + abilitiesPerPlayer
+      ),
     });
+    lastAbilityAssignedIndex += abilitiesPerPlayer;
   }
 
   return result;

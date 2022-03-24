@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import type { CharacterId } from "@/data/characters.types";
-import { useGameConfigStore, type CharacterConfig } from "@/stores/gameConfig";
+import {
+  useGameConfigStore,
+  type AbilitiesConfig,
+  type CharacterConfig,
+} from "@/stores/gameConfig";
 import { SparklesIcon } from "@heroicons/vue/solid";
 import { storeToRefs } from "pinia";
 import { computed, reactive } from "vue";
@@ -8,14 +12,20 @@ import { useRouter } from "vue-router";
 import IconButton from "../components/IconButton.vue";
 import InputNumber from "../components/InputNumber.vue";
 import { default as charactersInfo } from "../data/characters";
+import { default as abilitiesInfo } from "../data/abilities";
+import type { AbilityId } from "@/data/abilities.types";
 
 const gameConfigStore = useGameConfigStore();
 
-const { characters } = storeToRefs(gameConfigStore);
+const { characters, abilities } = storeToRefs(gameConfigStore);
 
 const newCharacters = reactive<CharacterConfig[]>(characters.value);
 const newCharacterCount = computed<number>(() =>
   newCharacters.reduce((total, { amount }) => total + amount, 0)
+);
+const newAbilities = reactive<AbilitiesConfig[]>(abilities.value);
+const newAbilityCount = computed<number>(() =>
+  newAbilities.reduce((total, { amount }) => total + amount, 0)
 );
 
 const { createNewGame } = gameConfigStore;
@@ -42,8 +52,26 @@ function setCharacterAmount(characterId: CharacterId, amount: number): void {
   character.amount = amount;
 }
 
+function setAbilityAmount(abilityId: AbilityId, amount: number): void {
+  const ability = newAbilities.find((character) => character.id === abilityId);
+
+  if (amount === 0) {
+    if (!ability) return;
+
+    newAbilities.splice(newAbilities.indexOf(ability), 1);
+    return;
+  }
+
+  if (!ability) {
+    newAbilities.push({ id: abilityId, amount });
+    return;
+  }
+
+  ability.amount = amount;
+}
+
 function handleCreateGame(): void {
-  createNewGame(newCharacters);
+  createNewGame(newCharacters, newAbilities);
   router.push({ name: "dealer" });
 }
 </script>
@@ -55,14 +83,8 @@ function handleCreateGame(): void {
     <h2>Choose characters (total {{ newCharacterCount }})</h2>
 
     <div class="list">
-      <div
-        v-for="character in charactersInfo"
-        :key="character.id"
-        class="list__item-wrapper"
-      >
-        <label :for="character.id" class="list__item-label">{{
-          character.name
-        }}</label>
+      <div v-for="character in charactersInfo" :key="character.id" class="list__item-wrapper">
+        <label :for="character.id" class="list__item-label">{{ character.name }}</label>
         <InputNumber
           @input="setCharacterAmount(character.id, $event)"
           :id="character.id"
@@ -73,12 +95,23 @@ function handleCreateGame(): void {
       </div>
     </div>
 
-    <IconButton
-      @click="handleCreateGame"
-      :disabled="newCharacterCount <= 1"
-      class="create-button"
-    >
-      <template v-slot:icon> <SparklesIcon /> </template>Create game
+    <h2>Choose abilities (total {{ newAbilityCount }})</h2>
+
+    <div class="list">
+      <div v-for="ability in abilitiesInfo" :key="ability.id" class="list__item-wrapper">
+        <label :for="ability.id" class="list__item-label">{{ ability.name }}</label>
+        <InputNumber
+          @input="setAbilityAmount(ability.id, $event)"
+          :id="ability.id"
+          :default="newAbilities.find((a) => a.id === ability.id)?.amount ?? 0"
+        />
+      </div>
+    </div>
+
+    <IconButton @click="handleCreateGame" :disabled="newCharacterCount <= 1" class="create-button">
+      <template v-slot:icon>
+        <SparklesIcon />
+      </template>Create game
     </IconButton>
   </main>
 </template>
