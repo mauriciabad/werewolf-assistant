@@ -27,6 +27,9 @@ const newAbilities = reactive<AbilitiesConfig[]>(abilities.value);
 const newAbilityCount = computed<number>(() =>
   newAbilities.reduce((total, { amount }) => total + amount, 0)
 );
+const newAbilitiesPerCharacter = computed<number>(() =>
+  Math.floor(newAbilityCount.value / newCharacterCount.value)
+);
 
 const { createNewGame } = gameConfigStore;
 
@@ -80,7 +83,8 @@ function handleCreateGame(): void {
   <main class="main">
     <h1>New Game</h1>
 
-    <h2>Choose characters (total {{ newCharacterCount }})</h2>
+    <h2>Choose characters</h2>
+    <p>Total {{ newCharacterCount }}</p>
 
     <div class="list">
       <div v-for="character in charactersInfo" :key="character.id" class="list__item-wrapper">
@@ -95,7 +99,11 @@ function handleCreateGame(): void {
       </div>
     </div>
 
-    <h2>Choose abilities (total {{ newAbilityCount }})</h2>
+    <h2>Choose abilities</h2>
+    <p>
+      Total {{ newAbilityCount }} and {{ newAbilitiesPerCharacter }} per
+      character
+    </p>
 
     <div class="list">
       <div v-for="ability in abilitiesInfo" :key="ability.id" class="list__item-wrapper">
