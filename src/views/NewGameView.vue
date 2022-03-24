@@ -7,7 +7,7 @@ import {
 } from "@/stores/gameConfig";
 import { SparklesIcon } from "@heroicons/vue/solid";
 import { storeToRefs } from "pinia";
-import { computed, reactive } from "vue";
+import { computed, reactive, ref } from "vue";
 import { useRouter } from "vue-router";
 import IconButton from "../components/IconButton.vue";
 import InputNumber from "../components/InputNumber.vue";
@@ -19,7 +19,7 @@ import { InformationCircleIcon } from "@heroicons/vue/outline";
 
 const gameConfigStore = useGameConfigStore();
 
-const { characters, abilities } = storeToRefs(gameConfigStore);
+const { characters, abilities, players } = storeToRefs(gameConfigStore);
 
 const newCharacters = reactive<CharacterConfig[]>(characters.value);
 const newCharacterCount = computed<number>(() =>
@@ -38,6 +38,21 @@ const newAbilitiesPerCharacter = computed<number>(() =>
 const { createNewGame } = gameConfigStore;
 
 const router = useRouter();
+
+const initialPlayerNames = players.value
+  .map((player) => player.name)
+  .join("\n");
+
+const rawPlayerNames = ref<string>(initialPlayerNames);
+const newPlayerNames = computed<string[]>(() =>
+  rawPlayerNames.value
+    .split("\n")
+    .map((s) => s.trim())
+    .filter((s) => s)
+    .map((s) => s.charAt(0).toUpperCase() + s.slice(1))
+    .filter((s, i, arr) => arr.indexOf(s) === i)
+);
+const playerNamesCount = computed<number>(() => newPlayerNames.value.length);
 
 function setCharacterAmount(characterId: CharacterId, amount: number): void {
   const character = newCharacters.find(
@@ -78,7 +93,7 @@ function setAbilityAmount(abilityId: AbilityId, amount: number): void {
 }
 
 function handleCreateGame(): void {
-  createNewGame(newCharacters, newAbilities);
+  createNewGame(newCharacters, newAbilities, newPlayerNames.value);
   router.push({ name: "dealer" });
 }
 </script>
@@ -88,20 +103,18 @@ function handleCreateGame(): void {
     <h1>New Game</h1>
 
     <h2>Choose characters</h2>
-    <p>Total {{ newCharacterCount }}</p>
+    <p>Total {{ newCharacterCount }} | {{ playerNamesCount }} players</p>
 
     <div class="list">
-      <div
-        v-for="character in charactersInfo"
-        :key="character.id"
-        class="list__item-wrapper"
-      >
+      <div v-for="character in charactersInfo" :key="character.id" class="list__item-wrapper">
         <Popper hover arrow>
           <template #content>
             <span class="toltip-content">{{ character.description }}</span>
           </template>
           <label :for="character.id" class="list__item-label">
-            {{ character.name }}
+            {{
+              character.name
+            }}
           </label>
           <InformationCircleIcon class="info-icon" />
         </Popper>
@@ -117,22 +130,22 @@ function handleCreateGame(): void {
 
     <h2>Choose abilities</h2>
     <p>
-      Total {{ newAbilityCount }} and {{ newAbilitiesPerCharacter }} per
-      character
+      Total {{ newAbilityCount }} | {{ newAbilitiesPerCharacter }} per character
+      |
+      {{ newAbilityCount - newAbilitiesPerCharacter * newCharacterCount }}
+      remaining
     </p>
 
     <div class="list">
-      <div
-        v-for="ability in abilitiesInfo"
-        :key="ability.id"
-        class="list__item-wrapper"
-      >
+      <div v-for="ability in abilitiesInfo" :key="ability.id" class="list__item-wrapper">
         <Popper hover arrow>
           <template #content>
             <span class="toltip-content">{{ ability.description }}</span>
           </template>
           <label :for="ability.id" class="list__item-label">
-            {{ ability.name }}
+            {{
+              ability.name
+            }}
           </label>
           <InformationCircleIcon class="info-icon" />
         </Popper>
@@ -144,12 +157,25 @@ function handleCreateGame(): void {
       </div>
     </div>
 
-    <IconButton
-      @click="handleCreateGame"
-      :disabled="newCharacterCount <= 1"
-      class="create-button"
-    >
-      <template v-slot:icon> <SparklesIcon /> </template>Create game
+    <h2>
+      <label for="player-names">Player names</label>
+    </h2>
+    <p>Total {{ playerNamesCount }}</p>
+    <textarea
+      name="Player names"
+      id="player-names"
+      rows="10"
+      v-model="rawPlayerNames"
+      class="player-names"
+    ></textarea>
+    <div class="name-list">
+      <span class="name-list__item" v-for="name in newPlayerNames" :key="name">{{ name }}</span>
+    </div>
+
+    <IconButton @click="handleCreateGame" :disabled="newCharacterCount <= 1" class="create-button">
+      <template v-slot:icon>
+        <SparklesIcon />
+      </template>Create game
     </IconButton>
   </main>
 </template>
@@ -199,5 +225,41 @@ function handleCreateGame(): void {
 .toltip-content {
   width: 25rem;
   display: block;
+}
+
+h2 {
+  margin-top: 2rem;
+}
+
+.player-names {
+  width: 100%;
+  max-width: 25rem;
+  margin-top: 1rem;
+  background-color: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+  resize: vertical;
+  min-height: 4rem;
+  padding: 0.75rem;
+  font-family: inherit;
+}
+
+.name-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 1rem;
+  max-width: 25rem;
+
+  &__item {
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.8rem;
+    background-color: var(--color-background-soft);
+    border-radius: 0.25rem;
+    padding: 0.125rem 0.75rem;
+    color: var(--color-text);
+    font-weight: bold;
+  }
 }
 </style>

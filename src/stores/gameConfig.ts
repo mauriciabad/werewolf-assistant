@@ -28,7 +28,11 @@ export const useGameConfigStore = defineStore({
   getters: {},
 
   actions: {
-    createNewGame(characters: CharacterConfig[], abilities: AbilitiesConfig[]) {
+    createNewGame(
+      characters: CharacterConfig[],
+      abilities: AbilitiesConfig[],
+      playerNames: string[]
+    ): void {
       this.characters = characters;
       this.abilities = abilities;
 
@@ -44,14 +48,15 @@ export const useGameConfigStore = defineStore({
           gameHasAllActionCharacters(action, characters)
       );
 
-      this.players = createPlayers(characters, abilities);
+      this.players = createPlayers(characters, abilities, playerNames);
     },
   },
 });
 
 function createPlayers(
   characters: CharacterConfig[],
-  abilities: AbilitiesConfig[]
+  abilities: AbilitiesConfig[],
+  playerNames: string[]
 ): PlayerConfig[] {
   const allCharacters: CharacterId[] = [];
   for (const character of characters) {
@@ -75,15 +80,17 @@ function createPlayers(
       : Math.floor(allAbilities.length / allCharacters.length);
 
   let lastId = 1;
+  let lastPlayerNameIndex = 0;
   let lastAbilityAssignedIndex = 0;
   const result: PlayerConfig[] = [];
   for (const characterId of allCharacters) {
     const playerId = lastId++;
+    const playerName: string | undefined = playerNames[lastPlayerNameIndex];
     const nextAbilityAssignedIndex =
       lastAbilityAssignedIndex + abilitiesPerPlayer;
     result.push({
       id: playerId,
-      name: `Player ${playerId}`,
+      name: playerName ?? `Player ${playerId}`,
       character: characterId,
       abilities: allAbilities.slice(
         lastAbilityAssignedIndex,
@@ -91,6 +98,7 @@ function createPlayers(
       ),
     });
     lastAbilityAssignedIndex = nextAbilityAssignedIndex;
+    lastPlayerNameIndex += 1;
   }
 
   return result;
