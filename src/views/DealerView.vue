@@ -63,6 +63,8 @@ h1 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .link {
