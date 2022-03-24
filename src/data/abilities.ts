@@ -23,6 +23,11 @@ const abilities: Ability[] = [
     description:
       "In case of a tie during the day, you're vote is counted as a majority vote.",
   },
+  {
+    id: "nothing",
+    name: "Nothing",
+    description: "No ability.",
+  },
 ];
 
 export function getAbility(id: AbilityId): Ability;
