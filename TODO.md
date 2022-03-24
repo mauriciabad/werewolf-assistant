@@ -2,7 +2,6 @@
 
 ## Critical
 - [ ] View to show the QRs better
-- [ ] Choose abilities in new game
 - [ ] In the QR view, make the character and ability hidable.
 - [ ] Add custom characters/habilities in situ
 - [ ] Add data for characters and habilities
