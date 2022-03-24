@@ -187,7 +187,8 @@ function handleCreateGame(): void {
 .info-icon {
   margin-left: 0.5rem;
   width: 24px;
-  vertical-align: -25%;
+  vertical-align: -20%;
+  color: var(--color-text-soft);
 }
 .toltip-content {
   width: 25rem;
