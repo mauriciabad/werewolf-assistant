@@ -28,6 +28,12 @@ const characters: Character[] = [
     image:
       "https://thecamford.org/wp-content/uploads/2021/07/top-and-best-CBSE-school-in-Coimbatore_honesty-is-the-best-policy_The-Camford-International-School.jpeg",
   },
+  {
+    id: "seer",
+    name: "Seer",
+    description: "You can see the role of a player during the night.",
+    team: "villagers",
+  },
 ];
 
 export function getCharacter(id: CharacterId): Character;
