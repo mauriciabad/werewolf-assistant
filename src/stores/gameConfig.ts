@@ -70,9 +70,9 @@ function createPlayers(
   shuffle(allAbilities);
 
   const abilitiesPerPlayer =
-    characters.length === 0
+    allCharacters.length === 0
       ? 0
-      : Math.floor(allAbilities.length / characters.length);
+      : Math.floor(allAbilities.length / allCharacters.length);
 
   let lastId = 1;
   let lastAbilityAssignedIndex = 0;
@@ -80,8 +80,7 @@ function createPlayers(
   for (const characterId of allCharacters) {
     const playerId = lastId++;
     const nextAbilityAssignedIndex =
-      (lastAbilityAssignedIndex + abilitiesPerPlayer) %
-      (allAbilities.length + 1);
+      lastAbilityAssignedIndex + abilitiesPerPlayer;
     result.push({
       id: playerId,
       name: `Player ${playerId}`,
