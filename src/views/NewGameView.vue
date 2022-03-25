@@ -92,7 +92,7 @@ function setAbilityAmount(abilityId: AbilityId, amount: number): void {
 
 function handleCreateGame(): void {
   createNewGame(newCharacters, newAbilities, newPlayerNames.value)
-  router.push({ name: 'dealer' })
+  router.push({ name: 'storyteller' })
 }
 </script>
 
@@ -104,19 +104,13 @@ function handleCreateGame(): void {
     <p>Total {{ newCharacterCount }} | {{ playerNamesCount }} players</p>
 
     <div class="list">
-      <div
-        v-for="character in charactersInfo"
-        :key="character.id"
-        class="list__item-wrapper"
-      >
+      <div v-for="character in charactersInfo" :key="character.id" class="list__item-wrapper">
         <Popper hover arrow>
           <template #content>
             <span class="toltip-content">{{ character.description }}</span>
           </template>
           <div>
-            <label :for="character.id" class="list__item-label">
-              {{ character.name }}
-            </label>
+            <label :for="character.id" class="list__item-label">{{ character.name }}</label>
             <InformationCircleIcon class="info-icon" />
           </div>
         </Popper>
@@ -139,19 +133,13 @@ function handleCreateGame(): void {
     </p>
 
     <div class="list">
-      <div
-        v-for="ability in abilitiesInfo"
-        :key="ability.id"
-        class="list__item-wrapper"
-      >
+      <div v-for="ability in abilitiesInfo" :key="ability.id" class="list__item-wrapper">
         <Popper hover arrow>
           <template #content>
             <span class="toltip-content">{{ ability.description }}</span>
           </template>
           <div>
-            <label :for="ability.id" class="list__item-label">
-              {{ ability.name }}
-            </label>
+            <label :for="ability.id" class="list__item-label">{{ ability.name }}</label>
             <InformationCircleIcon class="info-icon" />
           </div>
         </Popper>
@@ -175,20 +163,13 @@ function handleCreateGame(): void {
       class="player-names"
     ></textarea>
     <div class="name-list">
-      <span
-        class="name-list__item"
-        v-for="name in newPlayerNames"
-        :key="name"
-        >{{ name }}</span
-      >
+      <span class="name-list__item" v-for="name in newPlayerNames" :key="name">{{ name }}</span>
     </div>
 
-    <IconButton
-      @click="handleCreateGame"
-      :disabled="newCharacterCount <= 1"
-      class="create-button"
-    >
-      <template v-slot:icon> <SparklesIcon /> </template>Create game
+    <IconButton @click="handleCreateGame" :disabled="newCharacterCount <= 1" class="create-button">
+      <template v-slot:icon>
+        <SparklesIcon />
+      </template>Create game
     </IconButton>
   </main>
 </template>
