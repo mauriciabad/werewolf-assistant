@@ -111,12 +111,10 @@ function handleCreateGame(): void {
           <template #content>
             <span class="toltip-content">{{ character.description }}</span>
           </template>
-          <label :for="character.id" class="list__item-label">
-            {{
-              character.name
-            }}
-          </label>
-          <InformationCircleIcon class="info-icon" />
+          <div>
+            <label :for="character.id" class="list__item-label">{{ character.name }}</label>
+            <InformationCircleIcon class="info-icon" />
+          </div>
         </Popper>
         <InputNumber
           @input="setCharacterAmount(character.id, $event)"
@@ -142,12 +140,10 @@ function handleCreateGame(): void {
           <template #content>
             <span class="toltip-content">{{ ability.description }}</span>
           </template>
-          <label :for="ability.id" class="list__item-label">
-            {{
-              ability.name
-            }}
-          </label>
-          <InformationCircleIcon class="info-icon" />
+          <div>
+            <label :for="ability.id" class="list__item-label">{{ ability.name }}</label>
+            <InformationCircleIcon class="info-icon" />
+          </div>
         </Popper>
         <InputNumber
           @input="setAbilityAmount(ability.id, $event)"
