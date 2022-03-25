@@ -112,7 +112,11 @@ function handleCreateGame(): void {
             <span class="toltip-content">{{ character.description }}</span>
           </template>
           <div>
-            <label :for="character.id" class="list__item-label">{{ character.name }}</label>
+            <label :for="character.id" class="list__item-label">
+              {{
+                character.name
+              }}
+            </label>
             <InformationCircleIcon class="info-icon" />
           </div>
         </Popper>
@@ -141,7 +145,11 @@ function handleCreateGame(): void {
             <span class="toltip-content">{{ ability.description }}</span>
           </template>
           <div>
-            <label :for="ability.id" class="list__item-label">{{ ability.name }}</label>
+            <label :for="ability.id" class="list__item-label">
+              {{
+                ability.name
+              }}
+            </label>
             <InformationCircleIcon class="info-icon" />
           </div>
         </Popper>
