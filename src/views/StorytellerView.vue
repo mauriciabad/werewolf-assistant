@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useGameConfigStore } from '@/stores/gameConfig'
-import { RefreshIcon } from '@heroicons/vue/solid'
+import { RefreshIcon, IdentificationIcon } from '@heroicons/vue/solid'
 import { storeToRefs } from 'pinia'
 import { RouterLink, useRouter } from 'vue-router'
 import PlayerCard from '../components/PlayerCard.vue'
@@ -23,6 +23,9 @@ if (players.value.length === 0) {
     </RouterLink>
     <div class="content">
       <h1>Player list</h1>
+      <RouterLink class="link" :to="{ name: 'distributeRoles' }">
+        <IdentificationIcon class="link__icon" />Distribute roles
+      </RouterLink>
 
       <div class="player-list">
         <PlayerCard
@@ -66,7 +69,6 @@ h1 {
 
 .storyteller {
   display: grid;
-  min-height: 100vh;
   padding: 1rem;
   grid-template: auto 1fr / auto;
   text-align: center;

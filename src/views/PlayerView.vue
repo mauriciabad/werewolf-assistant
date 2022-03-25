@@ -75,7 +75,7 @@ const abilities = computed<Ability[]>(() => {
   display: flex;
   width: 100%;
   max-width: 40rem;
-  min-height: 100vh;
+  min-height: var(--vh100);
   flex-direction: column;
   align-items: center;
   justify-content: center;

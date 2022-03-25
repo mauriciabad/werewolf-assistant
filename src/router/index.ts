@@ -20,6 +20,11 @@ const router = createRouter({
       component: () => import('../views/NewGameView.vue'),
     },
     {
+      path: '/distribute-roles',
+      name: 'distributeRoles',
+      component: () => import('../views/DistributeRolesView.vue'),
+    },
+    {
       path: '/player',
       name: 'player',
       component: () => import('../views/PlayerView.vue'),

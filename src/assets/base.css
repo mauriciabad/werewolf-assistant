@@ -64,7 +64,6 @@
 }
 
 body {
-  min-height: 100vh;
   background: var(--color-background);
   color: var(--color-text);
   font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
@@ -79,4 +78,10 @@ body {
 
 input, button {
   font: inherit;
+}
+
+a {
+  color: hsl(160deg 100% 37% / 100%);
+  text-decoration: none;
+  transition: 0.4s;
 }
