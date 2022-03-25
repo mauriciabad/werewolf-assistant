@@ -240,7 +240,10 @@ function handleCreateGame(): void {
 
 .toltip-content {
   display: block;
-  width: 25rem;
+  width: calc(
+    100vw - 2 * (var(--popper-theme-padding) + var(--popper-theme-border-width))
+  );
+  max-width: 25rem;
 }
 
 h2 {
