@@ -1,34 +1,34 @@
 <script setup lang="ts">
-import { MinusIcon, PlusIcon } from "@heroicons/vue/solid";
-import { ref, watch, computed } from "vue";
+import { MinusIcon, PlusIcon } from '@heroicons/vue/solid'
+import { ref, watch, computed } from 'vue'
 
 interface Props {
-  default?: number;
-  id?: string;
+  default?: number
+  id?: string
 }
 
-const props = defineProps<Props>();
+const props = defineProps<Props>()
 
-const emit = defineEmits<{ (e: "input", value: number): void }>();
+const emit = defineEmits<{ (e: 'input', value: number): void }>()
 
-const number = ref<number>(props.default ?? 0);
-const isZero = computed<boolean>(() => number.value === 0);
+const number = ref<number>(props.default ?? 0)
+const isZero = computed<boolean>(() => number.value === 0)
 
 function increase(): void {
-  number.value++;
+  number.value++
 }
 function decrease(): void {
   if (number.value <= 0) {
-    number.value = 0;
-    return;
+    number.value = 0
+    return
   }
 
-  number.value--;
+  number.value--
 }
 
 watch(number, () => {
-  emit("input", number.value);
-});
+  emit('input', number.value)
+})
 </script>
 
 <template>
@@ -109,12 +109,12 @@ $size: 3rem;
   }
 }
 
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-input[type="number"] {
+input[type='number'] {
   -moz-appearance: textfield;
 }
 </style>

@@ -1,1 +1,1 @@
-declare module "vue3-popper";
+declare module 'vue3-popper'

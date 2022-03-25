@@ -1,100 +1,98 @@
 <script setup lang="ts">
-import type { CharacterId } from "@/data/characters.types";
+import type { CharacterId } from '@/data/characters.types'
 import {
   useGameConfigStore,
   type AbilitiesConfig,
   type CharacterConfig,
-} from "@/stores/gameConfig";
-import { SparklesIcon } from "@heroicons/vue/solid";
-import { storeToRefs } from "pinia";
-import { computed, reactive, ref } from "vue";
-import { useRouter } from "vue-router";
-import IconButton from "../components/IconButton.vue";
-import InputNumber from "../components/InputNumber.vue";
-import { default as charactersInfo } from "../data/characters";
-import { default as abilitiesInfo } from "../data/abilities";
-import type { AbilityId } from "@/data/abilities.types";
-import Popper from "vue3-popper";
-import { InformationCircleIcon } from "@heroicons/vue/outline";
+} from '@/stores/gameConfig'
+import { SparklesIcon } from '@heroicons/vue/solid'
+import { storeToRefs } from 'pinia'
+import { computed, reactive, ref } from 'vue'
+import { useRouter } from 'vue-router'
+import IconButton from '../components/IconButton.vue'
+import InputNumber from '../components/InputNumber.vue'
+import { default as charactersInfo } from '../data/characters'
+import { default as abilitiesInfo } from '../data/abilities'
+import type { AbilityId } from '@/data/abilities.types'
+import Popper from 'vue3-popper'
+import { InformationCircleIcon } from '@heroicons/vue/outline'
 
-const gameConfigStore = useGameConfigStore();
+const gameConfigStore = useGameConfigStore()
 
-const { characters, abilities, players } = storeToRefs(gameConfigStore);
+const { characters, abilities, players } = storeToRefs(gameConfigStore)
 
-const newCharacters = reactive<CharacterConfig[]>(characters.value);
+const newCharacters = reactive<CharacterConfig[]>(characters.value)
 const newCharacterCount = computed<number>(() =>
   newCharacters.reduce((total, { amount }) => total + amount, 0)
-);
-const newAbilities = reactive<AbilitiesConfig[]>(abilities.value);
+)
+const newAbilities = reactive<AbilitiesConfig[]>(abilities.value)
 const newAbilityCount = computed<number>(() =>
   newAbilities.reduce((total, { amount }) => total + amount, 0)
-);
+)
 const newAbilitiesPerCharacter = computed<number>(() =>
   newCharacterCount.value === 0
     ? 0
     : Math.floor(newAbilityCount.value / newCharacterCount.value)
-);
+)
 
-const { createNewGame } = gameConfigStore;
+const { createNewGame } = gameConfigStore
 
-const router = useRouter();
+const router = useRouter()
 
-const initialPlayerNames = players.value
-  .map((player) => player.name)
-  .join("\n");
+const initialPlayerNames = players.value.map((player) => player.name).join('\n')
 
-const rawPlayerNames = ref<string>(initialPlayerNames);
+const rawPlayerNames = ref<string>(initialPlayerNames)
 const newPlayerNames = computed<string[]>(() =>
   rawPlayerNames.value
-    .split("\n")
+    .split('\n')
     .map((s) => s.trim())
     .filter((s) => s)
     .map((s) => s.charAt(0).toUpperCase() + s.slice(1))
     .filter((s, i, arr) => arr.indexOf(s) === i)
-);
-const playerNamesCount = computed<number>(() => newPlayerNames.value.length);
+)
+const playerNamesCount = computed<number>(() => newPlayerNames.value.length)
 
 function setCharacterAmount(characterId: CharacterId, amount: number): void {
   const character = newCharacters.find(
     (character) => character.id === characterId
-  );
+  )
 
   if (amount === 0) {
-    if (!character) return;
+    if (!character) return
 
-    newCharacters.splice(newCharacters.indexOf(character), 1);
-    return;
+    newCharacters.splice(newCharacters.indexOf(character), 1)
+    return
   }
 
   if (!character) {
-    newCharacters.push({ id: characterId, amount });
-    return;
+    newCharacters.push({ id: characterId, amount })
+    return
   }
 
-  character.amount = amount;
+  character.amount = amount
 }
 
 function setAbilityAmount(abilityId: AbilityId, amount: number): void {
-  const ability = newAbilities.find((character) => character.id === abilityId);
+  const ability = newAbilities.find((character) => character.id === abilityId)
 
   if (amount === 0) {
-    if (!ability) return;
+    if (!ability) return
 
-    newAbilities.splice(newAbilities.indexOf(ability), 1);
-    return;
+    newAbilities.splice(newAbilities.indexOf(ability), 1)
+    return
   }
 
   if (!ability) {
-    newAbilities.push({ id: abilityId, amount });
-    return;
+    newAbilities.push({ id: abilityId, amount })
+    return
   }
 
-  ability.amount = amount;
+  ability.amount = amount
 }
 
 function handleCreateGame(): void {
-  createNewGame(newCharacters, newAbilities, newPlayerNames.value);
-  router.push({ name: "dealer" });
+  createNewGame(newCharacters, newAbilities, newPlayerNames.value)
+  router.push({ name: 'dealer' })
 }
 </script>
 

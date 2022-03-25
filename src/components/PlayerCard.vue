@@ -1,26 +1,26 @@
 <script setup lang="ts">
-import type { PlayerConfig } from "@/stores/gameConfig";
-import { getCharacter } from "@/data/characters";
-import { getAbility } from "@/data/abilities";
-import { computed } from "vue";
-import QrcodeVue from "qrcode.vue";
+import type { PlayerConfig } from '@/stores/gameConfig'
+import { getCharacter } from '@/data/characters'
+import { getAbility } from '@/data/abilities'
+import { computed } from 'vue'
+import QrcodeVue from 'qrcode.vue'
 
 interface Props {
-  player: PlayerConfig;
+  player: PlayerConfig
 }
 
-const props = defineProps<Props>();
+const props = defineProps<Props>()
 
 const url = computed<string>(() => {
-  const url = new URL(`${location.origin}/player`);
-  url.searchParams.append("player", props.player.name);
-  url.searchParams.append("character", props.player.character);
+  const url = new URL(`${location.origin}/player`)
+  url.searchParams.append('player', props.player.name)
+  url.searchParams.append('character', props.player.character)
   for (const ability of props.player.abilities) {
-    url.searchParams.append("abilities", ability);
+    url.searchParams.append('abilities', ability)
   }
 
-  return url.toString();
-});
+  return url.toString()
+})
 </script>
 
 <template>
@@ -60,7 +60,7 @@ const url = computed<string>(() => {
 
   display: grid;
   grid-template: auto auto auto / 1fr auto;
-  grid-template-areas: "name qr" "character qr" "abilities qr";
+  grid-template-areas: 'name qr' 'character qr' 'abilities qr';
   gap: 0.5rem;
 }
 

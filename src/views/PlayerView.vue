@@ -1,36 +1,36 @@
 <script setup lang="ts">
-import { getAbility } from "@/data/abilities";
-import type { Ability, AbilityId } from "@/data/abilities.types";
-import { getCharacter } from "@/data/characters";
-import type { Character, CharacterId } from "@/data/characters.types";
-import { computed } from "vue";
-import { useRoute } from "vue-router";
+import { getAbility } from '@/data/abilities'
+import type { Ability, AbilityId } from '@/data/abilities.types'
+import { getCharacter } from '@/data/characters'
+import type { Character, CharacterId } from '@/data/characters.types'
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
 
-const route = useRoute();
+const route = useRoute()
 
 const hasData = computed<boolean>(
   () => !!route.query.player && !!route.query.character
-);
+)
 
 const character = computed<Character>(() => {
   if (Array.isArray(route.query.character)) {
-    return getCharacter(route.query.character[0] as CharacterId);
+    return getCharacter(route.query.character[0] as CharacterId)
   } else {
-    return getCharacter(route.query.character as CharacterId);
+    return getCharacter(route.query.character as CharacterId)
   }
-});
+})
 
 const abilities = computed<Ability[]>(() => {
   if (Array.isArray(route.query.abilities)) {
     return route.query.abilities.map((abilityId) =>
       getAbility(abilityId as AbilityId)
-    );
+    )
   } else if (route.query.abilities) {
-    return [getAbility(route.query.abilities as AbilityId)];
+    return [getAbility(route.query.abilities as AbilityId)]
   } else {
-    return [];
+    return []
   }
-});
+})
 </script>
 
 <template>

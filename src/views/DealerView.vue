@@ -1,18 +1,18 @@
 <script setup lang="ts">
-import { useGameConfigStore } from "@/stores/gameConfig";
-import { RefreshIcon } from "@heroicons/vue/solid";
-import { storeToRefs } from "pinia";
-import { RouterLink, useRouter } from "vue-router";
-import PlayerCard from "../components/PlayerCard.vue";
+import { useGameConfigStore } from '@/stores/gameConfig'
+import { RefreshIcon } from '@heroicons/vue/solid'
+import { storeToRefs } from 'pinia'
+import { RouterLink, useRouter } from 'vue-router'
+import PlayerCard from '../components/PlayerCard.vue'
 
-const gameConfigStore = useGameConfigStore();
+const gameConfigStore = useGameConfigStore()
 
 const { players, firstNightActions, nightActions } =
-  storeToRefs(gameConfigStore);
+  storeToRefs(gameConfigStore)
 
-const router = useRouter();
+const router = useRouter()
 if (players.value.length === 0) {
-  router.replace({ name: "newGame" });
+  router.replace({ name: 'newGame' })
 }
 </script>
 
