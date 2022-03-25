@@ -16,11 +16,11 @@ import { RouterLink } from 'vue-router'
 
 <style scoped lang="scss">
 .main {
-  min-height: 100vh;
   display: flex;
+  min-height: 100vh;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
 }
 
 .title {
@@ -35,14 +35,14 @@ import { RouterLink } from 'vue-router'
 }
 
 .link {
-  aspect-ratio: 1;
-  font-size: 1.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 1rem;
+  border: 1px solid var(--color-border);
+  aspect-ratio: 1;
   background-color: var(--color-background-soft);
   border-radius: 0.5rem;
-  border: 1px solid var(--color-border);
+  font-size: 1.5rem;
 }
 </style>

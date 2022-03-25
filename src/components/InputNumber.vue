@@ -64,29 +64,29 @@ $size: 3rem;
 }
 
 .button {
-  border: 1px solid var(--color-border);
-  background-color: var(--color-background-soft);
   display: inline-flex;
-  text-align: center;
   width: $size;
   height: $size;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-background-soft);
   cursor: pointer;
+  text-align: center;
 
   &--disabled {
-    cursor: not-allowed;
     color: var(--color-text-soft);
+    cursor: not-allowed;
   }
 
   &--left {
-    border-radius: 0.5rem 0 0 0.5rem;
     border-right: 0;
+    border-radius: 0.5rem 0 0 0.5rem;
   }
 
   &--right {
-    border-radius: 0 0.5rem 0.5rem 0;
     border-left: 0;
+    border-radius: 0 0.5rem 0.5rem 0;
   }
 
   &__icon {
@@ -95,29 +95,29 @@ $size: 3rem;
 }
 
 .input {
-  height: $size;
-  background-color: var(--color-background-soft);
-  border: 1px solid var(--color-border);
   width: 1.5 * $size;
-  text-align: center;
-  outline: none;
+  height: $size;
+  padding: 0;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-background-soft);
   color: inherit;
   font-size: 2rem;
-  padding: 0;
   line-height: 1;
+  outline: none;
+  text-align: center;
 
   &--zero {
     color: var(--color-text-soft);
   }
 }
 
-input[type='number']::-webkit-inner-spin-button,
-input[type='number']::-webkit-outer-spin-button {
-  appearance: none;
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
   margin: 0;
+  appearance: none;
 }
 
-input[type='number'] {
+input[type="number"] {
   appearance: textfield;
 }
 </style>

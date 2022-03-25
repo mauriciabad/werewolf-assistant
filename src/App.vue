@@ -7,7 +7,7 @@ import { RouterView } from 'vue-router'
 </template>
 
 <style lang="scss">
-@import '@/assets/base.css';
+@import "@/assets/base.css";
 
 #app {
   min-height: 100vh;
@@ -15,8 +15,8 @@ import { RouterView } from 'vue-router'
 
 a,
 .green {
-  text-decoration: none;
   color: hsl(160deg 100% 37% / 100%);
+  text-decoration: none;
   transition: 0.4s;
 }
 

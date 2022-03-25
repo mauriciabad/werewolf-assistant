@@ -195,20 +195,20 @@ function handleCreateGame(): void {
 
 <style scoped lang="scss">
 .main {
-  text-align: center;
-  min-height: 100vh;
   display: flex;
+  min-height: 100vh;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 1rem;
+  text-align: center;
 }
 
 .list {
   width: 100%;
   max-width: 25rem;
-  text-align: left;
   margin-top: 1rem;
+  text-align: left;
 
   &__item {
     width: 100%;
@@ -221,8 +221,8 @@ function handleCreateGame(): void {
     }
 
     &-label {
-      font-size: 1.2rem;
       flex: 1;
+      font-size: 1.2rem;
     }
   }
 }
@@ -232,15 +232,15 @@ function handleCreateGame(): void {
 }
 
 .info-icon {
-  margin-left: 0.5rem;
   width: 24px;
-  vertical-align: -20%;
+  margin-left: 0.5rem;
   color: var(--color-text-soft);
+  vertical-align: -20%;
 }
 
 .toltip-content {
-  width: 25rem;
   display: block;
+  width: 25rem;
 }
 
 h2 {
@@ -250,31 +250,31 @@ h2 {
 .player-names {
   width: 100%;
   max-width: 25rem;
-  margin-top: 1rem;
-  background-color: var(--color-background);
-  border: 1px solid var(--color-border);
-  border-radius: 0.5rem;
-  resize: vertical;
   min-height: 4rem;
   padding: 0.75rem;
+  border: 1px solid var(--color-border);
+  margin-top: 1rem;
+  background-color: var(--color-background);
+  border-radius: 0.5rem;
   font-family: inherit;
+  resize: vertical;
 }
 
 .name-list {
   display: flex;
+  max-width: 25rem;
   flex-wrap: wrap;
   justify-content: center;
   margin-top: 1rem;
-  max-width: 25rem;
 
   &__item {
+    padding: 0.125rem 0.75rem;
     margin-right: 0.5rem;
     margin-bottom: 0.5rem;
-    font-size: 0.8rem;
     background-color: var(--color-background-soft);
     border-radius: 0.25rem;
-    padding: 0.125rem 0.75rem;
     color: var(--color-text);
+    font-size: 0.8rem;
     font-weight: bold;
   }
 }

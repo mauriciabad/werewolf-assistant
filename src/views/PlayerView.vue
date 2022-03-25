@@ -72,15 +72,15 @@ const abilities = computed<Ability[]>(() => {
 
 <style scoped lang="scss">
 .player {
-  text-align: center;
-  min-height: 100vh;
   display: flex;
+  width: 100%;
+  max-width: 40rem;
+  min-height: 100vh;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-width: 40rem;
-  width: 100%;
   margin: 0 auto;
+  text-align: center;
 }
 
 .image {

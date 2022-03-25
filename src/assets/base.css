@@ -57,24 +57,24 @@
 *,
 *::before,
 *::after {
+  position: relative;
   box-sizing: border-box;
   margin: 0;
-  position: relative;
   font-weight: normal;
 }
 
 body {
   min-height: 100vh;
-  color: var(--color-text);
   background: var(--color-background);
-  transition: color 0.5s, background-color 0.5s;
-  line-height: 1.6;
+  color: var(--color-text);
   font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
     Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   font-size: 15px;
-  text-rendering: optimizelegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+  text-rendering: optimizelegibility;
+  transition: color 0.5s, background-color 0.5s;
 }
 
 input, button {

@@ -11,19 +11,19 @@ const emit = defineEmits<{ (e: 'click'): void }>()
 
 <style lang="scss">
 .link {
-  font-size: 1rem;
+  display: inline-block;
   padding: 0.5rem 1.125rem;
+  border: 1px solid var(--color-border);
   background-color: var(--color-background-soft);
   border-radius: 0.5rem;
-  border: 1px solid var(--color-border);
-  display: inline-block;
-  justify-self: center;
   cursor: pointer;
+  font-size: 1rem;
+  justify-self: center;
 
   > svg {
-    margin-right: 0.5rem;
     display: inline-block;
     height: 20px;
+    margin-right: 0.5rem;
     vertical-align: middle;
   }
 }

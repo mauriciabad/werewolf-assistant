@@ -65,35 +65,35 @@ h1 {
 }
 
 .storyteller {
-  text-align: center;
-  min-height: 100vh;
   display: grid;
-  grid-template: auto 1fr / auto;
+  min-height: 100vh;
   padding: 1rem;
+  grid-template: auto 1fr / auto;
+  text-align: center;
 }
 
 .content {
   display: flex;
+  max-width: 1000px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-width: 1000px;
   margin: 0 auto;
 }
 
 .link {
-  font-size: 1rem;
+  display: inline-block;
   padding: 0.5rem 1.125rem;
+  border: 1px solid var(--color-border);
   background-color: var(--color-background-soft);
   border-radius: 0.5rem;
-  border: 1px solid var(--color-border);
-  display: inline-block;
+  font-size: 1rem;
   justify-self: center;
 
   &__icon {
-    margin-right: 0.5rem;
     display: inline-block;
     height: 20px;
+    margin-right: 0.5rem;
     vertical-align: middle;
   }
 }
@@ -103,8 +103,8 @@ h1 {
 }
 
 .action-list {
-  text-align: left;
   width: 100%;
+  text-align: left;
 
   &__item {
     margin-bottom: 0.5rem;
