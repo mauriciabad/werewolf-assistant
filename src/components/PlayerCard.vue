@@ -4,23 +4,14 @@ import { getCharacter } from '@/data/characters'
 import { getAbility } from '@/data/abilities'
 import { computed } from 'vue'
 import QrcodeVue from 'qrcode.vue'
+import { playerViewUrl } from '@/services/player'
 
 interface Props {
   player: PlayerConfig
 }
-
 const props = defineProps<Props>()
 
-const url = computed<string>(() => {
-  const url = new URL(`${location.origin}/player`)
-  url.searchParams.append('player', props.player.name)
-  url.searchParams.append('character', props.player.character)
-  for (const ability of props.player.abilities) {
-    url.searchParams.append('abilities', ability)
-  }
-
-  return url.toString()
-})
+const url = computed<string>(() => playerViewUrl(props.player))
 </script>
 
 <template>
