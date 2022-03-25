@@ -15,7 +15,6 @@ module.exports = {
     'vue/setup-compiler-macros': true,
   },
   rules: {
-    'prettier/prettier': ['warn', require('./prettier.config.js')],
     'prefer-template': 'warn',
     'vue/block-lang': ['error', { script: { lang: 'ts' } }],
     'vue/component-api-style': ['error', ['script-setup']],
