@@ -259,7 +259,9 @@ h2 {
   margin-top: 1rem;
   background-color: var(--color-background);
   border-radius: 0.5rem;
+  color: var(--color-text);
   font-family: inherit;
+  font-size: 1rem;
   resize: vertical;
 }
 
