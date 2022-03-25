@@ -6,7 +6,9 @@ import { RouterLink } from 'vue-router'
   <main class="main">
     <h1 class="title">Who are you?</h1>
     <div class="links">
-      <RouterLink class="link" :to="{ name: 'storyteller' }">Storyteller</RouterLink>
+      <RouterLink class="link" :to="{ name: 'storyteller' }"
+        >Storyteller</RouterLink
+      >
       <RouterLink class="link" :to="{ name: 'player' }">Player</RouterLink>
     </div>
   </main>
