@@ -21,21 +21,26 @@ import { RouterLink } from 'vue-router'
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 1rem;
 }
 
 .title {
   margin-bottom: 1rem;
   font-size: 3rem;
+  text-align: center;
 }
 
 .links {
   display: flex;
+  flex-wrap: wrap;
+  align-items: center;
   justify-content: space-around;
   gap: 1rem;
 }
 
 .link {
   display: flex;
+  height: 10rem;
   align-items: center;
   justify-content: center;
   padding: 1rem;
