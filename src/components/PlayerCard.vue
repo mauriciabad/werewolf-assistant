@@ -57,7 +57,7 @@ const url = computed<string>(() => {
   border-radius: 0.5rem;
   gap: 0.5rem;
   grid-template: auto auto auto / 1fr auto;
-  grid-template-areas: "name qr" "character qr" "abilities qr";
+  grid-template-areas: 'name qr' 'character qr' 'abilities qr';
   text-align: left;
 }
 
