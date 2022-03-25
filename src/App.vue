@@ -6,7 +6,7 @@ import { RouterView } from 'vue-router'
   <RouterView />
 </template>
 
-<style>
+<style lang="scss">
 @import '@/assets/base.css';
 
 #app {
@@ -16,11 +16,11 @@ import { RouterView } from 'vue-router'
 a,
 .green {
   text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
+  color: hsl(160deg 100% 37% / 100%);
   transition: 0.4s;
 }
 
 a:hover {
-  background-color: hsla(160, 100%, 37%, 0.2);
+  background-color: hsl(160deg 100% 37% / 20%);
 }
 </style>

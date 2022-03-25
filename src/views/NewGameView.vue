@@ -212,12 +212,14 @@ function handleCreateGame(): void {
 
   &__item {
     width: 100%;
+
     &-wrapper {
       display: flex;
       align-items: center;
       justify-content: space-between;
       margin-bottom: 0.5rem;
     }
+
     &-label {
       font-size: 1.2rem;
       flex: 1;
@@ -235,6 +237,7 @@ function handleCreateGame(): void {
   vertical-align: -20%;
   color: var(--color-text-soft);
 }
+
 .toltip-content {
   width: 25rem;
   display: block;

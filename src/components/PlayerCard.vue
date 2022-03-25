@@ -47,17 +47,14 @@ const url = computed<string>(() => {
 
 <style lang="scss">
 .player {
-  margin-bottom: 1rem;
   border: 1px solid var(--color-border);
   background-color: var(--color-background-soft);
-
   padding: 1.5rem;
   border-radius: 0.5rem;
   max-width: 30rem;
   width: 100%;
   margin: 1rem auto 0;
   text-align: left;
-
   display: grid;
   grid-template: auto auto auto / 1fr auto;
   grid-template-areas: 'name qr' 'character qr' 'abilities qr';
@@ -67,12 +64,15 @@ const url = computed<string>(() => {
 .name {
   grid-area: name;
 }
+
 .character {
   grid-area: character;
 }
+
 .abilities {
   grid-area: abilities;
 }
+
 .qr {
   grid-area: qr;
   width: 100px;

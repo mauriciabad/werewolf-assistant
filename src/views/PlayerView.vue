@@ -82,6 +82,7 @@ const abilities = computed<Ability[]>(() => {
   width: 100%;
   margin: 0 auto;
 }
+
 .image {
   height: 10rem;
 }
@@ -89,9 +90,11 @@ const abilities = computed<Ability[]>(() => {
 h1 {
   margin-top: 0.5rem;
 }
+
 h2 {
   margin-top: 2rem;
 }
+
 strong {
   font-weight: bold;
 }

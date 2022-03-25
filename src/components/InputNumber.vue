@@ -62,6 +62,7 @@ $size: 3rem;
   display: inline-flex;
   user-select: none;
 }
+
 .button {
   border: 1px solid var(--color-border);
   background-color: var(--color-background-soft);
@@ -92,6 +93,7 @@ $size: 3rem;
     height: 24px;
   }
 }
+
 .input {
   height: $size;
   background-color: var(--color-background-soft);
@@ -111,10 +113,11 @@ $size: 3rem;
 
 input[type='number']::-webkit-inner-spin-button,
 input[type='number']::-webkit-outer-spin-button {
-  -webkit-appearance: none;
+  appearance: none;
   margin: 0;
 }
+
 input[type='number'] {
-  -moz-appearance: textfield;
+  appearance: textfield;
 }
 </style>

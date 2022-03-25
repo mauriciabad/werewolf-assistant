@@ -22,15 +22,18 @@ import { RouterLink } from 'vue-router'
   justify-content: center;
   flex-direction: column;
 }
+
 .title {
   margin-bottom: 1rem;
   font-size: 3rem;
 }
+
 .links {
   display: flex;
   justify-content: space-around;
   gap: 1rem;
 }
+
 .link {
   aspect-ratio: 1;
   font-size: 1.5rem;

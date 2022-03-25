@@ -1,42 +1,44 @@
 /* color palette from <https://github.com/vuejs/theme> */
 :root {
-  --vt-c-white: #ffffff;
+  --vt-c-white: #fff;
   --vt-c-white-soft: #f8f8f8;
   --vt-c-white-mute: #f2f2f2;
-
   --vt-c-black: #181818;
-  --vt-c-black-soft: #222222;
+  --vt-c-black-soft: #222;
   --vt-c-black-mute: #282828;
-
   --vt-c-indigo: #2c3e50;
-
-  --vt-c-divider-light-1: rgba(60, 60, 60, 0.29);
-  --vt-c-divider-light-2: rgba(60, 60, 60, 0.12);
-  --vt-c-divider-dark-1: rgba(84, 84, 84, 0.65);
-  --vt-c-divider-dark-2: rgba(84, 84, 84, 0.48);
-
+  --vt-c-divider-light-1: rgb(60 60 60 / 29%);
+  --vt-c-divider-light-2: rgb(60 60 60 / 12%);
+  --vt-c-divider-dark-1: rgb(84 84 84 / 65%);
+  --vt-c-divider-dark-2: rgb(84 84 84 / 48%);
   --vt-c-text-light-1: var(--vt-c-indigo);
-  --vt-c-text-light-2: rgba(60, 60, 60, 0.66);
-  --vt-c-text-light-3: rgba(60, 60, 60, 0.2);
+  --vt-c-text-light-2: rgb(60 60 60 / 66%);
+  --vt-c-text-light-3: rgb(60 60 60 / 20%);
   --vt-c-text-dark-1: var(--vt-c-white);
-  --vt-c-text-dark-2: rgba(235, 235, 235, 0.64);
-  --vt-c-text-dark-3: rgba(235, 235, 235, 0.2);
-}
+  --vt-c-text-dark-2: rgb(235 235 235 / 64%);
+  --vt-c-text-dark-3: rgb(235 235 235 / 20%);
 
-/* semantic color variables for this project */
-:root {
+  /* semantic color variables for this project */
   --color-background: var(--vt-c-white);
   --color-background-soft: var(--vt-c-white-soft);
   --color-background-mute: var(--vt-c-white-mute);
-
   --color-border: var(--vt-c-divider-light-2);
   --color-border-hover: var(--vt-c-divider-light-1);
-
   --color-heading: var(--vt-c-text-light-1);
   --color-text: var(--vt-c-text-light-1);
   --color-text-soft: var(--vt-c-text-light-3);
-
   --section-gap: 160px;
+
+  /* Popper variables */
+  --popper-theme-background-color: var(--color-background);
+  --popper-theme-background-color-hover: var(--color-background);
+  --popper-theme-text-color: var(--color-text);
+  --popper-theme-border-width: 1px;
+  --popper-theme-border-style: solid;
+  --popper-theme-border-color: var(--color-border);
+  --popper-theme-border-radius: 6px;
+  --popper-theme-padding: 32px;
+  --popper-theme-box-shadow: 0 20px 25px -5px rgb(0 0 0 / 10%), 0 8px 10px -6px rgb(0 0 0 / 10%);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -44,10 +46,8 @@
     --color-background: var(--vt-c-black);
     --color-background-soft: var(--vt-c-black-soft);
     --color-background-mute: var(--vt-c-black-mute);
-
     --color-border: var(--vt-c-divider-dark-2);
     --color-border-hover: var(--vt-c-divider-dark-1);
-
     --color-heading: var(--vt-c-text-dark-1);
     --color-text: var(--vt-c-text-dark-2);
     --color-text-soft: var(--vt-c-text-dark-3);
@@ -72,7 +72,7 @@ body {
   font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
     Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   font-size: 15px;
-  text-rendering: optimizeLegibility;
+  text-rendering: optimizelegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -80,15 +80,3 @@ body {
 input, button {
   font: inherit;
 }
-
- :root {
-    --popper-theme-background-color: var(--color-background);
-    --popper-theme-background-color-hover: var(--color-background);
-    --popper-theme-text-color: var(--color-text);
-    --popper-theme-border-width: 1px;
-    --popper-theme-border-style: solid;
-    --popper-theme-border-color: var(--color-border);
-    --popper-theme-border-radius: 6px;
-    --popper-theme-padding: 32px;
-    --popper-theme-box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-  }

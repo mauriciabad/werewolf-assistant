@@ -63,6 +63,7 @@ if (players.value.length === 0) {
 h1 {
   margin-top: 2rem;
 }
+
 .storyteller {
   text-align: center;
   min-height: 100vh;
@@ -70,6 +71,7 @@ h1 {
   grid-template: auto 1fr / auto;
   padding: 1rem;
 }
+
 .content {
   display: flex;
   flex-direction: column;
