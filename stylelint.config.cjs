@@ -5,8 +5,8 @@ module.exports = {
   extends: [
     'stylelint-config-standard-scss',
     'stylelint-config-idiomatic-order',
-    'stylelint-config-prettier-scss',
     'stylelint-config-standard-vue',
+    'stylelint-config-prettier-scss',
   ],
   plugins: ['stylelint-order'],
 
