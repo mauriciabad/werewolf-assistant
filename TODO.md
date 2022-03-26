@@ -13,10 +13,10 @@
 - [ ] Display team in player view
 
 ## Low priority
-__Empty...__
+_Empty..._
 
 ## Not sure if implement
-__Empty...__
+_Empty..._
 
 ## Other
-__Empty...__
+_Empty..._
