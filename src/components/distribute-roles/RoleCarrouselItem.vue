@@ -5,9 +5,11 @@ import { getAbility } from '@/data/abilities'
 import { computed } from 'vue'
 import QrcodeVue from 'qrcode.vue'
 import { playerViewUrl } from '@/services/player'
+import TagList from '@/components/TagList.vue'
 
 interface Props {
   player: PlayerConfig
+  showSecretInfo: boolean
 }
 
 const props = defineProps<Props>()
@@ -16,60 +18,73 @@ const url = computed<string>(() => playerViewUrl(props.player))
 </script>
 
 <template>
-  <div class="player">
-    <div class="name">Name: {{ player.name }}</div>
-    <div class="character">
-      Character: {{ getCharacter(player.character).name }}
-    </div>
+  <div class="card">
+    <div class="card__name">{{ player.name }}</div>
 
-    <div class="abilities">
-      <div>Abilities:</div>
-      <ul>
-        <li v-for="abilityId in player.abilities" :key="abilityId">
-          {{ getAbility(abilityId).name }}
-        </li>
-      </ul>
-    </div>
-
-    <a class="qr" :href="url">
+    <a class="card__qr" :href="url">
       <QrcodeVue render-as="svg" :value="url" :margin="2" />
     </a>
+
+    <div class="card__small-title">Character</div>
+    <div class="card__character">
+      {{ getCharacter(player.character).name }}
+    </div>
+
+    <div class="card__small-title">Abilities</div>
+    <TagList
+      :items="player.abilities.map((id) => getAbility(id).name)"
+      high-contrast
+    />
   </div>
 </template>
 
 <style lang="scss">
-.player {
-  display: grid;
-  width: 100%;
-  max-width: 30rem;
-  padding: 1.5rem;
+$card-width: calc(100% - 3rem);
+
+.card {
+  min-width: 10rem;
+  box-sizing: border-box;
+  flex: 0 0 $card-width;
+  padding: 1rem;
   border: 1px solid var(--color-border);
-  margin: 1rem auto 0;
   background-color: var(--color-background-soft);
   border-radius: 0.5rem;
-  gap: 0.5rem;
-  grid-template: auto auto auto / 1fr auto;
-  grid-template-areas: 'name qr' 'character qr' 'abilities qr';
-  text-align: left;
-}
+  text-align: center;
 
-.name {
-  grid-area: name;
-}
+  &__name {
+    font-size: 1.5rem;
+    line-height: 0.8;
+  }
 
-.character {
-  grid-area: character;
-}
+  &__qr {
+    display: block;
+    width: 100%;
+    align-self: center;
+    margin: 0.75rem auto 1rem;
+    border-radius: 4%;
 
-.abilities {
-  grid-area: abilities;
-}
+    > svg {
+      display: block;
+      width: 100%;
+      height: unset;
+      border-radius: 4%;
+    }
+  }
 
-.qr {
-  display: block;
-  width: 100px;
-  height: 100px;
-  align-self: center;
-  grid-area: qr;
+  &__character {
+    margin-bottom: 1.25rem;
+    font-size: 2rem;
+    font-weight: 300;
+    line-height: 0.8;
+  }
+
+  &__small-title {
+    margin-bottom: 0.25rem;
+    font-size: 0.7rem;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    line-height: 0.8;
+    text-transform: uppercase;
+  }
 }
 </style>

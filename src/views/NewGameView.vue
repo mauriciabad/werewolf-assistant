@@ -16,6 +16,7 @@ import { default as abilitiesInfo } from '../data/abilities'
 import type { AbilityId } from '@/data/abilities.types'
 import Popper from 'vue3-popper'
 import { InformationCircleIcon } from '@heroicons/vue/outline'
+import TagList from '../components/TagList.vue'
 
 const gameConfigStore = useGameConfigStore()
 
@@ -174,14 +175,7 @@ function handleCreateGame(): void {
       v-model="rawPlayerNames"
       class="player-names"
     ></textarea>
-    <div class="name-list">
-      <span
-        class="name-list__item"
-        v-for="name in newPlayerNames"
-        :key="name"
-        >{{ name }}</span
-      >
-    </div>
+    <TagList :items="newPlayerNames" class="player-names-list" />
 
     <IconButton
       @click="handleCreateGame"
@@ -264,22 +258,8 @@ h2 {
   resize: vertical;
 }
 
-.name-list {
-  display: flex;
-  max-width: 25rem;
-  flex-wrap: wrap;
-  justify-content: center;
+.player-names-list {
   margin-top: 1rem;
-
-  &__item {
-    padding: 0.125rem 0.75rem;
-    margin-right: 0.5rem;
-    margin-bottom: 0.5rem;
-    background-color: var(--color-background-soft);
-    border-radius: 0.25rem;
-    color: var(--color-text);
-    font-size: 0.8rem;
-    font-weight: bold;
-  }
+  margin-bottom: 0.5rem;
 }
 </style>
