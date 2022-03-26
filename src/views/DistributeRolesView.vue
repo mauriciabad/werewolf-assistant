@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { useGameConfigStore } from '@/stores/gameConfig'
+import { ChevronLeftIcon, EyeIcon, EyeOffIcon } from '@heroicons/vue/outline'
 import { storeToRefs } from 'pinia'
 import { ref } from 'vue'
-import { useRouter } from 'vue-router'
+import { RouterLink, useRouter } from 'vue-router'
 import RoleCarrousel from '../components/distribute-roles/RoleCarrousel.vue'
-import { EyeIcon, EyeOffIcon } from '@heroicons/vue/outline'
 
 const gameConfigStore = useGameConfigStore()
 
@@ -20,13 +20,22 @@ const showSecretInfo = ref<boolean>(true)
 
 <template>
   <main class="main">
-    <div
-      class="secret-info"
-      @click="showSecretInfo = !showSecretInfo"
-      role="button"
-    >
-      <EyeIcon v-if="showSecretInfo" class="secret-info__icon" />
-      <EyeOffIcon v-else class="secret-info__icon" />
+    <div class="header">
+      <RouterLink class="go-back" :to="{ name: 'storyteller' }">
+        <div class="go-back__icon-wrapper">
+          <ChevronLeftIcon class="go-back__icon" />
+        </div>
+        <span class="go-back__text">Go back</span>
+      </RouterLink>
+
+      <div
+        class="secret-info"
+        @click="showSecretInfo = !showSecretInfo"
+        role="button"
+      >
+        <EyeIcon v-if="showSecretInfo" class="secret-info__icon" />
+        <EyeOffIcon v-else class="secret-info__icon" />
+      </div>
     </div>
 
     <RoleCarrousel
@@ -48,6 +57,49 @@ const showSecretInfo = ref<boolean>(true)
   overflow: auto;
 }
 
+.header {
+  position: relative;
+  display: flex;
+  width: 100%;
+  max-width: 30rem;
+  align-items: center;
+  justify-content: center;
+  padding-top: 1rem;
+  margin: 0 auto;
+}
+
+.go-back {
+  $size: 2.5rem;
+
+  position: absolute;
+  left: 1rem;
+  display: inline-block;
+  color: var(--color-text);
+  cursor: pointer;
+
+  &__icon-wrapper {
+    display: inline-block;
+    width: $size;
+    height: $size;
+    padding: 0.5rem;
+    background-color: var(--color-background-mute);
+    border-radius: 100%;
+    vertical-align: middle;
+  }
+
+  &__icon {
+    display: inline-block;
+    color: var(--color-text-mute);
+  }
+
+  &__text {
+    display: inline-block;
+    margin-left: 0.5rem;
+    color: var(--color-text-mute);
+    font-size: 1rem;
+  }
+}
+
 .secret-info {
   $size: clamp(3rem, 20vw, 5rem);
 
@@ -56,10 +108,10 @@ const showSecretInfo = ref<boolean>(true)
   height: $size;
   padding: 0.5rem;
   margin: 0 auto;
-  margin-top: 1rem;
   background-color: var(--color-background-mute);
   border-radius: 100%;
   cursor: pointer;
+  user-select: none;
 
   &__icon {
     display: block;
