@@ -1,22 +1,22 @@
 <script setup lang="ts">
+import type { AbilityId } from '@/data/abilities.types'
 import type { CharacterId } from '@/data/characters.types'
 import {
   useGameConfigStore,
   type AbilitiesConfig,
   type CharacterConfig,
 } from '@/stores/gameConfig'
+import { ChevronLeftIcon, InformationCircleIcon } from '@heroicons/vue/outline'
 import { SparklesIcon } from '@heroicons/vue/solid'
 import { storeToRefs } from 'pinia'
 import { computed, reactive, ref } from 'vue'
-import { useRouter } from 'vue-router'
+import { RouterLink, useRouter } from 'vue-router'
+import Popper from 'vue3-popper'
 import IconButton from '../components/IconButton.vue'
 import InputNumber from '../components/InputNumber.vue'
-import { default as charactersInfo } from '../data/characters'
-import { default as abilitiesInfo } from '../data/abilities'
-import type { AbilityId } from '@/data/abilities.types'
-import Popper from 'vue3-popper'
-import { InformationCircleIcon } from '@heroicons/vue/outline'
 import TagList from '../components/TagList.vue'
+import { default as abilitiesInfo } from '../data/abilities'
+import { default as charactersInfo } from '../data/characters'
 
 const gameConfigStore = useGameConfigStore()
 
@@ -99,6 +99,15 @@ function handleCreateGame(): void {
 
 <template>
   <main class="main">
+    <div class="header">
+      <RouterLink class="go-back" :to="{ name: 'storyteller' }">
+        <div class="go-back__icon-wrapper">
+          <ChevronLeftIcon class="go-back__icon" />
+        </div>
+        <span class="go-back__text">Go back</span>
+      </RouterLink>
+    </div>
+
     <h1>New Game</h1>
 
     <h2>Choose characters</h2>
@@ -195,6 +204,47 @@ function handleCreateGame(): void {
   justify-content: center;
   padding: 1rem;
   text-align: center;
+}
+
+.header {
+  position: relative;
+  display: flex;
+  width: 100%;
+  max-width: 30rem;
+  align-items: center;
+  justify-content: start;
+  padding-bottom: 1rem;
+  margin: 0 auto;
+}
+
+.go-back {
+  $size: 2.5rem;
+
+  display: inline-block;
+  color: var(--color-text);
+  cursor: pointer;
+
+  &__icon-wrapper {
+    display: inline-block;
+    width: $size;
+    height: $size;
+    padding: 0.5rem;
+    background-color: var(--color-background-mute);
+    border-radius: 100%;
+    vertical-align: middle;
+  }
+
+  &__icon {
+    display: inline-block;
+    color: var(--color-text-mute);
+  }
+
+  &__text {
+    display: inline-block;
+    margin-left: 0.5rem;
+    color: var(--color-text-mute);
+    font-size: 1rem;
+  }
 }
 
 .list {
