@@ -259,6 +259,7 @@ h2 {
 }
 
 .player-names-list {
+  max-width: 25rem;
   margin-top: 1rem;
   margin-bottom: 0.5rem;
 }

@@ -47,9 +47,11 @@ const url = computed<string>(() => playerViewUrl(props.player))
 
 <style lang="scss">
 $card-width: calc(100% - 3rem);
+$card-max-width: 30rem;
 
 .card {
   min-width: 10rem;
+  max-width: $card-max-width;
   box-sizing: border-box;
   flex: 0 0 $card-width;
   padding: 1rem;
