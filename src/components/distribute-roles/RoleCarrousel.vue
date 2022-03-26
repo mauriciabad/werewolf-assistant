@@ -26,6 +26,7 @@ defineProps<{
   align-items: center;
   justify-content: start;
   gap: 0.75rem;
+  overscroll-behavior-x: contain;
   scroll-snap-type: x mandatory;
 
   &__item {
