@@ -1,22 +1,19 @@
 # TO DO LIST
 
 ## Critical
-- [ ] View to show the QRs better
-- [ ] In the QR view, make the character and ability hidable.
-- [ ] Add custom characters/habilities in situ
-- [ ] Add data for characters and habilities
+- [ ] Add more data for characters and habilities
 
 
 ## High priority
-- [ ] Narrator script for the night
-- [ ] In new game, tooltip with character or ability info
+- [ ] PWA with offline support
+- [ ] Translations to spanish
 
 ## Medium priority
-- [ ] Customize player names
-- [ ] Display team
+- [ ] Add custom characters/habilities in situ
+- [ ] Display team in player view
 
 ## Low priority
-- [ ] In situ custom character creator search image online
+__Empty...__
 
 ## Not sure if implement
 __Empty...__
