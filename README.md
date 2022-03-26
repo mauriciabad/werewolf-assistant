@@ -1,9 +1,9 @@
 # Werewolf Card Dealer
-[![Netlify Status](https://api.netlify.com/api/v1/badges/71200d24-eda9-4bd5-bc5e-ec9b4ec6b36c/deploy-status)](https://app.netlify.com/sites/werewolfcd/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/71200d24-eda9-4bd5-bc5e-ec9b4ec6b36c/deploy-status)](https://app.netlify.com/sites/werewolf-assistant/deploys)
 
 🃏 PWA to deal werewolf cards
 
-Use it here: https://werewolfcd.netlify.app/
+Use it here: https://werewolf-assistant.netlify.app/
 
 
 
