@@ -6,6 +6,7 @@ import { computed } from 'vue'
 import QrcodeVue from 'qrcode.vue'
 import { playerViewUrl } from '@/services/player'
 import TagList from '@/components/TagList.vue'
+import HidableText from '../HidableText.vue'
 
 interface Props {
   player: PlayerConfig
@@ -27,14 +28,20 @@ const url = computed<string>(() => playerViewUrl(props.player))
 
     <div class="card__small-title">Character</div>
     <div class="card__character">
-      {{ getCharacter(player.character).name }}
+      <HidableText
+        :text="getCharacter(player.character).name"
+        :visible="showSecretInfo"
+        :length="10"
+      />
     </div>
 
     <div class="card__small-title">Abilities</div>
     <TagList
       :items="player.abilities.map((id) => getAbility(id).name)"
       high-contrast
-    />
+      v-slot="{ text: ability }"
+      ><HidableText :text="ability" :visible="showSecretInfo" :length="7"
+    /></TagList>
   </div>
 </template>
 

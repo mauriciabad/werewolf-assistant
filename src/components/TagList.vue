@@ -12,7 +12,7 @@ defineProps<{
       :class="{ 'list__item--high-contrast': highContrast }"
       v-for="text in items"
       :key="text"
-      >{{ text }}</span
+      ><slot :text="text">{{ text }}</slot></span
     >
   </div>
 </template>
@@ -23,10 +23,10 @@ defineProps<{
   max-width: 25rem;
   flex-wrap: wrap;
   justify-content: center;
+  gap: 0.5rem;
 
   &__item {
     padding: 0.125rem 0.75rem;
-    margin-right: 0.5rem;
     background-color: var(--color-background-soft);
     border-radius: 0.25rem;
     color: var(--color-text);
