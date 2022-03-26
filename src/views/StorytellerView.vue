@@ -18,23 +18,16 @@ if (players.value.length === 0) {
 
 <template>
   <main class="storyteller">
-    <RouterLink class="link" :to="{ name: 'newGame' }">
-      <RefreshIcon class="link__icon" />New game
-    </RouterLink>
-    <div class="content">
-      <h1>Player list</h1>
+    <div class="links">
+      <RouterLink class="link" :to="{ name: 'newGame' }">
+        <RefreshIcon class="link__icon" />New game
+      </RouterLink>
       <RouterLink class="link" :to="{ name: 'distributeRoles' }">
         <IdentificationIcon class="link__icon" />Distribute roles
       </RouterLink>
+    </div>
 
-      <div class="player-list">
-        <PlayerCard
-          v-for="player in players"
-          :key="player.id"
-          :player="player"
-        />
-      </div>
-
+    <div class="content">
       <h1>First night actions</h1>
       <ol class="action-list">
         <li
@@ -58,6 +51,15 @@ if (players.value.length === 0) {
           {{ action.description }}
         </li>
       </ol>
+
+      <h1>Player list</h1>
+      <div class="player-list">
+        <PlayerCard
+          v-for="player in players"
+          :key="player.id"
+          :player="player"
+        />
+      </div>
     </div>
   </main>
 </template>
@@ -83,6 +85,14 @@ h1 {
   margin: 0 auto;
 }
 
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
 .link {
   display: inline-block;
   padding: 0.5rem 1.125rem;
@@ -106,6 +116,7 @@ h1 {
 
 .action-list {
   width: 100%;
+  padding-left: 1.25rem;
   text-align: left;
 
   &__item {
