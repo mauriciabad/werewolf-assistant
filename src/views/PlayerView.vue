@@ -34,13 +34,19 @@ const abilities = computed<Ability[]>(() => {
 </script>
 
 <template>
-  <main class="player">
+  <main class="main">
     <template v-if="hasData">
       <p>{{ route.query.player }}</p>
 
       <img
         v-if="character.image"
         :src="character.image"
+        :alt="''"
+        class="image"
+      />
+      <img
+        v-else
+        src="@/assets/default-character-image.png"
         :alt="''"
         class="image"
       />
@@ -71,7 +77,7 @@ const abilities = computed<Ability[]>(() => {
 </template>
 
 <style scoped lang="scss">
-.player {
+.main {
   display: flex;
   width: 100%;
   max-width: 40rem;
@@ -79,6 +85,7 @@ const abilities = computed<Ability[]>(() => {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 1rem;
   margin: 0 auto;
   text-align: center;
 }
