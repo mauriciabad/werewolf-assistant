@@ -70,7 +70,7 @@ const abilities = computed<(Ability | undefined)[]>(() =>
         </div>
 
         <p v-if="creationDate" class="creation-date">
-          Game created at {{ creationDate.toLocaleString() }}
+          Game started at {{ creationDate.toLocaleString() }}
         </p>
       </template>
 
