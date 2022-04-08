@@ -2,34 +2,48 @@
 import { getAbility } from '@/data/abilities'
 import { getCharacter } from '@/data/characters'
 import type { PlayerConfig } from '@/stores/gameConfig'
-import TagList from '@/components/TagList.vue'
+import type { Character } from '@/data/characters.types'
+import { computed } from 'vue'
+import type { Ability } from '@/data/abilities.types'
 
 interface Props {
   player: PlayerConfig
 }
-defineProps<Props>()
+const props = defineProps<Props>()
+
+const character = computed<Character>(() =>
+  getCharacter(props.player.character)
+)
+const abilities = computed<Ability[]>(() =>
+  props.player.abilities.map((abilityId) => getAbility(abilityId))
+)
 </script>
 
 <template>
   <div class="player">
     <div class="name">
       <div class="small-title">Name</div>
-      <div class="name__text">{{ player.name }}</div>
+      <div class="name__text">
+        {{ player.name }}
+      </div>
     </div>
 
     <div class="character">
       <div class="small-title">Character</div>
+      <img :src="character.image" alt="" class="character__image" />
       <div class="character__text">
-        {{ getCharacter(player.character).name }}
+        {{ character.name }}
       </div>
     </div>
 
-    <div v-if="player.abilities.length" class="abilities">
+    <div v-if="abilities.length" class="abilities">
       <div class="small-title">Abilities</div>
-      <TagList
-        :items="player.abilities.map((id) => getAbility(id).name)"
-        high-contrast
-      />
+      <ul class="ability-list">
+        <li v-for="ability in abilities" :key="ability.id" class="ability">
+          <img :src="ability.image" alt="" class="ability__image" />
+          <span class="ability__name">{{ ability.name }}</span>
+        </li>
+      </ul>
     </div>
   </div>
 </template>
@@ -39,13 +53,14 @@ defineProps<Props>()
   display: grid;
   width: 100%;
   max-width: 30rem;
-  padding: 1.5rem 0;
+  padding: 0.5rem 0;
   border: 1px solid var(--color-border);
   margin: 1rem auto 0;
   background-color: var(--color-background-soft);
   border-radius: 0.5rem;
+  gap: 0.75rem;
   grid-template: auto / 1fr 1fr;
-  grid-template-areas: 'name character' 'abilities abilities';
+  grid-template-areas: 'name name' 'character abilities';
   text-align: center;
 }
 
@@ -65,11 +80,34 @@ defineProps<Props>()
     font-size: 1.5rem;
     line-height: 0.8;
   }
+
+  &__image {
+    display: block;
+    width: 3rem;
+    margin: 0 auto;
+  }
 }
 
 .abilities {
-  padding-top: 2rem;
   grid-area: abilities;
+}
+
+.ability-list {
+  padding: 0;
+  list-style: none;
+  text-align: left;
+}
+
+.ability {
+  &:not(:last-child) {
+    margin-bottom: 0.5rem;
+  }
+
+  &__image {
+    width: 2rem;
+    margin-right: 0.5rem;
+    vertical-align: middle;
+  }
 }
 
 .small-title {

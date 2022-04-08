@@ -31,9 +31,9 @@ export const firstNightActions: Action[] = [
     description: 'Everyone opens their eyes',
   },
   {
-    name: 'Villager-Villager',
-    description: 'Villager-Villager is revealed',
-    requiredCharacters: ['villager-villager'],
+    name: 'Nudist',
+    description: 'Nudist is revealed',
+    requiredCharacters: ['nudist'],
   },
 ]
 

@@ -56,17 +56,18 @@ watch(number, () => {
 </template>
 
 <style lang="scss">
-$size: 3rem;
+$width: 2.5rem;
+$heigth: 3rem;
 
 .wrapper {
   display: inline-flex;
+  height: $heigth;
   user-select: none;
 }
 
 .button {
   display: inline-flex;
-  width: $size;
-  height: $size;
+  width: $width;
   align-items: center;
   justify-content: center;
   border: 1px solid var(--color-border);
@@ -95,13 +96,13 @@ $size: 3rem;
 }
 
 .input {
-  width: 1.5 * $size;
-  height: $size;
+  width: $width;
   padding: 0;
   border: 1px solid var(--color-border);
   background-color: var(--color-background);
   color: inherit;
-  font-size: 2rem;
+  font-size: 1.75rem;
+  font-weight: 300;
   line-height: 1;
   outline: none;
   text-align: center;

@@ -57,20 +57,18 @@
 *,
 *::before,
 *::after {
-  position: relative;
   box-sizing: border-box;
-  margin: 0;
-  font-weight: normal;
+
+  /* margin: 0; */
 }
 
 body {
+  margin: 0;
   background: var(--color-background);
   color: var(--color-text);
   font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
     Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   font-size: 15px;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   line-height: 1.6;
   text-rendering: optimizelegibility;
   transition: color 0.5s, background-color 0.5s;
@@ -85,3 +83,13 @@ a {
   text-decoration: none;
   transition: 0.4s;
 }
+
+h1,h2,h3,h4,h5,h6 {
+  margin: 0;
+  font-weight: normal;
+}
+
+p, ul, ol{
+  margin: 0;
+}
+

@@ -41,20 +41,18 @@ const abilities = computed<(Ability | undefined)[]>(() =>
       <template
         v-if="character && abilities.every((ability):ability is Ability => ability !== undefined)"
       >
-        <p>{{ playerName }}</p>
+        <p class="name">{{ playerName }}</p>
 
-        <img
-          v-if="character.image"
-          :src="character.image"
-          :alt="''"
-          class="image"
-        />
-        <img
-          v-else
-          src="@/assets/default-character-image.png"
-          :alt="''"
-          class="image"
-        />
+        <img :src="character.image" alt="" class="image image--character" />
+        <div class="ability-images-list">
+          <img
+            v-for="ability in abilities"
+            :key="ability.id"
+            :src="ability.image"
+            alt=""
+            class="image image--ability"
+          />
+        </div>
 
         <div class="character">
           <h1>{{ character.name }}</h1>
@@ -124,8 +122,45 @@ const abilities = computed<(Ability | undefined)[]>(() =>
   text-align: center;
 }
 
+.name {
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+}
+
 .image {
-  height: 10rem;
+  --size: 100%;
+
+  display: inline-block;
+  width: 100%;
+  max-width: var(--size);
+  padding: 1rem;
+  border: 1px solid var(--vt-c-divider-light-2);
+  aspect-ratio: 1;
+  background-color: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 10%),
+    0 8px 10px -6px rgb(0 0 0 / 10%);
+  object-fit: contain;
+
+  &--ability {
+    --size: 5rem;
+
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+  }
+
+  &--character {
+    --size: #{5rem * 2 + 1rem};
+  }
+}
+
+.ability-images-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+  gap: 1rem;
 }
 
 h1 {
@@ -145,6 +180,8 @@ strong {
   top: 100%;
   bottom: 0;
   left: 0;
+  padding-top: 2rem;
+  font-size: 0.85rem;
 }
 
 .error-explanation {

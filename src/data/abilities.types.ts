@@ -9,5 +9,5 @@ export interface Ability<Id extends AbilityId = AbilityId> {
   id: Id
   name: string
   description: string
-  image?: string
+  image: string
 }

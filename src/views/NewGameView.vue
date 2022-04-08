@@ -123,7 +123,8 @@ function handleCreateGame(): void {
           <template #content>
             <span class="toltip-content">{{ character.description }}</span>
           </template>
-          <div>
+          <div class="list__item-name-wrapper">
+            <img class="list__item-image" :src="character.image" alt="" />
             <label :for="character.id" class="list__item-label">{{
               character.name
             }}</label>
@@ -158,7 +159,8 @@ function handleCreateGame(): void {
           <template #content>
             <span class="toltip-content">{{ ability.description }}</span>
           </template>
-          <div>
+          <div class="list__item-name-wrapper">
+            <img class="list__item-image" :src="ability.image" alt="" />
             <label :for="ability.id" class="list__item-label">{{
               ability.name
             }}</label>
@@ -197,6 +199,8 @@ function handleCreateGame(): void {
 </template>
 
 <style scoped lang="scss">
+$max-width: 28rem;
+
 .main {
   display: flex;
   flex-direction: column;
@@ -249,7 +253,7 @@ function handleCreateGame(): void {
 
 .list {
   width: 100%;
-  max-width: 25rem;
+  max-width: $max-width;
   margin-top: 1rem;
   text-align: left;
 
@@ -261,6 +265,26 @@ function handleCreateGame(): void {
       align-items: center;
       justify-content: space-between;
       margin-bottom: 0.5rem;
+    }
+
+    &-name-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    &-image {
+      $size: 2.5rem;
+
+      display: inline-block;
+      width: $size;
+      height: $size;
+      box-sizing: content-box;
+      padding: 0.25rem;
+      background-color: #fff;
+      border-radius: 0.25rem;
+      object-fit: contain;
     }
 
     &-label {
@@ -276,7 +300,6 @@ function handleCreateGame(): void {
 
 .info-icon {
   width: 24px;
-  margin-left: 0.5rem;
   color: var(--color-text-soft);
   vertical-align: -20%;
 }
@@ -286,7 +309,7 @@ function handleCreateGame(): void {
   width: calc(
     100vw - 2 * (var(--popper-theme-padding) + var(--popper-theme-border-width))
   );
-  max-width: 25rem;
+  max-width: $max-width;
 }
 
 h2 {
@@ -295,7 +318,7 @@ h2 {
 
 .player-names {
   width: 100%;
-  max-width: 25rem;
+  max-width: $max-width;
   min-height: 4rem;
   padding: 0.75rem;
   border: 1px solid var(--color-border);
@@ -309,7 +332,7 @@ h2 {
 }
 
 .player-names-list {
-  max-width: 25rem;
+  max-width: $max-width;
   margin-top: 1rem;
   margin-bottom: 0.5rem;
 }
