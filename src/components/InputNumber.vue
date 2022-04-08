@@ -42,11 +42,11 @@ watch(number, () => {
     </div>
 
     <input
+      :id="id"
+      v-model="number"
       class="input"
       :class="{ 'input--zero': isZero }"
       type="number"
-      v-model="number"
-      :id="id"
     />
 
     <div class="button button--right" @click="increase">

@@ -8,10 +8,10 @@ defineProps<{
 <template>
   <div class="list">
     <span
-      class="list__item"
-      :class="{ 'list__item--high-contrast': highContrast }"
       v-for="text in items"
       :key="text"
+      class="list__item"
+      :class="{ 'list__item--high-contrast': highContrast }"
       ><slot :text="text">{{ text }}</slot></span
     >
   </div>
