@@ -20,6 +20,14 @@ const character = computed<Character>(() => {
   }
 })
 
+const creationDate = computed<Date>(() => {
+  if (Array.isArray(route.query.creationDate)) {
+    return new Date(route.query.creationDate[0] as string)
+  } else {
+    return new Date(route.query.creationDate as string)
+  }
+})
+
 const abilities = computed<Ability[]>(() => {
   if (Array.isArray(route.query.abilities)) {
     return route.query.abilities.map((abilityId) =>
@@ -56,7 +64,7 @@ const abilities = computed<Ability[]>(() => {
         <p>{{ character.description }}</p>
       </div>
 
-      <div class="abilities">
+      <div v-if="abilities.length" class="abilities">
         <h2>Abilities</h2>
         <ul>
           <li v-for="ability in abilities" :key="ability.id">
@@ -65,6 +73,10 @@ const abilities = computed<Ability[]>(() => {
           </li>
         </ul>
       </div>
+
+      <p class="creation-date">
+        Game created at {{ creationDate.toLocaleString() }}
+      </p>
     </template>
 
     <template v-else>
@@ -104,5 +116,12 @@ h2 {
 
 strong {
   font-weight: bold;
+}
+
+.creation-date {
+  position: sticky;
+  top: 100%;
+  bottom: 0;
+  left: 0;
 }
 </style>

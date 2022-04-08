@@ -11,11 +11,14 @@ import HidableText from '../HidableText.vue'
 interface Props {
   player: PlayerConfig
   showSecretInfo: boolean
+  creationDate: Date
 }
 
 const props = defineProps<Props>()
 
-const url = computed<string>(() => playerViewUrl(props.player))
+const url = computed<string>(() =>
+  playerViewUrl(props.player, props.creationDate)
+)
 </script>
 
 <template>
@@ -37,9 +40,9 @@ const url = computed<string>(() => playerViewUrl(props.player))
 
     <div class="card__small-title">Abilities</div>
     <TagList
+      v-slot="{ text: ability }"
       :items="player.abilities.map((id) => getAbility(id).name)"
       high-contrast
-      v-slot="{ text: ability }"
       ><HidableText :text="ability" :visible="showSecretInfo" :length="7"
     /></TagList>
   </div>

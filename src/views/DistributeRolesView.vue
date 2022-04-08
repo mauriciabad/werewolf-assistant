@@ -8,7 +8,9 @@ import RoleCarrousel from '../components/distribute-roles/RoleCarrousel.vue'
 
 const gameConfigStore = useGameConfigStore()
 
-const { players } = storeToRefs(gameConfigStore)
+const { players, creationDate } = storeToRefs(gameConfigStore)
+
+console.log(creationDate.value)
 
 const router = useRouter()
 if (players.value.length === 0) {
@@ -30,8 +32,8 @@ const showSecretInfo = ref<boolean>(true)
 
       <div
         class="secret-info"
-        @click="showSecretInfo = !showSecretInfo"
         role="button"
+        @click="showSecretInfo = !showSecretInfo"
       >
         <EyeIcon v-if="showSecretInfo" class="secret-info__icon" />
         <EyeOffIcon v-else class="secret-info__icon" />
@@ -42,6 +44,7 @@ const showSecretInfo = ref<boolean>(true)
       class="carrousel"
       :players="players"
       :show-secret-info="showSecretInfo"
+      :creation-date="creationDate"
     />
   </main>
 </template>

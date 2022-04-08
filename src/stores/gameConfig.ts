@@ -23,6 +23,7 @@ export const useGameConfigStore = defineStore({
     players: useStorage<PlayerConfig[]>('players', []),
     firstNightActions: useStorage<Action[]>('firstNightActions', []),
     nightActions: useStorage<Action[]>('nightActions', []),
+    creationDate: useStorage<Date>('creationDate', new Date()),
   }),
 
   getters: {},
@@ -31,7 +32,8 @@ export const useGameConfigStore = defineStore({
     createNewGame(
       characters: CharacterConfig[],
       abilities: AbilitiesConfig[],
-      playerNames: string[]
+      playerNames: string[],
+      creationDate: Date
     ): void {
       this.characters = characters
       this.abilities = abilities
@@ -49,6 +51,7 @@ export const useGameConfigStore = defineStore({
       )
 
       this.players = createPlayers(characters, abilities, playerNames)
+      this.creationDate = creationDate
     },
   },
 })

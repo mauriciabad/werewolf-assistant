@@ -92,7 +92,7 @@ function setAbilityAmount(abilityId: AbilityId, amount: number): void {
 }
 
 function handleCreateGame(): void {
-  createNewGame(newCharacters, newAbilities, newPlayerNames.value)
+  createNewGame(newCharacters, newAbilities, newPlayerNames.value, new Date())
   router.push({ name: 'storyteller' })
 }
 </script>
@@ -131,11 +131,11 @@ function handleCreateGame(): void {
           </div>
         </Popper>
         <InputNumber
-          @input="setCharacterAmount(character.id, $event)"
           :id="character.id"
           :default="
             newCharacters.find((c) => c.id === character.id)?.amount ?? 0
           "
+          @input="setCharacterAmount(character.id, $event)"
         />
       </div>
     </div>
@@ -166,9 +166,9 @@ function handleCreateGame(): void {
           </div>
         </Popper>
         <InputNumber
-          @input="setAbilityAmount(ability.id, $event)"
           :id="ability.id"
           :default="newAbilities.find((a) => a.id === ability.id)?.amount ?? 0"
+          @input="setAbilityAmount(ability.id, $event)"
         />
       </div>
     </div>
@@ -178,20 +178,20 @@ function handleCreateGame(): void {
     </h2>
     <p>Total {{ playerNamesCount }}</p>
     <textarea
-      name="Player names"
       id="player-names"
-      rows="10"
       v-model="rawPlayerNames"
+      name="Player names"
+      rows="10"
       class="player-names"
     ></textarea>
     <TagList :items="newPlayerNames" class="player-names-list" />
 
     <IconButton
-      @click="handleCreateGame"
       :disabled="newCharacterCount <= 1"
       class="create-button"
+      @click="handleCreateGame"
     >
-      <template v-slot:icon> <SparklesIcon /> </template>Create game
+      <template #icon> <SparklesIcon /> </template>Create game
     </IconButton>
   </main>
 </template>

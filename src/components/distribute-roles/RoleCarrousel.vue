@@ -5,6 +5,7 @@ import RoleCarrouselItem from './RoleCarrouselItem.vue'
 defineProps<{
   players: PlayerConfig[]
   showSecretInfo: boolean
+  creationDate: Date
 }>()
 </script>
 
@@ -15,12 +16,15 @@ defineProps<{
       :key="player.id"
       :player="player"
       :show-secret-info="showSecretInfo"
+      :creation-date="creationDate"
       class="carrousel__item"
     />
   </div>
 </template>
 
 <style scoped lang="scss">
+@use 'sass:math';
+
 $card-max-width: 30rem;
 
 .carrousel {
@@ -45,7 +49,7 @@ $card-max-width: 30rem;
       var(--color-background) calc(100% - 4rem),
       transparent 100%
     );
-    inset: 0 calc(50vw + #{$card-max-width / 2} + 0.75rem) 0 0;
+    inset: 0 calc(50vw + #{math.div($card-max-width, 2)} + 0.75rem) 0 0;
   }
 
   &::after {
@@ -54,7 +58,7 @@ $card-max-width: 30rem;
       var(--color-background) calc(100% - 4rem),
       transparent 100%
     );
-    inset: 0 0 0 calc(50vw + #{$card-max-width / 2} + 0.75rem);
+    inset: 0 0 0 calc(50vw + #{math.div($card-max-width, 2)} + 0.75rem);
   }
 
   &__item {

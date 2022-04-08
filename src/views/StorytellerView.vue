@@ -7,7 +7,7 @@ import PlayerCard from '../components/PlayerCard.vue'
 
 const gameConfigStore = useGameConfigStore()
 
-const { players, firstNightActions, nightActions } =
+const { players, firstNightActions, nightActions, creationDate } =
   storeToRefs(gameConfigStore)
 
 const router = useRouter()
@@ -28,6 +28,7 @@ if (players.value.length === 0) {
     </div>
 
     <div class="content">
+      <p>Game created at {{ creationDate.toLocaleString() }}</p>
       <h1>First night actions</h1>
       <ol class="action-list">
         <li
