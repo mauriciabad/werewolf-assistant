@@ -1,82 +1,104 @@
 <script setup lang="ts">
+import { useRouterHelper } from '@/compositions/useRouterHelper'
 import { getAbility } from '@/data/abilities'
-import type { Ability, AbilityId } from '@/data/abilities.types'
+import type { Ability } from '@/data/abilities.types'
 import { getCharacter } from '@/data/characters'
-import type { Character, CharacterId } from '@/data/characters.types'
+import type { Character } from '@/data/characters.types'
 import { computed } from 'vue'
-import { useRoute } from 'vue-router'
 
-const route = useRoute()
+const { getQueryParam, getQueryParamList } = useRouterHelper()
 
 const hasData = computed<boolean>(
-  () => !!route.query.player && !!route.query.character
+  () => getQueryParam('character') !== undefined
 )
 
-const character = computed<Character>(() => {
-  if (Array.isArray(route.query.character)) {
-    return getCharacter(route.query.character[0] as CharacterId)
-  } else {
-    return getCharacter(route.query.character as CharacterId)
-  }
+const playerName = computed<string | undefined>(() => getQueryParam('player'))
+
+const character = computed<Character | undefined>(() => {
+  const characterId = getQueryParam('character')
+  if (characterId === undefined) return undefined
+  return getCharacter(characterId)
 })
 
-const creationDate = computed<Date>(() => {
-  if (Array.isArray(route.query.creationDate)) {
-    return new Date(route.query.creationDate[0] as string)
-  } else {
-    return new Date(route.query.creationDate as string)
-  }
+const creationDate = computed<Date | undefined>(() => {
+  const creationDateString = getQueryParam('creationDate')
+  if (creationDateString === undefined) return undefined
+
+  const date = new Date(creationDateString)
+  if (isNaN(date.getTime())) return undefined
+
+  return date
 })
 
-const abilities = computed<Ability[]>(() => {
-  if (Array.isArray(route.query.abilities)) {
-    return route.query.abilities.map((abilityId) =>
-      getAbility(abilityId as AbilityId)
-    )
-  } else if (route.query.abilities) {
-    return [getAbility(route.query.abilities as AbilityId)]
-  } else {
-    return []
-  }
-})
+const abilities = computed<(Ability | undefined)[]>(() =>
+  getQueryParamList('abilities').map((abilityId) => getAbility(abilityId))
+)
 </script>
 
 <template>
   <main class="main">
     <template v-if="hasData">
-      <p>{{ route.query.player }}</p>
+      <template
+        v-if="character && abilities.every((ability):ability is Ability => ability !== undefined)"
+      >
+        <p>{{ playerName }}</p>
 
-      <img
-        v-if="character.image"
-        :src="character.image"
-        :alt="''"
-        class="image"
-      />
-      <img
-        v-else
-        src="@/assets/default-character-image.png"
-        :alt="''"
-        class="image"
-      />
+        <img
+          v-if="character.image"
+          :src="character.image"
+          :alt="''"
+          class="image"
+        />
+        <img
+          v-else
+          src="@/assets/default-character-image.png"
+          :alt="''"
+          class="image"
+        />
 
-      <div class="character">
-        <h1>{{ character.name }}</h1>
-        <p>{{ character.description }}</p>
-      </div>
+        <div class="character">
+          <h1>{{ character.name }}</h1>
+          <p>{{ character.description }}</p>
+        </div>
 
-      <div v-if="abilities.length" class="abilities">
-        <h2>Abilities</h2>
-        <ul>
-          <li v-for="ability in abilities" :key="ability.id">
-            <strong>{{ ability.name }}:</strong>
-            {{ ability.description }}
+        <div v-if="abilities.length" class="abilities">
+          <h2>Abilities</h2>
+          <ul>
+            <li v-for="ability in abilities" :key="ability.id">
+              <strong>{{ ability.name }}:</strong>
+              {{ ability.description }}
+            </li>
+          </ul>
+        </div>
+
+        <p v-if="creationDate" class="creation-date">
+          Game created at {{ creationDate.toLocaleString() }}
+        </p>
+      </template>
+
+      <template v-else>
+        <h1>Error</h1>
+        <ul class="error-list">
+          <li v-if="!character" class="error-list__item">
+            Unknown character "{{ getQueryParam('character') }}"
+          </li>
+          <li
+            v-for="abilityId in getQueryParamList('abilities').filter(
+              (abilityId) => getAbility(abilityId) === undefined
+            )"
+            :key="abilityId"
+            class="error-list__item"
+          >
+            Unknown ability "{{ abilityId }}"
           </li>
         </ul>
-      </div>
 
-      <p class="creation-date">
-        Game created at {{ creationDate.toLocaleString() }}
-      </p>
+        <p class="error-explanation">
+          <strong>Scan the QR code again.</strong>
+          <br />
+          If the error still appears, ask the storyteller to create a new game.
+        </p>
+      </template>
     </template>
 
     <template v-else>
@@ -123,5 +145,20 @@ strong {
   top: 100%;
   bottom: 0;
   left: 0;
+}
+
+.error-explanation {
+  margin-top: 2rem;
+}
+
+.error-list {
+  padding: 1rem;
+  padding-left: 2rem;
+  border: 1px solid var(--color-border);
+  margin-top: 1rem;
+  background-color: var(--color-background-soft);
+  border-radius: 0.5rem;
+  color: #dc143c;
+  text-align: left;
 }
 </style>
