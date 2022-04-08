@@ -31,7 +31,7 @@ const url = computed<string>(() =>
 </script>
 
 <template>
-  <div class="card">
+  <div class="card" :class="{ 'card--no-abilities': abilities.length === 0 }">
     <div class="card__name">{{ player.name }}</div>
 
     <a class="card__qr" :href="url">
@@ -95,6 +95,10 @@ $card-max-width: 30rem;
   grid-template-areas: 'name name' 'qr qr' 'character abilities';
   text-align: center;
 
+  &--no-abilities {
+    grid-template-areas: 'name name' 'qr qr' 'character character';
+  }
+
   &__name {
     font-size: 1.5rem;
     grid-area: name;
@@ -126,6 +130,7 @@ $card-max-width: 30rem;
     &-image {
       display: block;
       width: 50%;
+      max-width: 5rem;
       margin: 0.5rem auto;
     }
   }

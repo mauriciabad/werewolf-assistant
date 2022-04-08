@@ -20,7 +20,10 @@ const abilities = computed<Ability[]>(() =>
 </script>
 
 <template>
-  <div class="player">
+  <div
+    class="player"
+    :class="{ 'player--no-abilities': abilities.length === 0 }"
+  >
     <div class="name">
       <div class="small-title">Name</div>
       <div class="name__text">
@@ -62,6 +65,11 @@ const abilities = computed<Ability[]>(() =>
   grid-template: auto / 1fr 1fr;
   grid-template-areas: 'name name' 'character abilities';
   text-align: center;
+
+  &--no-abilities {
+    align-items: center;
+    grid-template-areas: 'name character' 'name character';
+  }
 }
 
 .name {
