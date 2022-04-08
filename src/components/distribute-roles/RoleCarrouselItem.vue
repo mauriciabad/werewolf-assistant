@@ -38,13 +38,15 @@ const url = computed<string>(() =>
       />
     </div>
 
-    <div class="card__small-title">Abilities</div>
-    <TagList
-      v-slot="{ text: ability }"
-      :items="player.abilities.map((id) => getAbility(id).name)"
-      high-contrast
-      ><HidableText :text="ability" :visible="showSecretInfo" :length="7"
-    /></TagList>
+    <template v-if="player.abilities.length">
+      <div class="card__small-title">Abilities</div>
+      <TagList
+        v-slot="{ text: ability }"
+        :items="player.abilities.map((id) => getAbility(id).name)"
+        high-contrast
+        ><HidableText :text="ability" :visible="showSecretInfo" :length="7"
+      /></TagList>
+    </template>
   </div>
 </template>
 
@@ -88,6 +90,10 @@ $card-max-width: 30rem;
     font-size: 2rem;
     font-weight: 300;
     line-height: 0.8;
+
+    &:last-child {
+      margin-bottom: 0.25rem;
+    }
   }
 
   &__small-title {

@@ -24,7 +24,7 @@ defineProps<Props>()
       </div>
     </div>
 
-    <div class="abilities">
+    <div v-if="player.abilities.length" class="abilities">
       <div class="small-title">Abilities</div>
       <TagList
         :items="player.abilities.map((id) => getAbility(id).name)"
