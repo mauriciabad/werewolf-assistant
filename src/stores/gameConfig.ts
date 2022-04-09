@@ -1,19 +1,15 @@
-import type {
-  CharacterId,
-  CustomCharacter,
-  CustomCharacterId,
-} from '@/data/characters.types'
-import { defineStore } from 'pinia'
-import { useStorage } from '@vueuse/core'
 import type { AbilityId } from '@/data/abilities.types'
-import type { Action } from '@/data/actions.types'
 import { firstNightActions, nightActions } from '@/data/actions'
+import type { Action } from '@/data/actions.types'
+import type { CharacterId, CustomCharacterId } from '@/data/characters.types'
+import { useStorage } from '@vueuse/core'
+import { defineStore } from 'pinia'
 
 export type CharacterConfig = {
   id: CharacterId | CustomCharacterId
   amount: number
 }
-export type AbilitiesConfig = { id: AbilityId; amount: number }
+export type AbilityConfig = { id: AbilityId; amount: number }
 export type PlayerConfig = {
   id: number
   name: string
@@ -26,8 +22,7 @@ export const useGameConfigStore = defineStore({
 
   state: () => ({
     characters: useStorage<CharacterConfig[]>('characters', []),
-    customCharacters: useStorage<CustomCharacter[]>('customCharacters', []),
-    abilities: useStorage<AbilitiesConfig[]>('abilities', []),
+    abilities: useStorage<AbilityConfig[]>('abilities', []),
     players: useStorage<PlayerConfig[]>('players', []),
     firstNightActions: useStorage<Action[]>('firstNightActions', []),
     nightActions: useStorage<Action[]>('nightActions', []),
@@ -39,7 +34,7 @@ export const useGameConfigStore = defineStore({
   actions: {
     createNewGame(
       characters: CharacterConfig[],
-      abilities: AbilitiesConfig[],
+      abilities: AbilityConfig[],
       playerNames: string[],
       creationDate: Date
     ): void {
@@ -66,7 +61,7 @@ export const useGameConfigStore = defineStore({
 
 function createPlayers(
   characters: CharacterConfig[],
-  abilities: AbilitiesConfig[],
+  abilities: AbilityConfig[],
   playerNames: string[]
 ): PlayerConfig[] {
   const allCharacters: CharacterConfig['id'][] = []
@@ -77,7 +72,7 @@ function createPlayers(
   }
   shuffle(allCharacters)
 
-  const allAbilities: AbilitiesConfig['id'][] = []
+  const allAbilities: AbilityConfig['id'][] = []
   for (const ability of abilities) {
     for (let i = 0; i < ability.amount; i++) {
       allAbilities.push(ability.id)
@@ -124,7 +119,7 @@ function shuffle<T>(array: T[]): void {
 
 function gameHasAllActionAbilities(
   action: Action,
-  abilities: AbilitiesConfig[]
+  abilities: AbilityConfig[]
 ): boolean {
   if (!action.requiredAbilities) return true
 

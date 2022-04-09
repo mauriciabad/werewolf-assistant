@@ -4,40 +4,34 @@ import type { CustomCharacter } from '@/data/characters.types'
 import { useCustomDataStore } from '@/stores/customData'
 import {
   useGameConfigStore,
-  type AbilitiesConfig,
+  type AbilityConfig,
   type CharacterConfig,
 } from '@/stores/gameConfig'
-import {
-  ChevronLeftIcon,
-  InformationCircleIcon,
-  PencilIcon,
-  TrashIcon,
-} from '@heroicons/vue/outline'
+import { ChevronLeftIcon } from '@heroicons/vue/outline'
 import { SparklesIcon, UserAddIcon } from '@heroicons/vue/solid'
 import { storeToRefs } from 'pinia'
 import { computed, reactive, ref, watch } from 'vue'
 import { RouterLink, useRouter } from 'vue-router'
-import Popper from 'vue3-popper'
+import CharacterOrAbilityRow from '../components/CharacterOrAbilityRow.vue'
 import IconButton from '../components/IconButton.vue'
-import InputNumber from '../components/InputNumber.vue'
 import TagList from '../components/TagList.vue'
 import { default as abilitiesInfo } from '../data/abilities'
 import { default as charactersInfo } from '../data/characters'
-import ilustrations from '../data/ilustrations'
 
 const gameConfigStore = useGameConfigStore()
 
-const { characters, abilities, players, customCharacters } =
-  storeToRefs(gameConfigStore)
+const { characters, abilities, players } = storeToRefs(gameConfigStore)
 const { createNewGame } = gameConfigStore
 
-const { saveCustomCharacter, removeCustomCharacter } = useCustomDataStore()
+const customDataStore = useCustomDataStore()
+const { customCharacters } = storeToRefs(customDataStore)
+const { saveCustomCharacter, removeCustomCharacter } = customDataStore
 
 const newCharacters = reactive<CharacterConfig[]>(characters.value)
 const newCharacterCount = computed<number>(() =>
   newCharacters.reduce((total, { amount }) => total + amount, 0)
 )
-const newAbilities = reactive<AbilitiesConfig[]>(abilities.value)
+const newAbilities = reactive<AbilityConfig[]>(abilities.value)
 const newAbilityCount = computed<number>(() =>
   newAbilities.reduce((total, { amount }) => total + amount, 0)
 )
@@ -87,7 +81,7 @@ function setCharacterAmount({ id, amount }: CharacterConfig): void {
   character.amount = amount
 }
 
-function setAbilityAmount({ id, amount }: AbilitiesConfig): void {
+function setAbilityAmount({ id, amount }: AbilityConfig): void {
   const ability = newAbilities.find((character) => character.id === id)
 
   if (amount === 0) {
@@ -145,76 +139,27 @@ function handleEditCustomCharacter(customCharacter: CustomCharacter): void {
     <p>Total {{ newCharacterCount }} | {{ playerNamesCount }} players</p>
 
     <div class="list">
-      <div
+      <CharacterOrAbilityRow
         v-for="character in charactersInfo"
         :key="character.id"
-        class="list__item-wrapper"
-      >
-        <Popper hover arrow>
-          <template #content>
-            <span class="toltip-content">{{ character.description }}</span>
-          </template>
-          <div class="list__item-name-wrapper">
-            <img
-              class="list__item-ilustration"
-              :src="ilustrations[character.ilustration]"
-              alt=""
-            />
-            <label :for="character.id" class="list__item-label">{{
-              character.name
-            }}</label>
-            <InformationCircleIcon class="list__item-icon" />
-          </div>
-        </Popper>
-        <InputNumber
-          :id="character.id"
-          :default="
-            newCharacters.find((c) => c.id === character.id)?.amount ?? 0
-          "
-          @input="setCharacterAmount({ id: character.id, amount: $event })"
-        />
-      </div>
+        :data="character"
+        :initial-value="newCharacters.find((a) => a.id === character.id)"
+        @update-character="setCharacterAmount"
+      />
 
       <div v-if="customCharacters.length" class="separator" />
 
-      <div
+      <CharacterOrAbilityRow
         v-for="character in customCharacters"
         :key="character.id"
-        class="list__item-wrapper"
-      >
-        <Popper hover arrow>
-          <template #content>
-            <span class="toltip-content">{{ character.description }}</span>
-          </template>
-          <div class="list__item-name-wrapper">
-            <img
-              class="list__item-ilustration"
-              :src="ilustrations[character.ilustration]"
-              alt=""
-            />
-            <label :for="character.id" class="list__item-label">{{
-              character.name
-            }}</label>
-            <InformationCircleIcon class="list__item-icon" />
-            <TrashIcon
-              class="list__item-icon list__item-icon--delete"
-              @click="removeCustomCharacter(character.id)"
-            />
-            <PencilIcon
-              class="list__item-icon list__item-icon--edit"
-              @click="handleEditCustomCharacter(character)"
-            />
-          </div>
-        </Popper>
-        <InputNumber
-          :id="character.id"
-          :default="
-            newCharacters.find((c) => c.id === character.id)?.amount ?? 0
-          "
-          @input="setCharacterAmount({ id: character.id, amount: $event })"
-        />
-      </div>
+        :data="character"
+        :initial-value="newCharacters.find((a) => a.id === character.id)"
+        @update-character="setCharacterAmount"
+        @edit-custom-character="handleEditCustomCharacter"
+        @remove-custom-character="removeCustomCharacter(character.id)"
+      />
     </div>
+
     <CharacterCreatorModal
       v-model:modelValue="showModal"
       :initial-value="customCharacterToEdit"
@@ -234,33 +179,13 @@ function handleEditCustomCharacter(customCharacter: CustomCharacter): void {
     </p>
 
     <div class="list">
-      <div
+      <CharacterOrAbilityRow
         v-for="ability in abilitiesInfo"
         :key="ability.id"
-        class="list__item-wrapper"
-      >
-        <Popper hover arrow>
-          <template #content>
-            <span class="toltip-content">{{ ability.description }}</span>
-          </template>
-          <div class="list__item-name-wrapper">
-            <img
-              class="list__item-ilustration"
-              :src="ilustrations[ability.ilustration]"
-              alt=""
-            />
-            <label :for="ability.id" class="list__item-label">{{
-              ability.name
-            }}</label>
-            <InformationCircleIcon class="list__item-icon" />
-          </div>
-        </Popper>
-        <InputNumber
-          :id="ability.id"
-          :default="newAbilities.find((a) => a.id === ability.id)?.amount ?? 0"
-          @input="setAbilityAmount({ id: ability.id, amount: $event })"
-        />
-      </div>
+        :data="ability"
+        :initial-value="newAbilities.find((a) => a.id === ability.id)"
+        @update-ability="setAbilityAmount"
+      />
     </div>
 
     <h2>
@@ -351,58 +276,6 @@ $max-width: 28rem;
   max-width: $max-width;
   margin-top: 1rem;
   text-align: left;
-
-  &__item {
-    width: 100%;
-
-    &-wrapper {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 0.5rem;
-    }
-
-    &-name-wrapper {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 0.5rem;
-    }
-
-    &-ilustration {
-      $size: 2.5rem;
-
-      display: inline-block;
-      width: $size;
-      height: $size;
-      box-sizing: content-box;
-      padding: 0.25rem;
-      background-color: #fff;
-      border-radius: 0.25rem;
-      object-fit: contain;
-    }
-
-    &-label {
-      flex: 1;
-      font-size: 1.2rem;
-    }
-
-    &-icon {
-      width: 24px;
-      color: var(--color-text-soft);
-      vertical-align: -20%;
-
-      &--delete {
-        color: var(--color-red-soft);
-        cursor: pointer;
-      }
-
-      &--edit {
-        color: var(--color-blue-soft);
-        cursor: pointer;
-      }
-    }
-  }
 }
 
 .button {
