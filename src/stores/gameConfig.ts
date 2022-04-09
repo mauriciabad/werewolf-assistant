@@ -1,4 +1,4 @@
-import type { AbilityId } from '@/data/abilities.types'
+import type { AbilityId, CustomAbilityId } from '@/data/abilities.types'
 import { firstNightActions, nightActions } from '@/data/actions'
 import type { Action } from '@/data/actions.types'
 import type { CharacterId, CustomCharacterId } from '@/data/characters.types'
@@ -9,12 +9,15 @@ export type CharacterConfig = {
   id: CharacterId | CustomCharacterId
   amount: number
 }
-export type AbilityConfig = { id: AbilityId; amount: number }
+export type AbilityConfig = {
+  id: AbilityId | CustomAbilityId
+  amount: number
+}
 export type PlayerConfig = {
   id: number
   name: string
   character: CharacterId | CustomCharacterId
-  abilities: AbilityId[]
+  abilities: (AbilityId | CustomAbilityId)[]
 }
 
 export const useGameConfigStore = defineStore({
@@ -54,6 +57,7 @@ export const useGameConfigStore = defineStore({
       )
 
       this.players = createPlayers(characters, abilities, playerNames)
+
       this.creationDate = creationDate
     },
   },

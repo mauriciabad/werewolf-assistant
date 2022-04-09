@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import CharacterCreatorModal from '@/components/CharacterCreatorModal.vue'
+import CharacterOrAbilityCreatorModal from '@/components/CharacterOrAbilityCreatorModal.vue'
+import type { CustomAbility } from '@/data/abilities.types'
 import type { CustomCharacter } from '@/data/characters.types'
 import { useCustomDataStore } from '@/stores/customData'
 import {
@@ -8,7 +9,11 @@ import {
   type CharacterConfig,
 } from '@/stores/gameConfig'
 import { ChevronLeftIcon } from '@heroicons/vue/outline'
-import { SparklesIcon, UserAddIcon } from '@heroicons/vue/solid'
+import {
+  SparklesIcon,
+  UserAddIcon,
+  ViewGridAddIcon,
+} from '@heroicons/vue/solid'
 import { storeToRefs } from 'pinia'
 import { computed, reactive, ref, watch } from 'vue'
 import { RouterLink, useRouter } from 'vue-router'
@@ -24,8 +29,13 @@ const { characters, abilities, players } = storeToRefs(gameConfigStore)
 const { createNewGame } = gameConfigStore
 
 const customDataStore = useCustomDataStore()
-const { customCharacters } = storeToRefs(customDataStore)
-const { saveCustomCharacter, removeCustomCharacter } = customDataStore
+const { customCharacters, customAbilities } = storeToRefs(customDataStore)
+const {
+  saveCustomCharacter,
+  removeCustomCharacter,
+  saveCustomAbility,
+  removeCustomAbility,
+} = customDataStore
 
 const newCharacters = reactive<CharacterConfig[]>(characters.value)
 const newCharacterCount = computed<number>(() =>
@@ -55,13 +65,6 @@ const newPlayerNames = computed<string[]>(() =>
     .filter((s, i, arr) => arr.indexOf(s) === i)
 )
 const playerNamesCount = computed<number>(() => newPlayerNames.value.length)
-
-const showModal = ref<boolean>(false)
-watch(showModal, () => {
-  if (!showModal.value) {
-    customCharacterToEdit.value = undefined
-  }
-})
 
 function setCharacterAmount({ id, amount }: CharacterConfig): void {
   const character = newCharacters.find((character) => character.id === id)
@@ -104,8 +107,16 @@ function handleCreateGame(): void {
   router.push({ name: 'storyteller' })
 }
 
+// #region Custom Character stuff
+const showCustomCharacterModal = ref<boolean>(false)
+watch(showCustomCharacterModal, () => {
+  if (!showCustomCharacterModal.value) {
+    customCharacterToEdit.value = undefined
+  }
+})
+
 function handleAddCustomCharacterClick(): void {
-  showModal.value = true
+  showCustomCharacterModal.value = true
 }
 
 function handleCreateOrEditCustomCharacter(
@@ -113,13 +124,38 @@ function handleCreateOrEditCustomCharacter(
 ): void {
   saveCustomCharacter(customCharacter)
 
-  showModal.value = false
+  showCustomCharacterModal.value = false
 }
 const customCharacterToEdit = ref<CustomCharacter | undefined>(undefined)
 function handleEditCustomCharacter(customCharacter: CustomCharacter): void {
   customCharacterToEdit.value = customCharacter
-  showModal.value = true
+  showCustomCharacterModal.value = true
 }
+
+// #endregion
+// #region Custom Ability stuff
+const showCustomAbilityModal = ref<boolean>(false)
+watch(showCustomAbilityModal, () => {
+  if (!showCustomAbilityModal.value) {
+    customAbilityToEdit.value = undefined
+  }
+})
+
+function handleAddCustomAbilityClick(): void {
+  showCustomAbilityModal.value = true
+}
+
+function handleCreateOrEditCustomAbility(customAbility: CustomAbility): void {
+  saveCustomAbility(customAbility)
+
+  showCustomAbilityModal.value = false
+}
+const customAbilityToEdit = ref<CustomAbility | undefined>(undefined)
+function handleEditCustomAbility(customAbility: CustomAbility): void {
+  customAbilityToEdit.value = customAbility
+  showCustomAbilityModal.value = true
+}
+// #endregion
 </script>
 
 <template>
@@ -160,8 +196,9 @@ function handleEditCustomCharacter(customCharacter: CustomCharacter): void {
       />
     </div>
 
-    <CharacterCreatorModal
-      v-model:modelValue="showModal"
+    <CharacterOrAbilityCreatorModal
+      v-model:modelValue="showCustomCharacterModal"
+      type="character"
       :initial-value="customCharacterToEdit"
       @create-character="handleCreateOrEditCustomCharacter"
       @edit-character="handleCreateOrEditCustomCharacter"
@@ -186,7 +223,29 @@ function handleEditCustomCharacter(customCharacter: CustomCharacter): void {
         :initial-value="newAbilities.find((a) => a.id === ability.id)"
         @update-ability="setAbilityAmount"
       />
+      <div v-if="customCharacters.length" class="separator" />
+
+      <CharacterOrAbilityRow
+        v-for="ability in customAbilities"
+        :key="ability.id"
+        :data="ability"
+        :initial-value="newAbilities.find((a) => a.id === ability.id)"
+        @update-ability="setAbilityAmount"
+        @edit-custom-ability="handleEditCustomAbility"
+        @remove-custom-ability="removeCustomAbility(ability.id)"
+      />
     </div>
+    <CharacterOrAbilityCreatorModal
+      v-model:modelValue="showCustomAbilityModal"
+      type="ability"
+      :initial-value="customAbilityToEdit"
+      @create-ability="handleCreateOrEditCustomAbility"
+      @edit-ability="handleCreateOrEditCustomAbility"
+    />
+
+    <IconButton class="button" @click="handleAddCustomAbilityClick">
+      <template #icon> <ViewGridAddIcon /> </template>Add custom ability
+    </IconButton>
 
     <h2>
       <label for="player-names">Player names</label>

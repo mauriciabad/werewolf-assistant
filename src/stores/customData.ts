@@ -1,3 +1,4 @@
+import type { CustomAbility } from '@/data/abilities.types'
 import type { CustomCharacter } from '@/data/characters.types'
 import { useStorage } from '@vueuse/core'
 import { defineStore } from 'pinia'
@@ -7,6 +8,7 @@ export const useCustomDataStore = defineStore({
 
   state: () => ({
     customCharacters: useStorage<CustomCharacter[]>('customCharacters', []),
+    customAbilities: useStorage<CustomAbility[]>('customAbilities', []),
   }),
 
   getters: {},
@@ -14,7 +16,7 @@ export const useCustomDataStore = defineStore({
   actions: {
     saveCustomCharacter(customCharacter: CustomCharacter): void {
       const index = this.customCharacters.findIndex(
-        (character) => character.id === customCharacter.id
+        ({ id }) => id === customCharacter.id
       )
 
       if (index === -1) {
@@ -38,6 +40,35 @@ export const useCustomDataStore = defineStore({
     getCustomCharacter(id: CustomCharacter['id']): CustomCharacter {
       return this.customCharacters.find(
         (customCharacter) => customCharacter.id === id
+      )!
+    },
+
+    saveCustomAbility(customAbility: CustomAbility): void {
+      const index = this.customAbilities.findIndex(
+        ({ id }) => id === customAbility.id
+      )
+
+      if (index === -1) {
+        this.customAbilities = [...this.customAbilities, customAbility]
+        return
+      }
+
+      this.customAbilities[index] = customAbility
+    },
+
+    removeCustomAbility(id: CustomAbility['id']): void {
+      this.customAbilities = this.customAbilities.filter(
+        (customAbility) => customAbility.id !== id
+      )
+    },
+
+    // TODO: Overloas this function
+    // getCustomAbility(id: CustomAbility['id']): CustomAbility
+    // getCustomAbility(id: string): CustomAbility | undefined
+    // getCustomAbility(id: string): CustomAbility | undefined {
+    getCustomAbility(id: CustomAbility['id']): CustomAbility {
+      return this.customAbilities.find(
+        (customAbility) => customAbility.id === id
       )!
     },
   },

@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import { getAbility } from '@/data/abilities'
-import type { Ability } from '@/data/abilities.types'
+import {
+  isCustomAbilityId,
+  type Ability,
+  type CustomAbility,
+} from '@/data/abilities.types'
 import { getCharacter } from '@/data/characters'
 import {
   isCustomCharacterId,
@@ -17,15 +21,19 @@ interface Props {
 }
 const props = defineProps<Props>()
 
-const { getCustomCharacter } = useCustomDataStore()
+const { getCustomCharacter, getCustomAbility } = useCustomDataStore()
 
 const character = computed<Character | CustomCharacter>(() =>
   isCustomCharacterId(props.player.character)
     ? getCustomCharacter(props.player.character)
     : getCharacter(props.player.character)
 )
-const abilities = computed<Ability[]>(() =>
-  props.player.abilities.map((abilityId) => getAbility(abilityId))
+const abilities = computed<(Ability | CustomAbility)[]>(() =>
+  props.player.abilities.map((abilityId) =>
+    isCustomAbilityId(abilityId)
+      ? getCustomAbility(abilityId)
+      : getAbility(abilityId)
+  )
 )
 </script>
 

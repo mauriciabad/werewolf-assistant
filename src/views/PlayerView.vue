@@ -3,22 +3,57 @@ import { useRouterHelper } from '@/compositions/useRouterHelper'
 import { getAbility } from '@/data/abilities'
 import type { Ability } from '@/data/abilities.types'
 import { getCharacter } from '@/data/characters'
-import type { Character } from '@/data/characters.types'
-import { computed } from 'vue'
+import {
+  isCharacterId,
+  isCustomCharacterId,
+  type Character,
+  type CustomCharacter,
+} from '@/data/characters.types'
 import ilustrations from '@/data/ilustrations'
+import { computed } from 'vue'
 
 const { getQueryParam, getQueryParamList } = useRouterHelper()
 
 const hasData = computed<boolean>(
-  () => getQueryParam('character') !== undefined
+  () =>
+    getQueryParam('character') !== undefined ||
+    getQueryParam('custom-character') !== undefined
 )
 
 const playerName = computed<string | undefined>(() => getQueryParam('player'))
 
 const character = computed<Character | undefined>(() => {
   const characterId = getQueryParam('character')
-  if (characterId === undefined) return undefined
+  if (characterId === undefined || !isCharacterId(characterId)) {
+    return undefined
+  }
+
   return getCharacter(characterId)
+})
+
+const customCharacter = computed<CustomCharacter | undefined>(() => {
+  const customCharacterJSON = getQueryParam('custom-character')
+  if (customCharacterJSON === undefined) {
+    return undefined
+  }
+  try {
+    const customCharacter: CustomCharacter = JSON.parse(customCharacterJSON)
+    if (
+      !customCharacter ||
+      typeof customCharacter !== 'object' ||
+      !isCustomCharacterId(customCharacter.id) ||
+      typeof customCharacter.name !== 'string' ||
+      typeof customCharacter.description !== 'string' ||
+      !ilustrations[customCharacter.ilustration] ||
+      typeof customCharacter.ilustration !== 'string'
+    ) {
+      return undefined
+    }
+
+    return customCharacter
+  } catch {
+    return undefined
+  }
 })
 
 const creationDate = computed<Date | undefined>(() => {
@@ -34,18 +69,24 @@ const creationDate = computed<Date | undefined>(() => {
 const abilities = computed<(Ability | undefined)[]>(() =>
   getQueryParamList('abilities').map((abilityId) => getAbility(abilityId))
 )
+
+// TODO: Add support for custom abilities
 </script>
 
 <template>
   <main class="main">
     <template v-if="hasData">
       <template
-        v-if="character && abilities.every((ability):ability is Ability => ability !== undefined)"
+        v-if="(character || customCharacter) && abilities.every((ability):ability is Ability => ability !== undefined)"
       >
         <p class="name">{{ playerName }}</p>
 
         <img
-          :src="ilustrations[character.ilustration]"
+          :src="
+            character
+              ? ilustrations[character.ilustration]
+              : ilustrations[customCharacter!.ilustration]
+          "
           alt=""
           class="ilustration ilustration--character"
         />
@@ -60,8 +101,10 @@ const abilities = computed<(Ability | undefined)[]>(() =>
         </div>
 
         <div class="character">
-          <h1>{{ character.name }}</h1>
-          <p>{{ character.description }}</p>
+          <h1>{{ character ? character.name : customCharacter!.name }}</h1>
+          <p>
+            {{ character ? character.description : customCharacter!.description }}
+          </p>
         </div>
 
         <div v-if="abilities.length" class="abilities">
@@ -82,7 +125,19 @@ const abilities = computed<(Ability | undefined)[]>(() =>
       <template v-else>
         <h1>Error</h1>
         <ul class="error-list">
-          <li v-if="!character" class="error-list__item">
+          <li
+            v-if="
+              !customCharacter &&
+              getQueryParam('custom-character') !== undefined
+            "
+            class="error-list__item"
+          >
+            Unknown custom character {{ getQueryParam('custom-character') }}
+          </li>
+          <li
+            v-if="!character || getQueryParam('character') !== undefined"
+            class="error-list__item"
+          >
             Unknown character "{{ getQueryParam('character') }}"
           </li>
           <li

@@ -1,5 +1,10 @@
 <script lang="ts" setup>
-import type { Ability } from '@/data/abilities.types'
+import type {
+  Ability,
+  CustomAbility,
+  CustomAbilityId,
+} from '@/data/abilities.types'
+import { isCustomAbility } from '@/data/abilities.types'
 import type {
   Character,
   CustomCharacter,
@@ -16,15 +21,19 @@ import Popper from 'vue3-popper'
 import InputNumber from '../components/InputNumber.vue'
 import ilustrations from '../data/ilustrations'
 defineProps<{
-  data: Character | CustomCharacter | Ability
+  data: Character | CustomCharacter | Ability | CustomAbility
   initialValue?: CharacterConfig | AbilityConfig
 }>()
 
 const emit = defineEmits<{
   (e: 'updateCharacter', value: CharacterConfig): void
   (e: 'updateAbility', value: AbilityConfig): void
+
   (e: 'editCustomCharacter', value: CustomCharacter): void
+  (e: 'editCustomAbility', value: CustomAbility): void
+
   (e: 'removeCustomCharacter', value: CustomCharacterId): void
+  (e: 'removeCustomAbility', value: CustomAbilityId): void
 }>()
 </script>
 
@@ -43,16 +52,26 @@ const emit = defineEmits<{
         <label :for="data.id" class="item__label">{{ data.name }}</label>
         <InformationCircleIcon class="item__icon" />
         <TrashIcon
-          v-if="isCustomCharacter(data)"
+          v-if="isCustomCharacter(data) || isCustomAbility(data)"
           class="item__icon item__icon--delete"
           @click="
-            isCustomCharacter(data) && emit('removeCustomCharacter', data.id)
+            isCustomCharacter(data)
+              ? emit('removeCustomCharacter', data.id)
+              : isCustomAbility(data)
+              ? emit('removeCustomAbility', data.id)
+              : null
           "
         />
         <PencilIcon
-          v-if="isCustomCharacter(data)"
+          v-if="isCustomCharacter(data) || isCustomAbility(data)"
           class="item__icon item__icon--edit"
-          @click="isCustomCharacter(data) && emit('editCustomCharacter', data)"
+          @click="
+            isCustomCharacter(data)
+              ? emit('editCustomCharacter', data)
+              : isCustomAbility(data)
+              ? emit('editCustomAbility', data)
+              : null
+          "
         />
       </div>
     </Popper>

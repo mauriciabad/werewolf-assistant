@@ -1,21 +1,29 @@
 <script lang="ts" setup>
+import type { CustomAbility } from '@/data/abilities.types'
+import { isCustomAbility } from '@/data/abilities.types'
 import type { CustomCharacter } from '@/data/characters.types'
+import { isCustomCharacter } from '@/data/characters.types'
 import ilustrations, { type IlustrationId } from '@/data/ilustrations'
 import { CheckIcon, XIcon } from '@heroicons/vue/solid'
 import { computed, ref } from '@vue/reactivity'
 import { watch } from 'vue'
-import IconButton from '../components/IconButton.vue'
+import IconButton from './IconButton.vue'
 import CustomModal from './CustomModal.vue'
 
 const props = defineProps<{
+  type: 'character' | 'ability'
   modelValue: boolean
-  initialValue?: CustomCharacter
+  initialValue?: CustomCharacter | CustomAbility
 }>()
 
 const emit = defineEmits<{
   (e: 'update:modelValue', value: boolean): void
+
   (e: 'editCharacter', value: CustomCharacter): void
+  (e: 'editAbility', value: CustomAbility): void
+
   (e: 'createCharacter', value: CustomCharacter): void
+  (e: 'createAbility', value: CustomAbility): void
 }>()
 
 const showModal = computed<boolean>({
@@ -56,7 +64,11 @@ function handleConfirm(): void {
 
   showModal.value = false
 
-  if (props.initialValue) {
+  if (
+    props.initialValue &&
+    isCustomCharacter(props.initialValue) &&
+    props.type === 'character'
+  ) {
     const character: CustomCharacter = {
       ...props.initialValue,
       name: name.value,
@@ -64,7 +76,25 @@ function handleConfirm(): void {
       ilustration: ilustration.value,
     }
     emit('editCharacter', character)
-  } else {
+    return
+  }
+
+  if (
+    props.initialValue &&
+    isCustomAbility(props.initialValue) &&
+    props.type === 'ability'
+  ) {
+    const ability: CustomAbility = {
+      ...props.initialValue,
+      name: name.value,
+      description: description.value,
+      ilustration: ilustration.value,
+    }
+    emit('editAbility', ability)
+    return
+  }
+
+  if (!props.initialValue && props.type === 'character') {
     const character: CustomCharacter = {
       id: `custom-character-${Date.now()}`,
       name: name.value,
@@ -73,6 +103,18 @@ function handleConfirm(): void {
       team: 'villagers',
     }
     emit('createCharacter', character)
+    return
+  }
+
+  if (!props.initialValue && props.type === 'ability') {
+    const ability: CustomAbility = {
+      id: `custom-ability-${Date.now()}`,
+      name: name.value,
+      description: description.value,
+      ilustration: ilustration.value,
+    }
+    emit('createAbility', ability)
+    return
   }
 }
 </script>

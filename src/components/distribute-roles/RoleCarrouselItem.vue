@@ -1,19 +1,24 @@
 <script setup lang="ts">
-import type { PlayerConfig } from '@/stores/gameConfig'
-import { getCharacter } from '@/data/characters'
 import { getAbility } from '@/data/abilities'
-import { computed } from 'vue'
-import QrcodeVue from 'qrcode.vue'
-import { playerViewUrl } from '@/services/player'
-import HidableText from '../HidableText.vue'
-import type { Ability } from '@/data/abilities.types'
+import {
+  isCustomAbilityId,
+  type Ability,
+  type CustomAbility,
+} from '@/data/abilities.types'
+import { getCharacter } from '@/data/characters'
 import {
   isCustomCharacterId,
   type Character,
   type CustomCharacter,
 } from '@/data/characters.types'
-import HidableIlustration from '../HidableIlustration.vue'
+import { playerViewUrl } from '@/services/player'
 import { useCustomDataStore } from '@/stores/customData'
+import type { PlayerConfig } from '@/stores/gameConfig'
+import { storeToRefs } from 'pinia'
+import QrcodeVue from 'qrcode.vue'
+import { computed } from 'vue'
+import HidableIlustration from '../HidableIlustration.vue'
+import HidableText from '../HidableText.vue'
 
 interface Props {
   player: PlayerConfig
@@ -23,7 +28,9 @@ interface Props {
 
 const props = defineProps<Props>()
 
-const { getCustomCharacter } = useCustomDataStore()
+const customDataStore = useCustomDataStore()
+const { customCharacters } = storeToRefs(customDataStore)
+const { getCustomCharacter, getCustomAbility } = customDataStore
 
 const character = computed<Character | CustomCharacter>(() =>
   isCustomCharacterId(props.player.character)
@@ -31,12 +38,14 @@ const character = computed<Character | CustomCharacter>(() =>
     : getCharacter(props.player.character)
 )
 
-const abilities = computed<Ability[]>(() =>
-  props.player.abilities.map((id) => getAbility(id))
+const abilities = computed<(Ability | CustomAbility)[]>(() =>
+  props.player.abilities.map((id) =>
+    isCustomAbilityId(id) ? getCustomAbility(id) : getAbility(id)
+  )
 )
 
 const url = computed<string>(() =>
-  playerViewUrl(props.player, props.creationDate)
+  playerViewUrl(props.player, props.creationDate, customCharacters.value)
 )
 </script>
 
