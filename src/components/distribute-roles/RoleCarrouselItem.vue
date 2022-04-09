@@ -7,8 +7,13 @@ import QrcodeVue from 'qrcode.vue'
 import { playerViewUrl } from '@/services/player'
 import HidableText from '../HidableText.vue'
 import type { Ability } from '@/data/abilities.types'
-import type { Character } from '@/data/characters.types'
-import HidableImage from '../HidableImage.vue'
+import {
+  isCustomCharacterId,
+  type Character,
+  type CustomCharacter,
+} from '@/data/characters.types'
+import HidableIlustration from '../HidableIlustration.vue'
+import { useCustomDataStore } from '@/stores/customData'
 
 interface Props {
   player: PlayerConfig
@@ -18,9 +23,14 @@ interface Props {
 
 const props = defineProps<Props>()
 
-const character = computed<Character>(() =>
-  getCharacter(props.player.character)
+const { getCustomCharacter } = useCustomDataStore()
+
+const character = computed<Character | CustomCharacter>(() =>
+  isCustomCharacterId(props.player.character)
+    ? getCustomCharacter(props.player.character)
+    : getCharacter(props.player.character)
 )
+
 const abilities = computed<Ability[]>(() =>
   props.player.abilities.map((id) => getAbility(id))
 )
@@ -40,11 +50,11 @@ const url = computed<string>(() =>
 
     <div class="card__character">
       <div class="small-title">Character</div>
-      <HidableImage
-        type="character"
+      <HidableIlustration
+        ilustration-type="character"
         :visible="showSecretInfo"
-        :src="character.image"
-        class="card__character-image"
+        :ilustration="character.ilustration"
+        class="card__character-ilustration"
         alt=""
       />
       <HidableText
@@ -58,11 +68,11 @@ const url = computed<string>(() =>
       <div class="small-title">Abilities</div>
       <ul class="ability-list">
         <li v-for="ability in abilities" :key="ability.id" class="ability">
-          <HidableImage
-            type="ability"
+          <HidableIlustration
+            ilustration-type="ability"
             :visible="showSecretInfo"
-            :src="ability.image"
-            class="ability__image"
+            :ilustration="ability.ilustration"
+            class="ability__ilustration"
             alt=""
           />
           <span class="ability__name"
@@ -127,7 +137,7 @@ $card-max-width: 30rem;
     grid-area: character;
     line-height: 0.8;
 
-    &-image {
+    &-ilustration {
       display: block;
       width: 50%;
       max-width: 5rem;
@@ -151,7 +161,7 @@ $card-max-width: 30rem;
     margin-bottom: 0.5rem;
   }
 
-  &__image {
+  &__ilustration {
     width: 2rem;
     margin-right: 0.5rem;
     vertical-align: middle;

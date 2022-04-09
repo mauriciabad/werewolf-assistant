@@ -1,3 +1,5 @@
+import type { IlustrationId } from './ilustrations'
+
 export type TeamId = 'werewolfs' | 'villagers' | 'alone' | 'other'
 
 export interface Team<T extends TeamId = TeamId> {
@@ -5,5 +7,5 @@ export interface Team<T extends TeamId = TeamId> {
   name: string
   description: string
   objective: string
-  image?: string
+  ilustration: IlustrationId
 }

@@ -1,17 +1,21 @@
 {
   "extends": "@vue/tsconfig/tsconfig.web.json",
-  "lib": ["esnext"],
   "include": ["env.d.ts", "src/**/*", "src/**/*.vue"],
   "compilerOptions": {
+    "lib": ["esnext"],
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    "noImplicitReturns": true,
+    "strictNullChecks": true,
+    "noImplicitAny": true
   },
 
   "references": [
     {
       "path": "./tsconfig.vite-config.json"
     }
-  ]
+  ],
+  "$schema": "https://json.schemastore.org/tsconfig"
 }

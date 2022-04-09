@@ -1,18 +1,28 @@
 <script setup lang="ts">
 import { getAbility } from '@/data/abilities'
-import { getCharacter } from '@/data/characters'
-import type { PlayerConfig } from '@/stores/gameConfig'
-import type { Character } from '@/data/characters.types'
-import { computed } from 'vue'
 import type { Ability } from '@/data/abilities.types'
+import { getCharacter } from '@/data/characters'
+import {
+  isCustomCharacterId,
+  type Character,
+  type CustomCharacter,
+} from '@/data/characters.types'
+import ilustrations from '@/data/ilustrations'
+import { useCustomDataStore } from '@/stores/customData'
+import type { PlayerConfig } from '@/stores/gameConfig'
+import { computed } from 'vue'
 
 interface Props {
   player: PlayerConfig
 }
 const props = defineProps<Props>()
 
-const character = computed<Character>(() =>
-  getCharacter(props.player.character)
+const { getCustomCharacter } = useCustomDataStore()
+
+const character = computed<Character | CustomCharacter>(() =>
+  isCustomCharacterId(props.player.character)
+    ? getCustomCharacter(props.player.character)
+    : getCharacter(props.player.character)
 )
 const abilities = computed<Ability[]>(() =>
   props.player.abilities.map((abilityId) => getAbility(abilityId))
@@ -33,7 +43,11 @@ const abilities = computed<Ability[]>(() =>
 
     <div class="character">
       <div class="small-title">Character</div>
-      <img :src="character.image" alt="" class="character__image" />
+      <img
+        :src="ilustrations[character.ilustration]"
+        alt=""
+        class="character__ilustration"
+      />
       <div class="character__text">
         {{ character.name }}
       </div>
@@ -43,7 +57,11 @@ const abilities = computed<Ability[]>(() =>
       <div class="small-title">Abilities</div>
       <ul class="ability-list">
         <li v-for="ability in abilities" :key="ability.id" class="ability">
-          <img :src="ability.image" alt="" class="ability__image" />
+          <img
+            :src="ilustrations[ability.ilustration]"
+            alt=""
+            class="ability__ilustration"
+          />
           <span class="ability__name">{{ ability.name }}</span>
         </li>
       </ul>
@@ -89,7 +107,7 @@ const abilities = computed<Ability[]>(() =>
     line-height: 0.8;
   }
 
-  &__image {
+  &__ilustration {
     display: block;
     width: 3rem;
     margin: 0 auto;
@@ -111,7 +129,7 @@ const abilities = computed<Ability[]>(() =>
     margin-bottom: 0.5rem;
   }
 
-  &__image {
+  &__ilustration {
     width: 2rem;
     margin-right: 0.5rem;
     vertical-align: middle;

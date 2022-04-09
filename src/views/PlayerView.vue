@@ -5,6 +5,7 @@ import type { Ability } from '@/data/abilities.types'
 import { getCharacter } from '@/data/characters'
 import type { Character } from '@/data/characters.types'
 import { computed } from 'vue'
+import ilustrations from '@/data/ilustrations'
 
 const { getQueryParam, getQueryParamList } = useRouterHelper()
 
@@ -43,14 +44,18 @@ const abilities = computed<(Ability | undefined)[]>(() =>
       >
         <p class="name">{{ playerName }}</p>
 
-        <img :src="character.image" alt="" class="image image--character" />
-        <div class="ability-images-list">
+        <img
+          :src="ilustrations[character.ilustration]"
+          alt=""
+          class="ilustration ilustration--character"
+        />
+        <div class="ability-ilustrations-list">
           <img
             v-for="ability in abilities"
             :key="ability.id"
-            :src="ability.image"
+            :src="ilustrations[ability.ilustration]"
             alt=""
-            class="image image--ability"
+            class="ilustration ilustration--ability"
           />
         </div>
 
@@ -127,7 +132,7 @@ const abilities = computed<(Ability | undefined)[]>(() =>
   font-size: 1.5rem;
 }
 
-.image {
+.ilustration {
   --size: 100%;
 
   display: inline-block;
@@ -154,7 +159,7 @@ const abilities = computed<(Ability | undefined)[]>(() =>
   }
 }
 
-.ability-images-list {
+.ability-ilustrations-list {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -195,7 +200,7 @@ strong {
   margin-top: 1rem;
   background-color: var(--color-background-soft);
   border-radius: 0.5rem;
-  color: #dc143c;
+  color: var(--color-red);
   text-align: left;
 }
 </style>

@@ -7,6 +7,12 @@
   --vt-c-black-soft: #222;
   --vt-c-black-mute: #282828;
   --vt-c-indigo: #2c3e50;
+  --vt-c-red-1: #dc143c;
+  --vt-c-red-2: #dc143c;
+  --vt-c-red-soft-1: #ff9aae;
+  --vt-c-red-soft-2: #7a434e;
+  --vt-c-blue-soft-1: #96affa;
+  --vt-c-blue-soft-2: #2e4179;
   --vt-c-divider-light-1: rgb(60 60 60 / 29%);
   --vt-c-divider-light-2: rgb(60 60 60 / 12%);
   --vt-c-divider-dark-1: rgb(84 84 84 / 65%);
@@ -28,6 +34,10 @@
   --color-text: var(--vt-c-text-light-1);
   --color-text-soft: var(--vt-c-text-light-3);
   --section-gap: 160px;
+  --color-primary: #4169e1;
+  --color-red: var(--vt-c-red-1);
+  --color-red-soft: var(--vt-c-red-soft-1);
+  --color-blue-soft: var(--vt-c-blue-soft-1);
 
   /* Popper variables */
   --popper-theme-background-color: var(--color-background);
@@ -51,6 +61,9 @@
     --color-heading: var(--vt-c-text-dark-1);
     --color-text: var(--vt-c-text-dark-2);
     --color-text-soft: var(--vt-c-text-dark-3);
+    --color-red: var(--vt-c-red-2);
+    --color-red-soft: var(--vt-c-red-soft-2);
+    --color-blue-soft: var(--vt-c-blue-soft-2);
   }
 }
 
@@ -74,7 +87,7 @@ body {
   transition: color 0.5s, background-color 0.5s;
 }
 
-input, button {
+input, button, textarea {
   font: inherit;
 }
 
@@ -86,7 +99,8 @@ a {
 
 h1,h2,h3,h4,h5,h6 {
   margin: 0;
-  font-weight: normal;
+  color: var(--color-heading);
+  font-weight: normal
 }
 
 p, ul, ol{

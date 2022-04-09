@@ -1,16 +1,23 @@
-import type { CharacterId } from '@/data/characters.types'
+import type {
+  CharacterId,
+  CustomCharacter,
+  CustomCharacterId,
+} from '@/data/characters.types'
 import { defineStore } from 'pinia'
 import { useStorage } from '@vueuse/core'
 import type { AbilityId } from '@/data/abilities.types'
 import type { Action } from '@/data/actions.types'
 import { firstNightActions, nightActions } from '@/data/actions'
 
-export type CharacterConfig = { id: CharacterId; amount: number }
+export type CharacterConfig = {
+  id: CharacterId | CustomCharacterId
+  amount: number
+}
 export type AbilitiesConfig = { id: AbilityId; amount: number }
 export type PlayerConfig = {
   id: number
   name: string
-  character: CharacterId
+  character: CharacterId | CustomCharacterId
   abilities: AbilityId[]
 }
 
@@ -19,6 +26,7 @@ export const useGameConfigStore = defineStore({
 
   state: () => ({
     characters: useStorage<CharacterConfig[]>('characters', []),
+    customCharacters: useStorage<CustomCharacter[]>('customCharacters', []),
     abilities: useStorage<AbilitiesConfig[]>('abilities', []),
     players: useStorage<PlayerConfig[]>('players', []),
     firstNightActions: useStorage<Action[]>('firstNightActions', []),
@@ -61,7 +69,7 @@ function createPlayers(
   abilities: AbilitiesConfig[],
   playerNames: string[]
 ): PlayerConfig[] {
-  const allCharacters: CharacterId[] = []
+  const allCharacters: CharacterConfig['id'][] = []
   for (const character of characters) {
     for (let i = 0; i < character.amount; i++) {
       allCharacters.push(character.id)
@@ -69,7 +77,7 @@ function createPlayers(
   }
   shuffle(allCharacters)
 
-  const allAbilities: AbilityId[] = []
+  const allAbilities: AbilitiesConfig['id'][] = []
   for (const ability of abilities) {
     for (let i = 0; i < ability.amount; i++) {
       allAbilities.push(ability.id)

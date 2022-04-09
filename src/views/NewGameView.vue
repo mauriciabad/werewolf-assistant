@@ -1,15 +1,21 @@
 <script setup lang="ts">
-import type { AbilityId } from '@/data/abilities.types'
-import type { CharacterId } from '@/data/characters.types'
+import CharacterCreatorModal from '@/components/CharacterCreatorModal.vue'
+import type { CustomCharacter } from '@/data/characters.types'
+import { useCustomDataStore } from '@/stores/customData'
 import {
   useGameConfigStore,
   type AbilitiesConfig,
   type CharacterConfig,
 } from '@/stores/gameConfig'
-import { ChevronLeftIcon, InformationCircleIcon } from '@heroicons/vue/outline'
-import { SparklesIcon } from '@heroicons/vue/solid'
+import {
+  ChevronLeftIcon,
+  InformationCircleIcon,
+  PencilIcon,
+  TrashIcon,
+} from '@heroicons/vue/outline'
+import { SparklesIcon, UserAddIcon } from '@heroicons/vue/solid'
 import { storeToRefs } from 'pinia'
-import { computed, reactive, ref } from 'vue'
+import { computed, reactive, ref, watch } from 'vue'
 import { RouterLink, useRouter } from 'vue-router'
 import Popper from 'vue3-popper'
 import IconButton from '../components/IconButton.vue'
@@ -17,10 +23,15 @@ import InputNumber from '../components/InputNumber.vue'
 import TagList from '../components/TagList.vue'
 import { default as abilitiesInfo } from '../data/abilities'
 import { default as charactersInfo } from '../data/characters'
+import ilustrations from '../data/ilustrations'
 
 const gameConfigStore = useGameConfigStore()
 
-const { characters, abilities, players } = storeToRefs(gameConfigStore)
+const { characters, abilities, players, customCharacters } =
+  storeToRefs(gameConfigStore)
+const { createNewGame } = gameConfigStore
+
+const { saveCustomCharacter, removeCustomCharacter } = useCustomDataStore()
 
 const newCharacters = reactive<CharacterConfig[]>(characters.value)
 const newCharacterCount = computed<number>(() =>
@@ -35,8 +46,6 @@ const newAbilitiesPerCharacter = computed<number>(() =>
     ? 0
     : Math.floor(newAbilityCount.value / newCharacterCount.value)
 )
-
-const { createNewGame } = gameConfigStore
 
 const router = useRouter()
 
@@ -53,10 +62,15 @@ const newPlayerNames = computed<string[]>(() =>
 )
 const playerNamesCount = computed<number>(() => newPlayerNames.value.length)
 
-function setCharacterAmount(characterId: CharacterId, amount: number): void {
-  const character = newCharacters.find(
-    (character) => character.id === characterId
-  )
+const showModal = ref<boolean>(false)
+watch(showModal, () => {
+  if (!showModal.value) {
+    customCharacterToEdit.value = undefined
+  }
+})
+
+function setCharacterAmount({ id, amount }: CharacterConfig): void {
+  const character = newCharacters.find((character) => character.id === id)
 
   if (amount === 0) {
     if (!character) return
@@ -66,15 +80,15 @@ function setCharacterAmount(characterId: CharacterId, amount: number): void {
   }
 
   if (!character) {
-    newCharacters.push({ id: characterId, amount })
+    newCharacters.push({ id: id, amount })
     return
   }
 
   character.amount = amount
 }
 
-function setAbilityAmount(abilityId: AbilityId, amount: number): void {
-  const ability = newAbilities.find((character) => character.id === abilityId)
+function setAbilityAmount({ id, amount }: AbilitiesConfig): void {
+  const ability = newAbilities.find((character) => character.id === id)
 
   if (amount === 0) {
     if (!ability) return
@@ -84,7 +98,7 @@ function setAbilityAmount(abilityId: AbilityId, amount: number): void {
   }
 
   if (!ability) {
-    newAbilities.push({ id: abilityId, amount })
+    newAbilities.push({ id: id, amount })
     return
   }
 
@@ -94,6 +108,23 @@ function setAbilityAmount(abilityId: AbilityId, amount: number): void {
 function handleCreateGame(): void {
   createNewGame(newCharacters, newAbilities, newPlayerNames.value, new Date())
   router.push({ name: 'storyteller' })
+}
+
+function handleAddCustomCharacterClick(): void {
+  showModal.value = true
+}
+
+function handleCreateOrEditCustomCharacter(
+  customCharacter: CustomCharacter
+): void {
+  saveCustomCharacter(customCharacter)
+
+  showModal.value = false
+}
+const customCharacterToEdit = ref<CustomCharacter | undefined>(undefined)
+function handleEditCustomCharacter(customCharacter: CustomCharacter): void {
+  customCharacterToEdit.value = customCharacter
+  showModal.value = true
 }
 </script>
 
@@ -124,11 +155,15 @@ function handleCreateGame(): void {
             <span class="toltip-content">{{ character.description }}</span>
           </template>
           <div class="list__item-name-wrapper">
-            <img class="list__item-image" :src="character.image" alt="" />
+            <img
+              class="list__item-ilustration"
+              :src="ilustrations[character.ilustration]"
+              alt=""
+            />
             <label :for="character.id" class="list__item-label">{{
               character.name
             }}</label>
-            <InformationCircleIcon class="info-icon" />
+            <InformationCircleIcon class="list__item-icon" />
           </div>
         </Popper>
         <InputNumber
@@ -136,10 +171,59 @@ function handleCreateGame(): void {
           :default="
             newCharacters.find((c) => c.id === character.id)?.amount ?? 0
           "
-          @input="setCharacterAmount(character.id, $event)"
+          @input="setCharacterAmount({ id: character.id, amount: $event })"
+        />
+      </div>
+
+      <div v-if="customCharacters.length" class="separator" />
+
+      <div
+        v-for="character in customCharacters"
+        :key="character.id"
+        class="list__item-wrapper"
+      >
+        <Popper hover arrow>
+          <template #content>
+            <span class="toltip-content">{{ character.description }}</span>
+          </template>
+          <div class="list__item-name-wrapper">
+            <img
+              class="list__item-ilustration"
+              :src="ilustrations[character.ilustration]"
+              alt=""
+            />
+            <label :for="character.id" class="list__item-label">{{
+              character.name
+            }}</label>
+            <InformationCircleIcon class="list__item-icon" />
+            <TrashIcon
+              class="list__item-icon list__item-icon--delete"
+              @click="removeCustomCharacter(character.id)"
+            />
+            <PencilIcon
+              class="list__item-icon list__item-icon--edit"
+              @click="handleEditCustomCharacter(character)"
+            />
+          </div>
+        </Popper>
+        <InputNumber
+          :id="character.id"
+          :default="
+            newCharacters.find((c) => c.id === character.id)?.amount ?? 0
+          "
+          @input="setCharacterAmount({ id: character.id, amount: $event })"
         />
       </div>
     </div>
+    <CharacterCreatorModal
+      v-model:modelValue="showModal"
+      :initial-value="customCharacterToEdit"
+      @create-character="handleCreateOrEditCustomCharacter"
+      @edit-character="handleCreateOrEditCustomCharacter"
+    />
+    <IconButton class="button" @click="handleAddCustomCharacterClick">
+      <template #icon> <UserAddIcon /> </template>Add custom character
+    </IconButton>
 
     <h2>Choose abilities</h2>
     <p>
@@ -160,17 +244,21 @@ function handleCreateGame(): void {
             <span class="toltip-content">{{ ability.description }}</span>
           </template>
           <div class="list__item-name-wrapper">
-            <img class="list__item-image" :src="ability.image" alt="" />
+            <img
+              class="list__item-ilustration"
+              :src="ilustrations[ability.ilustration]"
+              alt=""
+            />
             <label :for="ability.id" class="list__item-label">{{
               ability.name
             }}</label>
-            <InformationCircleIcon class="info-icon" />
+            <InformationCircleIcon class="list__item-icon" />
           </div>
         </Popper>
         <InputNumber
           :id="ability.id"
           :default="newAbilities.find((a) => a.id === ability.id)?.amount ?? 0"
-          @input="setAbilityAmount(ability.id, $event)"
+          @input="setAbilityAmount({ id: ability.id, amount: $event })"
         />
       </div>
     </div>
@@ -190,7 +278,7 @@ function handleCreateGame(): void {
 
     <IconButton
       :disabled="newCharacterCount <= 1"
-      class="create-button"
+      class="button"
       @click="handleCreateGame"
     >
       <template #icon> <SparklesIcon /> </template>Create game
@@ -251,6 +339,13 @@ $max-width: 28rem;
   }
 }
 
+.separator {
+  width: 100%;
+  height: 1px;
+  margin: 1rem 0;
+  background-color: var(--color-border);
+}
+
 .list {
   width: 100%;
   max-width: $max-width;
@@ -274,7 +369,7 @@ $max-width: 28rem;
       gap: 0.5rem;
     }
 
-    &-image {
+    &-ilustration {
       $size: 2.5rem;
 
       display: inline-block;
@@ -291,17 +386,27 @@ $max-width: 28rem;
       flex: 1;
       font-size: 1.2rem;
     }
+
+    &-icon {
+      width: 24px;
+      color: var(--color-text-soft);
+      vertical-align: -20%;
+
+      &--delete {
+        color: var(--color-red-soft);
+        cursor: pointer;
+      }
+
+      &--edit {
+        color: var(--color-blue-soft);
+        cursor: pointer;
+      }
+    }
   }
 }
 
-.create-button {
+.button {
   margin-top: 1rem;
-}
-
-.info-icon {
-  width: 24px;
-  color: var(--color-text-soft);
-  vertical-align: -20%;
 }
 
 .toltip-content {

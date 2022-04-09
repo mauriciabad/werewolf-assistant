@@ -55,7 +55,7 @@ watch(number, () => {
   </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 $width: 2.5rem;
 $heigth: 3rem;
 

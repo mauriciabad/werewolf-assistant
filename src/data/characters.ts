@@ -1,14 +1,3 @@
-import imageBaker from '@/assets/images/baker.svg'
-import imageFeralKid from '@/assets/images/native-american.svg'
-import imageWitch from '@/assets/images/witch.svg'
-import imageSeer from '@/assets/images/fortune-teller.svg'
-import imageVillager from '@/assets/images/boy.svg'
-import imageTwin from '@/assets/images/twins.svg'
-import imageWerewolf from '@/assets/images/werewolf.svg'
-import imageSuicide from '@/assets/images/crime-scene.png'
-import imageDoctor from '@/assets/images/doctor.png'
-import imageNudist from '@/assets/images/naked.png'
-import imageTriplet from '@/assets/images/triplet.png'
 import type { Character, CharacterId } from './characters.types'
 
 const characters: Character[] = [
@@ -18,14 +7,14 @@ const characters: Character[] = [
     description:
       'During the night votes to kill someone with the other wolfs in secret.',
     team: 'werewolfs',
-    image: imageWerewolf,
+    ilustration: 'werewolf',
   },
   {
     id: 'villager',
     name: 'Villager',
     description: 'During the day votes to kill someone with everyone. ',
     team: 'villagers',
-    image: imageVillager,
+    ilustration: 'boy',
   },
   {
     id: 'nudist',
@@ -33,21 +22,21 @@ const characters: Character[] = [
     description:
       "Everyone knows your role, you have to tell you're the Nudist.",
     team: 'villagers',
-    image: imageNudist,
+    ilustration: 'naked',
   },
   {
     id: 'seer',
     name: 'Seer',
     description: 'You can see the role of a player during the night.',
     team: 'villagers',
-    image: imageSeer,
+    ilustration: 'fortuneTeller',
   },
   {
     id: 'suicide',
     name: 'Suicide',
     description: 'Your objective is to be killed in the first voting.',
     team: 'alone',
-    image: imageSuicide,
+    ilustration: 'crimeScene',
   },
   {
     id: 'feral-kid',
@@ -55,7 +44,7 @@ const characters: Character[] = [
     description:
       'The first night you choose your adoptive parent. You start as a villager but when your parent dies, you become a werewolf.',
     team: 'other',
-    image: imageFeralKid,
+    ilustration: 'nativeAmerican',
   },
   {
     id: 'baker',
@@ -63,21 +52,21 @@ const characters: Character[] = [
     description:
       'Every night you wake someone up and reveal your role in secret.',
     team: 'villagers',
-    image: imageBaker,
+    ilustration: 'baker',
   },
   {
     id: 'triplet',
     name: 'Triplet',
     description: 'You know who your siblings are.',
     team: 'villagers',
-    image: imageTriplet,
+    ilustration: 'triplet',
   },
   {
     id: 'twin',
     name: 'Twin',
     description: 'You know who your siblings are.',
     team: 'villagers',
-    image: imageTwin,
+    ilustration: 'twins',
   },
   {
     id: 'witch',
@@ -85,14 +74,14 @@ const characters: Character[] = [
     description:
       'Can save 1 person during the night, also can kill 1 person.\n Only 1 of each per game.',
     team: 'villagers',
-    image: imageWitch,
+    ilustration: 'witch',
   },
   {
     id: 'doctor',
     name: 'Doctor',
     description: 'Can save 1 person during the night. \n Only 1 use per game.',
     team: 'villagers',
-    image: imageDoctor,
+    ilustration: 'doctor',
   },
 ]
 
