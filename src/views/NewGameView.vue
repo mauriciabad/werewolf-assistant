@@ -223,7 +223,7 @@ function handleEditCustomAbility(customAbility: CustomAbility): void {
         :initial-value="newAbilities.find((a) => a.id === ability.id)"
         @update-ability="setAbilityAmount"
       />
-      <div v-if="customCharacters.length" class="separator" />
+      <div v-if="customAbilities.length" class="separator" />
 
       <CharacterOrAbilityRow
         v-for="ability in customAbilities"
