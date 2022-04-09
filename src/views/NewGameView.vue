@@ -65,7 +65,7 @@ const initialPlayerNames = players.value.map((player) => player.name).join('\n')
 const rawPlayerNames = ref<string>(initialPlayerNames)
 const newPlayerNames = computed<string[]>(() =>
   rawPlayerNames.value
-    .split('\n')
+    .split(/[\n,]/)
     .map((s) => s.trim())
     .filter((s) => s)
     .map((s) => s.charAt(0).toUpperCase() + s.slice(1))
