@@ -17,12 +17,15 @@ import {
   PencilIcon,
   TrashIcon,
 } from '@heroicons/vue/outline'
+import { computed } from '@vue/reactivity'
 import Popper from 'vue3-popper'
 import InputNumber from '../components/InputNumber.vue'
 import ilustrations from '../data/ilustrations'
-defineProps<{
+
+const props = defineProps<{
   data: Character | CustomCharacter | Ability | CustomAbility
   initialValue?: CharacterConfig | AbilityConfig
+  value?: number
 }>()
 
 const emit = defineEmits<{
@@ -35,6 +38,10 @@ const emit = defineEmits<{
   (e: 'removeCustomCharacter', value: CustomCharacterId): void
   (e: 'removeCustomAbility', value: CustomAbilityId): void
 }>()
+
+const inputId = computed<`input-${typeof props.data.id}`>(
+  () => `input-${props.data.id}`
+)
 </script>
 
 <template>
@@ -49,7 +56,7 @@ const emit = defineEmits<{
           :src="ilustrations[data.ilustration]"
           alt=""
         />
-        <label :for="data.id" class="item__label">{{ data.name }}</label>
+        <label :for="inputId" class="item__label">{{ data.name }}</label>
         <InformationCircleIcon class="item__icon" />
         <TrashIcon
           v-if="isCustomCharacter(data) || isCustomAbility(data)"
@@ -75,8 +82,16 @@ const emit = defineEmits<{
         />
       </div>
     </Popper>
+
     <InputNumber
-      :id="data.id"
+      v-if="value !== undefined"
+      :id="inputId"
+      :default="value"
+      disabled
+    />
+    <InputNumber
+      v-else
+      :id="inputId"
       :default="initialValue?.amount ?? 0"
       @input="
         isCharacter(data) || isCustomCharacter(data)

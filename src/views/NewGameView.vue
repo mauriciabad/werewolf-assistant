@@ -20,7 +20,7 @@ import { RouterLink, useRouter } from 'vue-router'
 import CharacterOrAbilityRow from '../components/CharacterOrAbilityRow.vue'
 import IconButton from '../components/IconButton.vue'
 import TagList from '../components/TagList.vue'
-import { default as abilitiesInfo } from '../data/abilities'
+import { default as abilitiesInfo, getAbility } from '../data/abilities'
 import { default as charactersInfo } from '../data/characters'
 
 const gameConfigStore = useGameConfigStore()
@@ -49,6 +49,13 @@ const newAbilitiesPerCharacter = computed<number>(() =>
   newCharacterCount.value === 0
     ? 0
     : Math.floor(newAbilityCount.value / newCharacterCount.value)
+)
+
+const nothingAbilities = computed<number>(() =>
+  newCharacterCount.value === 0
+    ? 0
+    : newAbilityCount.value -
+      newAbilitiesPerCharacter.value * newCharacterCount.value
 )
 
 const router = useRouter()
@@ -103,7 +110,16 @@ function setAbilityAmount({ id, amount }: AbilityConfig): void {
 }
 
 function handleCreateGame(): void {
-  createNewGame(newCharacters, newAbilities, newPlayerNames.value, new Date())
+  const newAbilitiesIncludingNothings: AbilityConfig[] = nothingAbilities.value
+    ? [...newAbilities, { id: 'nothing', amount: nothingAbilities.value }]
+    : newAbilities
+
+  createNewGame(
+    newCharacters,
+    newAbilitiesIncludingNothings,
+    newPlayerNames.value,
+    new Date()
+  )
   router.push({ name: 'storyteller' })
 }
 
@@ -172,7 +188,9 @@ function handleEditCustomAbility(customAbility: CustomAbility): void {
     <h1>New Game</h1>
 
     <h2>Choose characters</h2>
-    <p>Total {{ newCharacterCount }} | {{ playerNamesCount }} players</p>
+    <p>
+      {{ newCharacterCount }} characters | {{ playerNamesCount }} player names
+    </p>
 
     <div class="list">
       <CharacterOrAbilityRow
@@ -209,15 +227,18 @@ function handleEditCustomAbility(customAbility: CustomAbility): void {
 
     <h2>Choose abilities</h2>
     <p>
-      Total {{ newAbilityCount }} | {{ newAbilitiesPerCharacter }} per character
-      |
-      {{ newAbilityCount - newAbilitiesPerCharacter * newCharacterCount }}
-      remaining
+      {{ newAbilitiesPerCharacter }} per character |
+      {{ nothingAbilities }} without ability
     </p>
 
     <div class="list">
       <CharacterOrAbilityRow
-        v-for="ability in abilitiesInfo"
+        :data="getAbility('nothing')"
+        :value="nothingAbilities"
+      />
+
+      <CharacterOrAbilityRow
+        v-for="ability in abilitiesInfo.filter((a) => a.id !== 'nothing')"
         :key="ability.id"
         :data="ability"
         :initial-value="newAbilities.find((a) => a.id === ability.id)"

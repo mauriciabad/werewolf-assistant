@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { MinusIcon, PlusIcon } from '@heroicons/vue/solid'
-import { ref, watch, computed } from 'vue'
+import { computed, ref, watch } from 'vue'
 
 interface Props {
   default?: number
   id?: string
+  disabled?: boolean
 }
 
 const props = defineProps<Props>()
@@ -14,10 +15,23 @@ const emit = defineEmits<{ (e: 'input', value: number): void }>()
 const number = ref<number>(props.default ?? 0)
 const isZero = computed<boolean>(() => number.value === 0)
 
+watch(
+  () => props.default,
+  () => {
+    if (props.default !== undefined) {
+      number.value = props.default
+    }
+  }
+)
+
 function increase(): void {
+  if (props.disabled) return
+
   number.value++
 }
 function decrease(): void {
+  if (props.disabled) return
+
   if (number.value <= 0) {
     number.value = 0
     return
@@ -35,7 +49,7 @@ watch(number, () => {
   <div class="wrapper">
     <div
       class="button button--left"
-      :class="{ 'button--disabled': isZero }"
+      :class="{ 'button--disabled': isZero || disabled }"
       @click="decrease"
     >
       <MinusIcon class="button__icon" />
@@ -47,9 +61,14 @@ watch(number, () => {
       class="input"
       :class="{ 'input--zero': isZero }"
       type="number"
+      :disabled="disabled"
     />
 
-    <div class="button button--right" @click="increase">
+    <div
+      class="button button--right"
+      :class="{ 'button--disabled': disabled }"
+      @click="increase"
+    >
       <PlusIcon class="button__icon" />
     </div>
   </div>
@@ -106,6 +125,11 @@ $heigth: 3rem;
   line-height: 1;
   outline: none;
   text-align: center;
+
+  &:disabled {
+    color: var(--color-text-soft);
+    cursor: not-allowed;
+  }
 
   &--zero {
     color: var(--color-text-soft);
