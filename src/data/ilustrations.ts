@@ -544,4 +544,8 @@ const ilustrations = {
   zzz,
 } as const
 
+export const allIlustrationIds: IlustrationId[] = Object.keys(
+  ilustrations
+) as IlustrationId[]
+
 export default ilustrations

@@ -11,10 +11,10 @@ import {
   type Character,
   type CustomCharacter,
 } from '@/data/characters.types'
-import ilustrations from '@/data/ilustrations'
 import { useCustomDataStore } from '@/stores/customData'
 import type { PlayerConfig } from '@/stores/gameConfig'
 import { computed } from 'vue'
+import Ilustration from './Ilustration.vue'
 
 interface Props {
   player: PlayerConfig
@@ -51,11 +51,7 @@ const abilities = computed<(Ability | CustomAbility)[]>(() =>
 
     <div class="character">
       <div class="small-title">Character</div>
-      <img
-        :src="ilustrations[character.ilustration]"
-        alt=""
-        class="character__ilustration"
-      />
+      <Ilustration :id="character.ilustration" class="character__ilustration" />
       <div class="character__text">
         {{ character.name }}
       </div>
@@ -65,11 +61,7 @@ const abilities = computed<(Ability | CustomAbility)[]>(() =>
       <div class="small-title">Abilities</div>
       <ul class="ability-list">
         <li v-for="ability in abilities" :key="ability.id" class="ability">
-          <img
-            :src="ilustrations[ability.ilustration]"
-            alt=""
-            class="ability__ilustration"
-          />
+          <Ilustration :id="ability.ilustration" class="ability__ilustration" />
           <span class="ability__name">{{ ability.name }}</span>
         </li>
       </ul>

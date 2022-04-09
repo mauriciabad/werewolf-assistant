@@ -3,12 +3,14 @@ import type { CustomAbility } from '@/data/abilities.types'
 import { isCustomAbility } from '@/data/abilities.types'
 import type { CustomCharacter } from '@/data/characters.types'
 import { isCustomCharacter } from '@/data/characters.types'
-import ilustrations, { type IlustrationId } from '@/data/ilustrations'
+import type { IlustrationId } from '@/data/ilustrations'
+import { allIlustrationIds } from '@/data/ilustrations'
 import { CheckIcon, XIcon } from '@heroicons/vue/solid'
 import { computed, ref } from '@vue/reactivity'
 import { watch } from 'vue'
-import IconButton from './IconButton.vue'
 import CustomModal from './CustomModal.vue'
+import IconButton from './IconButton.vue'
+import Ilustration from './Ilustration.vue'
 
 const props = defineProps<{
   type: 'character' | 'ability'
@@ -50,14 +52,6 @@ const ilustration = ref<IlustrationId | undefined>(
 const isValid = computed<boolean>(
   () => !!name.value && !!description.value && !!ilustration.value
 )
-
-const ilustrationEntries: {
-  id: IlustrationId
-  url: string
-}[] = Object.entries(ilustrations).map(([key, value]) => ({
-  id: key as IlustrationId,
-  url: value,
-}))
 
 function handleConfirm(): void {
   if (!name.value || !description.value || !ilustration.value) return
@@ -140,21 +134,20 @@ function handleConfirm(): void {
 
     <span class="field__label">Image</span>
     <div class="ilustration-selector">
-      <img
-        v-for="ilustrationEntry in ilustrationEntries"
-        :key="ilustrationEntry.id"
-        :src="ilustrationEntry.url"
+      <Ilustration
+        v-for="ilustrationId in allIlustrationIds"
+        :id="ilustrationId"
+        :key="ilustrationId"
         class="ilustration-selector__ilustration"
         :class="{
           'ilustration-selector__ilustration--selected':
-            ilustration === ilustrationEntry.id,
+            ilustration === ilustrationId,
         }"
-        loading="lazy"
         tabindex="0"
         role="button"
-        @click="ilustration = ilustrationEntry.id"
-        @keypress.enter="ilustration = ilustrationEntry.id"
-        @keypress.space="ilustration = ilustrationEntry.id"
+        @click="ilustration = ilustrationId"
+        @keypress.enter="ilustration = ilustrationId"
+        @keypress.space="ilustration = ilustrationId"
       />
     </div>
 

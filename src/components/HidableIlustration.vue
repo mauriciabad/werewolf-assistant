@@ -2,14 +2,14 @@
 import { getAbility } from '@/data/abilities'
 import { getCharacter } from '@/data/characters'
 import { computed } from '@vue/reactivity'
-import ilustrations, { type IlustrationId } from '@/data/ilustrations'
+import type { IlustrationId } from '@/data/ilustrations'
+import Ilustration from './Ilustration.vue'
 
 type IlustrationType = 'character' | 'ability'
 const props = defineProps<{
   ilustrationType: IlustrationType
   visible: boolean
   ilustration: IlustrationId
-  alt?: string
 }>()
 
 const placeholderIlustrations: Record<IlustrationType, IlustrationId> = {
@@ -23,13 +23,8 @@ const placeholderIlustration = computed<IlustrationId>(
 </script>
 
 <template>
-  <img v-if="visible" :src="ilustrations[ilustration]" :alt="alt" />
-  <img
-    v-else
-    :src="ilustrations[placeholderIlustration]"
-    :alt="alt"
-    class="blurry"
-  />
+  <Ilustration v-if="visible" :id="ilustration" />
+  <Ilustration v-else :id="placeholderIlustration" class="blurry" />
 </template>
 
 <style scoped lang="scss">

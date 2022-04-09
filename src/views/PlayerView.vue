@@ -8,6 +8,7 @@ import type { Character, CustomCharacter } from '@/data/characters.types'
 import { isCharacterId, isCustomCharacterId } from '@/data/characters.types'
 import ilustrations from '@/data/ilustrations'
 import { computed } from 'vue'
+import Ilustration from '../components/Ilustration.vue'
 
 const { getQueryParam, getQueryParamList } = useRouterHelper()
 
@@ -112,21 +113,15 @@ const allAbilities = computed<(Ability | CustomAbility | undefined)[]>(() => {
       >
         <p class="name">{{ playerName }}</p>
 
-        <img
-          :src="
-            character
-              ? ilustrations[character.ilustration]
-              : ilustrations[customCharacter!.ilustration]
-          "
-          alt=""
+        <Ilustration
+          :id="character ? character.ilustration : customCharacter!.ilustration"
           class="ilustration ilustration--character"
         />
         <div class="ability-ilustrations-list">
-          <img
+          <Ilustration
             v-for="ability in allAbilities"
+            :id="ability.ilustration"
             :key="ability.id"
-            :src="ilustrations[ability.ilustration]"
-            alt=""
             class="ilustration ilustration--ability"
           />
         </div>

@@ -20,7 +20,7 @@ import {
 import { computed } from '@vue/reactivity'
 import Popper from 'vue3-popper'
 import InputNumber from '../components/InputNumber.vue'
-import ilustrations from '../data/ilustrations'
+import Ilustration from './Ilustration.vue'
 
 const props = defineProps<{
   data: Character | CustomCharacter | Ability | CustomAbility
@@ -51,11 +51,7 @@ const inputId = computed<`input-${typeof props.data.id}`>(
         <span class="toltip-content">{{ data.description }}</span>
       </template>
       <div class="item__name-wrapper">
-        <img
-          class="item__ilustration"
-          :src="ilustrations[data.ilustration]"
-          alt=""
-        />
+        <Ilustration :id="data.ilustration" class="item__ilustration" />
         <label :for="inputId" class="item__label">{{ data.name }}</label>
         <InformationCircleIcon class="item__icon" />
         <TrashIcon
