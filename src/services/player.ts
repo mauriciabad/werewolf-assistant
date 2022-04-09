@@ -1,3 +1,4 @@
+import { isCustomAbilityId, type CustomAbility } from '@/data/abilities.types'
 import {
   isCustomCharacterId,
   type CustomCharacter,
@@ -7,7 +8,8 @@ import type { PlayerConfig } from '@/stores/gameConfig'
 export function playerViewUrl(
   player: PlayerConfig,
   creationDate: Date,
-  customCharacters: CustomCharacter[]
+  customCharacters: CustomCharacter[],
+  customAbilities: CustomAbility[]
 ): string {
   const url = new URL(`${location.origin}/player`)
   url.searchParams.append('player', player.name)
@@ -26,7 +28,20 @@ export function playerViewUrl(
     url.searchParams.append('character', player.character)
   }
   for (const ability of player.abilities) {
-    url.searchParams.append('abilities', ability)
+    if (isCustomAbilityId(ability)) {
+      const tempCustomAbility = customAbilities.find(
+        (customAbility) => customAbility.id === ability
+      )
+      if (tempCustomAbility) {
+        const customAbility: CustomAbility = tempCustomAbility
+        url.searchParams.append(
+          'custom-abilities',
+          JSON.stringify(customAbility)
+        )
+      }
+    } else {
+      url.searchParams.append('abilities', ability)
+    }
   }
   url.searchParams.append('creationDate', creationDate.toISOString())
 

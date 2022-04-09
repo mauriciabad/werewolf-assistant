@@ -29,7 +29,7 @@ interface Props {
 const props = defineProps<Props>()
 
 const customDataStore = useCustomDataStore()
-const { customCharacters } = storeToRefs(customDataStore)
+const { customCharacters, customAbilities } = storeToRefs(customDataStore)
 const { getCustomCharacter, getCustomAbility } = customDataStore
 
 const character = computed<Character | CustomCharacter>(() =>
@@ -45,7 +45,12 @@ const abilities = computed<(Ability | CustomAbility)[]>(() =>
 )
 
 const url = computed<string>(() =>
-  playerViewUrl(props.player, props.creationDate, customCharacters.value)
+  playerViewUrl(
+    props.player,
+    props.creationDate,
+    customCharacters.value,
+    customAbilities.value
+  )
 )
 </script>
 

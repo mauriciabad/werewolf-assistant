@@ -1,14 +1,11 @@
 <script setup lang="ts">
 import { useRouterHelper } from '@/compositions/useRouterHelper'
 import { getAbility } from '@/data/abilities'
-import type { Ability } from '@/data/abilities.types'
+import type { Ability, CustomAbility } from '@/data/abilities.types'
+import { isCustomAbilityId } from '@/data/abilities.types'
 import { getCharacter } from '@/data/characters'
-import {
-  isCharacterId,
-  isCustomCharacterId,
-  type Character,
-  type CustomCharacter,
-} from '@/data/characters.types'
+import type { Character, CustomCharacter } from '@/data/characters.types'
+import { isCharacterId, isCustomCharacterId } from '@/data/characters.types'
 import ilustrations from '@/data/ilustrations'
 import { computed } from 'vue'
 
@@ -44,8 +41,8 @@ const customCharacter = computed<CustomCharacter | undefined>(() => {
       !isCustomCharacterId(customCharacter.id) ||
       typeof customCharacter.name !== 'string' ||
       typeof customCharacter.description !== 'string' ||
-      !ilustrations[customCharacter.ilustration] ||
-      typeof customCharacter.ilustration !== 'string'
+      typeof customCharacter.ilustration !== 'string' ||
+      !ilustrations[customCharacter.ilustration]
     ) {
       return undefined
     }
@@ -70,14 +67,48 @@ const abilities = computed<(Ability | undefined)[]>(() =>
   getQueryParamList('abilities').map((abilityId) => getAbility(abilityId))
 )
 
-// TODO: Add support for custom abilities
+const customAbilities = computed<(CustomAbility | undefined)[]>(() => {
+  const customAbilitiesJSONs = getQueryParamList('custom-abilities')
+  if (customAbilitiesJSONs === undefined) {
+    return []
+  }
+
+  return customAbilitiesJSONs
+    .map<CustomAbility | undefined>((customAbilitiesJSON) => {
+      try {
+        return JSON.parse(customAbilitiesJSON)
+      } catch {
+        return undefined
+      }
+    })
+    .map((customAbility) => {
+      if (
+        !customAbility ||
+        typeof customAbility !== 'object' ||
+        typeof customAbility.id !== 'string' ||
+        !isCustomAbilityId(customAbility.id) ||
+        typeof customAbility.name !== 'string' ||
+        typeof customAbility.description !== 'string' ||
+        typeof customAbility.ilustration !== 'string' ||
+        !ilustrations[customAbility.ilustration]
+      ) {
+        return undefined
+      }
+
+      return customAbility
+    })
+})
+
+const allAbilities = computed<(Ability | CustomAbility | undefined)[]>(() => {
+  return [...abilities.value, ...customAbilities.value]
+})
 </script>
 
 <template>
   <main class="main">
     <template v-if="hasData">
       <template
-        v-if="(character || customCharacter) && abilities.every((ability):ability is Ability => ability !== undefined)"
+        v-if="(character || customCharacter) && allAbilities.every((a):a is Ability | CustomAbility => a !== undefined)"
       >
         <p class="name">{{ playerName }}</p>
 
@@ -92,7 +123,7 @@ const abilities = computed<(Ability | undefined)[]>(() =>
         />
         <div class="ability-ilustrations-list">
           <img
-            v-for="ability in abilities"
+            v-for="ability in allAbilities"
             :key="ability.id"
             :src="ilustrations[ability.ilustration]"
             alt=""
@@ -110,7 +141,7 @@ const abilities = computed<(Ability | undefined)[]>(() =>
         <div v-if="abilities.length" class="abilities">
           <h2>Abilities</h2>
           <ul>
-            <li v-for="ability in abilities" :key="ability.id">
+            <li v-for="ability in allAbilities" :key="ability.id">
               <strong>{{ ability.name }}:</strong>
               {{ ability.description }}
             </li>
