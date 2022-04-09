@@ -1,47 +1,28 @@
 <script lang="ts" setup>
-import type {
-  Ability,
-  CustomAbility,
-  CustomAbilityId,
-} from '@/data/abilities.types'
+import type { Ability, CustomAbility } from '@/data/abilities.types'
 import { isCustomAbility } from '@/data/abilities.types'
-import type {
-  Character,
-  CustomCharacter,
-  CustomCharacterId,
-} from '@/data/characters.types'
-import { isCharacter, isCustomCharacter } from '@/data/characters.types'
-import type { AbilityConfig, CharacterConfig } from '@/stores/gameConfig'
+import type { Character, CustomCharacter } from '@/data/characters.types'
+import { isCustomCharacter } from '@/data/characters.types'
 import {
   InformationCircleIcon,
   PencilIcon,
   TrashIcon,
 } from '@heroicons/vue/outline'
-import { computed } from '@vue/reactivity'
 import Popper from 'vue3-popper'
 import InputNumber from '../components/InputNumber.vue'
 import Ilustration from './Ilustration.vue'
 
-const props = defineProps<{
+defineProps<{
   data: Character | CustomCharacter | Ability | CustomAbility
-  initialValue?: CharacterConfig | AbilityConfig
-  value?: number
+  modelValue?: number
+  disabled?: boolean
 }>()
 
 const emit = defineEmits<{
-  (e: 'updateCharacter', value: CharacterConfig): void
-  (e: 'updateAbility', value: AbilityConfig): void
-
-  (e: 'editCustomCharacter', value: CustomCharacter): void
-  (e: 'editCustomAbility', value: CustomAbility): void
-
-  (e: 'removeCustomCharacter', value: CustomCharacterId): void
-  (e: 'removeCustomAbility', value: CustomAbilityId): void
+  (e: 'update:modelValue', value: number): void
+  (e: 'edit'): void
+  (e: 'remove'): void
 }>()
-
-const inputId = computed<`input-${typeof props.data.id}`>(
-  () => `input-${props.data.id}`
-)
 </script>
 
 <template>
@@ -52,48 +33,29 @@ const inputId = computed<`input-${typeof props.data.id}`>(
       </template>
       <div class="item__name-wrapper">
         <Ilustration :id="data.ilustration" class="item__ilustration" />
-        <label :for="inputId" class="item__label">{{ data.name }}</label>
+
+        <label class="item__label">{{ data.name }}</label>
+
         <InformationCircleIcon class="item__icon" />
+
         <TrashIcon
           v-if="isCustomCharacter(data) || isCustomAbility(data)"
           class="item__icon item__icon--delete"
-          @click="
-            isCustomCharacter(data)
-              ? emit('removeCustomCharacter', data.id)
-              : isCustomAbility(data)
-              ? emit('removeCustomAbility', data.id)
-              : null
-          "
+          @click="emit('remove')"
         />
+
         <PencilIcon
           v-if="isCustomCharacter(data) || isCustomAbility(data)"
           class="item__icon item__icon--edit"
-          @click="
-            isCustomCharacter(data)
-              ? emit('editCustomCharacter', data)
-              : isCustomAbility(data)
-              ? emit('editCustomAbility', data)
-              : null
-          "
+          @click="emit('edit')"
         />
       </div>
     </Popper>
 
     <InputNumber
-      v-if="value !== undefined"
-      :id="inputId"
-      :default="value"
-      disabled
-    />
-    <InputNumber
-      v-else
-      :id="inputId"
-      :default="initialValue?.amount ?? 0"
-      @input="
-        isCharacter(data) || isCustomCharacter(data)
-          ? emit('updateCharacter', { id: data.id, amount: $event })
-          : emit('updateAbility', { id: data.id, amount: $event })
-      "
+      :model-value="modelValue"
+      :disabled="disabled"
+      @update:model-value="emit('update:modelValue', $event)"
     />
   </div>
 </template>

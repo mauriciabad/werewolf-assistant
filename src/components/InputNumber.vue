@@ -1,33 +1,28 @@
 <script setup lang="ts">
 import { MinusIcon, PlusIcon } from '@heroicons/vue/solid'
-import { computed, ref, watch } from 'vue'
+import { computed } from 'vue'
 
 interface Props {
-  default?: number
-  id?: string
+  modelValue?: number
   disabled?: boolean
 }
 
 const props = defineProps<Props>()
 
-const emit = defineEmits<{ (e: 'input', value: number): void }>()
+const emit = defineEmits<{ (e: 'update:modelValue', value: number): void }>()
 
-const number = ref<number>(props.default ?? 0)
+const number = computed<number>({
+  get: () => props.modelValue || 0,
+  set: (value) => {
+    emit('update:modelValue', value || 0)
+  },
+})
 const isZero = computed<boolean>(() => number.value === 0)
-
-watch(
-  () => props.default,
-  () => {
-    if (props.default !== undefined) {
-      number.value = props.default
-    }
-  }
-)
 
 function increase(): void {
   if (props.disabled) return
 
-  number.value++
+  number.value = number.value + 1
 }
 function decrease(): void {
   if (props.disabled) return
@@ -37,12 +32,8 @@ function decrease(): void {
     return
   }
 
-  number.value--
+  number.value = number.value - 1
 }
-
-watch(number, () => {
-  emit('input', number.value)
-})
 </script>
 
 <template>
@@ -56,12 +47,14 @@ watch(number, () => {
     </div>
 
     <input
-      :id="id"
-      v-model="number"
+      v-model.number="number"
       class="input"
       :class="{ 'input--zero': isZero }"
       type="number"
       :disabled="disabled"
+      min="0"
+      max="99"
+      step="1"
     />
 
     <div

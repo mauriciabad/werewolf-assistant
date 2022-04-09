@@ -197,8 +197,10 @@ function handleEditCustomAbility(customAbility: CustomAbility): void {
         v-for="character in charactersInfo"
         :key="character.id"
         :data="character"
-        :initial-value="newCharacters.find((a) => a.id === character.id)"
-        @update-character="setCharacterAmount"
+        :model-value="newCharacters.find((a) => a.id === character.id)?.amount"
+        @update:model-value="
+          setCharacterAmount({ id: character.id, amount: $event })
+        "
       />
 
       <div v-if="customCharacters.length" class="separator" />
@@ -207,10 +209,12 @@ function handleEditCustomAbility(customAbility: CustomAbility): void {
         v-for="character in customCharacters"
         :key="character.id"
         :data="character"
-        :initial-value="newCharacters.find((a) => a.id === character.id)"
-        @update-character="setCharacterAmount"
-        @edit-custom-character="handleEditCustomCharacter"
-        @remove-custom-character="removeCustomCharacter(character.id)"
+        :model-value="newCharacters.find((a) => a.id === character.id)?.amount"
+        @update:model-value="
+          setCharacterAmount({ id: character.id, amount: $event })
+        "
+        @edit="handleEditCustomCharacter(character)"
+        @remove="removeCustomCharacter(character.id)"
       />
     </div>
 
@@ -234,15 +238,18 @@ function handleEditCustomAbility(customAbility: CustomAbility): void {
     <div class="list">
       <CharacterOrAbilityRow
         :data="getAbility('nothing')"
-        :value="nothingAbilities"
+        :model-value="nothingAbilities"
+        disabled
       />
 
       <CharacterOrAbilityRow
         v-for="ability in abilitiesInfo.filter((a) => a.id !== 'nothing')"
         :key="ability.id"
         :data="ability"
-        :initial-value="newAbilities.find((a) => a.id === ability.id)"
-        @update-ability="setAbilityAmount"
+        :model-value="newAbilities.find((a) => a.id === ability.id)?.amount"
+        @update:model-value="
+          setAbilityAmount({ id: ability.id, amount: $event })
+        "
       />
       <div v-if="customAbilities.length" class="separator" />
 
@@ -250,10 +257,12 @@ function handleEditCustomAbility(customAbility: CustomAbility): void {
         v-for="ability in customAbilities"
         :key="ability.id"
         :data="ability"
-        :initial-value="newAbilities.find((a) => a.id === ability.id)"
-        @update-ability="setAbilityAmount"
-        @edit-custom-ability="handleEditCustomAbility"
-        @remove-custom-ability="removeCustomAbility(ability.id)"
+        :model-value="newAbilities.find((a) => a.id === ability.id)?.amount"
+        @update:model-value="
+          setAbilityAmount({ id: ability.id, amount: $event })
+        "
+        @edit="handleEditCustomAbility(ability)"
+        @remove="removeCustomAbility(ability.id)"
       />
     </div>
     <CharacterOrAbilityCreatorModal
