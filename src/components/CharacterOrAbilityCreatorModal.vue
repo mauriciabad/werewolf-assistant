@@ -121,7 +121,9 @@ function handleConfirm(): void {
 
 <template>
   <CustomModal v-model="showModal">
-    <template #title>Create character</template>
+    <template #title>
+      Create {{ type === 'character' ? 'character' : 'ability' }}
+    </template>
 
     <label class="fiel">
       <span class="field__label">Name</span>
