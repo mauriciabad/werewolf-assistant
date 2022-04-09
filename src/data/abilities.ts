@@ -1,8 +1,8 @@
-import imageCupid from '@/assets/images/136-cupid.svg'
-import imageExtraLife from '@/assets/images/181-revive.svg'
-import imageVote from '@/assets/images/204-vote.svg'
-import imageNothing from '@/assets/images/241-prohibited.svg'
-import imageMajor from '@/assets/images/254-sheriff.svg'
+import imageCupid from '@/assets/images/cupid.svg'
+import imageExtraLife from '@/assets/images/revive.svg'
+import imageVote from '@/assets/images/vote.svg'
+import imageNothing from '@/assets/images/prohibited.svg'
+import imageMajor from '@/assets/images/sheriff.svg'
 import type { Ability, AbilityId } from './abilities.types'
 
 const abilities: Ability[] = [
