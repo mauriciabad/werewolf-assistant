@@ -121,7 +121,13 @@ function handleConfirm(): void {
 
     <label class="fiel">
       <span class="field__label">Name</span>
-      <input v-model="name" class="field__input" type="text" required />
+      <input
+        v-model="name"
+        class="field__input"
+        type="text"
+        required
+        maxlength="50"
+      />
     </label>
     <label class="field">
       <span class="field__label">Description</span>
@@ -129,6 +135,7 @@ function handleConfirm(): void {
         v-model="description"
         class="field__input field__input--textarea"
         required
+        maxlength="1000"
       />
     </label>
 
