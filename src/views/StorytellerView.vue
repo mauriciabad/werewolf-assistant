@@ -22,9 +22,6 @@ if (players.value.length === 0) {
       <RouterLink class="link" :to="{ name: 'newGame' }">
         <RefreshIcon class="link__icon" />New game
       </RouterLink>
-      <RouterLink class="link" :to="{ name: 'distributeRoles' }">
-        <IdentificationIcon class="link__icon" />Distribute roles
-      </RouterLink>
     </div>
 
     <div class="content">
@@ -54,6 +51,11 @@ if (players.value.length === 0) {
       </ol>
 
       <h1>Player list</h1>
+      <div class="links">
+        <RouterLink class="link" :to="{ name: 'distributeRoles' }">
+          <IdentificationIcon class="link__icon" />Distribute roles
+        </RouterLink>
+      </div>
       <div class="player-list">
         <PlayerCard
           v-for="player in players"
