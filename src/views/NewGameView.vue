@@ -15,7 +15,7 @@ import {
   ViewGridAddIcon,
 } from '@heroicons/vue/solid'
 import { storeToRefs } from 'pinia'
-import { computed, reactive, ref, watch } from 'vue'
+import { computed, onMounted, reactive, ref, watch } from 'vue'
 import { RouterLink, useRouter } from 'vue-router'
 import CharacterOrAbilityRow from '../components/CharacterOrAbilityRow.vue'
 import IconButton from '../components/IconButton.vue'
@@ -72,6 +72,16 @@ const newPlayerNames = computed<string[]>(() =>
     .filter((s, i, arr) => arr.indexOf(s) === i)
 )
 const playerNamesCount = computed<number>(() => newPlayerNames.value.length)
+
+onMounted(() => {
+  rawPlayerNames.value = initialPlayerNames
+
+  newCharacters.length = 0
+  newCharacters.concat(characters.value)
+
+  newAbilities.length = 0
+  newAbilities.concat(abilities.value)
+})
 
 function setCharacterAmount({ id, amount }: CharacterConfig): void {
   const character = newCharacters.find((character) => character.id === id)
