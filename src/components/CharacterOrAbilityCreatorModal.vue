@@ -8,6 +8,7 @@ import { allIlustrationIds } from '@/data/ilustrations'
 import { CheckIcon, XIcon } from '@heroicons/vue/solid'
 import { computed, ref } from '@vue/reactivity'
 import { watch } from 'vue'
+import { useI18n } from 'vue-i18n'
 import CustomModal from './CustomModal.vue'
 import IconButton from './IconButton.vue'
 import Ilustration from './Ilustration.vue'
@@ -27,6 +28,8 @@ const emit = defineEmits<{
   (e: 'createCharacter', value: CustomCharacter): void
   (e: 'createAbility', value: CustomAbility): void
 }>()
+
+const { t } = useI18n()
 
 const showModal = computed<boolean>({
   get: () => props.modelValue,
@@ -116,11 +119,14 @@ function handleConfirm(): void {
 <template>
   <CustomModal v-model="showModal">
     <template #title>
-      Create {{ type === 'character' ? 'character' : 'ability' }}
+      <template v-if="type === 'character'">{{
+        t('createCustomCharacter')
+      }}</template>
+      <template v-else>{{ t('createCustomAbility') }}</template>
     </template>
 
     <label class="fiel">
-      <span class="field__label">Name</span>
+      <span class="field__label">{{ t('name') }}</span>
       <input
         v-model="name"
         class="field__input"
@@ -130,7 +136,7 @@ function handleConfirm(): void {
       />
     </label>
     <label class="field">
-      <span class="field__label">Description</span>
+      <span class="field__label">{{ t('description') }}</span>
       <textarea
         v-model="description"
         class="field__input field__input--textarea"
@@ -139,7 +145,7 @@ function handleConfirm(): void {
       />
     </label>
 
-    <span class="field__label">Image</span>
+    <span class="field__label">{{ t('image') }}</span>
     <div class="ilustration-selector">
       <Ilustration
         v-for="ilustrationId in allIlustrationIds"
@@ -160,7 +166,7 @@ function handleConfirm(): void {
 
     <template #footer="{ close }">
       <IconButton @click="close">
-        <template #icon> <XIcon /> </template>Cancel
+        <template #icon><XIcon /></template>{{ t('cancel') }}
       </IconButton>
 
       <IconButton
@@ -172,7 +178,7 @@ function handleConfirm(): void {
           }
         "
       >
-        <template #icon> <CheckIcon /> </template>Confirm
+        <template #icon><CheckIcon /></template>{{ t('confirm') }}
       </IconButton>
     </template>
   </CustomModal>
