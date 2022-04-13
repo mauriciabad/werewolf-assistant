@@ -119,10 +119,18 @@ function handleConfirm(): void {
 <template>
   <CustomModal v-model="showModal">
     <template #title>
-      <template v-if="type === 'character'">{{
-        t('createCustomCharacter')
-      }}</template>
-      <template v-else>{{ t('createCustomAbility') }}</template>
+      <template v-if="initialValue">
+        <template v-if="type === 'character'">{{
+          t('editCustomCharacter')
+        }}</template>
+        <template v-else>{{ t('editCustomAbility') }}</template>
+      </template>
+      <template v-else>
+        <template v-if="type === 'character'">{{
+          t('createCustomCharacter')
+        }}</template>
+        <template v-else>{{ t('createCustomAbility') }}</template>
+      </template>
     </template>
 
     <label class="fiel">
