@@ -15,7 +15,7 @@ import {
   ViewGridAddIcon,
 } from '@heroicons/vue/solid'
 import { storeToRefs } from 'pinia'
-import { computed, onMounted, reactive, ref, watch } from 'vue'
+import { computed, reactive, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { RouterLink, useRouter } from 'vue-router'
 import CharacterOrAbilityRow from '../components/CharacterOrAbilityRow.vue'
@@ -40,11 +40,11 @@ const {
   removeCustomAbility,
 } = customDataStore
 
-const newCharacters = reactive<CharacterConfig[]>(characters.value)
+const newCharacters = reactive<CharacterConfig[]>([...characters.value])
 const newCharacterCount = computed<number>(() =>
   newCharacters.reduce((total, { amount }) => total + amount, 0)
 )
-const newAbilities = reactive<AbilityConfig[]>(abilities.value)
+const newAbilities = reactive<AbilityConfig[]>([...abilities.value])
 const newAbilityCount = computed<number>(() =>
   newAbilities.reduce((total, { amount }) => total + amount, 0)
 )
@@ -75,16 +75,6 @@ const newPlayerNames = computed<string[]>(() =>
     .filter((s, i, arr) => arr.indexOf(s) === i)
 )
 const playerNamesCount = computed<number>(() => newPlayerNames.value.length)
-
-onMounted(() => {
-  rawPlayerNames.value = initialPlayerNames
-
-  newCharacters.length = 0
-  newCharacters.concat(characters.value)
-
-  newAbilities.length = 0
-  newAbilities.concat(abilities.value)
-})
 
 function setCharacterAmount({ id, amount }: CharacterConfig): void {
   const character = newCharacters.find((character) => character.id === id)
