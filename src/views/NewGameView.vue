@@ -299,7 +299,6 @@ function handleEditCustomAbility(customAbility: CustomAbility): void {
       id="player-names"
       v-model="rawPlayerNames"
       name="Player names"
-      rows="10"
       class="player-names"
     ></textarea>
     <TagList :items="newPlayerNames" class="player-names-list" />
@@ -400,7 +399,7 @@ h2 {
 .player-names {
   width: 100%;
   max-width: $max-width;
-  height: 4rem;
+  height: 17rem;
   min-height: 4rem;
   padding: 0.75rem;
   border: 1px solid var(--color-border);
