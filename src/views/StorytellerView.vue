@@ -119,14 +119,21 @@ h1 {
   border: 1px solid var(--color-border);
   background-color: var(--color-background-soft);
   border-radius: 0.5rem;
+  box-shadow: 0 0 0 0 var(--color-primary);
   font-size: 1rem;
   justify-self: center;
+  outline: none;
+  transition: box-shadow 0.2s cubic-bezier(0.18, 0.89, 0.32, 1.28);
 
   &__icon {
     display: inline-block;
     height: 20px;
     margin-right: 0.5rem;
     vertical-align: middle;
+  }
+
+  &:focus-visible {
+    box-shadow: 0 0 0 3px var(--color-primary);
   }
 }
 

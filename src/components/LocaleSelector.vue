@@ -57,11 +57,19 @@ const currentLocaleInfo = computed<LocaleInfo | undefined>(() =>
   appearance: none;
   background-color: var(--color-background-soft);
   border-radius: 0.5rem;
+  box-shadow: 0 0 0 0 var(--color-primary);
   color: var(--color-text);
   text-align: left;
+  transition: box-shadow 0.2s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+
+  &:focus-within {
+    box-shadow: 0 0 0 3px var(--color-primary);
+  }
 
   &__input {
     position: absolute;
+    z-index: 1;
+    cursor: pointer;
     inset: 0;
     opacity: 0;
   }

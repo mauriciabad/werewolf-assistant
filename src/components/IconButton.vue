@@ -25,6 +25,7 @@ const emit = defineEmits<{ (e: 'click'): void }>()
   border: 1px solid var(--color-border);
   background-color: var(--color-background-soft);
   border-radius: 0.5rem;
+  box-shadow: 0 0 0 0 var(--color-primary);
   cursor: pointer;
   font-size: 1rem;
   justify-self: center;
