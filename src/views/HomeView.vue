@@ -1,15 +1,20 @@
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
 import { RouterLink } from 'vue-router'
+
+const { t } = useI18n()
 </script>
 
 <template>
   <main class="main">
-    <h1 class="title">Who are you?</h1>
+    <h1 class="title">{{ t('whatAreYouQuestion') }}</h1>
     <div class="links">
-      <RouterLink class="link" :to="{ name: 'storyteller' }"
-        >Storyteller</RouterLink
-      >
-      <RouterLink class="link" :to="{ name: 'player' }">Player</RouterLink>
+      <RouterLink class="link" :to="{ name: 'storyteller' }">{{
+        t('storyteller')
+      }}</RouterLink>
+      <RouterLink class="link" :to="{ name: 'player' }">{{
+        t('player')
+      }}</RouterLink>
     </div>
   </main>
 </template>
