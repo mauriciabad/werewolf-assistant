@@ -198,11 +198,12 @@ function handleEditCustomAbility(customAbility: CustomAbility): void {
       </RouterLink>
     </div>
 
-    <h1>New Game</h1>
+    <h1>{{ t('newGame') }}</h1>
 
-    <h2>Choose characters</h2>
+    <h2>{{ t('choseCharacters') }}</h2>
     <p>
-      {{ newCharacterCount }} characters | {{ playerNamesCount }} player names
+      {{ t('numberOfCharacters', newCharacterCount) }} |
+      {{ t('numberOfPlayerNames', playerNamesCount) }}
     </p>
 
     <div class="list">
@@ -239,13 +240,13 @@ function handleEditCustomAbility(customAbility: CustomAbility): void {
       @edit-character="handleCreateOrEditCustomCharacter"
     />
     <IconButton class="button" @click="handleAddCustomCharacterClick">
-      <template #icon> <UserAddIcon /> </template>Add custom character
+      <template #icon><UserAddIcon /></template>{{ t('addCustomCharacter') }}
     </IconButton>
 
-    <h2>Choose abilities</h2>
+    <h2>{{ t('choseAbilities') }}</h2>
     <p>
-      {{ newAbilitiesPerCharacter }} per character |
-      {{ nothingAbilities }} without ability
+      {{ t('numberOfAbilitiesPerCharacter', newAbilitiesPerCharacter) }} |
+      {{ t('numberOfCharactersWithoutAbility', nothingAbilities) }}
     </p>
 
     <div class="list">
@@ -287,13 +288,13 @@ function handleEditCustomAbility(customAbility: CustomAbility): void {
     />
 
     <IconButton class="button" @click="handleAddCustomAbilityClick">
-      <template #icon> <ViewGridAddIcon /> </template>Add custom ability
+      <template #icon><ViewGridAddIcon /></template>{{ t('addCustomAbility') }}
     </IconButton>
 
     <h2>
-      <label for="player-names">Player names</label>
+      <label for="player-names">{{ t('playerNames') }}</label>
     </h2>
-    <p>Total {{ playerNamesCount }}</p>
+    <p>{{ t('totalNumber', playerNamesCount) }}</p>
     <textarea
       id="player-names"
       v-model="rawPlayerNames"
@@ -308,7 +309,7 @@ function handleEditCustomAbility(customAbility: CustomAbility): void {
       class="button"
       @click="handleCreateGame"
     >
-      <template #icon> <SparklesIcon /> </template>Create game
+      <template #icon><SparklesIcon /></template>{{ t('createNewGame') }}
     </IconButton>
   </main>
 </template>

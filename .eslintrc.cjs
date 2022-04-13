@@ -42,7 +42,7 @@ module.exports = {
     '@intlify/vue-i18n/no-raw-text': [
       'error',
       {
-        ignorePattern: '^[-#:()&]+$',
+        ignorePattern: '^\\s*[-#:|()&]+\\s*$',
       },
     ],
   },

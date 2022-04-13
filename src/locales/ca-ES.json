@@ -14,10 +14,21 @@
   "scanQrAgain": "Escaneja el codi QR una altre vegada",
   "playerViewErrorDetails": "Si el problema persisteix, demana-li al narrador que crei una nova partida.",
   "playerViewDetails": "Obre la càmara i escaneja el codi QR que el narrador te mostrarà.",
+  "newGame": "Nova partida",
   "createNewGame": "Crear nova partida",
   "regularNightActions": "Accions de cada nit",
   "firstNightActions": "Accions de la primera nit",
   "distributeCharacters": "Distribuir personatges",
   "name": "Nom",
-  "goBack": "Anar enrere"
+  "goBack": "Anar enrere",
+  "choseCharacters": "Tria els personatges",
+  "choseAbilities": "Tria les habilitats",
+  "playerNames": "Noms dels jugadors",
+  "addCustomCharacter": "Afegir personatge personalitzat",
+  "addCustomAbility": "Afegir habilitat personalitzada",
+  "numberOfCharacters": "{n} personatges",
+  "numberOfPlayerNames": "{n} noms de jugadors",
+  "numberOfAbilitiesPerCharacter": "{n} per personatge",
+  "numberOfCharactersWithoutAbility": "{n} sense habilitat",
+  "totalNumber": "Total {n}"
 }
