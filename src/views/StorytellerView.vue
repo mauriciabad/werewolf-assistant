@@ -6,8 +6,11 @@ import { useI18n } from 'vue-i18n'
 import { RouterLink, useRouter } from 'vue-router'
 import PlayerCard from '../components/PlayerCard.vue'
 import Layout from '../components/Layout.vue'
+import { useDataTranslations } from '@/compositions/useDataTranslations'
 
 const { t } = useI18n()
+
+const { getActionName, getActionDescription } = useDataTranslations()
 
 const gameConfigStore = useGameConfigStore()
 
@@ -42,11 +45,11 @@ if (players.value.length === 0) {
         <ol class="action-list">
           <li
             v-for="action in firstNightActions"
-            :key="action.name"
+            :key="action.id"
             class="action-list__item"
           >
-            <strong>{{ action.name }}:</strong>
-            {{ action.description }}
+            <strong>{{ getActionName(action) }}:</strong>
+            {{ getActionDescription(action) }}
           </li>
         </ol>
 
@@ -54,11 +57,11 @@ if (players.value.length === 0) {
         <ol class="action-list">
           <li
             v-for="action in nightActions"
-            :key="action.name"
+            :key="action.id"
             class="action-list__item"
           >
-            <strong>{{ action.name }}:</strong>
-            {{ action.description }}
+            <strong>{{ getActionName(action) }}:</strong>
+            {{ getActionDescription(action) }}
           </li>
         </ol>
 

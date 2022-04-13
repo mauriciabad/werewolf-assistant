@@ -13,8 +13,8 @@ const props = defineProps<{
 }>()
 
 const placeholderIlustrations: Record<IlustrationType, IlustrationId> = {
-  character: getCharacter('villager').ilustration,
-  ability: getAbility('nothing').ilustration,
+  character: getCharacter('c:villager').ilustration,
+  ability: getAbility('a:nothing').ilustration,
 }
 
 const placeholderIlustration = computed<IlustrationId>(

@@ -1,32 +1,26 @@
-import type {
-  Ability,
-  AbilityId,
-  CustomAbility,
-  CustomAbilityId,
-} from './abilities.types'
-import { getCharacter } from './characters'
+import type { Ability, CustomAbility } from './abilities.types'
 import type { IlustrationId } from './ilustrations'
 import type { TeamId } from './teams.types'
 
 export type CharacterId =
-  | 'werewolf'
-  | 'villager'
-  | 'nudist'
-  | 'seer'
-  | 'suicide'
-  | 'witch'
-  | 'doctor'
-  | 'triplet'
-  | 'baker'
-  | 'feral-kid'
-  | 'twin'
+  | 'c:werewolf'
+  | 'c:villager'
+  | 'c:nudist'
+  | 'c:seer'
+  | 'c:suicide'
+  | 'c:witch'
+  | 'c:doctor'
+  | 'c:triplet'
+  | 'c:baker'
+  | 'c:feral-kid'
+  | 'c:twin'
 
 export interface Character {
   id: CharacterId
   ilustration: IlustrationId
   team: TeamId
 }
-export type CustomCharacterId = `custom-character-${number}`
+export type CustomCharacterId = `cc:${number}`
 
 export type CustomCharacter = Omit<Character, 'id'> & {
   id: CustomCharacterId
@@ -34,22 +28,18 @@ export type CustomCharacter = Omit<Character, 'id'> & {
   description: string
 }
 
-export function isCustomCharacterId(
-  id: CharacterId | CustomCharacterId | AbilityId | CustomAbilityId | string
-): id is CustomCharacterId {
-  return id.startsWith('custom-character-')
+export function isCustomCharacterId(id: string): id is CustomCharacterId {
+  return id.startsWith('cc:')
 }
 
-export function isCustomCharacter(
-  data: Character | CustomCharacter | Ability | CustomAbility
-): data is CustomCharacter {
+export function isCustomCharacter(data: {
+  id: string
+}): data is CustomCharacter {
   return isCustomCharacterId(data.id)
 }
 
-export function isCharacterId(
-  id: CharacterId | CustomCharacterId | AbilityId | CustomAbilityId | string
-): id is CharacterId {
-  return getCharacter(id) !== undefined
+export function isCharacterId(id: string): id is CharacterId {
+  return id.startsWith('c:')
 }
 
 export function isCharacter(

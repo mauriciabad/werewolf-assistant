@@ -116,7 +116,7 @@ function setAbilityAmount({ id, amount }: AbilityConfig): void {
 
 function handleCreateGame(): void {
   const newAbilitiesIncludingNothings: AbilityConfig[] = nothingAbilities.value
-    ? [...newAbilities, { id: 'nothing', amount: nothingAbilities.value }]
+    ? [...newAbilities, { id: 'a:nothing', amount: nothingAbilities.value }]
     : newAbilities
 
   createNewGame(
@@ -181,8 +181,12 @@ function handleEditCustomAbility(customAbility: CustomAbility): void {
 
 <template>
   <main class="main">
-    <div class="header">
-      <RouterLink class="go-back" :to="{ name: 'storyteller' }">
+    <div class="header" :class="{ 'header--no-go-back': players.length === 0 }">
+      <RouterLink
+        v-if="players.length !== 0"
+        class="go-back"
+        :to="{ name: 'storyteller' }"
+      >
         <div class="go-back__icon-wrapper">
           <ChevronLeftIcon class="go-back__icon" />
         </div>
@@ -244,13 +248,13 @@ function handleEditCustomAbility(customAbility: CustomAbility): void {
 
     <div class="list">
       <CharacterOrAbilityRow
-        :data="getAbility('nothing')"
+        :data="getAbility('a:nothing')"
         :model-value="nothingAbilities"
         disabled
       />
 
       <CharacterOrAbilityRow
-        v-for="ability in abilitiesInfo.filter((a) => a.id !== 'nothing')"
+        v-for="ability in abilitiesInfo.filter((a) => a.id !== 'a:nothing')"
         :key="ability.id"
         :data="ability"
         :model-value="newAbilities.find((a) => a.id === ability.id)?.amount"
@@ -327,6 +331,10 @@ $max-width: 28rem;
   justify-content: space-between;
   padding-bottom: 1rem;
   margin: 0 auto;
+
+  &--no-go-back {
+    justify-content: center;
+  }
 }
 
 .go-back {

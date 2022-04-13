@@ -93,7 +93,7 @@ function handleConfirm(): void {
 
   if (!props.initialValue && props.type === 'character') {
     const character: CustomCharacter = {
-      id: `custom-character-${Date.now()}`,
+      id: `cc:${Date.now()}`,
       name: name.value,
       description: description.value,
       ilustration: ilustration.value,
@@ -105,7 +105,7 @@ function handleConfirm(): void {
 
   if (!props.initialValue && props.type === 'ability') {
     const ability: CustomAbility = {
-      id: `custom-ability-${Date.now()}`,
+      id: `ca:${Date.now()}`,
       name: name.value,
       description: description.value,
       ilustration: ilustration.value,

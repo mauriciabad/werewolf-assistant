@@ -1,6 +1,6 @@
 import type { IlustrationId } from './ilustrations'
 
-export type TeamId = 'werewolfs' | 'villagers' | 'alone' | 'other'
+export type TeamId = 'werewolves' | 'villagers' | 'alone' | 'other'
 
 export interface Team {
   id: TeamId

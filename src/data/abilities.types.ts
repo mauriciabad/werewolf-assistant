@@ -1,25 +1,18 @@
-import { getAbility } from './abilities'
-import type {
-  CharacterId,
-  CustomCharacterId,
-  Character,
-  CustomCharacter,
-} from './characters.types'
 import type { IlustrationId } from './ilustrations'
 
 export type AbilityId =
-  | 'extra-life'
-  | 'extra-vote'
-  | 'cupid'
-  | 'major'
-  | 'nothing'
+  | 'a:extra-life'
+  | 'a:extra-vote'
+  | 'a:cupid'
+  | 'a:major'
+  | 'a:nothing'
 
 export interface Ability {
   id: AbilityId
   ilustration: IlustrationId
 }
 
-export type CustomAbilityId = `custom-ability-${number}`
+export type CustomAbilityId = `ca:${number}`
 
 export type CustomAbility = Omit<Ability, 'id'> & {
   id: CustomAbilityId
@@ -27,26 +20,18 @@ export type CustomAbility = Omit<Ability, 'id'> & {
   description: string
 }
 
-export function isCustomAbilityId(
-  id: CharacterId | CustomCharacterId | AbilityId | CustomAbilityId | string
-): id is CustomAbilityId {
-  return id.startsWith('custom-ability-')
+export function isCustomAbilityId(id: string): id is CustomAbilityId {
+  return id.startsWith('ca:')
 }
 
-export function isCustomAbility(
-  data: Character | CustomCharacter | Ability | CustomAbility
-): data is CustomAbility {
+export function isCustomAbility(data: { id: string }): data is CustomAbility {
   return isCustomAbilityId(data.id)
 }
 
-export function isAbilityId(
-  id: CharacterId | CustomCharacterId | AbilityId | CustomAbilityId | string
-): id is AbilityId {
-  return getAbility(id) !== undefined
+export function isAbilityId(id: string): id is AbilityId {
+  return id.startsWith('a:')
 }
 
-export function isAbility(
-  data: Character | CustomCharacter | Ability | CustomAbility
-): data is Ability {
+export function isAbility(data: { id: string }): data is Ability {
   return isAbilityId(data.id)
 }

@@ -1,75 +1,21 @@
 import type { Action } from './actions.types'
 
 export const firstNightActions: Action[] = [
-  {
-    name: 'Major',
-    description: 'Major is revealed.',
-    requiredAbilities: ['major'],
-  },
-  {
-    name: 'Village goes to sleep',
-    description: 'Everyone close their eyes.',
-  },
-  {
-    name: 'Cupid',
-    description: 'Cupid chooses the lovers and they look at each other.',
-    requiredAbilities: ['cupid'],
-  },
-  {
-    name: 'Feral kid',
-    description: 'Feral kid picks an adoptive parent.',
-    requiredCharacters: ['feral-kid'],
-  },
-  {
-    name: 'Triplets',
-    description: 'Triplets see each other.',
-    requiredCharacters: ['triplet'],
-  },
-  {
-    name: 'Twins',
-    description: 'Twins see each other.',
-    requiredCharacters: ['twin'],
-  },
-  {
-    name: 'Werewolfs see each other',
-    description: 'Werewolfs just see each other, no killing.',
-    requiredCharacters: ['werewolf'],
-  },
-  {
-    name: 'Village wakes up',
-    description: 'Everyone opens their eyes.',
-  },
-  {
-    name: 'Nudist',
-    description: 'Nudist is revealed (gets naked metaphorically).',
-    requiredCharacters: ['nudist'],
-  },
+  { id: 'major-revealed', requiredAbilities: ['a:major'] },
+  { id: 'village-goes-to-sleep' },
+  { id: 'cupid-shoots', requiredAbilities: ['a:cupid'] },
+  { id: 'feral-kid-chooses-parents', requiredCharacters: ['c:feral-kid'] },
+  { id: 'triplets-meet', requiredCharacters: ['c:triplet'] },
+  { id: 'twins-meet', requiredCharacters: ['c:twin'] },
+  { id: 'werewolves-meet', requiredCharacters: ['c:werewolf'] },
+  { id: 'village-wakes-up' },
+  { id: 'nudist-revealed', requiredCharacters: ['c:nudist'] },
 ]
 
 export const nightActions: Action[] = [
-  {
-    name: 'Seer',
-    description: 'Seer picks a player to look at and sees their role.',
-    requiredCharacters: ['seer'],
-  },
-  {
-    name: 'Werewolfs kill',
-    description: 'Werewolfs vote someone to kill.',
-    requiredCharacters: ['werewolf'],
-  },
-  {
-    name: 'Witch',
-    description: 'Witch chooses to save or kills a player.',
-    requiredCharacters: ['witch'],
-  },
-  {
-    name: 'Doctor',
-    description: 'Witch chooses to save player.',
-    requiredCharacters: ['doctor'],
-  },
-  {
-    name: 'Baker',
-    description: 'Baker gives bread to a player and reveals his role.',
-    requiredCharacters: ['baker'],
-  },
+  { id: 'seer-guesses', requiredCharacters: ['c:seer'] },
+  { id: 'werewolves-kill', requiredCharacters: ['c:werewolf'] },
+  { id: 'witch-kills-or-saves', requiredCharacters: ['c:witch'] },
+  { id: 'doctor-saves', requiredCharacters: ['c:doctor'] },
+  { id: 'baker-gives-bread', requiredCharacters: ['c:baker'] },
 ]

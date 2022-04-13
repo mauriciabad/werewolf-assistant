@@ -6,7 +6,7 @@ import App from './App.vue'
 import router from './router'
 import i18n from './i18n'
 
-const STORAGE_VERSION = 3
+const STORAGE_VERSION = 4
 
 const lastStorageVersion = parseInt(
   localStorage.getItem('appVersion') ?? '',

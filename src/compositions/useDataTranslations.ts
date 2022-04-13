@@ -2,6 +2,7 @@
 
 import type { Ability, CustomAbility } from '@/data/abilities.types'
 import { isAbility } from '@/data/abilities.types'
+import type { Action } from '@/data/actions.types'
 import type { Character, CustomCharacter } from '@/data/characters.types'
 import { isCharacter } from '@/data/characters.types'
 import { useI18n } from 'vue-i18n'
@@ -25,5 +26,13 @@ export function useDataTranslations() {
     return data.description
   }
 
-  return { getName, getDescription }
+  function getActionName(action: Action): string {
+    return t(`action_${action.id}_name`)
+  }
+
+  function getActionDescription(action: Action): string {
+    return t(`action_${action.id}_description`)
+  }
+
+  return { getName, getDescription, getActionName, getActionDescription }
 }

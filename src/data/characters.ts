@@ -2,57 +2,57 @@ import type { Character, CharacterId } from './characters.types'
 
 const characters: Character[] = [
   {
-    id: 'werewolf',
-    team: 'werewolfs',
+    id: 'c:werewolf',
+    team: 'werewolves',
     ilustration: 'werewolf',
   },
   {
-    id: 'villager',
+    id: 'c:villager',
     team: 'villagers',
     ilustration: 'boy',
   },
   {
-    id: 'nudist',
+    id: 'c:nudist',
     team: 'villagers',
     ilustration: 'naked',
   },
   {
-    id: 'seer',
+    id: 'c:seer',
     team: 'villagers',
     ilustration: 'fortuneTeller',
   },
   {
-    id: 'suicide',
+    id: 'c:suicide',
     team: 'alone',
     ilustration: 'crimeScene',
   },
   {
-    id: 'feral-kid',
+    id: 'c:feral-kid',
     team: 'other',
     ilustration: 'nativeAmerican',
   },
   {
-    id: 'baker',
+    id: 'c:baker',
     team: 'villagers',
     ilustration: 'baker',
   },
   {
-    id: 'triplet',
+    id: 'c:triplet',
     team: 'villagers',
     ilustration: 'triplet',
   },
   {
-    id: 'twin',
+    id: 'c:twin',
     team: 'villagers',
     ilustration: 'twins',
   },
   {
-    id: 'witch',
+    id: 'c:witch',
     team: 'villagers',
     ilustration: 'witch',
   },
   {
-    id: 'doctor',
+    id: 'c:doctor',
     team: 'villagers',
     ilustration: 'doctor',
   },

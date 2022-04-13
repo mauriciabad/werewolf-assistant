@@ -1,22 +1,21 @@
-import { getCharacter } from './characters'
 import type { Team } from './teams.types'
 
 const teams: Team[] = [
   {
-    id: 'werewolfs',
-    name: 'Werewolfs',
+    id: 'werewolves',
+    name: 'Werewolves',
     description:
-      'The werewolfs are the bad guys. They are the ones who kill the villagers.',
-    objective: 'Reduce the number of villagers to the same as werewolfs.',
-    ilustration: getCharacter('werewolf').ilustration,
+      'The werewolves are the bad guys. They are the ones who kill the villagers.',
+    objective: 'Reduce the number of villagers to the same as werewolves.',
+    ilustration: 'werewolf',
   },
   {
     id: 'villagers',
     name: 'Villagers',
     description:
       'The villagers are the good guys. They are the ones who survive the night.',
-    objective: 'Kill all werewolfs',
-    ilustration: getCharacter('villager').ilustration,
+    objective: 'Kill all werewolves',
+    ilustration: 'man',
   },
 ]
 
