@@ -16,12 +16,15 @@ import {
 } from '@heroicons/vue/solid'
 import { storeToRefs } from 'pinia'
 import { computed, onMounted, reactive, ref, watch } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { RouterLink, useRouter } from 'vue-router'
 import CharacterOrAbilityRow from '../components/CharacterOrAbilityRow.vue'
 import IconButton from '../components/IconButton.vue'
 import TagList from '../components/TagList.vue'
 import { default as abilitiesInfo, getAbility } from '../data/abilities'
 import { default as charactersInfo } from '../data/characters'
+
+const { t } = useI18n()
 
 const gameConfigStore = useGameConfigStore()
 
@@ -191,7 +194,7 @@ function handleEditCustomAbility(customAbility: CustomAbility): void {
         <div class="go-back__icon-wrapper">
           <ChevronLeftIcon class="go-back__icon" />
         </div>
-        <span class="go-back__text">Go back</span>
+        <span class="go-back__text">{{ t('goBack') }}</span>
       </RouterLink>
     </div>
 

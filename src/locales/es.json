@@ -18,5 +18,6 @@
   "regularNightActions": "Acciones de cada noche",
   "firstNightActions": "Acciones de la primera noche",
   "distributeCharacters": "Distribuir personajes",
-    "name": "Nombre"
+  "name": "Nombre",
+  "goBack": "Ir atrás"
 }

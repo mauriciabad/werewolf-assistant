@@ -3,8 +3,11 @@ import { useGameConfigStore } from '@/stores/gameConfig'
 import { ChevronLeftIcon, EyeIcon, EyeOffIcon } from '@heroicons/vue/outline'
 import { storeToRefs } from 'pinia'
 import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { RouterLink, useRouter } from 'vue-router'
 import RoleCarrousel from '../components/distribute-roles/RoleCarrousel.vue'
+
+const { t } = useI18n()
 
 const gameConfigStore = useGameConfigStore()
 
@@ -27,7 +30,7 @@ const showSecretInfo = ref<boolean>(true)
         <div class="go-back__icon-wrapper">
           <ChevronLeftIcon class="go-back__icon" />
         </div>
-        <span class="go-back__text">Go back</span>
+        <span class="go-back__text">{{ t('goBack') }}</span>
       </RouterLink>
 
       <div
