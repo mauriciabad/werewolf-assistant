@@ -1,9 +1,10 @@
 {
   "storyteller": "Storyteller",
-  "player": "Player",
+  "player": "Player | Players",
   "whatAreYouQuestion": "What are you?",
-  "abilities": "Abilities",
-  "gameStartedAt": "Game started at {date}",
+  "ability": "Ability | Abilities",
+  "character": "Character | Characters",
+  "gameStartedAt": "Game started on {date} at {time}",
   "error": "Error",
   "unknownCustomCharacter": "Unknown custom character \"{character}\".",
   "unknownCharacter": "Unknown character \"{character}\".",
@@ -11,5 +12,10 @@
   "scanQr": "Scan the QR code",
   "scanQrAgain": "Scan the QR code again",
   "playerViewErrorDetails": "If the error still appears, ask the storyteller to create a new game.",
-  "playerViewDetails": "Open your camera and scan the QR code that the narrator will show you."
+  "playerViewDetails": "Open your camera and scan the QR code that the narrator will show you.",
+  "createNewGame": "New game",
+  "regularNightActions": "Regular night actions",
+  "firstNightActions": "First night actions",
+  "distributeCharacters": "Distribute characters",
+  "name": "Name"
 }

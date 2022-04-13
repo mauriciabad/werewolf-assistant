@@ -136,8 +136,8 @@ const allAbilities = computed<(Ability | CustomAbility | undefined)[]>(() => {
           </p>
         </div>
 
-        <div v-if="abilities.length" class="abilities">
-          <h2>{{ t('abilities') }}</h2>
+        <div v-if="allAbilities.length" class="abilities">
+          <h2>{{ t('ability', allAbilities.length) }}</h2>
           <ul>
             <li v-for="ability in allAbilities" :key="ability.id">
               <strong>{{ ability.name }}:</strong>
@@ -147,7 +147,12 @@ const allAbilities = computed<(Ability | CustomAbility | undefined)[]>(() => {
         </div>
 
         <p v-if="creationDate" class="creation-date">
-          {{ t('gameStartedAt', { date: creationDate.toLocaleString() }) }}
+          {{
+            t('gameStartedAt', {
+              date: creationDate.toLocaleDateString(),
+              time: creationDate.toLocaleTimeString(),
+            })
+          }}
         </p>
       </template>
 

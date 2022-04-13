@@ -1,9 +1,10 @@
 {
   "storyteller": "Narrador",
-  "player": "Jugador",
+  "player": "Jugador | Jugadors",
   "whatAreYouQuestion": "Què ets?",
-  "abilities": "Habilitats",
-  "gameStartedAt": "Partida començada el {date}",
+  "ability": "Habilitat | Habilitats",
+  "character": "Personatge | Personatges",
+  "gameStartedAt": "Partida començada el {date} a les {time}",
   "error": "Error",
   "unknownCustomCharacter": "Personatge personalizat \"{character}\" desconegut.",
   "unknownCharacter": "Personatge \"{character}\" desconegut.",
@@ -11,5 +12,10 @@
   "scanQr": "Escaneja el codi QR",
   "scanQrAgain": "Escaneja el codi QR una altre vegada",
   "playerViewErrorDetails": "Si el problema persisteix, demana-li al narrador que crei una nova partida.",
-  "playerViewDetails": "Obre la càmara i escaneja el codi QR que el narrador te mostrarà."
+  "playerViewDetails": "Obre la càmara i escaneja el codi QR que el narrador te mostrarà.",
+  "createNewGame": "Crear nova partida",
+  "regularNightActions": "Accions de cada nit",
+  "firstNightActions": "Accions de la primera nit",
+  "distributeCharacters": "Distribuir personatges",
+  "name": "Nom"
 }

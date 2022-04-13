@@ -14,12 +14,15 @@ import {
 import { useCustomDataStore } from '@/stores/customData'
 import type { PlayerConfig } from '@/stores/gameConfig'
 import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 import Ilustration from './Ilustration.vue'
 
 interface Props {
   player: PlayerConfig
 }
 const props = defineProps<Props>()
+
+const { t } = useI18n()
 
 const { getCustomCharacter, getCustomAbility } = useCustomDataStore()
 
@@ -43,14 +46,14 @@ const abilities = computed<(Ability | CustomAbility)[]>(() =>
     :class="{ 'player--no-abilities': abilities.length === 0 }"
   >
     <div class="name">
-      <div class="small-title">Name</div>
+      <div class="small-title">{{ t('name') }}</div>
       <div class="name__text">
         {{ player.name }}
       </div>
     </div>
 
     <div class="character">
-      <div class="small-title">Character</div>
+      <div class="small-title">{{ t('character') }}</div>
       <Ilustration :id="character.ilustration" class="character__ilustration" />
       <div class="character__text">
         {{ character.name }}
@@ -58,7 +61,7 @@ const abilities = computed<(Ability | CustomAbility)[]>(() =>
     </div>
 
     <div v-if="abilities.length" class="abilities">
-      <div class="small-title">Abilities</div>
+      <div class="small-title">{{ t('ability', abilities.length) }}</div>
       <ul class="ability-list">
         <li v-for="ability in abilities" :key="ability.id" class="ability">
           <Ilustration :id="ability.ilustration" class="ability__ilustration" />
