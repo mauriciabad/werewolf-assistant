@@ -16,6 +16,7 @@
   "playerViewDetails": "Obre la càmara i escaneja el codi QR que el narrador te mostrarà.",
   "newGame": "Nova partida",
   "createNewGame": "Crear nova partida",
+  "createGame": "Crear partida",
   "regularNightActions": "Accions de cada nit",
   "firstNightActions": "Accions de la primera nit",
   "distributeCharacters": "Distribuir personatges",
@@ -26,8 +27,8 @@
   "playerNames": "Noms dels jugadors",
   "addCustomCharacter": "Afegir personatge personalitzat",
   "addCustomAbility": "Afegir habilitat personalitzada",
-  "numberOfCharacters": "{n} personatges",
-  "numberOfPlayerNames": "{n} noms de jugadors",
+  "numberOfCharacters": "{n} personatge | {n} personatges",
+  "numberOfPlayerNames": "{n} nom de jugador | {n} noms de jugadors",
   "numberOfAbilitiesPerCharacter": "{n} per personatge",
   "numberOfCharactersWithoutAbility": "{n} sense habilitat",
   "totalNumber": "Total {n}"

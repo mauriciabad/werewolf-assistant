@@ -16,6 +16,7 @@
   "playerViewDetails": "Abre la cámara y escanea el código QR que el narrador te mostrará.",
   "newGame": "Nueva partida",
   "createNewGame": "Crear nueva partida",
+  "createGame": "Crear partida",
   "regularNightActions": "Acciones de cada noche",
   "firstNightActions": "Acciones de la primera noche",
   "distributeCharacters": "Distribuir personajes",
@@ -26,8 +27,8 @@
   "playerNames": "Nombres de los jugadores",
   "addCustomCharacter": "Añadir personaje personalizado",
   "addCustomAbility": "Añadir habilidad personalizada",
-  "numberOfCharacters": "{n} personajes",
-  "numberOfPlayerNames": "{n} nombres de jugadores",
+  "numberOfCharacters": "{n} personaje | {n} personajes",
+  "numberOfPlayerNames": "{n} nombre de jugador | {n} nombres de jugadores",
   "numberOfAbilitiesPerCharacter": "{n} por personaje",
   "numberOfCharactersWithoutAbility": "{n} sin habilidad",
   "totalNumber": "Total {n}"

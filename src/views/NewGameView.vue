@@ -309,7 +309,7 @@ function handleEditCustomAbility(customAbility: CustomAbility): void {
       class="button"
       @click="handleCreateGame"
     >
-      <template #icon><SparklesIcon /></template>{{ t('createNewGame') }}
+      <template #icon><SparklesIcon /></template>{{ t('createGame') }}
     </IconButton>
   </main>
 </template>
