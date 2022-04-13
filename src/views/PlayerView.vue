@@ -124,9 +124,9 @@ const allAbilities = computed<(Ability | CustomAbility | undefined)[]>(() => {
         <p class="name">{{ playerName }}</p>
 
         <Ilustration
-          :id="character ? character.ilustration : customCharacter.ilustration"
+          :id="character ? character.ilustration : customCharacter!.ilustration"
           class="ilustration ilustration--character"
-          @click="showDetailVew(character ?? customCharacter)"
+          @click="showDetailVew(character ?? customCharacter!)"
         />
         <div class="ability-ilustrations-list">
           <Ilustration
