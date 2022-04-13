@@ -1,18 +1,26 @@
 <script lang="ts" setup>
-import type { Ability, CustomAbility } from '@/data/abilities.types'
-import { isCustomAbility } from '@/data/abilities.types'
-import type { Character, CustomCharacter } from '@/data/characters.types'
-import { isCustomCharacter } from '@/data/characters.types'
+import { useDataTranslations } from '@/compositions/useDataTranslations'
+import {
+  isCustomAbility,
+  type Ability,
+  type CustomAbility,
+} from '@/data/abilities.types'
+import {
+  isCustomCharacter,
+  type Character,
+  type CustomCharacter,
+} from '@/data/characters.types'
 import {
   InformationCircleIcon,
   PencilIcon,
   TrashIcon,
 } from '@heroicons/vue/outline'
+import { computed } from 'vue'
 import Popper from 'vue3-popper'
 import InputNumber from '../components/InputNumber.vue'
 import Ilustration from './Ilustration.vue'
 
-defineProps<{
+const props = defineProps<{
   data: Character | CustomCharacter | Ability | CustomAbility
   modelValue?: number
   disabled?: boolean
@@ -23,29 +31,38 @@ const emit = defineEmits<{
   (e: 'edit'): void
   (e: 'remove'): void
 }>()
+
+const { getName, getDescription } = useDataTranslations()
+
+const name = computed<string>(() => getName(props.data))
+const description = computed<string>(() => getDescription(props.data))
+
+const isCustom = computed<boolean>(
+  () => isCustomCharacter(props.data) || isCustomAbility(props.data)
+)
 </script>
 
 <template>
   <div class="item__wrapper">
     <Popper hover arrow>
       <template #content>
-        <span class="toltip-content">{{ data.description }}</span>
+        <span class="toltip-content">{{ description }}</span>
       </template>
       <div class="item__name-wrapper">
         <Ilustration :id="data.ilustration" class="item__ilustration" />
 
-        <label class="item__label">{{ data.name }}</label>
+        <label class="item__label">{{ name }}</label>
 
         <InformationCircleIcon class="item__icon" />
 
         <TrashIcon
-          v-if="isCustomCharacter(data) || isCustomAbility(data)"
+          v-if="isCustom"
           class="item__icon item__icon--delete"
           @click="emit('remove')"
         />
 
         <PencilIcon
-          v-if="isCustomCharacter(data) || isCustomAbility(data)"
+          v-if="isCustom"
           class="item__icon item__icon--edit"
           @click="emit('edit')"
         />

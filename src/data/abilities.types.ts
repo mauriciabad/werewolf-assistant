@@ -16,8 +16,6 @@ export type AbilityId =
 
 export interface Ability {
   id: AbilityId
-  name: string
-  description: string
   ilustration: IlustrationId
 }
 
@@ -25,6 +23,8 @@ export type CustomAbilityId = `custom-ability-${number}`
 
 export type CustomAbility = Omit<Ability, 'id'> & {
   id: CustomAbilityId
+  name: string
+  description: string
 }
 
 export function isCustomAbilityId(

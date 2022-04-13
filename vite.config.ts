@@ -9,7 +9,7 @@ export default defineConfig({
   plugins: [
     vue(),
     vueI18n({
-      include: fileURLToPath(new URL('./src/locales/*.json', import.meta.url)),
+      include: fileURLToPath(new URL('./src/locales/**', import.meta.url)),
     }),
   ],
   resolve: {

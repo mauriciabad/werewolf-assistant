@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useDataTranslations } from '@/compositions/useDataTranslations'
 import { getAbility } from '@/data/abilities'
 import {
   isCustomAbilityId,
@@ -30,6 +31,8 @@ interface Props {
 const props = defineProps<Props>()
 
 const { t } = useI18n()
+
+const { getName } = useDataTranslations()
 
 const customDataStore = useCustomDataStore()
 const { customCharacters, customAbilities } = storeToRefs(customDataStore)
@@ -75,7 +78,7 @@ const url = computed<string>(() =>
         alt=""
       />
       <HidableText
-        :text="character.name"
+        :text="getName(character)"
         :visible="showSecretInfo"
         :length="8"
       />
@@ -94,7 +97,7 @@ const url = computed<string>(() =>
           />
           <span class="ability__name"
             ><HidableText
-              :text="ability.name"
+              :text="getName(ability)"
               :visible="showSecretInfo"
               :length="7"
           /></span>

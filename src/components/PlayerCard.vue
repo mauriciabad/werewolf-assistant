@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useDataTranslations } from '@/compositions/useDataTranslations'
 import { getAbility } from '@/data/abilities'
 import {
   isCustomAbilityId,
@@ -23,6 +24,8 @@ interface Props {
 const props = defineProps<Props>()
 
 const { t } = useI18n()
+
+const { getName } = useDataTranslations()
 
 const { getCustomCharacter, getCustomAbility } = useCustomDataStore()
 
@@ -56,7 +59,7 @@ const abilities = computed<(Ability | CustomAbility)[]>(() =>
       <div class="small-title">{{ t('character') }}</div>
       <Ilustration :id="character.ilustration" class="character__ilustration" />
       <div class="character__text">
-        {{ character.name }}
+        {{ getName(character) }}
       </div>
     </div>
 
@@ -65,7 +68,7 @@ const abilities = computed<(Ability | CustomAbility)[]>(() =>
       <ul class="ability-list">
         <li v-for="ability in abilities" :key="ability.id" class="ability">
           <Ilustration :id="ability.ilustration" class="ability__ilustration" />
-          <span class="ability__name">{{ ability.name }}</span>
+          <span class="ability__name">{{ getName(ability) }}</span>
         </li>
       </ul>
     </div>

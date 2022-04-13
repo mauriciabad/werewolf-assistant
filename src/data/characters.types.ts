@@ -23,8 +23,6 @@ export type CharacterId =
 
 export interface Character {
   id: CharacterId
-  name: string
-  description: string
   ilustration: IlustrationId
   team: TeamId
 }
@@ -32,6 +30,8 @@ export type CustomCharacterId = `custom-character-${number}`
 
 export type CustomCharacter = Omit<Character, 'id'> & {
   id: CustomCharacterId
+  name: string
+  description: string
 }
 
 export function isCustomCharacterId(

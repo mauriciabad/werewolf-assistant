@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useDataTranslations } from '@/compositions/useDataTranslations'
 import { useRouterHelper } from '@/compositions/useRouterHelper'
 import { getAbility } from '@/data/abilities'
 import type { Ability, CustomAbility } from '@/data/abilities.types'
@@ -13,6 +14,8 @@ import Ilustration from '../components/Ilustration.vue'
 import Layout from '../components/Layout.vue'
 
 const { t } = useI18n()
+
+const { getName, getDescription } = useDataTranslations()
 
 const { getQueryParam, getQueryParamList } = useRouterHelper()
 
@@ -130,19 +133,21 @@ const allAbilities = computed<(Ability | CustomAbility | undefined)[]>(() => {
           />
         </div>
 
-        <div class="character">
-          <h1>{{ character ? character.name : customCharacter!.name }}</h1>
-          <p>
-            {{ character ? character.description : customCharacter!.description }}
-          </p>
+        <div v-if="character" class="character">
+          <h1>{{ getName(character) }}</h1>
+          <p>{{ getDescription(character) }}</p>
+        </div>
+        <div v-else-if="customCharacter" class="character">
+          <h1>{{ getName(customCharacter) }}</h1>
+          <p>{{ getDescription(customCharacter) }}</p>
         </div>
 
         <div v-if="allAbilities.length" class="abilities">
           <h2>{{ t('ability', allAbilities.length) }}</h2>
           <ul>
             <li v-for="ability in allAbilities" :key="ability.id">
-              <strong>{{ ability.name }}:</strong>
-              {{ ability.description }}
+              <strong>{{ getName(ability) }}:</strong>
+              {{ getDescription(ability) }}
             </li>
           </ul>
         </div>
