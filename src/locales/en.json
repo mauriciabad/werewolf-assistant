@@ -40,5 +40,6 @@
   "numberOfPlayerNames": "{n} player names",
   "numberOfAbilitiesPerCharacter": "{n} per character",
   "numberOfCharactersWithoutAbility": "{n} without ability",
-  "totalNumber": "Total {n}"
+  "totalNumber": "Total {n}",
+  "pickALanguage": "Pick a language"
 }

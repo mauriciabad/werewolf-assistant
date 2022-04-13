@@ -5,6 +5,7 @@ import { storeToRefs } from 'pinia'
 import { useI18n } from 'vue-i18n'
 import { RouterLink, useRouter } from 'vue-router'
 import PlayerCard from '../components/PlayerCard.vue'
+import Layout from '../components/Layout.vue'
 
 const { t } = useI18n()
 
@@ -20,63 +21,65 @@ if (players.value.length === 0) {
 </script>
 
 <template>
-  <main class="storyteller">
-    <div class="links">
-      <RouterLink class="link" :to="{ name: 'newGame' }">
-        <RefreshIcon class="link__icon" />{{ t('createNewGame') }}
-      </RouterLink>
-    </div>
-
-    <div class="content">
-      <p>
-        {{
-          t('gameStartedAt', {
-            date: creationDate.toLocaleDateString(),
-            time: creationDate.toLocaleTimeString(),
-          })
-        }}
-      </p>
-      <h1>{{ t('firstNightActions') }}</h1>
-      <ol class="action-list">
-        <li
-          v-for="action in firstNightActions"
-          :key="action.name"
-          class="action-list__item"
-        >
-          <strong>{{ action.name }}:</strong>
-          {{ action.description }}
-        </li>
-      </ol>
-
-      <h1>{{ t('regularNightActions') }}</h1>
-      <ol class="action-list">
-        <li
-          v-for="action in nightActions"
-          :key="action.name"
-          class="action-list__item"
-        >
-          <strong>{{ action.name }}:</strong>
-          {{ action.description }}
-        </li>
-      </ol>
-
-      <h1>{{ t('player', 2) }}</h1>
+  <Layout locale-selector>
+    <div class="storyteller">
       <div class="links">
-        <RouterLink class="link" :to="{ name: 'distributeRoles' }">
-          <IdentificationIcon class="link__icon" />{{
-            t('distributeCharacters')
-          }}
+        <RouterLink class="link" :to="{ name: 'newGame' }">
+          <RefreshIcon class="link__icon" />{{ t('createNewGame') }}
         </RouterLink>
       </div>
-      <div class="player-list">
-        <PlayerCard
-          v-for="player in players"
-          :key="player.id"
-          :player="player"
-        />
+
+      <div class="content">
+        <p>
+          {{
+            t('gameStartedAt', {
+              date: creationDate.toLocaleDateString(),
+              time: creationDate.toLocaleTimeString(),
+            })
+          }}
+        </p>
+        <h1>{{ t('firstNightActions') }}</h1>
+        <ol class="action-list">
+          <li
+            v-for="action in firstNightActions"
+            :key="action.name"
+            class="action-list__item"
+          >
+            <strong>{{ action.name }}:</strong>
+            {{ action.description }}
+          </li>
+        </ol>
+
+        <h1>{{ t('regularNightActions') }}</h1>
+        <ol class="action-list">
+          <li
+            v-for="action in nightActions"
+            :key="action.name"
+            class="action-list__item"
+          >
+            <strong>{{ action.name }}:</strong>
+            {{ action.description }}
+          </li>
+        </ol>
+
+        <h1>{{ t('player', 2) }}</h1>
+        <div class="links">
+          <RouterLink class="link" :to="{ name: 'distributeRoles' }">
+            <IdentificationIcon class="link__icon" />{{
+              t('distributeCharacters')
+            }}
+          </RouterLink>
+        </div>
+        <div class="player-list">
+          <PlayerCard
+            v-for="player in players"
+            :key="player.id"
+            :player="player"
+          />
+        </div>
       </div>
     </div>
-  </main>
+  </Layout>
 </template>
 
 <style scoped lang="scss">
@@ -86,7 +89,6 @@ h1 {
 
 .storyteller {
   display: grid;
-  padding: 1rem;
   grid-template: auto 1fr / auto;
   text-align: center;
 }

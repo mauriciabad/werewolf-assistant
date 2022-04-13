@@ -1,4 +1,4 @@
-{
+{  
   "storyteller": "Narrador",
   "player": "Jugador | Jugadores",
   "playerNameGenerator": "Jugador {id}",
@@ -40,5 +40,6 @@
   "numberOfPlayerNames": "{n} nombre de jugador | {n} nombres de jugadores",
   "numberOfAbilitiesPerCharacter": "{n} por personaje",
   "numberOfCharactersWithoutAbility": "{n} sin habilidad",
-  "totalNumber": "Total {n}"
+  "totalNumber": "Total {n}",
+  "pickALanguage": "Escoge un idioma"
 }

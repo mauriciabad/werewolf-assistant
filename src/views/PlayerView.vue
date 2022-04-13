@@ -10,6 +10,7 @@ import ilustrations from '@/data/ilustrations'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import Ilustration from '../components/Ilustration.vue'
+import Layout from '../components/Layout.vue'
 
 const { t } = useI18n()
 
@@ -109,7 +110,7 @@ const allAbilities = computed<(Ability | CustomAbility | undefined)[]>(() => {
 </script>
 
 <template>
-  <main class="main">
+  <Layout locale-selector>
     <template v-if="hasData">
       <template
         v-if="(character || customCharacter) && allAbilities.every((a):a is Ability | CustomAbility => a !== undefined)"
@@ -211,23 +212,10 @@ const allAbilities = computed<(Ability | CustomAbility | undefined)[]>(() => {
       <h1>{{ t('scanQr') }}</h1>
       <p>{{ t('playerViewDetails') }}</p>
     </template>
-  </main>
+  </Layout>
 </template>
 
 <style scoped lang="scss">
-.main {
-  display: flex;
-  width: 100%;
-  max-width: 40rem;
-  min-height: var(--vh100);
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
-  margin: 0 auto;
-  text-align: center;
-}
-
 .name {
   margin-bottom: 0.5rem;
   font-size: 1.5rem;

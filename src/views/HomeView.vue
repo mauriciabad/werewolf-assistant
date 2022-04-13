@@ -1,34 +1,28 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 import { RouterLink } from 'vue-router'
+import Layout from '../components/Layout.vue'
 
 const { t } = useI18n()
 </script>
 
 <template>
-  <main class="main">
-    <h1 class="title">{{ t('whatAreYouQuestion') }}</h1>
-    <div class="links">
-      <RouterLink class="link" :to="{ name: 'storyteller' }">{{
-        t('storyteller')
-      }}</RouterLink>
-      <RouterLink class="link" :to="{ name: 'player' }">{{
-        t('player')
-      }}</RouterLink>
+  <Layout locale-selector>
+    <div class="content">
+      <h1 class="title">{{ t('whatAreYouQuestion') }}</h1>
+      <div class="links">
+        <RouterLink class="link" :to="{ name: 'storyteller' }">{{
+          t('storyteller')
+        }}</RouterLink>
+        <RouterLink class="link" :to="{ name: 'player' }">{{
+          t('player')
+        }}</RouterLink>
+      </div>
     </div>
-  </main>
+  </Layout>
 </template>
 
 <style scoped lang="scss">
-.main {
-  display: flex;
-  min-height: var(--vh100);
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
-}
-
 .title {
   margin-bottom: 1rem;
   font-size: 3rem;

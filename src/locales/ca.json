@@ -40,5 +40,6 @@
   "numberOfPlayerNames": "{n} nom de jugador | {n} noms de jugadors",
   "numberOfAbilitiesPerCharacter": "{n} per personatge",
   "numberOfCharactersWithoutAbility": "{n} sense habilitat",
-  "totalNumber": "Total {n}"
+  "totalNumber": "Total {n}",
+  "pickALanguage": "Escull un idiona"
 }

@@ -23,6 +23,7 @@ import IconButton from '../components/IconButton.vue'
 import TagList from '../components/TagList.vue'
 import { default as abilitiesInfo, getAbility } from '../data/abilities'
 import { default as charactersInfo } from '../data/characters'
+import LocaleSelector from '../components/LocaleSelector.vue'
 
 const { t } = useI18n()
 
@@ -187,6 +188,7 @@ function handleEditCustomAbility(customAbility: CustomAbility): void {
         </div>
         <span class="go-back__text">{{ t('goBack') }}</span>
       </RouterLink>
+      <LocaleSelector />
     </div>
 
     <h1>{{ t('newGame') }}</h1>
@@ -322,7 +324,7 @@ $max-width: 28rem;
   width: 100%;
   max-width: 30rem;
   align-items: center;
-  justify-content: start;
+  justify-content: space-between;
   padding-bottom: 1rem;
   margin: 0 auto;
 }
