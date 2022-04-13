@@ -17,6 +17,7 @@ import type { PlayerConfig } from '@/stores/gameConfig'
 import { storeToRefs } from 'pinia'
 import QrcodeVue from 'qrcode.vue'
 import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 import HidableIlustration from '../HidableIlustration.vue'
 import HidableText from '../HidableText.vue'
 
@@ -27,6 +28,8 @@ interface Props {
 }
 
 const props = defineProps<Props>()
+
+const { t } = useI18n()
 
 const customDataStore = useCustomDataStore()
 const { customCharacters, customAbilities } = storeToRefs(customDataStore)
@@ -63,7 +66,7 @@ const url = computed<string>(() =>
     </a>
 
     <div class="card__character">
-      <div class="small-title">Character</div>
+      <div class="small-title">{{ t('character') }}</div>
       <HidableIlustration
         ilustration-type="character"
         :visible="showSecretInfo"
@@ -79,7 +82,7 @@ const url = computed<string>(() =>
     </div>
 
     <div v-if="player.abilities.length" class="card__abilities">
-      <div class="small-title">Abilities</div>
+      <div class="small-title">{{ t('ability', player.abilities.length) }}</div>
       <ul class="ability-list">
         <li v-for="ability in abilities" :key="ability.id" class="ability">
           <HidableIlustration
