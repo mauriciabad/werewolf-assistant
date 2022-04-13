@@ -252,6 +252,7 @@ function handleConfirm(): void {
 
     &--textarea {
       height: 6rem;
+      min-height: 6rem;
       resize: vertical;
     }
   }

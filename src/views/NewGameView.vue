@@ -400,6 +400,7 @@ h2 {
 .player-names {
   width: 100%;
   max-width: $max-width;
+  height: 4rem;
   min-height: 4rem;
   padding: 0.75rem;
   border: 1px solid var(--color-border);
