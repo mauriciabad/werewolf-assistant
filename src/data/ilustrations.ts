@@ -236,7 +236,8 @@ import ticket from '@/assets/ilustrations/ticket.svg'
 import timeAndDate from '@/assets/ilustrations/time-and-date.svg'
 import treasureMap from '@/assets/ilustrations/treasure-map.svg'
 import tree from '@/assets/ilustrations/tree.svg'
-import triplet from '@/assets/ilustrations/triplet.png'
+import triplet from '@/assets/ilustrations/triplet.svg'
+import tripletAlt from '@/assets/ilustrations/triplet-alt.png'
 import trustworthy from '@/assets/ilustrations/trustworthy.svg'
 import twins from '@/assets/ilustrations/twins.svg'
 import ufo from '@/assets/ilustrations/ufo.png'
@@ -511,6 +512,7 @@ const ilustrations = {
   treasureMap,
   tree,
   triplet,
+  tripletAlt,
   trustworthy,
   twins,
   ufo,
