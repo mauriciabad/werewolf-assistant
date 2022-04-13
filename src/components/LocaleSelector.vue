@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { useI18n } from 'vue-i18n'
-import { localesInfo } from '@/i18n'
+import { getLocaleInfo, localesInfo } from '@/i18n'
 import type { LocaleInfo } from '@/i18n'
 import { computed } from 'vue'
 import { ChevronDownIcon } from '@heroicons/vue/solid'
@@ -17,7 +17,7 @@ const localeLangOnly = computed<string>({
 })
 
 const currentLocaleInfo = computed<LocaleInfo | undefined>(() =>
-  localesInfo.find((localeInfo) => localeInfo.id === localeLangOnly.value)
+  getLocaleInfo(localeLangOnly.value)
 )
 </script>
 
