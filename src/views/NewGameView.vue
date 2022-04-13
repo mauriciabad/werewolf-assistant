@@ -41,25 +41,25 @@ const {
 } = customDataStore
 
 const newCharacters = reactive<CharacterConfig[]>([...characters.value])
-const newCharacterCount = computed<number>(() =>
+const newCharactersCount = computed<number>(() =>
   newCharacters.reduce((total, { amount }) => total + amount, 0)
 )
 const newAbilities = reactive<AbilityConfig[]>([...abilities.value])
-const newAbilityCount = computed<number>(() =>
+const newAbilitiesCount = computed<number>(() =>
   newAbilities.reduce((total, { amount }) => total + amount, 0)
 )
 const newAbilitiesPerCharacter = computed<number>(() =>
-  newCharacterCount.value === 0
+  newCharactersCount.value === 0
     ? 0
-    : Math.floor(newAbilityCount.value / newCharacterCount.value)
+    : Math.floor(newAbilitiesCount.value / newCharactersCount.value)
 )
 
 const nothingAbilities = computed<number>(() =>
-  newCharacterCount.value === 0 ||
-  newAbilityCount.value % newCharacterCount.value === 0
+  newCharactersCount.value === 0 ||
+  newAbilitiesCount.value % newCharactersCount.value === 0
     ? 0
-    : newCharacterCount.value -
-      (newAbilityCount.value % newCharacterCount.value)
+    : newCharactersCount.value -
+      (newAbilitiesCount.value % newCharactersCount.value)
 )
 
 const router = useRouter()
@@ -193,7 +193,7 @@ function handleEditCustomAbility(customAbility: CustomAbility): void {
 
     <h2>{{ t('choseCharacters') }}</h2>
     <p>
-      {{ t('numberOfCharacters', newCharacterCount) }} |
+      {{ t('numberOfCharacters', newCharactersCount) }} |
       {{ t('numberOfPlayerNames', playerNamesCount) }}
     </p>
 
@@ -295,7 +295,7 @@ function handleEditCustomAbility(customAbility: CustomAbility): void {
     <TagList :items="newPlayerNames" class="player-names-list" />
 
     <IconButton
-      :disabled="newCharacterCount <= 1"
+      :disabled="newCharactersCount <= 1"
       class="button"
       @click="handleCreateGame"
     >
