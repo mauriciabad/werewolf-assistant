@@ -1,6 +1,7 @@
 {
   "storyteller": "Storyteller",
   "player": "Player | Players",
+  "playerNameGenerator": "Player {id}",
   "whatAreYouQuestion": "What are you?",
   "ability": "Ability | Abilities",
   "character": "Character | Characters",

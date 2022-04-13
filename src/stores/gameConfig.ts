@@ -2,8 +2,11 @@ import type { AbilityId, CustomAbilityId } from '@/data/abilities.types'
 import { firstNightActions, nightActions } from '@/data/actions'
 import type { Action } from '@/data/actions.types'
 import type { CharacterId, CustomCharacterId } from '@/data/characters.types'
+import i18n from '@/i18n'
 import { useStorage } from '@vueuse/core'
 import { defineStore } from 'pinia'
+
+const { t } = i18n.global
 
 export type CharacterConfig = {
   id: CharacterId | CustomCharacterId
@@ -100,7 +103,7 @@ function createPlayers(
       lastAbilityAssignedIndex + abilitiesPerPlayer
     result.push({
       id: playerId,
-      name: playerName ?? `Player ${playerId}`,
+      name: playerName ?? t('playerNameGenerator', { id: playerId }),
       character: characterId,
       abilities: allAbilities.slice(
         lastAbilityAssignedIndex,

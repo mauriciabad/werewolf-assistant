@@ -1,6 +1,7 @@
 {
   "storyteller": "Narrador",
   "player": "Jugador | Jugadors",
+  "playerNameGenerator": "Jugador {id}",
   "whatAreYouQuestion": "Què ets?",
   "ability": "Habilitat | Habilitats",
   "character": "Personatge | Personatges",
