@@ -8,7 +8,10 @@ import type { Character, CustomCharacter } from '@/data/characters.types'
 import { isCharacterId, isCustomCharacterId } from '@/data/characters.types'
 import ilustrations from '@/data/ilustrations'
 import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 import Ilustration from '../components/Ilustration.vue'
+
+const { t } = useI18n()
 
 const { getQueryParam, getQueryParamList } = useRouterHelper()
 
@@ -134,7 +137,7 @@ const allAbilities = computed<(Ability | CustomAbility | undefined)[]>(() => {
         </div>
 
         <div v-if="abilities.length" class="abilities">
-          <h2>Abilities</h2>
+          <h2>{{ t('abilities') }}</h2>
           <ul>
             <li v-for="ability in allAbilities" :key="ability.id">
               <strong>{{ ability.name }}:</strong>
@@ -144,12 +147,12 @@ const allAbilities = computed<(Ability | CustomAbility | undefined)[]>(() => {
         </div>
 
         <p v-if="creationDate" class="creation-date">
-          Game started at {{ creationDate.toLocaleString() }}
+          {{ t('gameStartedAt', { date: creationDate.toLocaleString() }) }}
         </p>
       </template>
 
       <template v-else>
-        <h1>Error</h1>
+        <h1>{{ t('error') }}</h1>
         <ul class="error-list">
           <li
             v-if="
@@ -158,13 +161,21 @@ const allAbilities = computed<(Ability | CustomAbility | undefined)[]>(() => {
             "
             class="error-list__item"
           >
-            Unknown custom character {{ getQueryParam('custom-character') }}
+            {{
+              t('unknownCustomCharacter', {
+                character: getQueryParam('custom-character'),
+              })
+            }}
           </li>
           <li
             v-if="!character || getQueryParam('character') !== undefined"
             class="error-list__item"
           >
-            Unknown character "{{ getQueryParam('character') }}"
+            {{
+              t('unknownCharacter', {
+                character: getQueryParam('character'),
+              })
+            }}
           </li>
           <li
             v-for="abilityId in getQueryParamList('abilities').filter(
@@ -173,23 +184,21 @@ const allAbilities = computed<(Ability | CustomAbility | undefined)[]>(() => {
             :key="abilityId"
             class="error-list__item"
           >
-            Unknown ability "{{ abilityId }}"
+            {{ t('unknownAbility', { ability: abilityId }) }}
           </li>
         </ul>
 
         <p class="error-explanation">
-          <strong>Scan the QR code again.</strong>
+          <strong>{{ t('scanQrAgain') }}</strong>
           <br />
-          If the error still appears, ask the storyteller to create a new game.
+          {{ t('playerViewErrorDetails') }}
         </p>
       </template>
     </template>
 
     <template v-else>
-      <h1>Scan the QR code</h1>
-      <p>
-        Open your camera and scan the QR code that the narrator will show you.
-      </p>
+      <h1>{{ t('scanQr') }}</h1>
+      <p>{{ t('playerViewDetails') }}</p>
     </template>
   </main>
 </template>

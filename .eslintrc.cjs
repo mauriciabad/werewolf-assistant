@@ -39,6 +39,12 @@ module.exports = {
     '@intlify/vue-i18n/prefer-sfc-lang-attr': 'error',
     '@intlify/vue-i18n/prefer-linked-key-with-paren': 'error',
     '@intlify/vue-i18n/sfc-locale-attr': 'error',
+    '@intlify/vue-i18n/no-raw-text': [
+      'error',
+      {
+        ignorePattern: '^[-#:()&]+$',
+      },
+    ],
   },
   settings: {
     'vue-i18n': {

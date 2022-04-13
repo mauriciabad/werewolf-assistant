@@ -1,5 +1,15 @@
 {
   "storyteller": "Narrador",
   "player": "Jugador",
-  "whatAreYouQuestion": "¿Qué eres?"
+  "whatAreYouQuestion": "¿Qué eres?",
+  "abilities": "Abilidades",
+  "gameStartedAt": "Partida empezada el {date}",
+  "error": "Error",
+  "unknownCustomCharacter": "Personaje personalizado \"{character}\" desconocido.",
+  "unknownCharacter": "Personaje \"{character}\" desconocido.",
+  "unknownAbility": "Abilidad \"{ability}\" desconocida.",
+  "scanQr": "Escanea el código QR",
+  "scanQrAgain": "Escanea el código QR otra vez",
+  "playerViewErrorDetails": "Si el problema persiste, píedele al narrador que cree una nueva partida.",
+  "playerViewDetails": "Abre la cámara y escanea el código QR que el narrador te mostrará."
 }
