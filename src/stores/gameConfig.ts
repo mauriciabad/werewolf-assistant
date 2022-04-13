@@ -103,7 +103,7 @@ function createPlayers(
       lastAbilityAssignedIndex + abilitiesPerPlayer
     result.push({
       id: playerId,
-      name: playerName ?? t('playerNameGenerator', { id: playerId }),
+      name: playerName ?? t('ui.playerNameGenerator', { id: playerId }),
       character: characterId,
       abilities: allAbilities.slice(
         lastAbilityAssignedIndex,

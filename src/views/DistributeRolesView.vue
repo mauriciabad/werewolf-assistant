@@ -30,7 +30,7 @@ const showSecretInfo = ref<boolean>(true)
         <div class="go-back__icon-wrapper">
           <ChevronLeftIcon class="go-back__icon" />
         </div>
-        <span class="go-back__text">{{ t('goBack') }}</span>
+        <span class="go-back__text">{{ t('ui.goBack') }}</span>
       </RouterLink>
 
       <div

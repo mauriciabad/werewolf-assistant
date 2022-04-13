@@ -13,25 +13,25 @@ export function useDataTranslations() {
   function getName(
     data: Character | CustomCharacter | Ability | CustomAbility
   ): string {
-    if (isCharacter(data)) return t(`character_${data.id}_name`)
-    if (isAbility(data)) return t(`ability_${data.id}_name`)
+    if (isCharacter(data)) return t(`characters.${data.id}_name`)
+    if (isAbility(data)) return t(`abilities.${data.id}_name`)
     return data.name
   }
 
   function getDescription(
     data: Character | CustomCharacter | Ability | CustomAbility
   ): string {
-    if (isCharacter(data)) return t(`character_${data.id}_description`)
-    if (isAbility(data)) return t(`ability_${data.id}_description`)
+    if (isCharacter(data)) return t(`characters.${data.id}_description`)
+    if (isAbility(data)) return t(`abilities.${data.id}_description`)
     return data.description
   }
 
   function getActionName(action: Action): string {
-    return t(`action_${action.id}_name`)
+    return t(`actions.${action.id}_name`)
   }
 
   function getActionDescription(action: Action): string {
-    return t(`action_${action.id}_description`)
+    return t(`actions.${action.id}_description`)
   }
 
   return { getName, getDescription, getActionName, getActionDescription }

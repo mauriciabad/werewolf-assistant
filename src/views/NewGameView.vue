@@ -190,17 +190,17 @@ function handleEditCustomAbility(customAbility: CustomAbility): void {
         <div class="go-back__icon-wrapper">
           <ChevronLeftIcon class="go-back__icon" />
         </div>
-        <span class="go-back__text">{{ t('goBack') }}</span>
+        <span class="go-back__text">{{ t('ui.goBack') }}</span>
       </RouterLink>
       <LocaleSelector />
     </div>
 
-    <h1>{{ t('newGame') }}</h1>
+    <h1>{{ t('ui.newGame') }}</h1>
 
-    <h2>{{ t('choseCharacters') }}</h2>
+    <h2>{{ t('ui.choseCharacters') }}</h2>
     <p>
-      {{ t('numberOfCharacters', newCharactersCount) }} |
-      {{ t('numberOfPlayerNames', playerNamesCount) }}
+      {{ t('ui.numberOfCharacters', newCharactersCount) }} |
+      {{ t('ui.numberOfPlayerNames', playerNamesCount) }}
     </p>
 
     <div class="list">
@@ -237,13 +237,13 @@ function handleEditCustomAbility(customAbility: CustomAbility): void {
       @edit-character="handleCreateOrEditCustomCharacter"
     />
     <IconButton class="button" @click="handleAddCustomCharacterClick">
-      <template #icon><UserAddIcon /></template>{{ t('addCustomCharacter') }}
+      <template #icon><UserAddIcon /></template>{{ t('ui.addCustomCharacter') }}
     </IconButton>
 
-    <h2>{{ t('choseAbilities') }}</h2>
+    <h2>{{ t('ui.choseAbilities') }}</h2>
     <p>
-      {{ t('numberOfAbilitiesPerCharacter', newAbilitiesPerCharacter) }} |
-      {{ t('numberOfCharactersWithoutAbility', nothingAbilities) }}
+      {{ t('ui.numberOfAbilitiesPerCharacter', newAbilitiesPerCharacter) }} |
+      {{ t('ui.numberOfCharactersWithoutAbility', nothingAbilities) }}
     </p>
 
     <div class="list">
@@ -285,13 +285,14 @@ function handleEditCustomAbility(customAbility: CustomAbility): void {
     />
 
     <IconButton class="button" @click="handleAddCustomAbilityClick">
-      <template #icon><ViewGridAddIcon /></template>{{ t('addCustomAbility') }}
+      <template #icon><ViewGridAddIcon /></template
+      >{{ t('ui.addCustomAbility') }}
     </IconButton>
 
     <h2>
-      <label for="player-names">{{ t('playerNames') }}</label>
+      <label for="player-names">{{ t('ui.playerNames') }}</label>
     </h2>
-    <p>{{ t('totalNumber', playerNamesCount) }}</p>
+    <p>{{ t('ui.totalNumber', playerNamesCount) }}</p>
     <textarea
       id="player-names"
       v-model="rawPlayerNames"
@@ -305,7 +306,7 @@ function handleEditCustomAbility(customAbility: CustomAbility): void {
       class="button"
       @click="handleCreateGame"
     >
-      <template #icon><SparklesIcon /></template>{{ t('createGame') }}
+      <template #icon><SparklesIcon /></template>{{ t('ui.createGame') }}
     </IconButton>
   </main>
 </template>

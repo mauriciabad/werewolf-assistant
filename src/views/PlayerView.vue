@@ -143,7 +143,7 @@ const allAbilities = computed<(Ability | CustomAbility | undefined)[]>(() => {
         </div>
 
         <div v-if="allAbilities.length" class="abilities">
-          <h2>{{ t('ability', allAbilities.length) }}</h2>
+          <h2>{{ t('ui.ability', allAbilities.length) }}</h2>
           <ul>
             <li v-for="ability in allAbilities" :key="ability.id">
               <strong>{{ getName(ability) }}:</strong>
@@ -154,7 +154,7 @@ const allAbilities = computed<(Ability | CustomAbility | undefined)[]>(() => {
 
         <p v-if="creationDate" class="creation-date">
           {{
-            t('gameStartedAt', {
+            t('ui.gameStartedAt', {
               date: creationDate.toLocaleDateString(),
               time: creationDate.toLocaleTimeString(),
             })
@@ -163,7 +163,7 @@ const allAbilities = computed<(Ability | CustomAbility | undefined)[]>(() => {
       </template>
 
       <template v-else>
-        <h1>{{ t('error') }}</h1>
+        <h1>{{ t('ui.error') }}</h1>
         <ul class="error-list">
           <li
             v-if="
@@ -173,7 +173,7 @@ const allAbilities = computed<(Ability | CustomAbility | undefined)[]>(() => {
             class="error-list__item"
           >
             {{
-              t('unknownCustomCharacter', {
+              t('ui.unknownCustomCharacter', {
                 character: getQueryParam('custom-character'),
               })
             }}
@@ -183,7 +183,7 @@ const allAbilities = computed<(Ability | CustomAbility | undefined)[]>(() => {
             class="error-list__item"
           >
             {{
-              t('unknownCharacter', {
+              t('ui.unknownCharacter', {
                 character: getQueryParam('character'),
               })
             }}
@@ -195,27 +195,27 @@ const allAbilities = computed<(Ability | CustomAbility | undefined)[]>(() => {
             :key="abilityId"
             class="error-list__item"
           >
-            {{ t('unknownAbility', { ability: abilityId }) }}
+            {{ t('ui.unknownAbility', { ability: abilityId }) }}
           </li>
           <li
             v-if="customAbilities.some((a) => a === undefined)"
             class="error-list__item"
           >
-            {{ t('unknownCustomAbility') }}
+            {{ t('ui.unknownCustomAbility') }}
           </li>
         </ul>
 
         <p class="error-explanation">
-          <strong>{{ t('scanQrAgain') }}</strong>
+          <strong>{{ t('ui.scanQrAgain') }}</strong>
           <br />
-          {{ t('playerViewErrorDetails') }}
+          {{ t('ui.playerViewErrorDetails') }}
         </p>
       </template>
     </template>
 
     <template v-else>
-      <h1>{{ t('scanQr') }}</h1>
-      <p>{{ t('playerViewDetails') }}</p>
+      <h1>{{ t('ui.scanQr') }}</h1>
+      <p>{{ t('ui.playerViewDetails') }}</p>
     </template>
   </Layout>
 </template>

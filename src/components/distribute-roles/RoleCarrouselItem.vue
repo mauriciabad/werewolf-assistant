@@ -69,7 +69,7 @@ const url = computed<string>(() =>
     </a>
 
     <div class="card__character">
-      <div class="small-title">{{ t('character') }}</div>
+      <div class="small-title">{{ t('ui.character') }}</div>
       <HidableIlustration
         ilustration-type="character"
         :visible="showSecretInfo"
@@ -85,7 +85,9 @@ const url = computed<string>(() =>
     </div>
 
     <div v-if="player.abilities.length" class="card__abilities">
-      <div class="small-title">{{ t('ability', player.abilities.length) }}</div>
+      <div class="small-title">
+        {{ t('ui.ability', player.abilities.length) }}
+      </div>
       <ul class="ability-list">
         <li v-for="ability in abilities" :key="ability.id" class="ability">
           <HidableIlustration

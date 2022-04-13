@@ -121,20 +121,20 @@ function handleConfirm(): void {
     <template #title>
       <template v-if="initialValue">
         <template v-if="type === 'character'">{{
-          t('editCustomCharacter')
+          t('ui.editCustomCharacter')
         }}</template>
-        <template v-else>{{ t('editCustomAbility') }}</template>
+        <template v-else>{{ t('ui.editCustomAbility') }}</template>
       </template>
       <template v-else>
         <template v-if="type === 'character'">{{
-          t('createCustomCharacter')
+          t('ui.createCustomCharacter')
         }}</template>
-        <template v-else>{{ t('createCustomAbility') }}</template>
+        <template v-else>{{ t('ui.createCustomAbility') }}</template>
       </template>
     </template>
 
     <label class="fiel">
-      <span class="field__label">{{ t('name') }}</span>
+      <span class="field__label">{{ t('ui.name') }}</span>
       <input
         v-model="name"
         class="field__input"
@@ -144,7 +144,7 @@ function handleConfirm(): void {
       />
     </label>
     <label class="field">
-      <span class="field__label">{{ t('description') }}</span>
+      <span class="field__label">{{ t('ui.description') }}</span>
       <textarea
         v-model="description"
         class="field__input field__input--textarea"
@@ -153,7 +153,7 @@ function handleConfirm(): void {
       />
     </label>
 
-    <span class="field__label">{{ t('image') }}</span>
+    <span class="field__label">{{ t('ui.image') }}</span>
     <div class="ilustration-selector">
       <Ilustration
         v-for="ilustrationId in allIlustrationIds"
@@ -174,7 +174,7 @@ function handleConfirm(): void {
 
     <template #footer="{ close }">
       <IconButton @click="close">
-        <template #icon><XIcon /></template>{{ t('cancel') }}
+        <template #icon><XIcon /></template>{{ t('ui.cancel') }}
       </IconButton>
 
       <IconButton
@@ -186,7 +186,7 @@ function handleConfirm(): void {
           }
         "
       >
-        <template #icon><CheckIcon /></template>{{ t('confirm') }}
+        <template #icon><CheckIcon /></template>{{ t('ui.confirm') }}
       </IconButton>
     </template>
   </CustomModal>

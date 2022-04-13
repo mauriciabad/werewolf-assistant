@@ -9,13 +9,13 @@ const { t } = useI18n()
 <template>
   <Layout locale-selector>
     <div class="content">
-      <h1 class="title">{{ t('whatAreYouQuestion') }}</h1>
+      <h1 class="title">{{ t('ui.whatAreYouQuestion') }}</h1>
       <div class="links">
         <RouterLink class="link" :to="{ name: 'storyteller' }">{{
-          t('storyteller')
+          t('ui.storyteller')
         }}</RouterLink>
         <RouterLink class="link" :to="{ name: 'player' }">{{
-          t('player')
+          t('ui.player')
         }}</RouterLink>
       </div>
     </div>

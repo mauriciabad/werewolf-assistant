@@ -28,20 +28,20 @@ if (players.value.length === 0) {
     <div class="storyteller">
       <div class="links">
         <RouterLink class="link" :to="{ name: 'newGame' }">
-          <RefreshIcon class="link__icon" />{{ t('createNewGame') }}
+          <RefreshIcon class="link__icon" />{{ t('ui.createNewGame') }}
         </RouterLink>
       </div>
 
       <div class="content">
         <p>
           {{
-            t('gameStartedAt', {
+            t('ui.gameStartedAt', {
               date: creationDate.toLocaleDateString(),
               time: creationDate.toLocaleTimeString(),
             })
           }}
         </p>
-        <h1>{{ t('firstNightActions') }}</h1>
+        <h1>{{ t('ui.firstNightActions') }}</h1>
         <ol class="action-list">
           <li
             v-for="action in firstNightActions"
@@ -53,7 +53,7 @@ if (players.value.length === 0) {
           </li>
         </ol>
 
-        <h1>{{ t('regularNightActions') }}</h1>
+        <h1>{{ t('ui.regularNightActions') }}</h1>
         <ol class="action-list">
           <li
             v-for="action in nightActions"
@@ -65,11 +65,11 @@ if (players.value.length === 0) {
           </li>
         </ol>
 
-        <h1>{{ t('player', 2) }}</h1>
+        <h1>{{ t('ui.player', 2) }}</h1>
         <div class="links">
           <RouterLink class="link" :to="{ name: 'distributeRoles' }">
             <IdentificationIcon class="link__icon" />{{
-              t('distributeCharacters')
+              t('ui.distributeCharacters')
             }}
           </RouterLink>
         </div>
