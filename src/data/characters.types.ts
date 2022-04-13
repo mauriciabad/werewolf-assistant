@@ -1,4 +1,3 @@
-import type { Ability, CustomAbility } from './abilities.types'
 import type { IlustrationId } from './ilustrations'
 import type { TeamId } from './teams.types'
 
@@ -42,8 +41,6 @@ export function isCharacterId(id: string): id is CharacterId {
   return id.startsWith('c:')
 }
 
-export function isCharacter(
-  data: Character | CustomCharacter | Ability | CustomAbility
-): data is Character {
+export function isCharacter(data: { id: string }): data is Character {
   return isCharacterId(data.id)
 }

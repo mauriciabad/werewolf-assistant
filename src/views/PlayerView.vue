@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import useCharacterOrAbilityShowModal from '@/components/CharacterOrAbilityShowModal/useCharacterOrAbilityShowModal'
 import { useDataTranslations } from '@/compositions/useDataTranslations'
 import { useRouterHelper } from '@/compositions/useRouterHelper'
 import { getAbility } from '@/data/abilities'
@@ -18,6 +19,8 @@ const { t } = useI18n()
 const { getName, getDescription } = useDataTranslations()
 
 const { getQueryParam, getQueryParamList } = useRouterHelper()
+
+const { showDetailVew } = useCharacterOrAbilityShowModal()
 
 const hasData = computed<boolean>(
   () =>
@@ -121,8 +124,9 @@ const allAbilities = computed<(Ability | CustomAbility | undefined)[]>(() => {
         <p class="name">{{ playerName }}</p>
 
         <Ilustration
-          :id="character ? character.ilustration : customCharacter!.ilustration"
+          :id="character ? character.ilustration : customCharacter.ilustration"
           class="ilustration ilustration--character"
+          @click="showDetailVew(character ?? customCharacter)"
         />
         <div class="ability-ilustrations-list">
           <Ilustration
@@ -130,6 +134,7 @@ const allAbilities = computed<(Ability | CustomAbility | undefined)[]>(() => {
             :id="ability.ilustration"
             :key="ability.id"
             class="ilustration ilustration--ability"
+            @click="showDetailVew(ability)"
           />
         </div>
 
@@ -239,6 +244,7 @@ const allAbilities = computed<(Ability | CustomAbility | undefined)[]>(() => {
   border-radius: 1rem;
   box-shadow: 0 20px 25px -5px rgb(0 0 0 / 10%),
     0 8px 10px -6px rgb(0 0 0 / 10%);
+  cursor: pointer;
   object-fit: contain;
 
   &--ability {

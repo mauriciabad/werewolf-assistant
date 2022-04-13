@@ -26,6 +26,7 @@
     "description": "Descripción",
     "image": "Imagen",
     "cancel": "Cancelar",
+    "close": "Cerrar",
     "confirm": "Confirmar",
     "goBack": "Ir atrás",
     "choseCharacters": "Escoge los personajes",
@@ -41,7 +42,8 @@
     "numberOfPlayerNames": "{n} nombre de jugador | {n} nombres de jugadores",
     "numberOfAbilitiesPerCharacter": "{n} por personaje",
     "numberOfCharactersWithoutAbility": "{n} sin habilidad",
-    "totalNumber": "Total {n}"
+    "totalNumber": "Total {n}",
+    "tapCharacterExpandsExplanation": "Toca un personaje o habilidad para hacerla mas grande y mostrarla a otra gente."
   },
 
   "characters": {

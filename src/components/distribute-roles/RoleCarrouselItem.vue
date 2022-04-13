@@ -19,6 +19,7 @@ import { storeToRefs } from 'pinia'
 import QrcodeVue from 'qrcode.vue'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
+import useCharacterOrAbilityShowModal from '../CharacterOrAbilityShowModal/useCharacterOrAbilityShowModal'
 import HidableIlustration from '../HidableIlustration.vue'
 import HidableText from '../HidableText.vue'
 
@@ -33,6 +34,8 @@ const props = defineProps<Props>()
 const { t } = useI18n()
 
 const { getName } = useDataTranslations()
+
+const { showDetailVew } = useCharacterOrAbilityShowModal()
 
 const customDataStore = useCustomDataStore()
 const { customCharacters, customAbilities } = storeToRefs(customDataStore)
@@ -68,7 +71,7 @@ const url = computed<string>(() =>
       <QrcodeVue render-as="svg" :value="url" :margin="2" />
     </a>
 
-    <div class="card__character">
+    <div class="card__character" @click="showDetailVew(character)">
       <div class="small-title">{{ t('ui.character') }}</div>
       <HidableIlustration
         ilustration-type="character"
@@ -89,7 +92,12 @@ const url = computed<string>(() =>
         {{ t('ui.ability', player.abilities.length) }}
       </div>
       <ul class="ability-list">
-        <li v-for="ability in abilities" :key="ability.id" class="ability">
+        <li
+          v-for="ability in abilities"
+          :key="ability.id"
+          class="ability"
+          @click="showDetailVew(ability)"
+        >
           <HidableIlustration
             ilustration-type="ability"
             :visible="showSecretInfo"
@@ -154,6 +162,7 @@ $card-max-width: 30rem;
   }
 
   &__character {
+    cursor: pointer;
     font-size: 2rem;
     font-weight: 300;
     grid-area: character;
@@ -179,6 +188,8 @@ $card-max-width: 30rem;
 }
 
 .ability {
+  cursor: pointer;
+
   &:not(:last-child) {
     margin-bottom: 0.5rem;
   }

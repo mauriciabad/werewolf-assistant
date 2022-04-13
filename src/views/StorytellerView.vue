@@ -73,6 +73,8 @@ if (players.value.length === 0) {
             }}
           </RouterLink>
         </div>
+        <p class="text">{{ t('ui.tapCharacterExpandsExplanation') }}</p>
+
         <div class="player-list">
           <PlayerCard
             v-for="player in players"
@@ -139,6 +141,10 @@ h1 {
 
 .player-list {
   width: 100%;
+}
+
+.text {
+  margin: 1rem 0 0.5rem;
 }
 
 .action-list {

@@ -18,6 +18,7 @@ import {
 import { computed } from 'vue'
 import Popper from 'vue3-popper'
 import InputNumber from '../components/InputNumber.vue'
+import useCharacterOrAbilityShowModal from './CharacterOrAbilityShowModal/useCharacterOrAbilityShowModal'
 import Ilustration from './Ilustration.vue'
 
 const props = defineProps<{
@@ -33,6 +34,8 @@ const emit = defineEmits<{
 }>()
 
 const { getName, getDescription } = useDataTranslations()
+
+const { showDetailVew } = useCharacterOrAbilityShowModal()
 
 const name = computed<string>(() => getName(props.data))
 const description = computed<string>(() => getDescription(props.data))
@@ -53,7 +56,10 @@ const isCustom = computed<boolean>(
 
         <label class="item__label">{{ name }}</label>
 
-        <InformationCircleIcon class="item__icon" />
+        <InformationCircleIcon
+          class="item__icon item__icon--info"
+          @click="showDetailVew(data)"
+        />
 
         <TrashIcon
           v-if="isCustom"
@@ -117,6 +123,11 @@ const isCustom = computed<boolean>(
     width: 24px;
     color: var(--color-text-soft);
     vertical-align: -20%;
+
+    &--info {
+      color: var(--color-text-soft);
+      cursor: pointer;
+    }
 
     &--delete {
       color: var(--color-red-soft);

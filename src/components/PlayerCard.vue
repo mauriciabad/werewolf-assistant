@@ -16,6 +16,7 @@ import { useCustomDataStore } from '@/stores/customData'
 import type { PlayerConfig } from '@/stores/gameConfig'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
+import useCharacterOrAbilityShowModal from './CharacterOrAbilityShowModal/useCharacterOrAbilityShowModal'
 import Ilustration from './Ilustration.vue'
 
 interface Props {
@@ -28,6 +29,8 @@ const { t } = useI18n()
 const { getName } = useDataTranslations()
 
 const { getCustomCharacter, getCustomAbility } = useCustomDataStore()
+
+const { showDetailVew } = useCharacterOrAbilityShowModal()
 
 const character = computed<Character | CustomCharacter>(() =>
   isCustomCharacterId(props.player.character)
@@ -55,7 +58,7 @@ const abilities = computed<(Ability | CustomAbility)[]>(() =>
       </div>
     </div>
 
-    <div class="character">
+    <div class="character" @click="showDetailVew(character)">
       <div class="small-title">{{ t('ui.character') }}</div>
       <Ilustration :id="character.ilustration" class="character__ilustration" />
       <div class="character__text">
@@ -66,7 +69,12 @@ const abilities = computed<(Ability | CustomAbility)[]>(() =>
     <div v-if="abilities.length" class="abilities">
       <div class="small-title">{{ t('ui.ability', abilities.length) }}</div>
       <ul class="ability-list">
-        <li v-for="ability in abilities" :key="ability.id" class="ability">
+        <li
+          v-for="ability in abilities"
+          :key="ability.id"
+          class="ability"
+          @click="showDetailVew(ability)"
+        >
           <Ilustration :id="ability.ilustration" class="ability__ilustration" />
           <span class="ability__name">{{ getName(ability) }}</span>
         </li>
@@ -90,6 +98,10 @@ const abilities = computed<(Ability | CustomAbility)[]>(() =>
   grid-template-areas: 'name name' 'character abilities';
   text-align: center;
 
+  &:first-child {
+    margin-top: 0;
+  }
+
   &--no-abilities {
     align-items: center;
     grid-template-areas: 'name character' 'name character';
@@ -106,6 +118,7 @@ const abilities = computed<(Ability | CustomAbility)[]>(() =>
 }
 
 .character {
+  cursor: pointer;
   grid-area: character;
 
   &__text {
@@ -131,6 +144,8 @@ const abilities = computed<(Ability | CustomAbility)[]>(() =>
 }
 
 .ability {
+  cursor: pointer;
+
   &:not(:last-child) {
     margin-bottom: 0.5rem;
   }

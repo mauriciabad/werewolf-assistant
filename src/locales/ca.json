@@ -26,6 +26,7 @@
     "description": "Descripció",
     "image": "Imatge",
     "cancel": "Cancel·lar",
+    "close": "Tancar",
     "confirm": "Confirmar",
     "goBack": "Anar enrere",
     "choseCharacters": "Tria els personatges",
@@ -41,7 +42,8 @@
     "numberOfPlayerNames": "{n} nom de jugador | {n} noms de jugadors",
     "numberOfAbilitiesPerCharacter": "{n} per personatge",
     "numberOfCharactersWithoutAbility": "{n} sense habilitat",
-    "totalNumber": "Total {n}"
+    "totalNumber": "Total {n}",
+    "tapCharacterExpandsExplanation": "Toca un personatge o habilitat per fer-la més gran i ensenyar-la a altre gent."
   },
 
   "characters": {

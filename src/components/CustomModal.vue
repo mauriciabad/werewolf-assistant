@@ -55,8 +55,6 @@ const showModal = computed<boolean>({
   display: flex;
   max-height: 90%;
   flex-direction: column;
-
-  // padding: 1rem;
   border: 1px solid var(--color-border);
   margin: 0 1rem;
   background: var(--color-background);
@@ -67,7 +65,7 @@ const showModal = computed<boolean>({
   margin: 0 2rem 0 0;
   color: var(--color-heading);
   font-size: 1.5rem;
-  font-weight: 700;
+  text-align: center;
 }
 
 .modal__content {
@@ -75,6 +73,7 @@ const showModal = computed<boolean>({
   flex-grow: 1;
   padding: 1rem;
   padding-bottom: 0.5rem;
+  text-align: center;
 }
 
 .modal__action {
