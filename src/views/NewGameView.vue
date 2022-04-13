@@ -55,10 +55,11 @@ const newAbilitiesPerCharacter = computed<number>(() =>
 )
 
 const nothingAbilities = computed<number>(() =>
-  newCharacterCount.value === 0
+  newCharacterCount.value === 0 ||
+  newAbilityCount.value % newCharacterCount.value === 0
     ? 0
-    : newAbilityCount.value -
-      newAbilitiesPerCharacter.value * newCharacterCount.value
+    : newCharacterCount.value -
+      (newAbilityCount.value % newCharacterCount.value)
 )
 
 const router = useRouter()
