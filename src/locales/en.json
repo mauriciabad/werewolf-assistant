@@ -71,7 +71,7 @@
     "c:doctor_description": "Can save 1 person that got killed during the night before it finishes. \n1 usage."
   },
 
-  "abilities":{
+  "abilities": {
     "a:nothing_name": "Nothing",
     "a:nothing_description": "No ability.",
     "a:extra-life_name": "Extra life",
@@ -83,7 +83,7 @@
     "a:major_name": "Major",
     "a:major_description": "In case of a tie during the day, your vote defines the result. When a major dies, he chooses the next major, this way there's always a major."
   },
-  
+
   "actions": {
     "major-revealed_name": "@:abilities.a:major_name",
     "major-revealed_description": "Is revealed.",

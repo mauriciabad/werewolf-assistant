@@ -71,7 +71,7 @@
     "c:doctor_description": "Puedes revivir una persona matada durante la noche, antes de que termine.\n1 uso."
   },
 
-  "abilities":{
+  "abilities": {
     "a:nothing_name": "Nada",
     "a:nothing_description": "Nada.",
     "a:extra-life_name": "Vida extra",
@@ -83,7 +83,7 @@
     "a:major_name": "Alcalde",
     "a:major_description": "En cado de empate, tu voto determina el resultado. Cuando el alcalde muere, escoge al siguiente alcalde sucesor, de forma que siempre hay alcalde."
   },
-  
+
   "actions": {
     "major-revealed_name": "@:abilities.a:major_name",
     "major-revealed_description": "Se presenta.",

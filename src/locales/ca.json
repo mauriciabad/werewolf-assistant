@@ -71,7 +71,7 @@
     "c:doctor_description": "Pots reviure una persona morta durant la nit, abans que acabi.\n1 ús."
   },
 
-  "abilities":{
+  "abilities": {
     "a:nothing_name": "Res",
     "a:nothing_description": "Res.",
     "a:extra-life_name": "Vida extra",
@@ -83,7 +83,7 @@
     "a:major_name": "Alcalde",
     "a:major_description": "En cas d'empat, el teu vot determina el resultat. Quan mor l'alcalde, escull el següent alcalde successor."
   },
-  
+
   "actions": {
     "major-revealed_name": "@:abilities.a:major_name",
     "major-revealed_description": "Es presenta.",
