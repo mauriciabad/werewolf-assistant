@@ -9,6 +9,7 @@
   "unknownCustomCharacter": "Unknown custom character \"{character}\".",
   "unknownCharacter": "Unknown character \"{character}\".",
   "unknownAbility": "Unknown ability \"{ability}\".",
+  "unknownCustomAbility": "Unknown custom ability.",
   "scanQr": "Scan the QR code",
   "scanQrAgain": "Scan the QR code again",
   "playerViewErrorDetails": "If the error still appears, ask the storyteller to create a new game.",

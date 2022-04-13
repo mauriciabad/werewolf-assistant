@@ -9,6 +9,7 @@
   "unknownCustomCharacter": "Personaje personalizado \"{character}\" desconocido.",
   "unknownCharacter": "Personaje \"{character}\" desconocido.",
   "unknownAbility": "Abilidad \"{ability}\" desconocida.",
+  "unknownCustomAbility": "Abilidad personalizada desconocida.",
   "scanQr": "Escanea el código QR",
   "scanQrAgain": "Escanea el código QR otra vez",
   "playerViewErrorDetails": "Si el problema persiste, píedele al narrador que cree una nueva partida.",

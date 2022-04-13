@@ -191,6 +191,12 @@ const allAbilities = computed<(Ability | CustomAbility | undefined)[]>(() => {
           >
             {{ t('unknownAbility', { ability: abilityId }) }}
           </li>
+          <li
+            v-if="customAbilities.some((a) => a === undefined)"
+            class="error-list__item"
+          >
+            {{ t('unknownCustomAbility') }}
+          </li>
         </ul>
 
         <p class="error-explanation">

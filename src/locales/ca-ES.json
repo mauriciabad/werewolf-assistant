@@ -9,6 +9,7 @@
   "unknownCustomCharacter": "Personatge personalizat \"{character}\" desconegut.",
   "unknownCharacter": "Personatge \"{character}\" desconegut.",
   "unknownAbility": "Habilitat \"{ability}\" desconeguda.",
+  "unknownCustomAbility": "Habilitat personalitzada desconeguda.",
   "scanQr": "Escaneja el codi QR",
   "scanQrAgain": "Escaneja el codi QR una altre vegada",
   "playerViewErrorDetails": "Si el problema persisteix, demana-li al narrador que crei una nova partida.",
