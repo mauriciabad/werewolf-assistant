@@ -68,7 +68,9 @@
     "c:witch_name": "Bruixa",
     "c:witch_description": "Pots reviure una persona morta durant la nit, abans que acabi. O també pots matar una persona al final de la nit. 1 ús.",
     "c:doctor_name": "Doctor",
-    "c:doctor_description": "Pots reviure una persona morta durant la nit, abans que acabi. 1 ús."
+    "c:doctor_description": "Pots reviure una persona morta durant la nit, abans que acabi. 1 ús.",
+    "c:scarecrow_name": "Home de palla",
+    "c:scarecrow_description": "No pot ser matat per els homes llop. Si l'intenten matar, la seva mort no serà anunciada el següent matí."
   },
 
   "abilities": {
@@ -95,7 +97,9 @@
     "a:steal-ability_name": "Lladre d'habilitats",
     "a:steal-ability_description": "Durant el dia, pots mirar 2 habilitats d'altres jugadors i robar-ne 1. 1 ús.",
     "a:poison_name": "Verí",
-    "a:poison_description": "Durant el dia, pots enverinar publicament a un jugador. Aquest jugador morirà just al acabar la següent nit. 1 ús."
+    "a:poison_description": "Durant el dia, pots enverinar publicament a un jugador. Aquest jugador morirà just al acabar la següent nit. 1 ús.",
+    "a:protect_name": "Protector",
+    "a:protect_description": "Durant el dia, pots protegir publicament a un jugador. Aquest jugador no podra ser matat pels homes llop la següent nit. 1 ús."
   },
 
   "actions": {

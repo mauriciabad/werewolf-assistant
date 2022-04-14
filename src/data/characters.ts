@@ -56,6 +56,11 @@ const characters: Character[] = [
     team: 'villagers',
     ilustration: 'doctor',
   },
+  {
+    id: 'c:scarecrow',
+    team: 'villagers',
+    ilustration: 'scarecrow',
+  },
 ]
 
 export function getCharacter(id: CharacterId): Character

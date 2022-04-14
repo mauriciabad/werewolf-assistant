@@ -13,6 +13,7 @@ export type AbilityId =
   | 'a:steal-ability'
   | 'a:poison'
   | 'a:cancel-revive'
+  | 'a:protect'
 
 export interface Ability {
   id: AbilityId

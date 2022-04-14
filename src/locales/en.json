@@ -68,7 +68,9 @@
     "c:witch_name": "Witch",
     "c:witch_description": "Can save 1 person that got killed during the night before it finishes, also can kill 1 person at the end of the night. 1 usage of each.",
     "c:doctor_name": "Doctor",
-    "c:doctor_description": "Can save 1 person that got killed during the night before it finishes. 1 usage."
+    "c:doctor_description": "Can save 1 person that got killed during the night before it finishes. 1 usage.",
+    "c:scarecrow_name": "Scarecrow",
+    "c:scarecrow_description": "Can't be killed by the werewolves. If they try to kill him, his death won't be anounced on the next morning."
   },
 
   "abilities": {
@@ -95,7 +97,9 @@
     "a:steal-ability_name": "Ability thief",
     "a:steal-ability_description": "During the day, you can see 2 player's abilities and steal 1. 1 usage.",
     "a:poison_name": "Poison",
-    "a:poison_description": "During the day, you can publicly poison someone. That player is going to die at the next night's ending."
+    "a:poison_description": "During the day, you can publicly poison someone. That player is going to die at the next night's ending. 1 usage",
+    "a:protect_name": "Protector",
+    "a:protect_description": "During the day, you can publicly protect someone against the werewolves. That player can't be killed by the werewolves the next night. 1 usage"
   },
 
   "actions": {

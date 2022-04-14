@@ -13,6 +13,7 @@ export type CharacterId =
   | 'c:baker'
   | 'c:feral-kid'
   | 'c:twin'
+  | 'c:scarecrow'
 
 export interface Character {
   id: CharacterId
