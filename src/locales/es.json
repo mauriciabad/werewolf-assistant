@@ -49,6 +49,8 @@
   "characters": {
     "c:werewolf_name": "Hombre lobo",
     "c:werewolf_description": "Durante la noche, votas a que jugador matar junto a los otros hombres lobo en secreto.",
+    "c:lone-werewolf_name": "Hombre lobo solitario",
+    "c:lone-werewolf_description": "Igual que @:c:werewolf_name, pero tiene que ser el último hombre lobo vivo cuando ganen para ganar.",
     "c:villager_name": "Aldeano",
     "c:villager_description": "Nada.",
     "c:nudist_name": "Nudista",

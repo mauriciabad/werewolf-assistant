@@ -49,6 +49,8 @@
   "characters": {
     "c:werewolf_name": "Werewolf",
     "c:werewolf_description": "During the night, you vote someone to be killed with the other werewolves in secret.",
+    "c:lone-werewolf_name": "Lone werewolf",
+    "c:lone-werewolf_description": "Same as @:c:werewolf_name but has to be the last werewolve alive when the werewolves win in order to win.",
     "c:villager_name": "Villager",
     "c:villager_description": "Nothing.",
     "c:nudist_name": "Nudist",

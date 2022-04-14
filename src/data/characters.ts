@@ -7,6 +7,11 @@ const characters: Character[] = [
     ilustration: 'werewolf',
   },
   {
+    id: 'c:lone-werewolf',
+    team: 'werewolves',
+    ilustration: 'werewolfDark',
+  },
+  {
     id: 'c:villager',
     team: 'villagers',
     ilustration: 'boy',

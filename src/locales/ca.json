@@ -49,6 +49,8 @@
   "characters": {
     "c:werewolf_name": "Home llop",
     "c:werewolf_description": "Durant la nit, vota quin jugador matar juntament amb els altres homes llop en secret.",
+    "c:lone-werewolf_name": "Home llop solitari",
+    "c:lone-werewolf_description": "Igual que @:c:werewolf_name, però ha de ser l'últim home llop viu quan guanyin per guanyar.",
     "c:villager_name": "Vilatà",
     "c:villager_description": "Res.",
     "c:nudist_name": "Nudista",

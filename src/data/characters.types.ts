@@ -3,6 +3,7 @@ import type { TeamId } from './teams.types'
 
 export type CharacterId =
   | 'c:werewolf'
+  | 'c:lone-werewolf'
   | 'c:villager'
   | 'c:nudist'
   | 'c:seer'
