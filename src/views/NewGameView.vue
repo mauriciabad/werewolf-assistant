@@ -52,7 +52,7 @@ const newAbilitiesCount = computed<number>(() =>
 const newAbilitiesPerCharacter = computed<number>(() =>
   newCharactersCount.value === 0
     ? 0
-    : Math.floor(newAbilitiesCount.value / newCharactersCount.value)
+    : Math.ceil(newAbilitiesCount.value / newCharactersCount.value)
 )
 
 const nothingAbilities = computed<number>(() =>

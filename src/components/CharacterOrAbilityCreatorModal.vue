@@ -166,6 +166,7 @@ function handleConfirm(): void {
         }"
         tabindex="0"
         role="button"
+        :title="ilustrationId"
         @click="ilustration = ilustrationId"
         @keypress.enter="ilustration = ilustrationId"
         @keypress.space="ilustration = ilustrationId"

@@ -6,6 +6,13 @@ export type AbilityId =
   | 'a:cupid'
   | 'a:major'
   | 'a:nothing'
+  | 'a:extra-life-key'
+  | 'a:extra-life-lock'
+  | 'a:reveal-ability'
+  | 'a:save-someone-else'
+  | 'a:steal-ability'
+  | 'a:poison'
+  | 'a:cancel-revive'
 
 export interface Ability {
   id: AbilityId

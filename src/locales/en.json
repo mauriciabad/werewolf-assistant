@@ -66,22 +66,36 @@
     "c:twin_name": "Twin",
     "c:twin_description": "You know who your siblings are.",
     "c:witch_name": "Witch",
-    "c:witch_description": "Can save 1 person that got killed during the night before it finishes, also can kill 1 person at the end of the night.\n1 usage of each.",
+    "c:witch_description": "Can save 1 person that got killed during the night before it finishes, also can kill 1 person at the end of the night. 1 usage of each.",
     "c:doctor_name": "Doctor",
-    "c:doctor_description": "Can save 1 person that got killed during the night before it finishes. \n1 usage."
+    "c:doctor_description": "Can save 1 person that got killed during the night before it finishes. 1 usage."
   },
 
   "abilities": {
     "a:nothing_name": "Nothing",
     "a:nothing_description": "No ability.",
     "a:extra-life_name": "Extra life",
-    "a:extra-life_description": "When your death is announced, you can use the extra life and not die. \n1 usage.",
+    "a:extra-life_description": "When your death is announced, you can use the extra life and not die. 1 usage.",
     "a:extra-vote_name": "Extra vote",
-    "a:extra-vote_description": "In one voting session, you can emit another vote. \n1 usage.",
+    "a:extra-vote_description": "In one voting session, you can emit another vote. 1 usage.",
     "a:cupid_name": "Cupid",
     "a:cupid_description": "The first night, you have to choose two players to fall in love. If one lover dies, the other also dies.",
     "a:major_name": "Major",
-    "a:major_description": "In case of a tie during the day, your vote defines the result. When a major dies, he chooses the next major, this way there's always a major."
+    "a:major_description": "In case of a tie during the day, your vote defines the result. When a major dies, he chooses the next major, this way there's always a major.",
+    "a:reveal-ability_name": "Detective",
+    "a:reveal-ability_description": "During the day, you can publicly reveal a player's ability. 1 usage.",
+    "a:extra-life-key_name": "Heart key",
+    "a:extra-life-key_description": "When a player with a {'\"'}@:abilities.a:extra-life-lock_name{'\"'} dies, you can revive him. 1 usage.",
+    "a:extra-life-lock_name": "Heart lock",
+    "a:extra-life-lock_description": "When you die, if a player with a {'\"'}@:abilities.a:extra-life-key_name{'\"'} wants to save you, you revive. 1 usage.",
+    "a:cancel-revive_name": "Spoilsport",
+    "a:cancel-revive_description": "When someone is reviced you can cancel it. 1 usage.",
+    "a:save-someone-else_name": "Mouth-to-mouth",
+    "a:save-someone-else_description": "When someone dies, you can save him. You cannot save yourself. 1 usage.",
+    "a:steal-ability_name": "Ability thief",
+    "a:steal-ability_description": "During the day, you can see 2 player's abilities and steal 1. 1 usage.",
+    "a:poison_name": "Poison",
+    "a:poison_description": "During the day, you can publicly poison someone. That player is going to die at the next night's ending."
   },
 
   "actions": {

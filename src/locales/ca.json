@@ -66,22 +66,36 @@
     "c:twin_name": "Bessona",
     "c:twin_description": "Saps qui són les teves germanes.",
     "c:witch_name": "Bruixa",
-    "c:witch_description": "Pots reviure una persona morta durant la nit, abans que acabi. O també pots matar una persona al final de la nit.\n1 ús.",
+    "c:witch_description": "Pots reviure una persona morta durant la nit, abans que acabi. O també pots matar una persona al final de la nit. 1 ús.",
     "c:doctor_name": "Doctor",
-    "c:doctor_description": "Pots reviure una persona morta durant la nit, abans que acabi.\n1 ús."
+    "c:doctor_description": "Pots reviure una persona morta durant la nit, abans que acabi. 1 ús."
   },
 
   "abilities": {
     "a:nothing_name": "Res",
     "a:nothing_description": "Res.",
     "a:extra-life_name": "Vida extra",
-    "a:extra-life_description": "Quan s'anuncia la teva mort, pots utilitzar la vida extra i no morir.\n1 ús.",
+    "a:extra-life_description": "Quan s'anuncia la teva mort, pots utilitzar la vida extra i no morir. 1 ús.",
     "a:extra-vote_name": "Vot extra",
-    "a:extra-vote_description": "En una elecció, pots emetre un vot més.\n1 ús.",
+    "a:extra-vote_description": "En una elecció, pots emetre un vot més. 1 ús.",
     "a:cupid_name": "Cupido",
     "a:cupid_description": "A la primera nit esculls dos jugadors que s'acaben enamorant. L'enamorament causa que si un mor, l'altre també.",
     "a:major_name": "Alcalde",
-    "a:major_description": "En cas d'empat, el teu vot determina el resultat. Quan mor l'alcalde, escull el següent alcalde successor."
+    "a:major_description": "En cas d'empat, el teu vot determina el resultat. Quan mor l'alcalde, escull el següent alcalde successor.",
+    "a:reveal-ability_name": "Detectiu",
+    "a:reveal-ability_description": "Durant el dia, pots revelar publicament una habilitat d'un jugador. 1 ús.",
+    "a:extra-life-key_name": "Clau de cor",
+    "a:extra-life-key_description": "Quan un jugador amb el {'\"'}@:abilities.a:extra-life-lock_name{'\"'} mor, pots reviure'l. 1 ús.",
+    "a:extra-life-lock_name": "Cor candau",
+    "a:extra-life-lock_description": "Quan moris, mostra l'habilitat i si algún jugador amb una {'\"'}@:abilities.a:extra-life-key_name{'\"'} vol salvarte, revius. 1 ús.",
+    "a:cancel-revive_name": "Aixafaguitarres",
+    "a:cancel-revive_description": "Quan algú revisqui, pots cancelar-ho. 1 ús.",
+    "a:save-someone-else_name": "Boca a boca",
+    "a:save-someone-else_description": "Quan algú mori, pots salvar-lo. No et pots salvar a tu mateix. 1 ús.",
+    "a:steal-ability_name": "Lladre d'habilitats",
+    "a:steal-ability_description": "Durant el dia, pots mirar 2 habilitats d'altres jugadors i robar-ne 1. 1 ús.",
+    "a:poison_name": "Verí",
+    "a:poison_description": "Durant el dia, pots enverinar publicament a un jugador. Aquest jugador morirà just al acabar la següent nit. 1 ús."
   },
 
   "actions": {

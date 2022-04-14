@@ -13,7 +13,7 @@ const i18n = createI18n({
   legacy: false,
   fallbackLocale: {
     ca: ['es'],
-    default: ['en'],
+    default: ['en', 'es', 'ca'],
   },
   messages: messages as Record<Locales, MessageSchema>,
   fallbackWarn: false,

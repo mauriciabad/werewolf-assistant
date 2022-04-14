@@ -1,26 +1,18 @@
 import type { Ability, AbilityId } from './abilities.types'
 
 const abilities: Ability[] = [
-  {
-    id: 'a:nothing',
-    ilustration: 'prohibited',
-  },
-  {
-    id: 'a:extra-life',
-    ilustration: 'revive',
-  },
-  {
-    id: 'a:extra-vote',
-    ilustration: 'vote',
-  },
-  {
-    id: 'a:cupid',
-    ilustration: 'cupid',
-  },
-  {
-    id: 'a:major',
-    ilustration: 'sheriff',
-  },
+  { id: 'a:nothing', ilustration: 'prohibited' },
+  { id: 'a:extra-life', ilustration: 'revive' },
+  { id: 'a:extra-vote', ilustration: 'vote' },
+  { id: 'a:cupid', ilustration: 'cupid' },
+  { id: 'a:major', ilustration: 'sheriff' },
+  { id: 'a:extra-life-key', ilustration: 'key' },
+  { id: 'a:extra-life-lock', ilustration: 'heart' },
+  { id: 'a:reveal-ability', ilustration: 'detective' },
+  { id: 'a:save-someone-else', ilustration: 'give' },
+  { id: 'a:steal-ability', ilustration: 'thief' },
+  { id: 'a:poison', ilustration: 'poison' },
+  { id: 'a:cancel-revive', ilustration: 'artAndDesign' },
 ]
 
 export function getAbility(id: AbilityId): Ability

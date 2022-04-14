@@ -66,22 +66,36 @@
     "c:twin_name": "Melliza",
     "c:twin_description": "Sabes quienes son tus hermanas.",
     "c:witch_name": "Bruja",
-    "c:witch_description": "Puedes revivir una persona matada durante la noche antes de que termine. O también puedes matar a una persona al final de la noche.\n Solo puedes hacer cada cosa una vez.",
+    "c:witch_description": "Puedes revivir una persona matada durante la noche antes de que termine. O también puedes matar a una persona al final de la noche.  Solo puedes hacer cada cosa una vez.",
     "c:doctor_name": "Doctor",
-    "c:doctor_description": "Puedes revivir una persona matada durante la noche, antes de que termine.\n1 uso."
+    "c:doctor_description": "Puedes revivir una persona matada durante la noche, antes de que termine. 1 uso."
   },
 
   "abilities": {
     "a:nothing_name": "Nada",
     "a:nothing_description": "Nada.",
     "a:extra-life_name": "Vida extra",
-    "a:extra-life_description": "Cuando se anuncia tu muerte, puedes usar la vida extra y no morir.\n1 uso.",
+    "a:extra-life_description": "Cuando se anuncia tu muerte, puedes usar la vida extra y no morir. 1 uso.",
     "a:extra-vote_name": "Voto extra",
-    "a:extra-vote_description": "En una elección, puedes emitir un voto más.\n1 uso.",
+    "a:extra-vote_description": "En una elección, puedes emitir un voto más. 1 uso.",
     "a:cupid_name": "Cupido",
     "a:cupid_description": "La primera noche eliges a dos jugadores y estos se enamoran. El enamoramiento causa que si uno muere, el otro también.",
     "a:major_name": "Alcalde",
-    "a:major_description": "En cado de empate, tu voto determina el resultado. Cuando el alcalde muere, escoge al siguiente alcalde sucesor, de forma que siempre hay alcalde."
+    "a:major_description": "En cado de empate, tu voto determina el resultado. Cuando el alcalde muere, escoge al siguiente alcalde sucesor, de forma que siempre hay alcalde.",
+    "a:reveal-ability_name": "Detective",
+    "a:reveal-ability_description": "Durante el dia, puedes revelar publicamente una habilidad de un jugador. 1 uso.",
+    "a:extra-life-key_name": "Llave corazón",
+    "a:extra-life-key_description": "Cuando un jugador con el {'\"'}@:abilities.a:extra-life-lock_name{'\"'} muere, puedes revivirlo. 1 uso.",
+    "a:extra-life-lock_name": "Candado corazón",
+    "a:extra-life-lock_description": "Cuando mueras, muestra esta habilidad y si un jugador con una {'\"'}@:abilities.a:extra-life-key_name{'\"'} quiere salvarte, revives. 1 uso.",
+    "a:cancel-revive_name": "Aguafiestas",
+    "a:cancel-revive_description": "Cuando alguien sea revivido, puedes cancelarlo. 1 uso.",
+    "a:save-someone-else_name": "Boca a boca",
+    "a:save-someone-else_description": "Cuando muera alguien, puedes salvarlo. No puedes salvarte a ti mismo. 1 uso.",
+    "a:steal-ability_name": "Ladrón de habilidades",
+    "a:steal-ability_description": "Durante el dia, puedes mirar 2 habilidades de otros jugadores y robar 1 de ellas. 1 uso.",
+    "a:poison_name": "Veneno",
+    "a:poison_description": "Durante el dia, puedes envenenar publicamente a un jugador. Este jugador morirá justo al terminar la siguiente noche. 1 uso."
   },
 
   "actions": {
