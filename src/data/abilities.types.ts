@@ -14,6 +14,8 @@ export type AbilityId =
   | 'a:poison'
   | 'a:cancel-revive'
   | 'a:protect'
+  | 'a:collejas'
+  | 'a:beatboxer'
 
 export interface Ability {
   id: AbilityId

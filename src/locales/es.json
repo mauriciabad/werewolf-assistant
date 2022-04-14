@@ -101,7 +101,11 @@
     "a:poison_name": "Veneno",
     "a:poison_description": "Durante el dia, puedes envenenar publicamente a un jugador. Este jugador morirá justo al terminar la siguiente noche. 1 uso.",
     "a:protect_name": "Protector",
-    "a:protect_description": "Durante el dia, puedes proteger publicamente a un jugador. Este jugador no podra ser matado por los hombres lobo la siguiente noche. 1 uso."
+    "a:protect_description": "Durante el dia, puedes proteger publicamente a un jugador. Este jugador no podra ser matado por los hombres lobo la siguiente noche. 1 uso.",
+    "a:beatboxer_name": "Beatboxer",
+    "a:beatboxer_description": "Durante la noche, practica beatbox para que los aldeanos no escuchen ruidos.",
+    "a:collejas_name": "El collejas",
+    "a:collejas_description": "Durante la noche, indica al narrador a quien meterle una coleja y con que intensidad (del 1 al 5)."
   },
 
   "actions": {

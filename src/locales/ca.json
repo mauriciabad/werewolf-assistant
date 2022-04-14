@@ -72,7 +72,11 @@
     "c:doctor_name": "Doctor",
     "c:doctor_description": "Pots reviure una persona morta durant la nit, abans que acabi. 1 ús.",
     "c:scarecrow_name": "Home de palla",
-    "c:scarecrow_description": "No pot ser matat per els homes llop. Si l'intenten matar, la seva mort no serà anunciada el següent matí."
+    "c:scarecrow_description": "No pot ser matat per els homes llop. Si l'intenten matar, la seva mort no serà anunciada el següent matí.",
+    "a:beatboxer_name": "Beatboxer",
+    "a:beatboxer_description": "Durant la nit, practica beatbox perque els vilatans no escoltin sorolls.",
+    "a:collejas_name": "El collejas",
+    "a:collejas_description": "Durant la nit, indica al narrador a qui fotre-li una clatellada i amb quina intensitat (del 1 al 5)."
   },
 
   "abilities": {

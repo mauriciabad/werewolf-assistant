@@ -72,7 +72,11 @@
     "c:doctor_name": "Doctor",
     "c:doctor_description": "Can save 1 person that got killed during the night before it finishes. 1 usage.",
     "c:scarecrow_name": "Scarecrow",
-    "c:scarecrow_description": "Can't be killed by the werewolves. If they try to kill him, his death won't be anounced on the next morning."
+    "c:scarecrow_description": "Can't be killed by the werewolves. If they try to kill him, his death won't be anounced on the next morning.",
+    "a:beatboxer_name": "Beatboxer",
+    "a:beatboxer_description": "During the night, practices beatbox so that villagers cannot hear noises.",
+    "a:collejas_name": "The slap-man",
+    "a:collejas_description": "During the night, signals the storyteller who to slap on the back of the neck and with what power (from 1 to 5)."
   },
 
   "abilities": {
