@@ -47,33 +47,38 @@ const isCustom = computed<boolean>(
 
 <template>
   <div class="item__wrapper">
-    <Popper hover arrow>
-      <template #content>
-        <span class="toltip-content">{{ description }}</span>
-      </template>
-      <div class="item__name-wrapper">
+    <div class="item__name-wrapper">
+      <Popper hover arrow>
+        <template #content>
+          <span class="toltip-content">{{ description }}</span>
+        </template>
         <Ilustration :id="data.ilustration" class="item__ilustration" />
+      </Popper>
 
+      <Popper hover arrow>
+        <template #content>
+          <span class="toltip-content">{{ description }}</span>
+        </template>
         <label class="item__label">{{ name }}</label>
+      </Popper>
 
-        <InformationCircleIcon
-          class="item__icon item__icon--info"
-          @click="showDetailVew(data)"
-        />
+      <InformationCircleIcon
+        class="item__icon item__icon--info"
+        @click="showDetailVew(data)"
+      />
 
-        <TrashIcon
-          v-if="isCustom"
-          class="item__icon item__icon--delete"
-          @click="emit('remove')"
-        />
+      <TrashIcon
+        v-if="isCustom"
+        class="item__icon item__icon--delete"
+        @click="emit('remove')"
+      />
 
-        <PencilIcon
-          v-if="isCustom"
-          class="item__icon item__icon--edit"
-          @click="emit('edit')"
-        />
-      </div>
-    </Popper>
+      <PencilIcon
+        v-if="isCustom"
+        class="item__icon item__icon--edit"
+        @click="emit('edit')"
+      />
+    </div>
 
     <InputNumber
       :model-value="modelValue"
