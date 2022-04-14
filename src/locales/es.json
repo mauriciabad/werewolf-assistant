@@ -105,7 +105,9 @@
     "a:beatboxer_name": "Beatboxer",
     "a:beatboxer_description": "Durante la noche, practica beatbox para que los aldeanos no escuchen ruidos.",
     "a:collejas_name": "El collejas",
-    "a:collejas_description": "Durante la noche, indica al narrador a quien meterle una coleja y con que intensidad (del 1 al 5)."
+    "a:collejas_description": "Durante la noche, indica al narrador a quien meterle una coleja y con que intensidad (del 1 al 5).",
+    "a:ghost_name": "Ghost",
+    "a:ghost_description": "Cada noche, escoje una persona para que el narrador lo asuste."
   },
 
   "actions": {
@@ -136,6 +138,10 @@
     "doctor-saves_name": "@:characters.c:doctor_name",
     "doctor-saves_description": "Abre los ojos, se le señala quien ha muerto e indica si quiere revivirlo (1 vez).",
     "baker-gives-bread_name": "@:characters.c:baker_name",
-    "baker-gives-bread_description": "Señala un jugador, se despierta a dicho jugador en secreto y conoce al panadero."
+    "baker-gives-bread_description": "Señala un jugador, se despierta a dicho jugador en secreto y conoce al panadero.",
+    "collejas-attacks_name": "@:characters.c:baker_name",
+    "collejas-attacks_description": "Señala quien se lleva la colleja y con que intensidad.",
+    "ghost-decides_name": "@:characters.c:baker_name",
+    "ghost-decides_description": "Señala quien asustar."
   }
 }

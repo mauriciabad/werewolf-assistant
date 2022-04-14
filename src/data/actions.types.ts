@@ -16,6 +16,8 @@ export type ActionId =
   | 'witch-kills-or-saves'
   | 'doctor-saves'
   | 'baker-gives-bread'
+  | 'ghost-decides'
+  | 'collejas-attacks'
 
 export type Action = {
   id: ActionId

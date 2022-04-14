@@ -16,6 +16,7 @@ const abilities: Ability[] = [
   { id: 'a:protect', ilustration: 'shield' },
   { id: 'a:beatboxer', ilustration: 'rapper' },
   { id: 'a:collejas', ilustration: 'fist' },
+  { id: 'a:ghost', ilustration: 'ghost' },
 ]
 
 export function getAbility(id: AbilityId): Ability

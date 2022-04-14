@@ -13,9 +13,11 @@ export const firstNightActions: Action[] = [
 ]
 
 export const nightActions: Action[] = [
+  { id: 'ghost-decides', requiredAbilities: ['a:ghost'] },
   { id: 'seer-guesses', requiredCharacters: ['c:seer'] },
   { id: 'werewolves-kill', requiredCharacters: ['c:werewolf'] },
   { id: 'witch-kills-or-saves', requiredCharacters: ['c:witch'] },
   { id: 'doctor-saves', requiredCharacters: ['c:doctor'] },
+  { id: 'collejas-attacks', requiredAbilities: ['a:collejas'] },
   { id: 'baker-gives-bread', requiredCharacters: ['c:baker'] },
 ]

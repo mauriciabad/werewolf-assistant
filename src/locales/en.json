@@ -72,11 +72,7 @@
     "c:doctor_name": "Doctor",
     "c:doctor_description": "Can save 1 person that got killed during the night before it finishes. 1 usage.",
     "c:scarecrow_name": "Scarecrow",
-    "c:scarecrow_description": "Can't be killed by the werewolves. If they try to kill him, his death won't be anounced on the next morning.",
-    "a:beatboxer_name": "Beatboxer",
-    "a:beatboxer_description": "During the night, practices beatbox so that villagers cannot hear noises.",
-    "a:collejas_name": "The slap-man",
-    "a:collejas_description": "During the night, signals the storyteller who to slap on the back of the neck and with what power (from 1 to 5)."
+    "c:scarecrow_description": "Can't be killed by the werewolves. If they try to kill him, his death won't be anounced on the next morning."
   },
 
   "abilities": {
@@ -105,7 +101,13 @@
     "a:poison_name": "Poison",
     "a:poison_description": "During the day, you can publicly poison someone. That player is going to die at the next night's ending. 1 usage",
     "a:protect_name": "Protector",
-    "a:protect_description": "During the day, you can publicly protect someone against the werewolves. That player can't be killed by the werewolves the next night. 1 usage"
+    "a:protect_description": "During the day, you can publicly protect someone against the werewolves. That player can't be killed by the werewolves the next night. 1 usage",
+    "a:beatboxer_name": "Beatboxer",
+    "a:beatboxer_description": "During the night, practices beatbox so that villagers cannot hear noises.",
+    "a:collejas_name": "The slap-man",
+    "a:collejas_description": "During the night, signals the storyteller who to slap on the back of the neck and with what power (from 1 to 5).",
+    "a:ghost_name": "Ghost",
+    "a:ghost_description": "Every night chooses a person to be scared by the storyteller."
   },
 
   "actions": {
@@ -136,6 +138,10 @@
     "doctor-saves_name": "@:characters.c:doctor_name",
     "doctor-saves_description": "Opens the eyes, the dead player is pointed out and signals if he wants to revive him (1 time).",
     "baker-gives-bread_name": "@:characters.c:baker_name",
-    "baker-gives-bread_description": "Points a player, that player is woken up in secret, and he meets the baker."
+    "baker-gives-bread_description": "Points a player, that player is woken up in secret, and he meets the baker.",
+    "collejas-attacks_name": "@:characters.c:baker_name",
+    "collejas-attacks_description": "Signals who to slap and with what power.",
+    "ghost-decides_name": "@:characters.c:baker_name",
+    "ghost-decides_description": "Signals who to scare"
   }
 }
