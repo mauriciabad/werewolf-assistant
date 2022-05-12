@@ -7,11 +7,12 @@
 ## High priority
 
 - [ ] PWA with offline support
-- [ ] Translations to Spanish
 
 ## Medium priority
 
 - [ ] Display team in player view
+- [ ] Reorder players
+- [ ] Colorize the bg differently for every round.
 
 ## Low priority
 
