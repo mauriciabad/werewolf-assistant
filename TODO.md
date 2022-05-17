@@ -7,6 +7,8 @@
 ## High priority
 
 - [ ] PWA with offline support
+- [ ] Reccommend the number of werewolfs depending of how many players are.
+- [ ] Automattically pick the reccommended characters and abilities when creating a game.
 
 ## Medium priority
 
@@ -16,11 +18,11 @@
 
 ## Low priority
 
-_Empty..._
+- [ ] Update theme
 
 ## Not sure if implement
 
-_Empty..._
+- [ ] Find a way to let the storyteller play too. (probably will need backend)
 
 ## Other
 
