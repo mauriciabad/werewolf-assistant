@@ -1,6 +1,7 @@
 <script setup lang="ts">
 defineProps<{
   disabled?: boolean
+  main?: boolean
 }>()
 const emit = defineEmits<{ (e: 'click'): void }>()
 </script>
@@ -9,7 +10,7 @@ const emit = defineEmits<{ (e: 'click'): void }>()
   <div
     :role="disabled ? undefined : 'button'"
     class="link"
-    :class="{ 'link--disabled': disabled }"
+    :class="{ 'link--main': main, 'link--disabled': disabled }"
     :tabindex="disabled ? undefined : 0"
     @click="disabled ? null : emit('click')"
   >
@@ -30,7 +31,22 @@ const emit = defineEmits<{ (e: 'click'): void }>()
   font-size: 1rem;
   justify-self: center;
   outline: none;
+  text-align: center;
   transition: box-shadow 0.2s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+
+  &--main {
+    position: sticky;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: calc(100% + 2 * var(--main-padding, 1rem));
+    padding: 0.75rem 0.5rem;
+    border: 0;
+    margin: calc(-1 * var(--main-padding, 1rem));
+    background-color: var(--color-primary);
+    border-radius: 0;
+    color: #fff;
+  }
 
   &--disabled {
     cursor: not-allowed;

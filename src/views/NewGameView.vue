@@ -197,6 +197,18 @@ function handleEditCustomAbility(customAbility: CustomAbility): void {
 
     <h1>{{ t('ui.newGame') }}</h1>
 
+    <h2>
+      <label for="player-names">{{ t('ui.playerNames') }}</label>
+    </h2>
+    <p>{{ t('ui.totalNumber', playerNamesCount) }}</p>
+    <textarea
+      id="player-names"
+      v-model="rawPlayerNames"
+      name="Player names"
+      class="player-names"
+    ></textarea>
+    <TagList :items="newPlayerNames" class="player-names-list" />
+
     <h2>{{ t('ui.choseCharacters') }}</h2>
     <p>
       {{ t('ui.numberOfCharacters', newCharactersCount) }} |
@@ -289,25 +301,16 @@ function handleEditCustomAbility(customAbility: CustomAbility): void {
       >{{ t('ui.addCustomAbility') }}
     </IconButton>
 
-    <h2>
-      <label for="player-names">{{ t('ui.playerNames') }}</label>
-    </h2>
-    <p>{{ t('ui.totalNumber', playerNamesCount) }}</p>
-    <textarea
-      id="player-names"
-      v-model="rawPlayerNames"
-      name="Player names"
-      class="player-names"
-    ></textarea>
-    <TagList :items="newPlayerNames" class="player-names-list" />
-
-    <IconButton
-      :disabled="newCharactersCount <= 1"
-      class="button"
-      @click="handleCreateGame"
-    >
-      <template #icon><SparklesIcon /></template>{{ t('ui.createGame') }}
-    </IconButton>
+    <div class="list">
+      <IconButton
+        :disabled="newCharactersCount <= 1"
+        class="button"
+        main
+        @click="handleCreateGame"
+      >
+        <template #icon><SparklesIcon /></template>{{ t('ui.createGame') }}
+      </IconButton>
+    </div>
   </main>
 </template>
 
@@ -319,7 +322,7 @@ $max-width: 28rem;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
+  padding: var(--main-padding, 1rem);
   text-align: center;
 }
 
