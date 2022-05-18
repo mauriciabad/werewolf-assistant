@@ -40,12 +40,19 @@ const emit = defineEmits<{ (e: 'click'): void }>()
     bottom: 0;
     left: 0;
     width: calc(100% + 2 * var(--main-padding, 1rem));
+    max-width: calc(var(--max-width, 30rem) + 2rem);
     padding: 0.75rem 0.5rem;
     border: 0;
     margin: calc(-1 * var(--main-padding, 1rem));
+    margin-top: 1rem;
     background-color: var(--color-primary);
-    border-radius: 0;
+    border-radius: 0.5rem 0.5rem 0 0;
+    box-shadow: 0 0 16px 0 rgb(0 0 0 / 20%);
     color: #fff;
+
+    @media (max-width: 32rem) {
+      border-radius: 0;
+    }
   }
 
   &--disabled {

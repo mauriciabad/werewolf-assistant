@@ -119,7 +119,7 @@ const url = computed<string>(() =>
 
 <style lang="scss">
 $card-width: calc(100% - 3rem);
-$card-max-width: 30rem;
+$card-max-width: var(--max-width, 30rem);
 
 .card {
   display: grid;

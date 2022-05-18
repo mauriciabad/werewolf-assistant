@@ -87,7 +87,7 @@ const abilities = computed<(Ability | CustomAbility)[]>(() =>
 .player {
   display: grid;
   width: 100%;
-  max-width: 30rem;
+  max-width: var(--max-width, 30rem);
   padding: 0.5rem 0;
   border: 1px solid var(--color-border);
   margin: 1rem auto 0;

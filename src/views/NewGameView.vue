@@ -301,22 +301,18 @@ function handleEditCustomAbility(customAbility: CustomAbility): void {
       >{{ t('ui.addCustomAbility') }}
     </IconButton>
 
-    <div class="list">
-      <IconButton
-        :disabled="newCharactersCount <= 1"
-        class="button"
-        main
-        @click="handleCreateGame"
-      >
-        <template #icon><SparklesIcon /></template>{{ t('ui.createGame') }}
-      </IconButton>
-    </div>
+    <IconButton
+      :disabled="newCharactersCount <= 1"
+      class="button"
+      main
+      @click="handleCreateGame"
+    >
+      <template #icon><SparklesIcon /></template>{{ t('ui.createGame') }}
+    </IconButton>
   </main>
 </template>
 
 <style scoped lang="scss">
-$max-width: 28rem;
-
 .main {
   display: flex;
   flex-direction: column;
@@ -330,7 +326,7 @@ $max-width: 28rem;
   position: relative;
   display: flex;
   width: 100%;
-  max-width: 30rem;
+  max-width: var(--max-width, 30rem);
   align-items: center;
   justify-content: space-between;
   padding-bottom: 1rem;
@@ -380,7 +376,7 @@ $max-width: 28rem;
 
 .list {
   width: 100%;
-  max-width: $max-width;
+  max-width: var(--max-width, 30rem);
   margin-top: 1rem;
   text-align: left;
 }
@@ -394,7 +390,7 @@ $max-width: 28rem;
   width: calc(
     100vw - 2 * (var(--popper-theme-padding) + var(--popper-theme-border-width))
   );
-  max-width: $max-width;
+  max-width: var(--max-width, 30rem);
 }
 
 h2 {
@@ -403,7 +399,7 @@ h2 {
 
 .player-names {
   width: 100%;
-  max-width: $max-width;
+  max-width: var(--max-width, 30rem);
   height: 17rem;
   min-height: 4rem;
   padding: 0.75rem;
@@ -418,7 +414,7 @@ h2 {
 }
 
 .player-names-list {
-  max-width: $max-width;
+  max-width: var(--max-width, 30rem);
   margin-top: 1rem;
   margin-bottom: 0.5rem;
 }

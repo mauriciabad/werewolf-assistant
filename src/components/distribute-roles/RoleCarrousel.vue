@@ -23,10 +23,6 @@ defineProps<{
 </template>
 
 <style scoped lang="scss">
-@use 'sass:math';
-
-$card-max-width: 30rem;
-
 .carrousel {
   position: relative;
   display: flex;
@@ -49,7 +45,7 @@ $card-max-width: 30rem;
       var(--color-background) calc(100% - 4rem),
       transparent 100%
     );
-    inset: 0 calc(50vw + #{math.div($card-max-width, 2)} + 0.75rem) 0 0;
+    inset: 0 calc(50vw + var(--max-width, 30rem) / 2 + 0.75rem) 0 0;
   }
 
   &::after {
@@ -58,18 +54,22 @@ $card-max-width: 30rem;
       var(--color-background) calc(100% - 4rem),
       transparent 100%
     );
-    inset: 0 0 0 calc(50vw + #{math.div($card-max-width, 2)} + 0.75rem);
+    inset: 0 0 0 calc(50vw + var(--max-width, 30rem) / 2 + 0.75rem);
   }
 
   &__item {
     scroll-snap-align: center;
 
     &:first-child {
-      margin-left: calc(1.5rem + max(0px, calc(100vw - #{$card-max-width})));
+      margin-left: calc(
+        1.5rem + max(0px, calc(100vw - var(--max-width, 30rem)))
+      );
     }
 
     &:last-child {
-      margin-right: calc(1.5rem + max(0px, calc(100vw - #{$card-max-width})));
+      margin-right: calc(
+        1.5rem + max(0px, calc(100vw - var(--max-width, 30rem)))
+      );
     }
   }
 }
