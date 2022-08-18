@@ -152,8 +152,12 @@ function handleEditCustomCharacter(customCharacter: CustomCharacter): void {
   customCharacterToEdit.value = customCharacter
   showCustomCharacterModal.value = true
 }
-
+function handleRemoveCustomCharacter(id: CustomCharacter['id']): void {
+  setCharacterAmount({ id, amount: 0 })
+  removeCustomCharacter(id)
+}
 // #endregion
+
 // #region Custom Ability stuff
 const showCustomAbilityModal = ref<boolean>(false)
 watch(showCustomAbilityModal, () => {
@@ -175,6 +179,11 @@ const customAbilityToEdit = ref<CustomAbility | undefined>(undefined)
 function handleEditCustomAbility(customAbility: CustomAbility): void {
   customAbilityToEdit.value = customAbility
   showCustomAbilityModal.value = true
+}
+
+function handleRemoveCustomAbility(id: CustomAbility['id']): void {
+  setAbilityAmount({ id, amount: 0 })
+  removeCustomAbility(id)
 }
 // #endregion
 </script>
@@ -237,7 +246,7 @@ function handleEditCustomAbility(customAbility: CustomAbility): void {
           setCharacterAmount({ id: character.id, amount: $event })
         "
         @edit="handleEditCustomCharacter(character)"
-        @remove="removeCustomCharacter(character.id)"
+        @remove="handleRemoveCustomCharacter(character.id)"
       />
     </div>
 
@@ -285,7 +294,7 @@ function handleEditCustomAbility(customAbility: CustomAbility): void {
           setAbilityAmount({ id: ability.id, amount: $event })
         "
         @edit="handleEditCustomAbility(ability)"
-        @remove="removeCustomAbility(ability.id)"
+        @remove="handleRemoveCustomAbility(ability.id)"
       />
     </div>
     <CharacterOrAbilityCreatorModal
