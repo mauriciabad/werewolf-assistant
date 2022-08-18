@@ -139,7 +139,7 @@
     "doctor-saves_description": "Obre els ulls, se li assenyala qui ha mort i indica si vol reviure'l (1 vegada).",
     "baker-gives-bread_name": "@:characters.c:baker_name",
     "baker-gives-bread_description": "Assenyala un jugador, aquest és despertat en secret i coneix al flequer.",
-    "collejas-attacks_name": "@:characters.c:baker_name",
+    "collejas-attacks_name": "@:characters.c:collejas_name",
     "collejas-attacks_description": "Assenyala qui s'emporta la clatellada i amb quina intensitat.",
     "ghost-decides_name": "@:characters.c:baker_name",
     "ghost-decides_description": "Assenyala a qui espantar."
