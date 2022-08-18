@@ -315,7 +315,6 @@ function handleRemoveCustomAbility(id: CustomAbility['id']): void {
 
     <IconButton
       :disabled="newCharactersCount <= 1"
-      class="button"
       main
       @click="handleCreateGame"
     >

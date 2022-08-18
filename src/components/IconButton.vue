@@ -44,7 +44,7 @@ const emit = defineEmits<{ (e: 'click'): void }>()
     padding: 1rem 0.5rem;
     border: 0;
     margin: calc(-1 * var(--main-padding, 1rem));
-    margin-top: 1rem;
+    margin-top: 3rem;
     background-color: var(--color-primary);
     border-radius: 0.5rem 0.5rem 0 0;
     box-shadow: 0 0 16px 0 rgb(0 0 0 / 20%);
