@@ -8,13 +8,15 @@
 
 - [ ] PWA with offline support
 - [ ] Reccommend the number of werewolfs depending of how many players are.
-- [ ] Automattically pick the reccommended characters and abilities when creating a game.
+- [ ] Automattically pick the reccommended characters and abilities when creating a game. (Auto complete button)
+- [ ] Rules button.
 
 ## Medium priority
 
 - [ ] Display team in player view
 - [ ] Reorder players
 - [ ] Colorize the bg differently for every round.
+- [ ] Keep track of used habilities
 
 ## Low priority
 

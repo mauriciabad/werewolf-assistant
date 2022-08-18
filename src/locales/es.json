@@ -43,7 +43,8 @@
     "numberOfAbilitiesPerCharacter": "{n} por personaje",
     "numberOfCharactersWithoutAbility": "{n} sin habilidad",
     "totalNumber": "Total {n}",
-    "tapCharacterExpandsExplanation": "Toca un personaje o habilidad para hacerla mas grande y mostrarla a otra gente."
+    "tapCharacterExpandsExplanation": "Toca un personaje o habilidad para hacerla mas grande y mostrarla a otra gente.",
+    "clearData": "Borrar datos"
   },
 
   "characters": {
@@ -69,7 +70,7 @@
     "c:twin_description": "Sabes quienes son tus hermanas.",
     "c:witch_name": "Bruja",
     "c:witch_description": "Puedes revivir una persona matada durante la noche antes de que termine. O también puedes matar a una persona al final de la noche.  Solo puedes hacer cada cosa una vez.",
-    "c:doctor_name": "Doctor",
+    "c:doctor_name": "Doctora",
     "c:doctor_description": "Puedes revivir una persona matada durante la noche, antes de que termine. 1 uso.",
     "c:scarecrow_name": "Hombre de paja",
     "c:scarecrow_description": "No puede ser matado por los hombres lobo. Si lo intentan matar, su muerte no será anunciada la siguente mañana."
@@ -106,6 +107,8 @@
     "a:beatboxer_description": "Durante la noche, practica beatbox para que los aldeanos no escuchen ruidos.",
     "a:collejas_name": "El collejas",
     "a:collejas_description": "Durante la noche, indica al narrador a quien meterle una coleja y con que intensidad (del 1 al 5).",
+    "a:handcuffs_name": "Esposas",
+    "a:handcuffs_description": "Durante el dia, puedes mandar publicamente a una persona a la cárcel hasta la mañana siguiente. 1 uso.",
     "a:ghost_name": "Ghost",
     "a:ghost_description": "Cada noche, escoje una persona para que el narrador lo asuste."
   },
@@ -142,6 +145,8 @@
     "collejas-attacks_name": "@:abilities.a:collejas_name",
     "collejas-attacks_description": "Señala quien se lleva la colleja y con que intensidad.",
     "ghost-decides_name": "@:characters.c:baker_name",
-    "ghost-decides_description": "Señala quien asustar."
+    "ghost-decides_description": "Señala quien asustar.",
+    "explain-jail_name": "Explicar cárcel",
+    "explain-jail_description": "Cuando una persona está en la cárcel no puede votar ni ser atacado por los hombres lobos. Sí que puede morir de otras formas, como por ejemplo ser linchado. Si un hombre lobo está en la cárcel, no se despierta con los otros por la noche."
   }
 }

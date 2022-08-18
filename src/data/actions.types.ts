@@ -18,6 +18,7 @@ export type ActionId =
   | 'baker-gives-bread'
   | 'ghost-decides'
   | 'collejas-attacks'
+  | 'explain-jail'
 
 export type Action = {
   id: ActionId

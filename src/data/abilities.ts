@@ -13,6 +13,7 @@ const abilities: Ability[] = [
   { id: 'a:steal-ability', ilustration: 'thief' },
   { id: 'a:poison', ilustration: 'poison' },
   { id: 'a:cancel-revive', ilustration: 'artAndDesign' },
+  { id: 'a:handcuffs', ilustration: 'jail' },
   { id: 'a:protect', ilustration: 'shield' },
   { id: 'a:beatboxer', ilustration: 'rapper' },
   { id: 'a:collejas', ilustration: 'fist' },
