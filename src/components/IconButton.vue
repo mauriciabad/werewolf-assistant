@@ -41,7 +41,7 @@ const emit = defineEmits<{ (e: 'click'): void }>()
     left: 0;
     width: calc(100% + 2 * var(--main-padding, 1rem));
     max-width: calc(var(--max-width, 30rem) + 2rem);
-    padding: 0.75rem 0.5rem;
+    padding: 1rem 0.5rem;
     border: 0;
     margin: calc(-1 * var(--main-padding, 1rem));
     margin-top: 1rem;
