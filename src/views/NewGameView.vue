@@ -45,7 +45,9 @@ const newCharacters = reactive<CharacterConfig[]>([...characters.value])
 const newCharactersCount = computed<number>(() =>
   newCharacters.reduce((total, { amount }) => total + amount, 0)
 )
-const newAbilities = reactive<AbilityConfig[]>([...abilities.value])
+const newAbilities = reactive<AbilityConfig[]>(
+  abilities.value.filter((a) => a.id !== 'a:nothing')
+)
 const newAbilitiesCount = computed<number>(() =>
   newAbilities.reduce((total, { amount }) => total + amount, 0)
 )
@@ -129,6 +131,7 @@ function handleCreateGame(): void {
 }
 
 // #region Custom Character stuff
+
 const showCustomCharacterModal = ref<boolean>(false)
 watch(showCustomCharacterModal, () => {
   if (!showCustomCharacterModal.value) {
