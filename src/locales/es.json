@@ -139,7 +139,7 @@
     "doctor-saves_description": "Abre los ojos, se le señala quien ha muerto e indica si quiere revivirlo (1 vez).",
     "baker-gives-bread_name": "@:characters.c:baker_name",
     "baker-gives-bread_description": "Señala un jugador, se despierta a dicho jugador en secreto y conoce al panadero.",
-    "collejas-attacks_name": "@:characters.a:collejas_name",
+    "collejas-attacks_name": "@:abilities.a:collejas_name",
     "collejas-attacks_description": "Señala quien se lleva la colleja y con que intensidad.",
     "ghost-decides_name": "@:characters.c:baker_name",
     "ghost-decides_description": "Señala quien asustar."

@@ -139,7 +139,7 @@
     "doctor-saves_description": "Opens the eyes, the dead player is pointed out and signals if he wants to revive him (1 time).",
     "baker-gives-bread_name": "@:characters.c:baker_name",
     "baker-gives-bread_description": "Points a player, that player is woken up in secret, and he meets the baker.",
-    "collejas-attacks_name": "@:characters.a:collejas_name",
+    "collejas-attacks_name": "@:abilities.a:collejas_name",
     "collejas-attacks_description": "Signals who to slap and with what power.",
     "ghost-decides_name": "@:characters.c:baker_name",
     "ghost-decides_description": "Signals who to scare"
