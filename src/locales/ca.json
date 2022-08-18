@@ -43,7 +43,8 @@
     "numberOfAbilitiesPerCharacter": "{n} per personatge",
     "numberOfCharactersWithoutAbility": "{n} sense habilitat",
     "totalNumber": "Total {n}",
-    "tapCharacterExpandsExplanation": "Toca un personatge o habilitat per fer-la més gran i ensenyar-la a altre gent."
+    "tapCharacterExpandsExplanation": "Toca un personatge o habilitat per fer-la més gran i ensenyar-la a altre gent.",
+    "clearData": "Esborrar dades"
   },
 
   "characters": {

@@ -43,7 +43,8 @@
     "numberOfAbilitiesPerCharacter": "{n} por personaje",
     "numberOfCharactersWithoutAbility": "{n} sin habilidad",
     "totalNumber": "Total {n}",
-    "tapCharacterExpandsExplanation": "Toca un personaje o habilidad para hacerla mas grande y mostrarla a otra gente."
+    "tapCharacterExpandsExplanation": "Toca un personaje o habilidad para hacerla mas grande y mostrarla a otra gente.",
+    "clearData": "Borrar datos"
   },
 
   "characters": {

@@ -68,7 +68,7 @@ const emit = defineEmits<{ (e: 'click'): void }>()
     display: inline-block;
     height: 20px;
     margin-right: 0.5rem;
-    vertical-align: middle;
+    vertical-align: -0.25em;
   }
 }
 </style>

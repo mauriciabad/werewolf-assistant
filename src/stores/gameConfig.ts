@@ -63,6 +63,15 @@ export const useGameConfigStore = defineStore({
 
       this.creationDate = creationDate
     },
+
+    resetGame(): void {
+      this.characters = []
+      this.abilities = []
+      this.players = []
+      this.firstNightActions = []
+      this.nightActions = []
+      this.creationDate = new Date()
+    },
   },
 })
 

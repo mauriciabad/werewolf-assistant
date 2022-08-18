@@ -17,6 +17,7 @@ import {
 import { storeToRefs } from 'pinia'
 import { computed, reactive, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { TrashIcon } from '@heroicons/vue/solid'
 import { RouterLink, useRouter } from 'vue-router'
 import CharacterOrAbilityRow from '../components/CharacterOrAbilityRow.vue'
 import IconButton from '../components/IconButton.vue'
@@ -30,7 +31,7 @@ const { t } = useI18n()
 const gameConfigStore = useGameConfigStore()
 
 const { characters, abilities, players } = storeToRefs(gameConfigStore)
-const { createNewGame } = gameConfigStore
+const { createNewGame, resetGame } = gameConfigStore
 
 const customDataStore = useCustomDataStore()
 const { customCharacters, customAbilities } = storeToRefs(customDataStore)
@@ -189,6 +190,16 @@ function handleRemoveCustomAbility(id: CustomAbility['id']): void {
   removeCustomAbility(id)
 }
 // #endregion
+
+// #region Other stuff
+function handleClearDataClick(): void {
+  resetGame()
+
+  newCharacters.length = 0
+  newAbilities.length = 0
+  rawPlayerNames.value = ''
+}
+// #endregion
 </script>
 
 <template>
@@ -208,6 +219,10 @@ function handleRemoveCustomAbility(id: CustomAbility['id']): void {
     </div>
 
     <h1>{{ t('ui.newGame') }}</h1>
+
+    <IconButton class="button" @click="handleClearDataClick">
+      <template #icon> <TrashIcon /> </template>{{ t('ui.clearData') }}
+    </IconButton>
 
     <h2>
       <label for="player-names">{{ t('ui.playerNames') }}</label>
@@ -261,7 +276,8 @@ function handleRemoveCustomAbility(id: CustomAbility['id']): void {
       @edit-character="handleCreateOrEditCustomCharacter"
     />
     <IconButton class="button" @click="handleAddCustomCharacterClick">
-      <template #icon><UserAddIcon /></template>{{ t('ui.addCustomCharacter') }}
+      <template #icon> <UserAddIcon /> </template
+      >{{ t('ui.addCustomCharacter') }}
     </IconButton>
 
     <h2>{{ t('ui.choseAbilities') }}</h2>
@@ -309,7 +325,7 @@ function handleRemoveCustomAbility(id: CustomAbility['id']): void {
     />
 
     <IconButton class="button" @click="handleAddCustomAbilityClick">
-      <template #icon><ViewGridAddIcon /></template
+      <template #icon> <ViewGridAddIcon /> </template
       >{{ t('ui.addCustomAbility') }}
     </IconButton>
 
@@ -318,7 +334,7 @@ function handleRemoveCustomAbility(id: CustomAbility['id']): void {
       main
       @click="handleCreateGame"
     >
-      <template #icon><SparklesIcon /></template>{{ t('ui.createGame') }}
+      <template #icon> <SparklesIcon /> </template>{{ t('ui.createGame') }}
     </IconButton>
   </main>
 </template>
