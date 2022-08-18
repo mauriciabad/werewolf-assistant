@@ -8,7 +8,7 @@
 
 - [ ] PWA with offline support
 - [ ] Reccommend the number of werewolfs depending of how many players are.
-- [ ] Automattically pick the reccommended characters and abilities when creating a game.
+- [ ] Automattically pick the reccommended characters and abilities when creating a game. (Auto complete button)
 
 ## Medium priority
 
