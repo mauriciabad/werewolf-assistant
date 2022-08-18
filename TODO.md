@@ -15,6 +15,7 @@
 - [ ] Display team in player view
 - [ ] Reorder players
 - [ ] Colorize the bg differently for every round.
+- [ ] Keep track of used habilities
 
 ## Low priority
 

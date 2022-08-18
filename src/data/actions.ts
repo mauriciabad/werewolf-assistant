@@ -1,6 +1,7 @@
 import type { Action } from './actions.types'
 
 export const firstNightActions: Action[] = [
+  { id: 'explain-jail', requiredAbilities: ['a:handcuffs'] },
   { id: 'major-revealed', requiredAbilities: ['a:major'] },
   { id: 'village-goes-to-sleep' },
   { id: 'cupid-shoots', requiredAbilities: ['a:cupid'] },

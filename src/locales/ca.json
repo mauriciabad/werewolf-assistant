@@ -106,6 +106,8 @@
     "a:beatboxer_description": "Durant la nit, practica beatbox perque els vilatans no escoltin sorolls.",
     "a:collejas_name": "El collejas",
     "a:collejas_description": "Durant la nit, indica al narrador a qui fotre-li una clatellada i amb quina intensitat (del 1 al 5).",
+    "a:handcuffs_name": "Manilles",
+    "a:handcuffs_description": "Durant el dia, pots enviar publicament a una persona a la presó fins al matí següent. 1 ús.",
     "a:ghost_name": "Fantasma",
     "a:ghost_description": "Cada nit, escull una persona a espantar per el narrador."
   },
@@ -142,6 +144,8 @@
     "collejas-attacks_name": "@:abilities.a:collejas_name",
     "collejas-attacks_description": "Assenyala qui s'emporta la clatellada i amb quina intensitat.",
     "ghost-decides_name": "@:characters.c:baker_name",
-    "ghost-decides_description": "Assenyala a qui espantar."
+    "ghost-decides_description": "Assenyala a qui espantar.",
+    "explain-jail_name": "Explicar presó",
+    "explain-jail_description": "Quan una persona és a la presó no pot votar ni ser atacat pels homes llops. Sí que pot morir d'altres maneres, com ara ser linxat. Si un home llop és a la presó, no es desperta amb els altres per la nit."
   }
 }

@@ -106,6 +106,8 @@
     "a:beatboxer_description": "During the night, practices beatbox so that villagers cannot hear noises.",
     "a:collejas_name": "The slap-man",
     "a:collejas_description": "During the night, signals the storyteller who to slap on the back of the neck and with what power (from 1 to 5).",
+    "a:handcuffs_name": "Handcuffs",
+    "a:handcuffs_description": "During the day, you can publicly send someone to jail until the next morning. 1 usage.",
     "a:ghost_name": "Ghost",
     "a:ghost_description": "Every night chooses a person to be scared by the storyteller."
   },
@@ -142,6 +144,8 @@
     "collejas-attacks_name": "@:abilities.a:collejas_name",
     "collejas-attacks_description": "Signals who to slap and with what power.",
     "ghost-decides_name": "@:characters.c:baker_name",
-    "ghost-decides_description": "Signals who to scare"
+    "ghost-decides_description": "Signals who to scare",
+    "explain-jail_name": "Explain jail",
+    "explain-jail_description": "When a person is in jail they cannot vote or be attacked by werewolves. Yes, he can die in other ways, such as being lynched. If a werewolf is in jail, he doesn't wake up with the others at night."
   }
 }
