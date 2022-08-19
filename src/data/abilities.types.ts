@@ -21,6 +21,7 @@ export type AbilityId =
   | 'a:secret-keeper'
   | 'a:nose-club'
   | 'a:president-call'
+  | 'a:vital-agreement'
 
 export interface Ability {
   id: AbilityId

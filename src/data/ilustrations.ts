@@ -102,6 +102,7 @@ import headache from '@/assets/ilustrations/headache.svg'
 import heart from '@/assets/ilustrations/heart.svg'
 import heartbreak from '@/assets/ilustrations/heartbreak.svg'
 import heartbroken from '@/assets/ilustrations/heartbroken.svg'
+import heartFix from '@/assets/ilustrations/heart-fix.svg'
 import helmet from '@/assets/ilustrations/helmet.svg'
 import history from '@/assets/ilustrations/history.svg'
 import hobbiesAndFreeTime from '@/assets/ilustrations/hobbies-and-free-time.svg'
@@ -381,6 +382,7 @@ const ilustrations = {
   handWithFire,
   headache,
   heart,
+  heartFix,
   heartbreak,
   heartbroken,
   helmet,

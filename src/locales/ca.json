@@ -115,6 +115,8 @@
     "a:nose-club_description": "Durant el dia, pots posar-te el dit al nas discretament i els altres t'hauran d'imitar. L'últim a tocar-se el nas ha de descartar les seves habilitats sense revelar-les. 1 ús.",
     "a:president-call_name": "Trucada del president",
     "a:president-call_description": "Durant el dia, decideixes quan truca el president. El narrador et dirà una clau (paraula o frase) i us l'anireu dient d'orella a orella, quan tots han escoltat la clau l'aniran dient un a un en veu alta i sentit invers. Si la clau s'ha transmès correctament, els homes llop no es despertaran la nit següent. 1 ús.",
+    "a:vital-agreement_name": "Pacte vital",
+    "a:vital-agreement_description": "Quan algú mor, si l'altra persona amb aquesta habilitat també vol, la podeu reviure. 1 ús.",
     "a:ghost_name": "Fantasma",
     "a:ghost_description": "Cada nit, escull una persona a espantar per el narrador."
   },

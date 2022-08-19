@@ -3,6 +3,7 @@ import type { Ability, AbilityId } from './abilities.types'
 const abilities: Ability[] = [
   { id: 'a:nothing', ilustration: 'prohibited' },
   { id: 'a:extra-life', ilustration: 'revive' },
+  { id: 'a:vital-agreement', ilustration: 'heartFix' },
   { id: 'a:extra-vote', ilustration: 'vote' },
   { id: 'a:cupid', ilustration: 'cupid' },
   { id: 'a:major', ilustration: 'sheriff' },
