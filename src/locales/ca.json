@@ -109,6 +109,8 @@
     "a:collejas_description": "Durant la nit, indica al narrador a qui fotre-li una clatellada i amb quina intensitat (del 1 al 5).",
     "a:handcuffs_name": "Manilles",
     "a:handcuffs_description": "Durant el dia, pots enviar publicament a una persona a la presó fins al matí següent. 1 ús.",
+    "a:secret-keeper_name": "Guarda-Secrets",
+    "a:secret-keeper_description": "Quan algú mor, inclòs tu, pots veure el seu personatge i decidir si revelar-lo, mantenir-lo en secret o mentir. 1 ús.",
     "a:ghost_name": "Fantasma",
     "a:ghost_description": "Cada nit, escull una persona a espantar per el narrador."
   },

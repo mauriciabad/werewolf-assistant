@@ -109,6 +109,8 @@
     "a:collejas_description": "Durante la noche, indica al narrador a quien meterle una coleja y con que intensidad (del 1 al 5).",
     "a:handcuffs_name": "Esposas",
     "a:handcuffs_description": "Durante el dia, puedes mandar publicamente a una persona a la cárcel hasta la mañana siguiente. 1 uso.",
+    "a:secret-keeper_name": "Guarda-Secretos",
+    "a:secret-keeper_description": "Cuando alguien muere, incluido tu, puedes ver su personaje y decidir si revelarlo, mantenerlo en secreto o mentir. 1 uso.",
     "a:ghost_name": "Ghost",
     "a:ghost_description": "Cada noche, escoje una persona para que el narrador lo asuste."
   },
