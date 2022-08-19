@@ -111,6 +111,8 @@
     "a:handcuffs_description": "During the day, you can publicly send someone to jail until the next morning. 1 usage.",
     "a:secret-keeper_name": "Secret keeper",
     "a:secret-keeper_description": "When someone dies, including you, you can see their character and decide whether to reveal it, keep it a secret or lie. 1 usage.",
+    "a:nose-club_name": "Nose club",
+    "a:nose-club_description": "During the day, you can discreetly put your finger on your nose and others will have to do so. The last one to touch their nose must discard his abilities without revealing them. 1 use.",
     "a:ghost_name": "Ghost",
     "a:ghost_description": "Every night chooses a person to be scared by the storyteller."
   },

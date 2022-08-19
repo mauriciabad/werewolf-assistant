@@ -19,6 +19,7 @@ export type AbilityId =
   | 'a:ghost'
   | 'a:handcuffs'
   | 'a:secret-keeper'
+  | 'a:nose-club'
 
 export interface Ability {
   id: AbilityId

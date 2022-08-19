@@ -111,6 +111,8 @@
     "a:handcuffs_description": "Durante el dia, puedes mandar publicamente a una persona a la cárcel hasta la mañana siguiente. 1 uso.",
     "a:secret-keeper_name": "Guarda-Secretos",
     "a:secret-keeper_description": "Cuando alguien muere, incluido tu, puedes ver su personaje y decidir si revelarlo, mantenerlo en secreto o mentir. 1 uso.",
+    "a:nose-club_name": "Club de la nariz",
+    "a:nose-club_description": "Durante el día, puedes ponerte el dedo en la nariz discretamente y los otros tendrán que imitarte. El último en tocarse la nariz debe descartar sus habilidades sin revelarlas. 1 uso.",
     "a:ghost_name": "Ghost",
     "a:ghost_description": "Cada noche, escoje una persona para que el narrador lo asuste."
   },

@@ -111,6 +111,8 @@
     "a:handcuffs_description": "Durant el dia, pots enviar publicament a una persona a la presó fins al matí següent. 1 ús.",
     "a:secret-keeper_name": "Guarda-Secrets",
     "a:secret-keeper_description": "Quan algú mor, inclòs tu, pots veure el seu personatge i decidir si revelar-lo, mantenir-lo en secret o mentir. 1 ús.",
+    "a:nose-club_name": "Oliva!",
+    "a:nose-club_description": "Durant el dia, pots posar-te el dit al nas discretament i els altres t'hauran d'imitar. L'últim a tocar-se el nas ha de descartar les seves habilitats sense revelar-les. 1 ús.",
     "a:ghost_name": "Fantasma",
     "a:ghost_description": "Cada nit, escull una persona a espantar per el narrador."
   },
