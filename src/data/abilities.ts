@@ -19,6 +19,7 @@ const abilities: Ability[] = [
   { id: 'a:collejas', ilustration: 'fist' },
   { id: 'a:ghost', ilustration: 'ghost' },
   { id: 'a:nose-club', ilustration: 'nose' },
+  { id: 'a:president-call', ilustration: 'telephone' },
   { id: 'a:secret-keeper', ilustration: 'trustworthy' },
 ]
 

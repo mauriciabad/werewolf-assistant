@@ -107,6 +107,7 @@ import history from '@/assets/ilustrations/history.svg'
 import hobbiesAndFreeTime from '@/assets/ilustrations/hobbies-and-free-time.svg'
 import hockey from '@/assets/ilustrations/hockey.svg'
 import holdingHands from '@/assets/ilustrations/holding-hands.svg'
+import homeless from '@/assets/ilustrations/homeless.svg'
 import horse from '@/assets/ilustrations/horse.svg'
 import hunter from '@/assets/ilustrations/hunter.svg'
 import hypnosis from '@/assets/ilustrations/hypnosis.svg'
@@ -228,6 +229,7 @@ import target from '@/assets/ilustrations/target.svg'
 import targetPerson from '@/assets/ilustrations/target-person.svg'
 import tarot from '@/assets/ilustrations/tarot.svg'
 import teddyBear from '@/assets/ilustrations/teddy-bear.svg'
+import telephone from '@/assets/ilustrations/telephone.svg'
 import tent from '@/assets/ilustrations/tent.svg'
 import thailand from '@/assets/ilustrations/thailand.svg'
 import theatre from '@/assets/ilustrations/theatre.svg'
@@ -278,6 +280,7 @@ const ilustrations = {
   actor,
   alien,
   all,
+  telephone,
   angel,
   animals,
   arm,
@@ -295,6 +298,7 @@ const ilustrations = {
   bearTrap,
   beer,
   beggar,
+  homeless,
   bird,
   biscuit,
   blackmail,

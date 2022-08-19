@@ -113,6 +113,8 @@
     "a:secret-keeper_description": "When someone dies, including you, you can see their character and decide whether to reveal it, keep it a secret or lie. 1 usage.",
     "a:nose-club_name": "Nose club",
     "a:nose-club_description": "During the day, you can discreetly put your finger on your nose and others will have to do so. The last one to touch their nose must discard his abilities without revealing them. 1 use.",
+    "a:president-call_name": "President calls",
+    "a:president-call_description": "During the day, you decide when the president calls. The narrator will tell you a code (word or phrase) and you will say it from ear to ear, when everyone has heard the code they will say it one by one out loud and in reverse order. If the key has been transmitted correctly, the werewolves will not wake up the next night. 1 usage.",
     "a:ghost_name": "Ghost",
     "a:ghost_description": "Every night chooses a person to be scared by the storyteller."
   },

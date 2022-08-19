@@ -113,6 +113,8 @@
     "a:secret-keeper_description": "Cuando alguien muere, incluido tu, puedes ver su personaje y decidir si revelarlo, mantenerlo en secreto o mentir. 1 uso.",
     "a:nose-club_name": "Club de la nariz",
     "a:nose-club_description": "Durante el día, puedes ponerte el dedo en la nariz discretamente y los otros tendrán que imitarte. El último en tocarse la nariz debe descartar sus habilidades sin revelarlas. 1 uso.",
+    "a:president-call_name": "Llamada del presidente",
+    "a:president-call_description": "Durante el día, decides cuando llama el presidente. El narrador te dirá una clave (palabra o frase) y os la vais a ir diciendo de oreja a oreja, cuando todos han escuchado la clave la irán diciendo uno a uno en voz alta y sentido inverso. Si la clave se ha transmitido correctamente, los hombres lobo no se despertarán la siguiente noche. 1 uso.",
     "a:ghost_name": "Ghost",
     "a:ghost_description": "Cada noche, escoje una persona para que el narrador lo asuste."
   },
