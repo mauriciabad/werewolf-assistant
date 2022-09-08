@@ -17,6 +17,7 @@
 - [ ] Reorder players
 - [ ] Colorize the bg differently for every round.
 - [ ] Keep track of used habilities
+- [ ] Bug contar noms, suma malament pero tot va be. Tb mostrar un error quan hi ha mes o menys noms
 
 ## Low priority
 
