@@ -7,8 +7,6 @@ jobs:
     with:
       record-e2e: true
       lighthouse: true
-      lint: false
-      e2e-tests: false
     secrets:
       CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
       CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
