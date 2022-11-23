@@ -11,48 +11,47 @@ const props = defineProps<Props>()
 
 const emit = defineEmits<{ (e: 'update:modelValue', value: number): void }>()
 
+const MIN = 0
+const MAX = 99
+
+function fixNumber(n: unknown): number {
+  return typeof n !== 'number' || isNaN(n) ? 0
+    : n <= MIN ? MIN
+      : n >= MAX ? MAX
+        : Math.round(n) !== n ? Math.round(n)
+          : n
+}
 const number = computed<number>({
   get: () => props.modelValue || 0,
   set: (value) => {
-    const newValue = !value || isNaN(value) ? 0
-      : value <= 0 ? 0
-        : value >= 99 ? 99
-          : Math.round(value) !== value ? Math.round(value)
-            : value
+    if (props.disabled) return
+
+    const newValue = fixNumber(value)
+    if (newValue === value) return
 
     emit('update:modelValue', newValue)
   },
 })
-const isZero = computed<boolean>(() => number.value === 0)
 
 function increase(): void {
-  if (props.disabled) return
-
   number.value = number.value + 1
 }
 function decrease(): void {
-  if (props.disabled) return
-
-  if (number.value <= 0) {
-    number.value = 0
-    return
-  }
-
   number.value = number.value - 1
 }
 </script>
 
 <template>
   <div class="wrapper">
-    <div class="button button--left" :class="{ 'button--disabled': isZero || disabled }" @click="decrease"
+    <div class="button button--left" :class="{ 'button--disabled': number <= MIN || disabled }" @click="decrease"
       data-testid="decrease-button">
       <MinusIcon class="button__icon" />
     </div>
 
-    <input v-model.number="number" class="input" :class="{ 'input--zero': isZero }" type="number" :disabled="disabled"
-      min="0" max="99" step="1" data-testid="input" />
+    <input v-model.number="number" class="input" :class="{ 'input--zero': number === 0 }" type="number"
+      :disabled="disabled" :min="MIN" :max="MAX" step="1" data-testid="input" />
 
-    <div class="button button--right" :class="{ 'button--disabled': disabled }" @click="increase"
+    <div class="button button--right" :class="{ 'button--disabled': number >= MAX || disabled }" @click="increase"
       data-testid="increase-button">
       <PlusIcon class="button__icon" />
     </div>

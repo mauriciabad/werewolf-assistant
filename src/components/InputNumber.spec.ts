@@ -19,7 +19,7 @@ describe('InputNumber component', () => {
     expect(wrapper.props('modelValue')).toBe(3)
   })
 
-  it('displays the prop value by default even if negative', async () => {
+  it('displays the prop value by default even if its invalid', async () => {
     const wrapper = mount(InputNumber, {
       props: {
         modelValue: -3,
@@ -31,32 +31,62 @@ describe('InputNumber component', () => {
     expect(wrapper.props('modelValue')).toBe(-3)
   })
 
-  it('when the prop value is negative, and add buton clicked goes to 0', async () => {
-    const wrapper = mount(InputNumber, {
-      props: {
-        modelValue: -3,
-        'onUpdate:modelValue': (e: unknown) =>
-          wrapper.setProps({ modelValue: e }),
-      },
+  describe('when the prop value is invalid, and add buton clicked tryes to fix the number', () => {
+    it('negative and add', async () => {
+      let wrapper = mount(InputNumber, {
+        props: {
+          modelValue: -3,
+          'onUpdate:modelValue': (e: unknown) =>
+            wrapper.setProps({ modelValue: e }),
+        },
+      })
+      await wrapper.find(increaseButtonSelector).trigger('click')
+      expect(wrapper.props('modelValue')).toBe(0)
     })
-
-    await wrapper.find(increaseButtonSelector).trigger('click')
-
-    expect(wrapper.props('modelValue')).toBe(0)
-  })
-
-  it('when the prop value is negative, and add or substract buton clicked goes to 0', async () => {
-    const wrapper = mount(InputNumber, {
-      props: {
-        modelValue: -3,
-        'onUpdate:modelValue': (e: unknown) =>
-          wrapper.setProps({ modelValue: e }),
-      },
+    it('negative and substract', async () => {
+      let wrapper = mount(InputNumber, {
+        props: {
+          modelValue: -3,
+          'onUpdate:modelValue': (e: unknown) =>
+            wrapper.setProps({ modelValue: e }),
+        },
+      })
+      await wrapper.find(decreaseButtonSelector).trigger('click')
+      expect(wrapper.props('modelValue')).toBe(0)
     })
-
-    await wrapper.find(decreaseButtonSelector).trigger('click')
-
-    expect(wrapper.props('modelValue')).toBe(0)
+    it('decimal big and add', async () => {
+      let wrapper = mount(InputNumber, {
+        props: {
+          modelValue: 1.75,
+          'onUpdate:modelValue': (e: unknown) =>
+            wrapper.setProps({ modelValue: e }),
+        },
+      })
+      await wrapper.find(increaseButtonSelector).trigger('click')
+      expect(wrapper.props('modelValue')).toBe(3)
+    })
+    it('decimal small and add', async () => {
+      let wrapper = mount(InputNumber, {
+        props: {
+          modelValue: 1.25,
+          'onUpdate:modelValue': (e: unknown) =>
+            wrapper.setProps({ modelValue: e }),
+        },
+      })
+      await wrapper.find(increaseButtonSelector).trigger('click')
+      expect(wrapper.props('modelValue')).toBe(2)
+    })
+    it('over max and add', async () => {
+      let wrapper = mount(InputNumber, {
+        props: {
+          modelValue: 1000,
+          'onUpdate:modelValue': (e: unknown) =>
+            wrapper.setProps({ modelValue: e }),
+        },
+      })
+      await wrapper.find(increaseButtonSelector).trigger('click')
+      expect(wrapper.props('modelValue')).toBe(99)
+    })
   })
 
   it('adding works', async () => {
@@ -110,7 +140,7 @@ describe('InputNumber component', () => {
       },
     })
 
-    await wrapper.find(inputSelector).setValue('3')
+    await wrapper.find(inputSelector).setValue(3)
 
     expect(wrapper.props('modelValue')).toBe(3)
   })
