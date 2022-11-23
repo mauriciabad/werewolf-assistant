@@ -25,7 +25,7 @@
     "vue3-popper": "^1.4.2"
   },
   "devDependencies": {
-    "@cypress/vite-dev-server": "^2.2.2",
+    "@cypress/vite-dev-server": "^4.0.1",
     "@cypress/vue": "^3.1.1",
     "@intlify/eslint-plugin-vue-i18n": "^1.4.1",
     "@intlify/vite-plugin-vue-i18n": "^4.0.0",
