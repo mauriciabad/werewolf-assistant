@@ -3,7 +3,7 @@ import { MinusIcon, PlusIcon } from '@heroicons/vue/solid'
 import { computed } from 'vue'
 
 interface Props {
-  modelValue?: number
+  modelValue: number
   disabled?: boolean
 }
 
@@ -14,7 +14,13 @@ const emit = defineEmits<{ (e: 'update:modelValue', value: number): void }>()
 const number = computed<number>({
   get: () => props.modelValue || 0,
   set: (value) => {
-    emit('update:modelValue', value || 0)
+    const newValue = !value || isNaN(value) ? 0
+      : value <= 0 ? 0
+        : value >= 99 ? 99
+          : Math.round(value) !== value ? Math.round(value)
+            : value
+
+    emit('update:modelValue', newValue)
   },
 })
 const isZero = computed<boolean>(() => number.value === 0)
@@ -38,30 +44,16 @@ function decrease(): void {
 
 <template>
   <div class="wrapper">
-    <div
-      class="button button--left"
-      :class="{ 'button--disabled': isZero || disabled }"
-      @click="decrease"
-    >
+    <div class="button button--left" :class="{ 'button--disabled': isZero || disabled }" @click="decrease"
+      data-testid="decrease-button">
       <MinusIcon class="button__icon" />
     </div>
 
-    <input
-      v-model.number="number"
-      class="input"
-      :class="{ 'input--zero': isZero }"
-      type="number"
-      :disabled="disabled"
-      min="0"
-      max="99"
-      step="1"
-    />
+    <input v-model.number="number" class="input" :class="{ 'input--zero': isZero }" type="number" :disabled="disabled"
+      min="0" max="99" step="1" data-testid="input" />
 
-    <div
-      class="button button--right"
-      :class="{ 'button--disabled': disabled }"
-      @click="increase"
-    >
+    <div class="button button--right" :class="{ 'button--disabled': disabled }" @click="increase"
+      data-testid="increase-button">
       <PlusIcon class="button__icon" />
     </div>
   </div>
