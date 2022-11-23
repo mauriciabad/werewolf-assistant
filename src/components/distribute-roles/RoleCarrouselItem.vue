@@ -16,12 +16,9 @@ import { playerViewUrl } from '@/services/player'
 import { useCustomDataStore } from '@/stores/customData'
 import type { PlayerConfig } from '@/stores/gameConfig'
 import { storeToRefs } from 'pinia'
-import QrcodeVue from 'qrcode.vue'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import useCharacterOrAbilityShowModal from '../CharacterOrAbilityShowModal/useCharacterOrAbilityShowModal'
-import HidableIlustration from '../HidableIlustration.vue'
-import HidableText from '../HidableText.vue'
 
 interface Props {
   player: PlayerConfig
@@ -58,7 +55,7 @@ const url = computed<string>(() =>
     props.player,
     props.creationDate,
     customCharacters.value,
-    customAbilities.value
+      customAbilities.value
   )
 )
 </script>
@@ -73,18 +70,9 @@ const url = computed<string>(() =>
 
     <div class="card__character" @click="showDetailVew(character)">
       <div class="small-title">{{ t('ui.character') }}</div>
-      <HidableIlustration
-        ilustration-type="character"
-        :visible="showSecretInfo"
-        :ilustration="character.ilustration"
-        class="card__character-ilustration"
-        alt=""
-      />
-      <HidableText
-        :text="getName(character)"
-        :visible="showSecretInfo"
-        :length="8"
-      />
+      <HidableIlustration ilustration-type="character" :visible="showSecretInfo" :ilustration="character.ilustration"
+        class="card__character-ilustration" alt="" />
+      <HidableText :text="getName(character)" :visible="showSecretInfo" :length="8" />
     </div>
 
     <div v-if="player.abilities.length" class="card__abilities">
@@ -92,25 +80,12 @@ const url = computed<string>(() =>
         {{ t('ui.ability', player.abilities.length) }}
       </div>
       <ul class="ability-list">
-        <li
-          v-for="ability in abilities"
-          :key="ability.id"
-          class="ability"
-          @click="showDetailVew(ability)"
-        >
-          <HidableIlustration
-            ilustration-type="ability"
-            :visible="showSecretInfo"
-            :ilustration="ability.ilustration"
-            class="ability__ilustration"
-            alt=""
-          />
-          <span class="ability__name"
-            ><HidableText
-              :text="getName(ability)"
-              :visible="showSecretInfo"
-              :length="7"
-          /></span>
+        <li v-for="ability in abilities" :key="ability.id" class="ability" @click="showDetailVew(ability)">
+          <HidableIlustration ilustration-type="ability" :visible="showSecretInfo" :ilustration="ability.ilustration"
+            class="ability__ilustration" alt="" />
+          <span class="ability__name">
+            <HidableText :text="getName(ability)" :visible="showSecretInfo" :length="7" />
+          </span>
         </li>
       </ul>
     </div>
@@ -153,7 +128,7 @@ $card-max-width: var(--max-width, 30rem);
     border-radius: 4%;
     grid-area: qr;
 
-    > svg {
+    >svg {
       display: block;
       width: 100%;
       height: unset;

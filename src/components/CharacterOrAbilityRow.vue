@@ -17,9 +17,7 @@ import {
 } from '@heroicons/vue/outline'
 import { computed } from 'vue'
 import Popper from 'vue3-popper'
-import InputNumber from '../components/InputNumber.vue'
 import useCharacterOrAbilityShowModal from './CharacterOrAbilityShowModal/useCharacterOrAbilityShowModal'
-import Ilustration from './Ilustration.vue'
 
 const props = defineProps<{
   data: Character | CustomCharacter | Ability | CustomAbility

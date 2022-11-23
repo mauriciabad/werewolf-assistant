@@ -5,7 +5,6 @@ import { storeToRefs } from 'pinia'
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { RouterLink, useRouter } from 'vue-router'
-import RoleCarrousel from '../components/distribute-roles/RoleCarrousel.vue'
 
 const { t } = useI18n()
 
@@ -33,25 +32,15 @@ const showSecretInfo = ref<boolean>(true)
         <span class="go-back__text">{{ t('ui.goBack') }}</span>
       </RouterLink>
 
-      <div
-        class="secret-info"
-        role="button"
-        tabindex="0"
-        @click="showSecretInfo = !showSecretInfo"
-        @keypress.enter="showSecretInfo = !showSecretInfo"
-        @keypress.space="showSecretInfo = !showSecretInfo"
-      >
+      <div class="secret-info" role="button" tabindex="0" @click="showSecretInfo = !showSecretInfo"
+        @keypress.enter="showSecretInfo = !showSecretInfo" @keypress.space="showSecretInfo = !showSecretInfo">
         <EyeIcon v-if="showSecretInfo" class="secret-info__icon" />
         <EyeOffIcon v-else class="secret-info__icon" />
       </div>
     </div>
 
-    <RoleCarrousel
-      class="carrousel"
-      :players="players"
-      :show-secret-info="showSecretInfo"
-      :creation-date="creationDate"
-    />
+    <RoleCarrousel class="carrousel" :players="players" :show-secret-info="showSecretInfo"
+      :creation-date="creationDate" />
   </main>
 </template>
 

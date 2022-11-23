@@ -4,8 +4,6 @@ import { RefreshIcon, IdentificationIcon } from '@heroicons/vue/solid'
 import { storeToRefs } from 'pinia'
 import { useI18n } from 'vue-i18n'
 import { RouterLink, useRouter } from 'vue-router'
-import PlayerCard from '../components/PlayerCard.vue'
-import Layout from '../components/Layout.vue'
 import { useDataTranslations } from '@/compositions/useDataTranslations'
 
 const { t } = useI18n()
@@ -35,19 +33,15 @@ if (players.value.length === 0) {
       <div class="content">
         <p>
           {{
-            t('ui.gameStartedAt', {
-              date: creationDate.toLocaleDateString(),
-              time: creationDate.toLocaleTimeString(),
-            })
+          t('ui.gameStartedAt', {
+                    date: creationDate.toLocaleDateString(),
+          time: creationDate.toLocaleTimeString(),
+                    })
           }}
         </p>
         <h1>{{ t('ui.firstNightActions') }}</h1>
         <ol class="action-list">
-          <li
-            v-for="action in firstNightActions"
-            :key="action.id"
-            class="action-list__item"
-          >
+          <li v-for="action in   firstNightActions" :key="action.id" class="action-list__item">
             <strong>{{ getActionName(action) }}:</strong>
             {{ getActionDescription(action) }}
           </li>
@@ -55,11 +49,7 @@ if (players.value.length === 0) {
 
         <h1>{{ t('ui.regularNightActions') }}</h1>
         <ol class="action-list">
-          <li
-            v-for="action in nightActions"
-            :key="action.id"
-            class="action-list__item"
-          >
+          <li v-for="action in   nightActions" :key="action.id" class="action-list__item">
             <strong>{{ getActionName(action) }}:</strong>
             {{ getActionDescription(action) }}
           </li>
@@ -69,18 +59,14 @@ if (players.value.length === 0) {
         <div class="links">
           <RouterLink class="link" :to="{ name: 'distributeRoles' }">
             <IdentificationIcon class="link__icon" />{{
-              t('ui.distributeCharacters')
+                t('ui.distributeCharacters')
             }}
           </RouterLink>
         </div>
         <p class="text">{{ t('ui.tapCharacterExpandsExplanation') }}</p>
 
         <div class="player-list">
-          <PlayerCard
-            v-for="player in players"
-            :key="player.id"
-            :player="player"
-          />
+          <PlayerCard v-for="player in   players" :key="player.id" :player="player" />
         </div>
       </div>
     </div>

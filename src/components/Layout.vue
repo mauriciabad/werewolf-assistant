@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import LocaleSelector from '../components/LocaleSelector.vue'
 
 interface Props {
   localeSelector?: boolean
@@ -10,7 +9,9 @@ defineProps<Props>()
 <template>
   <div class="wrapper">
     <LocaleSelector v-if="localeSelector" />
-    <main class="content"><slot /></main>
+    <main class="content">
+      <slot />
+    </main>
   </div>
 </template>
 

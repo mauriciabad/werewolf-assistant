@@ -11,8 +11,6 @@ import { isCharacterId, isCustomCharacterId } from '@/data/characters.types'
 import ilustrations from '@/data/ilustrations'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
-import Ilustration from '../components/Ilustration.vue'
-import Layout from '../components/Layout.vue'
 
 const { t } = useI18n()
 
@@ -57,10 +55,9 @@ const customCharacter = computed<CustomCharacter | undefined>(() => {
     ) {
       return undefined
     }
-
-    return customCharacter
+        return customCharacter
   } catch {
-    return undefined
+    turn undefined
   }
 })
 
@@ -119,23 +116,14 @@ const allAbilities = computed<(Ability | CustomAbility | undefined)[]>(() => {
   <Layout locale-selector>
     <template v-if="hasData">
       <template
-        v-if="(character || customCharacter) && allAbilities.every((a):a is Ability | CustomAbility => a !== undefined)"
-      >
+        v-if="(character || customCharacter) && allAbilities.every((a):a is Ability | CustomAbility => a !== undefined)">
         <p class="name">{{ playerName }}</p>
 
-        <Ilustration
-          :id="character ? character.ilustration : customCharacter!.ilustration"
-          class="ilustration ilustration--character"
-          @click="showDetailVew(character ?? customCharacter!)"
-        />
+        <Ilustration :id="character ? character.ilustration : customCharacter!.ilustration"
+          class="ilustration ilustration--character" @click="showDetailVew(character ?? customCharacter!)" />
         <div class="ability-ilustrations-list">
-          <Ilustration
-            v-for="ability in allAbilities"
-            :id="ability.ilustration"
-            :key="ability.id"
-            class="ilustration ilustration--ability"
-            @click="showDetailVew(ability)"
-          />
+          <Ilustration v-for="ability in allAbilities" :id="ability.ilustration" :key="ability.id"
+            class="ilustration ilustration--ability" @click="showDetailVew(ability)" />
         </div>
 
         <div v-if="character" class="character">
@@ -159,10 +147,10 @@ const allAbilities = computed<(Ability | CustomAbility | undefined)[]>(() => {
 
         <p v-if="creationDate" class="creation-date">
           {{
-            t('ui.gameStartedAt', {
-              date: creationDate.toLocaleDateString(),
-              time: creationDate.toLocaleTimeString(),
-            })
+          t('ui.gameStartedAt', {
+                    date: creationDate.toLocaleDateString(),
+          time: creationDate.toLocaleTimeString(),
+                    })
           }}
         </p>
       </template>
@@ -170,42 +158,29 @@ const allAbilities = computed<(Ability | CustomAbility | undefined)[]>(() => {
       <template v-else>
         <h1>{{ t('ui.error') }}</h1>
         <ul class="error-list">
-          <li
-            v-if="
-              !customCharacter &&
+          <li v-if="
+            !customCharacter &&
               getQueryParam('custom-character') !== undefined
-            "
-            class="error-list__item"
-          >
+          " class="error-list__item">
             {{
               t('ui.unknownCustomCharacter', {
-                character: getQueryParam('custom-character'),
+            character: getQueryParam('custom-character'),
               })
             }}
           </li>
-          <li
-            v-if="!character || getQueryParam('character') !== undefined"
-            class="error-list__item"
-          >
+          <li v-if="!character || getQueryParam('character') !== undefined" class="error-list__item">
             {{
               t('ui.unknownCharacter', {
-                character: getQueryParam('character'),
+            character: getQueryParam('character'),
               })
             }}
           </li>
-          <li
-            v-for="abilityId in getQueryParamList('abilities').filter(
+          <li v-for="abilityId in getQueryParamList('abilities').filter(
               (abilityId) => getAbility(abilityId) === undefined
-            )"
-            :key="abilityId"
-            class="error-list__item"
-          >
+          )" :key="abilityId" class="error-list__item">
             {{ t('ui.unknownAbility', { ability: abilityId }) }}
           </li>
-          <li
-            v-if="customAbilities.some((a) => a === undefined)"
-            class="error-list__item"
-          >
+          <li v-if="customAbilities.some((a) => a === undefined)" class="error-list__item">
             {{ t('ui.unknownCustomAbility') }}
           </li>
         </ul>

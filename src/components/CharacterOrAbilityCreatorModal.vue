@@ -9,9 +9,6 @@ import { CheckIcon, XIcon } from '@heroicons/vue/solid'
 import { computed, ref } from '@vue/reactivity'
 import { watch } from 'vue'
 import { useI18n } from 'vue-i18n'
-import CustomModal from './CustomModal.vue'
-import IconButton from './IconButton.vue'
-import Ilustration from './Ilustration.vue'
 
 const props = defineProps<{
   type: 'character' | 'ability'
@@ -58,10 +55,9 @@ const isValid = computed<boolean>(
 
 function handleConfirm(): void {
   if (!name.value || !description.value || !ilustration.value) return
+      showModal.value = false
 
-  showModal.value = false
-
-  if (
+    
     props.initialValue &&
     isCustomCharacter(props.initialValue) &&
     props.type === 'character'
@@ -135,59 +131,39 @@ function handleConfirm(): void {
 
     <label class="fiel">
       <span class="field__label">{{ t('ui.name') }}</span>
-      <input
-        v-model="name"
-        class="field__input"
-        type="text"
-        required
-        maxlength="50"
-      />
+      <input v-model="name" class="field__input" type="text" required maxlength="50" />
     </label>
     <label class="field">
       <span class="field__label">{{ t('ui.description') }}</span>
-      <textarea
-        v-model="description"
-        class="field__input field__input--textarea"
-        required
-        maxlength="1000"
-      />
+      <textarea v-model="description" class="field__input field__input--textarea" required maxlength="1000" />
     </label>
 
     <span class="field__label">{{ t('ui.image') }}</span>
     <div class="ilustration-selector">
-      <Ilustration
-        v-for="ilustrationId in allIlustrationIds"
-        :id="ilustrationId"
-        :key="ilustrationId"
-        class="ilustration-selector__ilustration"
-        :class="{
+      <Ilustration v-for="ilustrationId in allIlustrationIds" :id="ilustrationId" :key="ilustrationId"
+        class="ilustration-selector__ilustration" :class="{
           'ilustration-selector__ilustration--selected':
-            ilustration === ilustrationId,
-        }"
-        tabindex="0"
-        role="button"
-        :title="ilustrationId"
-        @click="ilustration = ilustrationId"
-        @keypress.enter="ilustration = ilustrationId"
-        @keypress.space="ilustration = ilustrationId"
-      />
+          ilustration === ilustrationId,
+        }" tabindex="0" role="button" :title="ilustrationId" @click="ilustration = ilustrationId"
+        @keypress.enter="ilustration = ilustrationId" @keypress.space="ilustration = ilustrationId" />
     </div>
 
     <template #footer="{ close }">
       <IconButton @click="close">
-        <template #icon><XIcon /></template>{{ t('ui.cancel') }}
+        <template #icon>
+          <XIcon />
+        </template>{{ t('ui.cancel') }}
       </IconButton>
 
-      <IconButton
-        :disabled="!isValid"
-        @click="
-          () => {
+      <IconButton :disabled="!isValid" @click="
+        () => {
             handleConfirm()
-            close()
+          close()
           }
-        "
-      >
-        <template #icon><CheckIcon /></template>{{ t('ui.confirm') }}
+      ">
+        <template #icon>
+          <CheckIcon />
+        </template>{{ t('ui.confirm') }}
       </IconButton>
     </template>
   </CustomModal>

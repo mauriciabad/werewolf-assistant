@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 import { RouterLink } from 'vue-router'
-import Layout from '../components/Layout.vue'
 
 const { t } = useI18n()
 </script>
