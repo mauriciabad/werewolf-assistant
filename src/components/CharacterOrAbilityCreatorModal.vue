@@ -55,9 +55,9 @@ const isValid = computed<boolean>(
 
 function handleConfirm(): void {
   if (!name.value || !description.value || !ilustration.value) return
-      showModal.value = false
+  showModal.value = false
 
-    
+  if (
     props.initialValue &&
     isCustomCharacter(props.initialValue) &&
     props.type === 'character'
@@ -117,13 +117,13 @@ function handleConfirm(): void {
     <template #title>
       <template v-if="initialValue">
         <template v-if="type === 'character'">{{
-          t('ui.editCustomCharacter')
+            t('ui.editCustomCharacter')
         }}</template>
         <template v-else>{{ t('ui.editCustomAbility') }}</template>
       </template>
       <template v-else>
         <template v-if="type === 'character'">{{
-          t('ui.createCustomCharacter')
+            t('ui.createCustomCharacter')
         }}</template>
         <template v-else>{{ t('ui.createCustomAbility') }}</template>
       </template>
@@ -143,7 +143,7 @@ function handleConfirm(): void {
       <Ilustration v-for="ilustrationId in allIlustrationIds" :id="ilustrationId" :key="ilustrationId"
         class="ilustration-selector__ilustration" :class="{
           'ilustration-selector__ilustration--selected':
-          ilustration === ilustrationId,
+            ilustration === ilustrationId,
         }" tabindex="0" role="button" :title="ilustrationId" @click="ilustration = ilustrationId"
         @keypress.enter="ilustration = ilustrationId" @keypress.space="ilustration = ilustrationId" />
     </div>
@@ -157,9 +157,9 @@ function handleConfirm(): void {
 
       <IconButton :disabled="!isValid" @click="
         () => {
-            handleConfirm()
+          handleConfirm()
           close()
-          }
+        }
       ">
         <template #icon>
           <CheckIcon />
