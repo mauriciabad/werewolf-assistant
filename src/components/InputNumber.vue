@@ -2,12 +2,10 @@
 import { MinusIcon, PlusIcon } from '@heroicons/vue/solid'
 import { computed } from 'vue'
 
-interface Props {
+const props = defineProps<{
   modelValue: number
   disabled?: boolean
-}
-
-const props = defineProps<Props>()
+}>()
 
 const emit = defineEmits<{ (e: 'update:modelValue', value: number): void }>()
 
@@ -22,14 +20,13 @@ function fixNumber(n: unknown): number {
           : n
 }
 const number = computed<number>({
-  get: () => props.modelValue || 0,
+  get: () => props.modelValue,
   set: (value) => {
     if (props.disabled) return
 
-    const newValue = fixNumber(value)
-    if (newValue === value) return
+    const fixedValue = fixNumber(value)
 
-    emit('update:modelValue', newValue)
+    emit('update:modelValue', fixedValue)
   },
 })
 
