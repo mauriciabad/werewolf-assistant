@@ -30,4 +30,6 @@
 
 ## Other
 
-_Empty..._
+### After update
+
+- [ ] Move manifest and check PWA works

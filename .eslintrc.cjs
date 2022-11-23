@@ -12,9 +12,6 @@ module.exports = {
     '@vue/eslint-config-typescript/recommended',
     '@vue/eslint-config-prettier',
   ],
-  env: {
-    'vue/setup-compiler-macros': true,
-  },
   rules: {
     'prefer-template': 'warn',
     'vue/block-lang': ['error', { script: { lang: 'ts' } }],
@@ -30,6 +27,10 @@ module.exports = {
     'vue/v-for-delimiter-style': 'error',
     'vue/v-on-function-call': 'error',
     'vue/no-undef-components': 'error',
+    'vue/component-tags-order': [
+      'error',
+      { order: ['script', 'template', 'style'] },
+    ],
     '@intlify/vue-i18n/key-format-style': 'error',
     '@intlify/vue-i18n/no-duplicate-keys-in-locale': 'error',
     '@intlify/vue-i18n/no-dynamic-keys': 'error',
@@ -46,32 +47,14 @@ module.exports = {
       },
     ],
   },
-  settings: {
-    'vue-i18n': {
-      localeDir: {
-        pattern: './src/locales/*.{json,json5,yaml,yml}',
-        localeKey: 'file',
-      },
-      messageSyntaxVersion: '^9.0.0',
-    },
-  },
-  overrides: [
+    overrides: [
     {
-      files: [
-        '**/__tests__/*.spec.{js,ts,jsx,tsx}',
-        'cypress/integration/**.spec.{js,ts,jsx,tsx}',
-      ],
+      files: ['cypress/e2e/**/*.{cy,spec}.{js,ts,jsx,tsx}'],
       extends: ['plugin:cypress/recommended'],
     },
-    {
-      files: ['*.{js,cjs,mjs,ts,cts,mts}'],
-      rules: {
-        '@typescript-eslint/no-var-requires': 'off',
-      },
-      env: {
-        node: true,
-      },
-    },
   ],
-  ignorePatterns: ['/dist/'],
+  parserOptions: {
+    ecmaVersion: 'latest',
+    warnOnUnsupportedTypeScriptVersion: false,
+  },
 }

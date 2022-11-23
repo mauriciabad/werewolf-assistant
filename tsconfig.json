@@ -1,22 +1,14 @@
 {
-  "extends": "@vue/tsconfig/tsconfig.web.json",
-  "include": ["env.d.ts", "src/**/*", "src/**/*.vue"],
-  "compilerOptions": {
-    "lib": ["esnext"],
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./src/*"]
-    },
-    "types": ["@intlify/vite-plugin-vue-i18n/client"],
-    "noImplicitReturns": true,
-    "strictNullChecks": true,
-    "noImplicitAny": true
-  },
-
+  "files": [],
   "references": [
     {
-      "path": "./tsconfig.vite-config.json"
+      "path": "./tsconfig.config.json"
+    },
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.vitest.json"
     }
-  ],
-  "$schema": "https://json.schemastore.org/tsconfig"
+  ]
 }
