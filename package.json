@@ -40,7 +40,7 @@
     "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-vue": "^8.2.0",
     "husky": "^7.0.4",
-    "prettier": "^2.5.1",
+    "prettier": "^2.8.0",
     "real-vh": "^1.0.0",
     "sass": "^1.49.9",
     "start-server-and-test": "^1.14.0",
