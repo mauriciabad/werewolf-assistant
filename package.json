@@ -27,7 +27,7 @@
   "devDependencies": {
     "@cypress/vite-dev-server": "^2.2.2",
     "@cypress/vue": "^3.1.1",
-    "@intlify/eslint-plugin-vue-i18n": "^1.4.1",
+    "@intlify/eslint-plugin-vue-i18n": "^2.0.0",
     "@intlify/vite-plugin-vue-i18n": "^4.0.0",
     "@rushstack/eslint-patch": "^1.1.0",
     "@types/node": "^16.11.25",
