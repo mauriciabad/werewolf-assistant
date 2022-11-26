@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { getAbility } from '@/data/abilities'
 import { getCharacter } from '@/data/characters'
-import { computed } from '@vue/reactivity'
+import { computed } from 'vue'
 import type { IlustrationId } from '@/data/ilustrations'
 
 type IlustrationType = 'character' | 'ability'

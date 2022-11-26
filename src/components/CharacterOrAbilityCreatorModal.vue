@@ -6,7 +6,7 @@ import { isCustomCharacter } from '@/data/characters.types'
 import type { IlustrationId } from '@/data/ilustrations'
 import { allIlustrationIds } from '@/data/ilustrations'
 import { CheckIcon, XIcon } from '@heroicons/vue/solid'
-import { computed, ref } from '@vue/reactivity'
+import { computed, ref } from 'vue'
 import { watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 
@@ -117,13 +117,13 @@ function handleConfirm(): void {
     <template #title>
       <template v-if="initialValue">
         <template v-if="type === 'character'">{{
-            t('ui.editCustomCharacter')
+          t('ui.editCustomCharacter')
         }}</template>
         <template v-else>{{ t('ui.editCustomAbility') }}</template>
       </template>
       <template v-else>
         <template v-if="type === 'character'">{{
-            t('ui.createCustomCharacter')
+          t('ui.createCustomCharacter')
         }}</template>
         <template v-else>{{ t('ui.createCustomAbility') }}</template>
       </template>
@@ -131,39 +131,59 @@ function handleConfirm(): void {
 
     <label class="fiel">
       <span class="field__label">{{ t('ui.name') }}</span>
-      <input v-model="name" class="field__input" type="text" required maxlength="50" />
+      <input
+        v-model="name"
+        class="field__input"
+        type="text"
+        required
+        maxlength="50"
+      />
     </label>
     <label class="field">
       <span class="field__label">{{ t('ui.description') }}</span>
-      <textarea v-model="description" class="field__input field__input--textarea" required maxlength="1000" />
+      <textarea
+        v-model="description"
+        class="field__input field__input--textarea"
+        required
+        maxlength="1000"
+      />
     </label>
 
     <span class="field__label">{{ t('ui.image') }}</span>
     <div class="ilustration-selector">
-      <Ilustration v-for="ilustrationId in allIlustrationIds" :id="ilustrationId" :key="ilustrationId"
-        class="ilustration-selector__ilustration" :class="{
+      <Ilustration
+        v-for="ilustrationId in allIlustrationIds"
+        :id="ilustrationId"
+        :key="ilustrationId"
+        class="ilustration-selector__ilustration"
+        :class="{
           'ilustration-selector__ilustration--selected':
             ilustration === ilustrationId,
-        }" tabindex="0" role="button" :title="ilustrationId" @click="ilustration = ilustrationId"
-        @keypress.enter="ilustration = ilustrationId" @keypress.space="ilustration = ilustrationId" />
+        }"
+        tabindex="0"
+        role="button"
+        :title="ilustrationId"
+        @click="ilustration = ilustrationId"
+        @keypress.enter="ilustration = ilustrationId"
+        @keypress.space="ilustration = ilustrationId"
+      />
     </div>
 
     <template #footer="{ close }">
       <IconButton @click="close">
-        <template #icon>
-          <XIcon />
-        </template>{{ t('ui.cancel') }}
+        <template #icon> <XIcon /> </template>{{ t('ui.cancel') }}
       </IconButton>
 
-      <IconButton :disabled="!isValid" @click="
-        () => {
-          handleConfirm()
-          close()
-        }
-      ">
-        <template #icon>
-          <CheckIcon />
-        </template>{{ t('ui.confirm') }}
+      <IconButton
+        :disabled="!isValid"
+        @click="
+          () => {
+            handleConfirm()
+            close()
+          }
+        "
+      >
+        <template #icon> <CheckIcon /> </template>{{ t('ui.confirm') }}
       </IconButton>
     </template>
   </CustomModal>

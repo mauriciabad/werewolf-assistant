@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-
 interface Props {
   localeSelector?: boolean
 }

@@ -48,9 +48,7 @@ const showModal = computed<boolean>({
 
     <template #footer="{ close }">
       <IconButton @click="close">
-        <template #icon>
-          <XIcon />
-        </template>{{ t('ui.close') }}
+        <template #icon> <XIcon /> </template>{{ t('ui.close') }}
       </IconButton>
     </template>
   </CustomModal>

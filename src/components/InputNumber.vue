@@ -13,11 +13,15 @@ const MIN = 0
 const MAX = 99
 
 function fixNumber(n: unknown): number {
-  return typeof n !== 'number' || isNaN(n) ? 0
-    : n <= MIN ? MIN
-      : n >= MAX ? MAX
-        : Math.round(n) !== n ? Math.round(n)
-          : n
+  return typeof n !== 'number' || isNaN(n)
+    ? 0
+    : n <= MIN
+    ? MIN
+    : n >= MAX
+    ? MAX
+    : Math.round(n) !== n
+    ? Math.round(n)
+    : n
 }
 const number = computed<number>({
   get: () => props.modelValue,
@@ -40,16 +44,33 @@ function decrease(): void {
 
 <template>
   <div class="wrapper">
-    <div class="button button--left" :class="{ 'button--disabled': number <= MIN || disabled }" @click="decrease"
-      data-testid="decrease-button">
+    <div
+      class="button button--left"
+      :class="{ 'button--disabled': number <= MIN || disabled }"
+      data-testid="decrease-button"
+      @click="decrease"
+    >
       <MinusIcon class="button__icon" />
     </div>
 
-    <input v-model.number="number" class="input" :class="{ 'input--zero': number === 0 }" type="number"
-      :disabled="disabled" :min="MIN" :max="MAX" step="1" data-testid="input" />
+    <input
+      v-model.number="number"
+      class="input"
+      :class="{ 'input--zero': number === 0 }"
+      type="number"
+      :disabled="disabled"
+      :min="MIN"
+      :max="MAX"
+      step="1"
+      data-testid="input"
+    />
 
-    <div class="button button--right" :class="{ 'button--disabled': number >= MAX || disabled }" @click="increase"
-      data-testid="increase-button">
+    <div
+      class="button button--right"
+      :class="{ 'button--disabled': number >= MAX || disabled }"
+      data-testid="increase-button"
+      @click="increase"
+    >
       <PlusIcon class="button__icon" />
     </div>
   </div>

@@ -46,7 +46,10 @@ const abilities = computed<(Ability | CustomAbility)[]>(() =>
 </script>
 
 <template>
-  <div class="player" :class="{ 'player--no-abilities': abilities.length === 0 }">
+  <div
+    class="player"
+    :class="{ 'player--no-abilities': abilities.length === 0 }"
+  >
     <div class="name">
       <div class="small-title">{{ t('ui.name') }}</div>
       <div class="name__text">
@@ -65,7 +68,12 @@ const abilities = computed<(Ability | CustomAbility)[]>(() =>
     <div v-if="abilities.length" class="abilities">
       <div class="small-title">{{ t('ui.ability', abilities.length) }}</div>
       <ul class="ability-list">
-        <li v-for="ability in abilities" :key="ability.id" class="ability" @click="showDetailVew(ability)">
+        <li
+          v-for="ability in abilities"
+          :key="ability.id"
+          class="ability"
+          @click="showDetailVew(ability)"
+        >
           <Ilustration :id="ability.ilustration" class="ability__ilustration" />
           <span class="ability__name">{{ getName(ability) }}</span>
         </li>

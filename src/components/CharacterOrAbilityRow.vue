@@ -60,15 +60,29 @@ const isCustom = computed<boolean>(
         <label class="item__label">{{ name }}</label>
       </Popper>
 
-      <InformationCircleIcon class="item__icon item__icon--info" @click="showDetailVew(data)" />
+      <InformationCircleIcon
+        class="item__icon item__icon--info"
+        @click="showDetailVew(data)"
+      />
 
-      <TrashIcon v-if="isCustom" class="item__icon item__icon--delete" @click="emit('remove')" />
+      <TrashIcon
+        v-if="isCustom"
+        class="item__icon item__icon--delete"
+        @click="emit('remove')"
+      />
 
-      <PencilIcon v-if="isCustom" class="item__icon item__icon--edit" @click="emit('edit')" />
+      <PencilIcon
+        v-if="isCustom"
+        class="item__icon item__icon--edit"
+        @click="emit('edit')"
+      />
     </div>
 
-    <InputNumber :model-value="modelValue ?? 0" :disabled="disabled"
-      @update:model-value="emit('update:modelValue', $event)" />
+    <InputNumber
+      :model-value="modelValue ?? 0"
+      :disabled="disabled"
+      @update:model-value="emit('update:modelValue', $event)"
+    />
   </div>
 </template>
 

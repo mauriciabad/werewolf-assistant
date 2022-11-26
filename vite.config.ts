@@ -14,7 +14,10 @@ export default defineConfig({
     vue(),
     Components(),
     vueI18n({
-      include: resolve(dirname(fileURLToPath(import.meta.url)),'./src/locales/**'),
+      include: resolve(
+        dirname(fileURLToPath(import.meta.url)),
+        './src/locales/**'
+      ),
     }),
     // TODO: Use real manifest
     // VitePWA({
@@ -75,7 +78,7 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      '@': resolve(dirname(fileURLToPath(import.meta.url)),'./src'),
+      '@': resolve(dirname(fileURLToPath(import.meta.url)), './src'),
     },
   },
 })

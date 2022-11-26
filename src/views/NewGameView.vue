@@ -55,10 +55,10 @@ const newAbilitiesPerCharacter = computed<number>(() =>
 
 const nothingAbilities = computed<number>(() =>
   newCharactersCount.value === 0 ||
-    newAbilitiesCount.value % newCharactersCount.value === 0
+  newAbilitiesCount.value % newCharactersCount.value === 0
     ? 0
     : newCharactersCount.value -
-    (newAbilitiesCount.value % newCharactersCount.value)
+      (newAbilitiesCount.value % newCharactersCount.value)
 )
 
 const router = useRouter()
@@ -200,7 +200,11 @@ function handleClearDataClick(): void {
 <template>
   <main class="main">
     <div class="header" :class="{ 'header--no-go-back': players.length === 0 }">
-      <RouterLink v-if="players.length !== 0" class="go-back" :to="{ name: 'storyteller' }">
+      <RouterLink
+        v-if="players.length !== 0"
+        class="go-back"
+        :to="{ name: 'storyteller' }"
+      >
         <div class="go-back__icon-wrapper">
           <ChevronLeftIcon class="go-back__icon" />
         </div>
@@ -212,16 +216,19 @@ function handleClearDataClick(): void {
     <h1>{{ t('ui.newGame') }}</h1>
 
     <IconButton class="button" @click="handleClearDataClick">
-      <template #icon>
-        <TrashIcon />
-      </template>{{ t('ui.clearData') }}
+      <template #icon> <TrashIcon /> </template>{{ t('ui.clearData') }}
     </IconButton>
 
     <h2>
       <label for="player-names">{{ t('ui.playerNames') }}</label>
     </h2>
     <p>{{ t('ui.totalNumber', playerNamesCount) }}</p>
-    <textarea id="player-names" v-model="rawPlayerNames" name="Player names" class="player-names"></textarea>
+    <textarea
+      id="player-names"
+      v-model="rawPlayerNames"
+      name="Player names"
+      class="player-names"
+    ></textarea>
     <TagList :items="newPlayerNames" class="player-names-list" />
 
     <h2>{{ t('ui.choseCharacters') }}</h2>
@@ -231,26 +238,41 @@ function handleClearDataClick(): void {
     </p>
 
     <div class="list">
-      <CharacterOrAbilityRow v-for="character in charactersInfo" :key="character.id" :data="character"
-        :model-value="newCharacters.find((a) => a.id === character.id)?.amount" @update:model-value="
+      <CharacterOrAbilityRow
+        v-for="character in charactersInfo"
+        :key="character.id"
+        :data="character"
+        :model-value="newCharacters.find((a) => a.id === character.id)?.amount"
+        @update:model-value="
           setCharacterAmount({ id: character.id, amount: $event })
-        " />
+        "
+      />
 
       <div v-if="customCharacters.length" class="separator" />
 
-      <CharacterOrAbilityRow v-for="character in customCharacters" :key="character.id" :data="character"
-        :model-value="newCharacters.find((a) => a.id === character.id)?.amount" @update:model-value="
+      <CharacterOrAbilityRow
+        v-for="character in customCharacters"
+        :key="character.id"
+        :data="character"
+        :model-value="newCharacters.find((a) => a.id === character.id)?.amount"
+        @update:model-value="
           setCharacterAmount({ id: character.id, amount: $event })
-        " @edit="handleEditCustomCharacter(character)" @remove="handleRemoveCustomCharacter(character.id)" />
+        "
+        @edit="handleEditCustomCharacter(character)"
+        @remove="handleRemoveCustomCharacter(character.id)"
+      />
     </div>
 
-    <CharacterOrAbilityCreatorModal v-model:modelValue="showCustomCharacterModal" type="character"
-      :initial-value="customCharacterToEdit" @create-character="handleCreateOrEditCustomCharacter"
-      @edit-character="handleCreateOrEditCustomCharacter" />
+    <CharacterOrAbilityCreatorModal
+      v-model:modelValue="showCustomCharacterModal"
+      type="character"
+      :initial-value="customCharacterToEdit"
+      @create-character="handleCreateOrEditCustomCharacter"
+      @edit-character="handleCreateOrEditCustomCharacter"
+    />
     <IconButton class="button" @click="handleAddCustomCharacterClick">
-      <template #icon>
-        <UserAddIcon />
-      </template>{{ t('ui.addCustomCharacter') }}
+      <template #icon> <UserAddIcon /> </template
+      >{{ t('ui.addCustomCharacter') }}
     </IconButton>
 
     <h2>{{ t('ui.choseAbilities') }}</h2>
@@ -260,33 +282,54 @@ function handleClearDataClick(): void {
     </p>
 
     <div class="list">
-      <CharacterOrAbilityRow :data="getAbility('a:nothing')" :model-value="nothingAbilities" disabled />
+      <CharacterOrAbilityRow
+        :data="getAbility('a:nothing')"
+        :model-value="nothingAbilities"
+        disabled
+      />
 
-      <CharacterOrAbilityRow v-for="ability in abilitiesInfo.filter((a) => a.id !== 'a:nothing')" :key="ability.id"
-        :data="ability" :model-value="newAbilities.find((a) => a.id === ability.id)?.amount" @update:model-value="
+      <CharacterOrAbilityRow
+        v-for="ability in abilitiesInfo.filter((a) => a.id !== 'a:nothing')"
+        :key="ability.id"
+        :data="ability"
+        :model-value="newAbilities.find((a) => a.id === ability.id)?.amount"
+        @update:model-value="
           setAbilityAmount({ id: ability.id, amount: $event })
-        " />
+        "
+      />
       <div v-if="customAbilities.length" class="separator" />
 
-      <CharacterOrAbilityRow v-for="ability in customAbilities" :key="ability.id" :data="ability"
-        :model-value="newAbilities.find((a) => a.id === ability.id)?.amount" @update:model-value="
+      <CharacterOrAbilityRow
+        v-for="ability in customAbilities"
+        :key="ability.id"
+        :data="ability"
+        :model-value="newAbilities.find((a) => a.id === ability.id)?.amount"
+        @update:model-value="
           setAbilityAmount({ id: ability.id, amount: $event })
-        " @edit="handleEditCustomAbility(ability)" @remove="handleRemoveCustomAbility(ability.id)" />
+        "
+        @edit="handleEditCustomAbility(ability)"
+        @remove="handleRemoveCustomAbility(ability.id)"
+      />
     </div>
-    <CharacterOrAbilityCreatorModal v-model:modelValue="showCustomAbilityModal" type="ability"
-      :initial-value="customAbilityToEdit" @create-ability="handleCreateOrEditCustomAbility"
-      @edit-ability="handleCreateOrEditCustomAbility" />
+    <CharacterOrAbilityCreatorModal
+      v-model:modelValue="showCustomAbilityModal"
+      type="ability"
+      :initial-value="customAbilityToEdit"
+      @create-ability="handleCreateOrEditCustomAbility"
+      @edit-ability="handleCreateOrEditCustomAbility"
+    />
 
     <IconButton class="button" @click="handleAddCustomAbilityClick">
-      <template #icon>
-        <ViewGridAddIcon />
-      </template>{{ t('ui.addCustomAbility') }}
+      <template #icon> <ViewGridAddIcon /> </template
+      >{{ t('ui.addCustomAbility') }}
     </IconButton>
 
-    <IconButton :disabled="newCharactersCount <= 1" main @click="handleCreateGame">
-      <template #icon>
-        <SparklesIcon />
-      </template>{{ t('ui.createGame') }}
+    <IconButton
+      :disabled="newCharactersCount <= 1"
+      main
+      @click="handleCreateGame"
+    >
+      <template #icon> <SparklesIcon /> </template>{{ t('ui.createGame') }}
     </IconButton>
   </main>
 </template>
@@ -366,7 +409,9 @@ function handleClearDataClick(): void {
 
 .toltip-content {
   display: block;
-  width: calc(100vw - 2 * (var(--popper-theme-padding) + var(--popper-theme-border-width)));
+  width: calc(
+    100vw - 2 * (var(--popper-theme-padding) + var(--popper-theme-border-width))
+  );
   max-width: var(--max-width, 30rem);
 }
 

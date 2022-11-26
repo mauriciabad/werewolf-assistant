@@ -33,7 +33,7 @@ describe('InputNumber component', () => {
 
   describe('when the prop value is invalid, and add buton clicked tryes to fix the number', () => {
     it('negative and add', async () => {
-      let wrapper = mount(InputNumber, {
+      const wrapper = mount(InputNumber, {
         props: {
           modelValue: -3,
           'onUpdate:modelValue': (e: unknown) =>
@@ -44,7 +44,7 @@ describe('InputNumber component', () => {
       expect(wrapper.props('modelValue')).toBe(0)
     })
     it('negative and substract', async () => {
-      let wrapper = mount(InputNumber, {
+      const wrapper = mount(InputNumber, {
         props: {
           modelValue: -3,
           'onUpdate:modelValue': (e: unknown) =>
@@ -55,7 +55,7 @@ describe('InputNumber component', () => {
       expect(wrapper.props('modelValue')).toBe(0)
     })
     it('decimal big and add', async () => {
-      let wrapper = mount(InputNumber, {
+      const wrapper = mount(InputNumber, {
         props: {
           modelValue: 1.75,
           'onUpdate:modelValue': (e: unknown) =>
@@ -66,7 +66,7 @@ describe('InputNumber component', () => {
       expect(wrapper.props('modelValue')).toBe(3)
     })
     it('decimal small and add', async () => {
-      let wrapper = mount(InputNumber, {
+      const wrapper = mount(InputNumber, {
         props: {
           modelValue: 1.25,
           'onUpdate:modelValue': (e: unknown) =>
@@ -77,7 +77,7 @@ describe('InputNumber component', () => {
       expect(wrapper.props('modelValue')).toBe(2)
     })
     it('over max and add', async () => {
-      let wrapper = mount(InputNumber, {
+      const wrapper = mount(InputNumber, {
         props: {
           modelValue: 1000,
           'onUpdate:modelValue': (e: unknown) =>

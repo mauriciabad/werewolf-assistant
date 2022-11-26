@@ -10,7 +10,10 @@ const {
 
 <template>
   <RouterView />
-  <CharacterOrAbilityShowModal v-model="isCharacterOrAbilityShowModalShown" :data="characterOrAbilityShowModalData" />
+  <CharacterOrAbilityShowModal
+    v-model="isCharacterOrAbilityShowModalShown"
+    :data="characterOrAbilityShowModalData"
+  />
 </template>
 
 <style lang="scss">
