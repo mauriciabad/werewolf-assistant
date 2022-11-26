@@ -1,53 +1,29 @@
 # Werewolf Card Dealer
+
 [![Netlify Status](https://api.netlify.com/api/v1/badges/71200d24-eda9-4bd5-bc5e-ec9b4ec6b36c/deploy-status)](https://app.netlify.com/sites/werewolf-assistant/deploys)
 
 🃏 PWA to deal werewolf cards
 
-Use it here: https://werewolf-assistant.netlify.app/
+Use it here: <https://werewolf-assistant.netlify.app/>
 
+This web app lets friends play a custom version of the werewolf game without the need of cards.
 
+Main features:
+- Saves progress if closed.
+- Responsive design (mobile, tablet and desktop).
+- Consistent design.
+- Multiple languages.
+- Works offline and it's installable.
+- Can create custom characters.
+- 100% free hosting and DB.
+- Easy-to-use and fast.
 
-## Project Setup
+## Screenshots
 
-```sh
-npm install
-```
+![Mockup for new game screens](docs/mockup-new-game.png)
 
-### Recommended IDE Setup
+![Mockup for storyteller screens](docs/mockup-storyteller.png)
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.vscode-typescript-vue-plugin).
+![Mockup for player screens](docs/mockup-player.png)
 
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Run Unit Tests with [Cypress Component Testing](https://docs.cypress.io/guides/component-testing/introduction)
-
-```sh
-npm run test:unit # or `npm run test:unit:ci` for headless testing
-```
-
-### Run End-to-End Tests with [Cypress](https://www.cypress.io/)
-
-```sh
-npm run build
-npm run test:e2e # or `npm run test:e2e:ci` for headless testing
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
-
-## Deployment
-
-Automatically by Netlify
+![Mockup for dark theme](docs/mockup-dark-theme.png)
