@@ -1,4 +1,4 @@
-import { describe, beforeEach, expect, it } from 'vitest'
+import { describe, expect, it } from 'vitest'
 import { mount } from '@vue/test-utils'
 import InputNumber from './InputNumber.vue'
 
