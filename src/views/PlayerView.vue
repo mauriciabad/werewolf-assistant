@@ -55,9 +55,9 @@ const customCharacter = computed<CustomCharacter | undefined>(() => {
     ) {
       return undefined
     }
-        return customCharacter
+    return customCharacter
   } catch {
-    turn undefined
+    return undefined
   }
 })
 
@@ -116,7 +116,7 @@ const allAbilities = computed<(Ability | CustomAbility | undefined)[]>(() => {
   <Layout locale-selector>
     <template v-if="hasData">
       <template
-        v-if="(character || customCharacter) && allAbilities.every((a):a is Ability | CustomAbility => a !== undefined)">
+        v-if="(character || customCharacter) && allAbilities.every((a): a is Ability | CustomAbility => a !== undefined)">
         <p class="name">{{ playerName }}</p>
 
         <Ilustration :id="character ? character.ilustration : customCharacter!.ilustration"
@@ -147,10 +147,10 @@ const allAbilities = computed<(Ability | CustomAbility | undefined)[]>(() => {
 
         <p v-if="creationDate" class="creation-date">
           {{
-          t('ui.gameStartedAt', {
-                    date: creationDate.toLocaleDateString(),
-          time: creationDate.toLocaleTimeString(),
-                    })
+              t('ui.gameStartedAt', {
+                date: creationDate.toLocaleDateString(),
+                time: creationDate.toLocaleTimeString(),
+              })
           }}
         </p>
       </template>
@@ -160,23 +160,23 @@ const allAbilities = computed<(Ability | CustomAbility | undefined)[]>(() => {
         <ul class="error-list">
           <li v-if="
             !customCharacter &&
-              getQueryParam('custom-character') !== undefined
+            getQueryParam('custom-character') !== undefined
           " class="error-list__item">
             {{
-              t('ui.unknownCustomCharacter', {
-            character: getQueryParam('custom-character'),
-              })
+                t('ui.unknownCustomCharacter', {
+                  character: getQueryParam('custom-character'),
+                })
             }}
           </li>
           <li v-if="!character || getQueryParam('character') !== undefined" class="error-list__item">
             {{
-              t('ui.unknownCharacter', {
-            character: getQueryParam('character'),
-              })
+                t('ui.unknownCharacter', {
+                  character: getQueryParam('character'),
+                })
             }}
           </li>
           <li v-for="abilityId in getQueryParamList('abilities').filter(
-              (abilityId) => getAbility(abilityId) === undefined
+            (abilityId) => getAbility(abilityId) === undefined
           )" :key="abilityId" class="error-list__item">
             {{ t('ui.unknownAbility', { ability: abilityId }) }}
           </li>
@@ -214,9 +214,9 @@ const allAbilities = computed<(Ability | CustomAbility | undefined)[]>(() => {
   max-width: var(--size);
   padding: 1rem;
   border: 1px solid var(--vt-c-divider-light-2);
+  border-radius: 1rem;
   aspect-ratio: 1;
   background-color: #fff;
-  border-radius: 1rem;
   box-shadow: 0 20px 25px -5px rgb(0 0 0 / 10%),
     0 8px 10px -6px rgb(0 0 0 / 10%);
   cursor: pointer;
@@ -272,9 +272,9 @@ strong {
   padding: 1rem;
   padding-left: 2rem;
   border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
   margin-top: 1rem;
   background-color: var(--color-background-soft);
-  border-radius: 0.5rem;
   color: var(--color-red);
   text-align: left;
 }
