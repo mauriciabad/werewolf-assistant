@@ -62,6 +62,7 @@ export default defineConfig({
             purpose: 'monochrome',
           },
         ],
+        background_color: '#fff',
         display: 'standalone',
       },
     }),
