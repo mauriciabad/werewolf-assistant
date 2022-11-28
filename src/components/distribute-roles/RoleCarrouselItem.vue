@@ -71,9 +71,18 @@ const url = computed<string>(() =>
 
     <div class="card__character" @click="showDetailVew(character)">
       <div class="small-title">{{ t('ui.character') }}</div>
-      <HidableIlustration ilustration-type="character" :visible="showSecretInfo" :ilustration="character.ilustration"
-        class="card__character-ilustration" alt="" />
-      <HidableText :text="getName(character)" :visible="showSecretInfo" :length="8" />
+      <HidableIlustration
+        ilustration-type="character"
+        :visible="showSecretInfo"
+        :ilustration="character.ilustration"
+        class="card__character-ilustration"
+        alt=""
+      />
+      <HidableText
+        :text="getName(character)"
+        :visible="showSecretInfo"
+        :length="8"
+      />
     </div>
 
     <div v-if="player.abilities.length" class="card__abilities">
@@ -81,11 +90,25 @@ const url = computed<string>(() =>
         {{ t('ui.ability', player.abilities.length) }}
       </div>
       <ul class="ability-list">
-        <li v-for="ability in abilities" :key="ability.id" class="ability" @click="showDetailVew(ability)">
-          <HidableIlustration ilustration-type="ability" :visible="showSecretInfo" :ilustration="ability.ilustration"
-            class="ability__ilustration" alt="" />
+        <li
+          v-for="ability in abilities"
+          :key="ability.id"
+          class="ability"
+          @click="showDetailVew(ability)"
+        >
+          <HidableIlustration
+            ilustration-type="ability"
+            :visible="showSecretInfo"
+            :ilustration="ability.ilustration"
+            class="ability__ilustration"
+            alt=""
+          />
           <span class="ability__name">
-            <HidableText :text="getName(ability)" :visible="showSecretInfo" :length="7" />
+            <HidableText
+              :text="getName(ability)"
+              :visible="showSecretInfo"
+              :length="7"
+            />
           </span>
         </li>
       </ul>
@@ -129,7 +152,7 @@ $card-max-width: var(--max-width, 30rem);
     margin: 0.75rem auto 1rem;
     grid-area: qr;
 
-    >svg {
+    > svg {
       display: block;
       width: 100%;
       height: unset;

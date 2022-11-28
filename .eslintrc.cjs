@@ -47,6 +47,15 @@ module.exports = {
       },
     ],
   },
+  settings: {
+    'vue-i18n': {
+      localeDir: {
+        pattern: './src/locales/*.{json,json5,yaml,yml}',
+        localeKey: 'file',
+      },
+      messageSyntaxVersion: '^9.0.0',
+    },
+  },
   overrides: [
     {
       files: ['cypress/e2e/**/*.{cy,spec}.{js,ts,jsx,tsx}'],
