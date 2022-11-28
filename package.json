@@ -42,7 +42,7 @@
     "husky": "^7.0.4",
     "prettier": "^2.5.1",
     "real-vh": "^1.0.0",
-    "sass": "^1.49.9",
+    "sass": "^1.56.1",
     "start-server-and-test": "^1.14.0",
     "stylelint": "^14.15.0",
     "stylelint-config-idiomatic-order": "^8.1.0",
