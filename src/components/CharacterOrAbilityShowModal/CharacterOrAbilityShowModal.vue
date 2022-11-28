@@ -7,7 +7,7 @@ import { isCustomCharacter, isCharacter } from '@/data/characters.types'
 import { XIcon } from '@heroicons/vue/solid'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
-import Ilustration from '@/components/Ilustration.vue'
+import IlustrationImg from '@/components/IlustrationImg.vue'
 import CustomModal from '@/components/CustomModal.vue'
 import IconButton from '@/components/IconButton.vue'
 
@@ -44,7 +44,7 @@ const showModal = computed<boolean>({
     </template>
 
     <template #default>
-      <Ilustration :id="data.ilustration" class="ilustration" />
+      <IlustrationImg :id="data.ilustration" class="ilustration" />
       <h1 class="name">{{ getName(data) }}</h1>
       <p>{{ getDescription(data) }}</p>
     </template>

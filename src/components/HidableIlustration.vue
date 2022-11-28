@@ -3,7 +3,7 @@ import { getAbility } from '@/data/abilities'
 import { getCharacter } from '@/data/characters'
 import { computed } from 'vue'
 import type { IlustrationId } from '@/data/ilustrations'
-import Ilustration from '@/components/Ilustration.vue'
+import IlustrationImg from '@/components/IlustrationImg.vue'
 
 type IlustrationType = 'character' | 'ability'
 const props = defineProps<{
@@ -23,8 +23,8 @@ const placeholderIlustration = computed<IlustrationId>(
 </script>
 
 <template>
-  <Ilustration v-if="visible" :id="ilustration" />
-  <Ilustration v-else :id="placeholderIlustration" class="blurry" />
+  <IlustrationImg v-if="visible" :id="ilustration" />
+  <IlustrationImg v-else :id="placeholderIlustration" class="blurry" />
 </template>
 
 <style scoped lang="scss">

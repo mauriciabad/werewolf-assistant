@@ -56,9 +56,9 @@ const showModal = computed<boolean>({
   max-height: 90%;
   flex-direction: column;
   border: 1px solid var(--color-border);
+  border-radius: 0.25rem;
   margin: 0 1rem;
   background: var(--color-background);
-  border-radius: 0.25rem;
 }
 
 .modal__title {

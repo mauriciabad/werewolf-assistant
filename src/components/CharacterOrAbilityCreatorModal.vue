@@ -9,7 +9,7 @@ import { CheckIcon, XIcon } from '@heroicons/vue/solid'
 import { computed, ref } from 'vue'
 import { watch } from 'vue'
 import { useI18n } from 'vue-i18n'
-import Ilustration from '@/components/Ilustration.vue'
+import IlustrationImg from '@/components/IlustrationImg.vue'
 import CustomModal from '@/components/CustomModal.vue'
 import IconButton from '@/components/IconButton.vue'
 
@@ -154,7 +154,7 @@ function handleConfirm(): void {
 
     <span class="field__label">{{ t('ui.image') }}</span>
     <div class="ilustration-selector">
-      <Ilustration
+      <IlustrationImg
         v-for="ilustrationId in allIlustrationIds"
         :id="ilustrationId"
         :key="ilustrationId"

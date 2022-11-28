@@ -11,7 +11,7 @@ import { isCharacterId, isCustomCharacterId } from '@/data/characters.types'
 import ilustrations from '@/data/ilustrations'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
-import Ilustration from '@/components/Ilustration.vue'
+import IlustrationImg from '@/components/IlustrationImg.vue'
 import CustomLayout from '@/components/CustomLayout.vue'
 
 const { t } = useI18n()
@@ -122,13 +122,13 @@ const allAbilities = computed<(Ability | CustomAbility | undefined)[]>(() => {
       >
         <p class="name">{{ playerName }}</p>
 
-        <Ilustration
+        <IlustrationImg
           :id="character ? character.ilustration : customCharacter!.ilustration"
           class="ilustration ilustration--character"
           @click="showDetailVew(character ?? customCharacter!)"
         />
         <div class="ability-ilustrations-list">
-          <Ilustration
+          <IlustrationImg
             v-for="ability in allAbilities"
             :id="ability.ilustration"
             :key="ability.id"

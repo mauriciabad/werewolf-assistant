@@ -18,7 +18,7 @@ import {
 import { computed } from 'vue'
 import Popper from 'vue3-popper'
 import useCharacterOrAbilityShowModal from './CharacterOrAbilityShowModal/useCharacterOrAbilityShowModal'
-import Ilustration from '@/components/Ilustration.vue'
+import IlustrationImg from '@/components/IlustrationImg.vue'
 import InputNumber from '@/components/InputNumber.vue'
 
 const props = defineProps<{
@@ -52,7 +52,7 @@ const isCustom = computed<boolean>(
         <template #content>
           <span class="toltip-content">{{ description }}</span>
         </template>
-        <Ilustration :id="data.ilustration" class="item__ilustration" />
+        <IlustrationImg :id="data.ilustration" class="item__ilustration" />
       </Popper>
 
       <Popper hover arrow>
