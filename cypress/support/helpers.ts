@@ -10,3 +10,7 @@ export function getInputByLabel(label: string) {
       cy.get(`#${id}`)
     })
 }
+
+export function urlShouldEqual(path: string) {
+  return cy.url().should('eq', `http://localhost:4173${path}`)
+}
