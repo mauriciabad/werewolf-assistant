@@ -1,6 +1,6 @@
 import { getInputByLabel } from '../support/helpers'
 
-describe('Player view', () => {
+describe.skip('Player view', () => {
   describe('without scanning a qr code', () => {
     beforeEach(() => {
       cy.visit('/player')
