@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 import { RouterLink } from 'vue-router'
+import CustomLayout from '@/components/CustomLayout.vue'
 
 const { t } = useI18n()
 </script>
 
 <template>
-  <Layout locale-selector>
+  <CustomLayout locale-selector>
     <div class="content">
       <h1 class="title">{{ t('ui.whatAreYouQuestion') }}</h1>
       <div class="links">
@@ -18,7 +19,7 @@ const { t } = useI18n()
         }}</RouterLink>
       </div>
     </div>
-  </Layout>
+  </CustomLayout>
 </template>
 
 <style scoped lang="scss">
@@ -43,9 +44,9 @@ const { t } = useI18n()
   justify-content: center;
   padding: 1rem;
   border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
   aspect-ratio: 1;
   background-color: var(--color-background-soft);
-  border-radius: 0.5rem;
   font-size: 1.5rem;
 }
 </style>

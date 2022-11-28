@@ -9,6 +9,9 @@ import { CheckIcon, XIcon } from '@heroicons/vue/solid'
 import { computed, ref } from 'vue'
 import { watch } from 'vue'
 import { useI18n } from 'vue-i18n'
+import Ilustration from '@/components/Ilustration.vue'
+import CustomModal from '@/components/CustomModal.vue'
+import IconButton from '@/components/IconButton.vue'
 
 const props = defineProps<{
   type: 'character' | 'ability'
@@ -200,15 +203,15 @@ function handleConfirm(): void {
 .ilustration-selector {
   display: grid;
   padding: 0.5rem;
-  background-color: #fff;
   border-radius: 1rem;
+  background-color: #fff;
   gap: 0.5rem;
   grid-template-columns: repeat(auto-fit, minmax(3rem, 1fr));
 
   &__ilustration {
     width: 100%;
-    aspect-ratio: 1;
     border-radius: 0.5rem;
+    aspect-ratio: 1;
     cursor: pointer;
     outline-offset: 0.125rem;
 
@@ -236,8 +239,8 @@ function handleConfirm(): void {
     width: 100%;
     padding: 0.5rem;
     border: 1px solid var(--color-border);
-    background-color: var(--color-background-soft);
     border-radius: 0.5rem;
+    background-color: var(--color-background-soft);
     box-shadow: 0 0 0 0 var(--color-primary);
     color: inherit;
     outline: none;

@@ -1,10 +1,8 @@
-import { fileURLToPath, URL } from 'url'
-
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueI18n from '@intlify/vite-plugin-vue-i18n'
 import Components from 'unplugin-vue-components/vite'
-import { VitePWA } from 'vite-plugin-pwa'
+// import { VitePWA } from 'vite-plugin-pwa'
 import { resolve, dirname } from 'node:path'
 import { fileURLToPath } from 'url'
 

@@ -18,6 +18,8 @@ import {
 import { computed } from 'vue'
 import Popper from 'vue3-popper'
 import useCharacterOrAbilityShowModal from './CharacterOrAbilityShowModal/useCharacterOrAbilityShowModal'
+import Ilustration from '@/components/Ilustration.vue'
+import InputNumber from '@/components/InputNumber.vue'
 
 const props = defineProps<{
   data: Character | CustomCharacter | Ability | CustomAbility
@@ -112,8 +114,8 @@ const isCustom = computed<boolean>(
     height: $size;
     box-sizing: content-box;
     padding: 0.25rem;
-    background-color: #fff;
     border-radius: 0.25rem;
+    background-color: #fff;
     object-fit: contain;
   }
 

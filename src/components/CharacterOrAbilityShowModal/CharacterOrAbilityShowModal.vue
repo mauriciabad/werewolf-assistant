@@ -7,6 +7,9 @@ import { isCustomCharacter, isCharacter } from '@/data/characters.types'
 import { XIcon } from '@heroicons/vue/solid'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
+import Ilustration from '@/components/Ilustration.vue'
+import CustomModal from '@/components/CustomModal.vue'
+import IconButton from '@/components/IconButton.vue'
 
 const props = defineProps<{
   modelValue: boolean
@@ -64,7 +67,7 @@ const showModal = computed<boolean>({
   min-width: 0;
   max-width: 25rem;
   padding: 1rem;
-  background-color: #fff;
   border-radius: 1rem;
+  background-color: #fff;
 }
 </style>

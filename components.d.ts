@@ -16,13 +16,11 @@ declare module '@vue/runtime-core' {
     IconButton: typeof import('./src/components/IconButton.vue')['default']
     Ilustration: typeof import('./src/components/Ilustration.vue')['default']
     InputNumber: typeof import('./src/components/InputNumber.vue')['default']
-    Layout: typeof import('./src/components/Layout.vue')['default']
+    Layout: typeof import('./src/components/CustomLayout.vue')['default']
     LocaleSelector: typeof import('./src/components/LocaleSelector.vue')['default']
     PlayerCard: typeof import('./src/components/PlayerCard.vue')['default']
     RoleCarrousel: typeof import('./src/components/distribute-roles/RoleCarrousel.vue')['default']
     RoleCarrouselItem: typeof import('./src/components/distribute-roles/RoleCarrouselItem.vue')['default']
-    RouterLink: typeof import('vue-router')['RouterLink']
-    RouterView: typeof import('vue-router')['RouterView']
     TagList: typeof import('./src/components/TagList.vue')['default']
   }
 }

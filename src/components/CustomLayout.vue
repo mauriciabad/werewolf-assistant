@@ -1,8 +1,9 @@
 <script lang="ts" setup>
-interface Props {
+import LocaleSelector from '@/components/LocaleSelector.vue'
+
+defineProps<{
   localeSelector?: boolean
-}
-defineProps<Props>()
+}>()
 </script>
 
 <template>

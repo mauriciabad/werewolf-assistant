@@ -17,6 +17,7 @@ import type { PlayerConfig } from '@/stores/gameConfig'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import useCharacterOrAbilityShowModal from './CharacterOrAbilityShowModal/useCharacterOrAbilityShowModal'
+import Ilustration from '@/components/Ilustration.vue'
 
 interface Props {
   player: PlayerConfig

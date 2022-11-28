@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { PlayerConfig } from '@/stores/gameConfig'
+import RoleCarrouselItem from '@/components/distribute-roles/RoleCarrouselItem.vue'
 
 defineProps<{
   players: PlayerConfig[]
