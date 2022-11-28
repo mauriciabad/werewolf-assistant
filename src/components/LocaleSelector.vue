@@ -81,6 +81,7 @@ const currentLocaleInfo = computed<LocaleInfo | undefined>(() =>
   &__image {
     height: 20px;
     margin-right: 0.5rem;
+    aspect-ratio: 1 / 1;
   }
 
   &__name {
