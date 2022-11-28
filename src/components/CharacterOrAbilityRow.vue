@@ -17,9 +17,9 @@ import {
 } from '@heroicons/vue/outline'
 import { computed } from 'vue'
 import Popper from 'vue3-popper'
-import InputNumber from '../components/InputNumber.vue'
 import useCharacterOrAbilityShowModal from './CharacterOrAbilityShowModal/useCharacterOrAbilityShowModal'
-import Ilustration from './Ilustration.vue'
+import IlustrationImg from '@/components/IlustrationImg.vue'
+import InputNumber from '@/components/InputNumber.vue'
 
 const props = defineProps<{
   data: Character | CustomCharacter | Ability | CustomAbility
@@ -52,7 +52,7 @@ const isCustom = computed<boolean>(
         <template #content>
           <span class="toltip-content">{{ description }}</span>
         </template>
-        <Ilustration :id="data.ilustration" class="item__ilustration" />
+        <IlustrationImg :id="data.ilustration" class="item__ilustration" />
       </Popper>
 
       <Popper hover arrow>
@@ -81,7 +81,7 @@ const isCustom = computed<boolean>(
     </div>
 
     <InputNumber
-      :model-value="modelValue"
+      :model-value="modelValue ?? 0"
       :disabled="disabled"
       @update:model-value="emit('update:modelValue', $event)"
     />
@@ -114,8 +114,8 @@ const isCustom = computed<boolean>(
     height: $size;
     box-sizing: content-box;
     padding: 0.25rem;
-    background-color: #fff;
     border-radius: 0.25rem;
+    background-color: #fff;
     object-fit: contain;
   }
 

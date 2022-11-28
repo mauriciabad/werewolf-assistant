@@ -38,9 +38,13 @@ export const useCustomDataStore = defineStore({
     // getCustomCharacter(id: string): CustomCharacter | undefined
     // getCustomCharacter(id: string): CustomCharacter | undefined {
     getCustomCharacter(id: CustomCharacter['id']): CustomCharacter {
-      return this.customCharacters.find(
+      const customCharacter = this.customCharacters.find(
         (customCharacter) => customCharacter.id === id
-      )!
+      )
+
+      if (!customCharacter) throw new Error('Invalid id')
+
+      return customCharacter
     },
 
     saveCustomAbility(customAbility: CustomAbility): void {
@@ -67,9 +71,13 @@ export const useCustomDataStore = defineStore({
     // getCustomAbility(id: string): CustomAbility | undefined
     // getCustomAbility(id: string): CustomAbility | undefined {
     getCustomAbility(id: CustomAbility['id']): CustomAbility {
-      return this.customAbilities.find(
+      const customAbility = this.customAbilities.find(
         (customAbility) => customAbility.id === id
-      )!
+      )
+
+      if (!customAbility) throw new Error('Invalid id')
+
+      return customAbility
     },
   },
 })

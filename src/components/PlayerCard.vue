@@ -17,12 +17,11 @@ import type { PlayerConfig } from '@/stores/gameConfig'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import useCharacterOrAbilityShowModal from './CharacterOrAbilityShowModal/useCharacterOrAbilityShowModal'
-import Ilustration from './Ilustration.vue'
+import IlustrationImg from '@/components/IlustrationImg.vue'
 
-interface Props {
+const props = defineProps<{
   player: PlayerConfig
-}
-const props = defineProps<Props>()
+}>()
 
 const { t } = useI18n()
 
@@ -59,8 +58,13 @@ const abilities = computed<(Ability | CustomAbility)[]>(() =>
     </div>
 
     <div class="character" @click="showDetailVew(character)">
-      <div class="small-title">{{ t('ui.character') }}</div>
-      <Ilustration :id="character.ilustration" class="character__ilustration" />
+      <div class="small-title">
+        {{ t('ui.character') }}
+      </div>
+      <IlustrationImg
+        :id="character.ilustration"
+        class="character__ilustration"
+      />
       <div class="character__text">
         {{ getName(character) }}
       </div>
@@ -75,7 +79,10 @@ const abilities = computed<(Ability | CustomAbility)[]>(() =>
           class="ability"
           @click="showDetailVew(ability)"
         >
-          <Ilustration :id="ability.ilustration" class="ability__ilustration" />
+          <IlustrationImg
+            :id="ability.ilustration"
+            class="ability__ilustration"
+          />
           <span class="ability__name">{{ getName(ability) }}</span>
         </li>
       </ul>
@@ -90,9 +97,9 @@ const abilities = computed<(Ability | CustomAbility)[]>(() =>
   max-width: var(--max-width, 30rem);
   padding: 0.5rem 0;
   border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
   margin: 1rem auto 0;
   background-color: var(--color-background-soft);
-  border-radius: 0.5rem;
   gap: 0.75rem;
   grid-template: auto / 1fr 1fr;
   grid-template-areas: 'name name' 'character abilities';

@@ -6,12 +6,12 @@ import { isCustomCharacter } from '@/data/characters.types'
 import type { IlustrationId } from '@/data/ilustrations'
 import { allIlustrationIds } from '@/data/ilustrations'
 import { CheckIcon, XIcon } from '@heroicons/vue/solid'
-import { computed, ref } from '@vue/reactivity'
+import { computed, ref } from 'vue'
 import { watch } from 'vue'
 import { useI18n } from 'vue-i18n'
-import CustomModal from './CustomModal.vue'
-import IconButton from './IconButton.vue'
-import Ilustration from './Ilustration.vue'
+import IlustrationImg from '@/components/IlustrationImg.vue'
+import CustomModal from '@/components/CustomModal.vue'
+import IconButton from '@/components/IconButton.vue'
 
 const props = defineProps<{
   type: 'character' | 'ability'
@@ -58,7 +58,6 @@ const isValid = computed<boolean>(
 
 function handleConfirm(): void {
   if (!name.value || !description.value || !ilustration.value) return
-
   showModal.value = false
 
   if (
@@ -155,7 +154,7 @@ function handleConfirm(): void {
 
     <span class="field__label">{{ t('ui.image') }}</span>
     <div class="ilustration-selector">
-      <Ilustration
+      <IlustrationImg
         v-for="ilustrationId in allIlustrationIds"
         :id="ilustrationId"
         :key="ilustrationId"
@@ -175,7 +174,7 @@ function handleConfirm(): void {
 
     <template #footer="{ close }">
       <IconButton @click="close">
-        <template #icon><XIcon /></template>{{ t('ui.cancel') }}
+        <template #icon> <XIcon /> </template>{{ t('ui.cancel') }}
       </IconButton>
 
       <IconButton
@@ -187,7 +186,7 @@ function handleConfirm(): void {
           }
         "
       >
-        <template #icon><CheckIcon /></template>{{ t('ui.confirm') }}
+        <template #icon> <CheckIcon /> </template>{{ t('ui.confirm') }}
       </IconButton>
     </template>
   </CustomModal>
@@ -204,15 +203,15 @@ function handleConfirm(): void {
 .ilustration-selector {
   display: grid;
   padding: 0.5rem;
-  background-color: #fff;
   border-radius: 1rem;
+  background-color: #fff;
   gap: 0.5rem;
   grid-template-columns: repeat(auto-fit, minmax(3rem, 1fr));
 
   &__ilustration {
     width: 100%;
-    aspect-ratio: 1;
     border-radius: 0.5rem;
+    aspect-ratio: 1;
     cursor: pointer;
     outline-offset: 0.125rem;
 
@@ -240,8 +239,8 @@ function handleConfirm(): void {
     width: 100%;
     padding: 0.5rem;
     border: 1px solid var(--color-border);
-    background-color: var(--color-background-soft);
     border-radius: 0.5rem;
+    background-color: var(--color-background-soft);
     box-shadow: 0 0 0 0 var(--color-primary);
     color: inherit;
     outline: none;

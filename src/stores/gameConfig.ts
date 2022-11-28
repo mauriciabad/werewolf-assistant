@@ -6,6 +6,9 @@ import i18n from '@/i18n'
 import { useStorage } from '@vueuse/core'
 import { defineStore } from 'pinia'
 
+// TODO: Fix the yype and remove @ts-ignore
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 const { t } = i18n.global
 
 export type CharacterConfig = {

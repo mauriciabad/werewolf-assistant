@@ -4,9 +4,9 @@ import { RefreshIcon, IdentificationIcon } from '@heroicons/vue/solid'
 import { storeToRefs } from 'pinia'
 import { useI18n } from 'vue-i18n'
 import { RouterLink, useRouter } from 'vue-router'
-import PlayerCard from '../components/PlayerCard.vue'
-import Layout from '../components/Layout.vue'
 import { useDataTranslations } from '@/compositions/useDataTranslations'
+import CustomLayout from '@/components/CustomLayout.vue'
+import PlayerCard from '@/components/PlayerCard.vue'
 
 const { t } = useI18n()
 
@@ -24,7 +24,7 @@ if (players.value.length === 0) {
 </script>
 
 <template>
-  <Layout locale-selector>
+  <CustomLayout locale-selector>
     <div class="storyteller">
       <div class="links">
         <RouterLink class="link" :to="{ name: 'newGame' }">
@@ -84,7 +84,7 @@ if (players.value.length === 0) {
         </div>
       </div>
     </div>
-  </Layout>
+  </CustomLayout>
 </template>
 
 <style scoped lang="scss">
@@ -119,8 +119,8 @@ h1 {
   display: inline-block;
   padding: 0.5rem 1.125rem;
   border: 1px solid var(--color-border);
-  background-color: var(--color-background-soft);
   border-radius: 0.5rem;
+  background-color: var(--color-background-soft);
   box-shadow: 0 0 0 0 var(--color-primary);
   font-size: 1rem;
   justify-self: center;

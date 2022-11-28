@@ -7,9 +7,9 @@ import { isCustomCharacter, isCharacter } from '@/data/characters.types'
 import { XIcon } from '@heroicons/vue/solid'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
-import CustomModal from '../CustomModal.vue'
-import IconButton from '../IconButton.vue'
-import Ilustration from '../Ilustration.vue'
+import IlustrationImg from '@/components/IlustrationImg.vue'
+import CustomModal from '@/components/CustomModal.vue'
+import IconButton from '@/components/IconButton.vue'
 
 const props = defineProps<{
   modelValue: boolean
@@ -44,14 +44,14 @@ const showModal = computed<boolean>({
     </template>
 
     <template #default>
-      <Ilustration :id="data.ilustration" class="ilustration" />
+      <IlustrationImg :id="data.ilustration" class="ilustration" />
       <h1 class="name">{{ getName(data) }}</h1>
       <p>{{ getDescription(data) }}</p>
     </template>
 
     <template #footer="{ close }">
       <IconButton @click="close">
-        <template #icon><XIcon /></template>{{ t('ui.close') }}
+        <template #icon> <XIcon /> </template>{{ t('ui.close') }}
       </IconButton>
     </template>
   </CustomModal>
@@ -67,7 +67,7 @@ const showModal = computed<boolean>({
   min-width: 0;
   max-width: 25rem;
   padding: 1rem;
-  background-color: #fff;
   border-radius: 1rem;
+  background-color: #fff;
 }
 </style>

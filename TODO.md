@@ -29,5 +29,3 @@
 - [ ] Mellizas i trillizas es sumen de 2 en 2 o de 3 3n 3. I el maxim es 2 i 3 respectivament.
 
 ## Other
-
-_Empty..._

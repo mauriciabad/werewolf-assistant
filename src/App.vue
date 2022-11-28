@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import CharacterOrAbilityShowModal from '@/components/CharacterOrAbilityShowModal/CharacterOrAbilityShowModal.vue'
 import useCharacterOrAbilityShowModal from '@/components/CharacterOrAbilityShowModal/useCharacterOrAbilityShowModal'
 import { RouterView } from 'vue-router'
+import CharacterOrAbilityShowModal from '@/components/CharacterOrAbilityShowModal/CharacterOrAbilityShowModal.vue'
 
 const {
   data: characterOrAbilityShowModalData,
@@ -18,5 +18,5 @@ const {
 </template>
 
 <style lang="scss">
-@import '@/assets/base.css';
+@import url('@/assets/base.css');
 </style>

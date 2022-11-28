@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import CharacterOrAbilityCreatorModal from '@/components/CharacterOrAbilityCreatorModal.vue'
 import type { CustomAbility } from '@/data/abilities.types'
 import type { CustomCharacter } from '@/data/characters.types'
 import { useCustomDataStore } from '@/stores/customData'
@@ -19,12 +18,13 @@ import { computed, reactive, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { TrashIcon } from '@heroicons/vue/solid'
 import { RouterLink, useRouter } from 'vue-router'
-import CharacterOrAbilityRow from '../components/CharacterOrAbilityRow.vue'
-import IconButton from '../components/IconButton.vue'
-import TagList from '../components/TagList.vue'
 import { default as abilitiesInfo, getAbility } from '../data/abilities'
 import { default as charactersInfo } from '../data/characters'
-import LocaleSelector from '../components/LocaleSelector.vue'
+import LocaleSelector from '@/components/LocaleSelector.vue'
+import IconButton from '@/components/IconButton.vue'
+import TagList from '@/components/TagList.vue'
+import CharacterOrAbilityRow from '@/components/CharacterOrAbilityRow.vue'
+import CharacterOrAbilityCreatorModal from '@/components/CharacterOrAbilityCreatorModal.vue'
 
 const { t } = useI18n()
 
@@ -376,8 +376,8 @@ function handleClearDataClick(): void {
     width: $size;
     height: $size;
     padding: 0.5rem;
-    background-color: var(--color-background-mute);
     border-radius: 100%;
+    background-color: var(--color-background-mute);
     vertical-align: middle;
   }
 
@@ -431,9 +431,9 @@ h2 {
   min-height: 4rem;
   padding: 0.75rem;
   border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
   margin-top: 1rem;
   background-color: var(--color-background);
-  border-radius: 0.5rem;
   color: var(--color-text);
   font-family: inherit;
   font-size: 1rem;

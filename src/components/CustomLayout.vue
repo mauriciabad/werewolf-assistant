@@ -1,16 +1,17 @@
 <script lang="ts" setup>
-import LocaleSelector from '../components/LocaleSelector.vue'
+import LocaleSelector from '@/components/LocaleSelector.vue'
 
-interface Props {
+defineProps<{
   localeSelector?: boolean
-}
-defineProps<Props>()
+}>()
 </script>
 
 <template>
   <div class="wrapper">
     <LocaleSelector v-if="localeSelector" />
-    <main class="content"><slot /></main>
+    <main class="content">
+      <slot />
+    </main>
   </div>
 </template>
 

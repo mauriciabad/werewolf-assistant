@@ -1,7 +1,8 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import RealVh from 'real-vh'
-
+import { createVfm } from 'vue-final-modal'
+import 'vue-final-modal/style.css'
 import App from './App.vue'
 import router from './router'
 import i18n from './i18n'
@@ -22,6 +23,7 @@ const app = createApp(App)
 app.use(createPinia())
 app.use(router)
 app.use(RealVh)
+app.use(createVfm())
 
 app.use(i18n)
 

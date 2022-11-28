@@ -1,11 +1,9 @@
 import flagCA from '@/assets/flags/flagCA.svg'
 import flagEN from '@/assets/flags/flagEN.svg'
 import flagES from '@/assets/flags/flagES.svg'
-import type en from '@/locales/en.json'
 import messages from '@intlify/vite-plugin-vue-i18n/messages'
 import { createI18n } from 'vue-i18n'
 
-type MessageSchema = typeof en
 type Locales = 'en' | 'es' | 'ca'
 
 const i18n = createI18n({
@@ -15,7 +13,7 @@ const i18n = createI18n({
     ca: ['es'],
     default: ['en', 'es', 'ca'],
   },
-  messages: messages as Record<Locales, MessageSchema>,
+  messages,
   fallbackWarn: false,
   missingWarn: false,
 })

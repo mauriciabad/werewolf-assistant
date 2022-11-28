@@ -11,8 +11,8 @@ import { isCharacterId, isCustomCharacterId } from '@/data/characters.types'
 import ilustrations from '@/data/ilustrations'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
-import Ilustration from '../components/Ilustration.vue'
-import Layout from '../components/Layout.vue'
+import IlustrationImg from '@/components/IlustrationImg.vue'
+import CustomLayout from '@/components/CustomLayout.vue'
 
 const { t } = useI18n()
 
@@ -57,7 +57,6 @@ const customCharacter = computed<CustomCharacter | undefined>(() => {
     ) {
       return undefined
     }
-
     return customCharacter
   } catch {
     return undefined
@@ -116,20 +115,20 @@ const allAbilities = computed<(Ability | CustomAbility | undefined)[]>(() => {
 </script>
 
 <template>
-  <Layout locale-selector>
+  <CustomLayout locale-selector>
     <template v-if="hasData">
       <template
-        v-if="(character || customCharacter) && allAbilities.every((a):a is Ability | CustomAbility => a !== undefined)"
+        v-if="(character || customCharacter) && allAbilities.every((a): a is Ability | CustomAbility => a !== undefined)"
       >
         <p class="name">{{ playerName }}</p>
 
-        <Ilustration
+        <IlustrationImg
           :id="character ? character.ilustration : customCharacter!.ilustration"
           class="ilustration ilustration--character"
           @click="showDetailVew(character ?? customCharacter!)"
         />
         <div class="ability-ilustrations-list">
-          <Ilustration
+          <IlustrationImg
             v-for="ability in allAbilities"
             :id="ability.ilustration"
             :key="ability.id"
@@ -222,7 +221,7 @@ const allAbilities = computed<(Ability | CustomAbility | undefined)[]>(() => {
       <h1>{{ t('ui.scanQr') }}</h1>
       <p>{{ t('ui.playerViewDetails') }}</p>
     </template>
-  </Layout>
+  </CustomLayout>
 </template>
 
 <style scoped lang="scss">
@@ -239,9 +238,9 @@ const allAbilities = computed<(Ability | CustomAbility | undefined)[]>(() => {
   max-width: var(--size);
   padding: 1rem;
   border: 1px solid var(--vt-c-divider-light-2);
+  border-radius: 1rem;
   aspect-ratio: 1;
   background-color: #fff;
-  border-radius: 1rem;
   box-shadow: 0 20px 25px -5px rgb(0 0 0 / 10%),
     0 8px 10px -6px rgb(0 0 0 / 10%);
   cursor: pointer;
@@ -297,9 +296,9 @@ strong {
   padding: 1rem;
   padding-left: 2rem;
   border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
   margin-top: 1rem;
   background-color: var(--color-background-soft);
-  border-radius: 0.5rem;
   color: var(--color-red);
   text-align: left;
 }

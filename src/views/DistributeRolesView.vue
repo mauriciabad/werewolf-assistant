@@ -5,7 +5,7 @@ import { storeToRefs } from 'pinia'
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { RouterLink, useRouter } from 'vue-router'
-import RoleCarrousel from '../components/distribute-roles/RoleCarrousel.vue'
+import RoleCarrousel from '@/components/distribute-roles/RoleCarrousel.vue'
 
 const { t } = useI18n()
 
