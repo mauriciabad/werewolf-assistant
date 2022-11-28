@@ -94,7 +94,7 @@ input, button, textarea {
 }
 
 a {
-  color: hsl(160deg 100% 37% / 100%);
+  color: #00a26c;
   text-decoration: none;
   transition: 0.4s;
 }

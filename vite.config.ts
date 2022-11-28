@@ -29,6 +29,8 @@ export default defineConfig({
       ],
       manifest: {
         name: 'Werewolf',
+        description:
+          'Play a custom version of the werewolf game without the need of cards',
         short_name: 'Werewolf',
         icons: [
           {
@@ -62,6 +64,7 @@ export default defineConfig({
             purpose: 'monochrome',
           },
         ],
+        background_color: '#fff',
         display: 'standalone',
       },
     }),
