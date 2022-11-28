@@ -1,7 +1,7 @@
 import flagCA from '@/assets/flags/flagCA.svg'
 import flagEN from '@/assets/flags/flagEN.svg'
 import flagES from '@/assets/flags/flagES.svg'
-import type en from '@/locales/en.json'
+import en from '@/locales/en.json'
 import messages from '@intlify/vite-plugin-vue-i18n/messages'
 import { createI18n } from 'vue-i18n'
 
