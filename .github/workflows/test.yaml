@@ -1,0 +1,11 @@
+name: CI
+on: push
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    name: CI - test
+    steps:
+      - name: ⚙️ Setup
+        uses: mauriciabad/my-actions/setup-npm@main
+      - run: npm run build
+      - run: npm run test:e2e
