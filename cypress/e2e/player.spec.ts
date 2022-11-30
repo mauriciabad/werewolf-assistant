@@ -47,5 +47,20 @@ describe('Player view', () => {
     it('shows locale selector', () => {
       getInputByLabel('English')
     })
+
+    it('Detail popup', (done) => {
+      cy.get('.ilustration--character').click()
+
+      // Hides other characters or abilities
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      cy.contains('Major').shouldNotBeActionable(done)
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      cy.get('.ilustration--ability').shouldNotBeActionable(done)
+
+      cy.contains('Close').click()
+      cy.get('.ilustration--ability').click()
+    })
   })
 })
