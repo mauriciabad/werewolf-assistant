@@ -9,3 +9,10 @@ jobs:
         uses: mauriciabad/my-actions/setup-npm@main
       - run: npm run build
       - run: npm run test:e2e
+      - name: 💾 Store the test results
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: cypress-videos
+          path: cypress/videos
+          retention-days: 7
