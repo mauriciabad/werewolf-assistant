@@ -41,7 +41,7 @@ describe('Player view', () => {
 
       // Start date and time
       cy.contains('11/28/2022')
-      cy.contains('18:07:25')
+      cy.contains('10:07:25 AM')
     })
 
     it('shows locale selector and formats date', () => {
@@ -51,6 +51,7 @@ describe('Player view', () => {
       // Uses local time format
       getInputByLabel('English').select('Español')
       cy.contains('28/11/2022')
+      cy.contains('18:07:25')
     })
 
     it('Detail popup', (done) => {
