@@ -8,4 +8,5 @@ export default defineConfig({
     viewportWidth: 375,
     viewportHeight: 667,
   },
+  chromeWebSecurity: false,
 })
