@@ -23,26 +23,13 @@ const currentLocaleInfo = computed<LocaleInfo | undefined>(() =>
 
 <template>
   <label class="selector" for="locale-selector">
-    <img
-      v-if="currentLocaleInfo"
-      class="selector__image"
-      :src="currentLocaleInfo.icon"
-      alt=""
-    />
+    <img v-if="currentLocaleInfo" class="selector__image" :src="currentLocaleInfo.icon" alt="" />
     <span class="selector__name">{{
-      currentLocaleInfo ? currentLocaleInfo.name : locale
+        currentLocaleInfo ? currentLocaleInfo.name : locale
     }}</span>
     <ChevronDownIcon class="selector__arrow" />
-    <select
-      id="locale-selector"
-      v-model="localeLangOnly"
-      class="selector__input"
-    >
-      <option
-        v-for="localeInfo in localesInfo"
-        :key="localeInfo.id"
-        :value="localeInfo.id"
-      >
+    <select id="locale-selector" v-model="localeLangOnly" class="selector__input">
+      <option v-for="localeInfo in localesInfo" :key="localeInfo.id" :value="localeInfo.id">
         {{ localeInfo.name }}
       </option>
     </select>
@@ -73,6 +60,8 @@ const currentLocaleInfo = computed<LocaleInfo | undefined>(() =>
   &__input {
     position: absolute;
     z-index: 1;
+    width: 100%;
+    border-radius: inherit;
     cursor: pointer;
     inset: 0;
     opacity: 0;
