@@ -73,6 +73,8 @@ const currentLocaleInfo = computed<LocaleInfo | undefined>(() =>
   &__input {
     position: absolute;
     z-index: 1;
+    width: 100%;
+    border-radius: inherit;
     cursor: pointer;
     inset: 0;
     opacity: 0;

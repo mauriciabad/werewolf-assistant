@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import vueI18n from '@intlify/vite-plugin-vue-i18n'
+import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite'
 import { VitePWA } from 'vite-plugin-pwa'
 import { resolve, dirname } from 'node:path'
 import { fileURLToPath } from 'url'
@@ -9,11 +9,8 @@ import { fileURLToPath } from 'url'
 export default defineConfig({
   plugins: [
     vue(),
-    vueI18n({
-      include: resolve(
-        dirname(fileURLToPath(import.meta.url)),
-        './src/locales/**'
-      ),
+    VueI18nPlugin({
+      include: './src/locales/**',
     }),
     VitePWA({
       registerType: 'autoUpdate',
