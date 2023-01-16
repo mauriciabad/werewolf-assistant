@@ -15,7 +15,7 @@
   "dependencies": {
     "@heroicons/vue": "1.0.6",
     "@vueuse/core": "9.10.0",
-    "pinia": "2.0.28",
+    "pinia": "2.0.29",
     "qrcode.vue": "3.3.3",
     "vue": "3.2.45",
     "vue-final-modal": "4.0.0-rc.7",
