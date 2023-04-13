@@ -43,7 +43,7 @@
     "prettier": "2.8.7",
     "real-vh": "1.0.0",
     "sass": "1.62.0",
-    "start-server-and-test": "1.15.4",
+    "start-server-and-test": "2.0.0",
     "stylelint": "14.16.1",
     "stylelint-config-idiomatic-order": "9.0.0",
     "stylelint-config-prettier-scss": "0.0.1",
