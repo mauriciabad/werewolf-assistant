@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { MinusIcon, PlusIcon } from '@heroicons/vue/solid'
+import { IconMinus, IconPlus } from '@tabler/icons-vue'
 import { computed } from 'vue'
 
 const props = defineProps<{
@@ -50,7 +50,7 @@ function decrease(): void {
       data-testid="decrease-button"
       @click="decrease"
     >
-      <MinusIcon class="button__icon" />
+      <IconMinus />
     </div>
 
     <input
@@ -71,7 +71,7 @@ function decrease(): void {
       data-testid="increase-button"
       @click="increase"
     >
-      <PlusIcon class="button__icon" />
+      <IconPlus />
     </div>
   </div>
 </template>
@@ -102,17 +102,13 @@ $heigth: 3rem;
   }
 
   &--left {
-    border-right: 0;
     border-radius: 0.5rem 0 0 0.5rem;
+    border-right: 0;
   }
 
   &--right {
-    border-left: 0;
     border-radius: 0 0.5rem 0.5rem 0;
-  }
-
-  &__icon {
-    height: 24px;
+    border-left: 0;
   }
 }
 

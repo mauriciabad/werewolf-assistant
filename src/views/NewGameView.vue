@@ -7,16 +7,16 @@ import {
   type AbilityConfig,
   type CharacterConfig,
 } from '@/stores/gameConfig'
-import { ChevronLeftIcon } from '@heroicons/vue/outline'
 import {
-  SparklesIcon,
-  UserAddIcon,
-  ViewGridAddIcon,
-} from '@heroicons/vue/solid'
+  IconSparkles,
+  IconUserPlus,
+  IconLayoutGridAdd,
+  IconTrash,
+  IconChevronLeft,
+} from '@tabler/icons-vue'
 import { storeToRefs } from 'pinia'
 import { computed, reactive, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { TrashIcon } from '@heroicons/vue/solid'
 import { RouterLink, useRouter } from 'vue-router'
 import { default as abilitiesInfo, getAbility } from '../data/abilities'
 import { default as charactersInfo } from '../data/characters'
@@ -211,7 +211,7 @@ function handleClearDataClick(): void {
         :to="{ name: 'storyteller' }"
       >
         <div class="go-back__icon-wrapper">
-          <ChevronLeftIcon class="go-back__icon" />
+          <IconChevronLeft class="go-back__icon" />
         </div>
         <span class="go-back__text">{{ t('ui.goBack') }}</span>
       </RouterLink>
@@ -221,7 +221,7 @@ function handleClearDataClick(): void {
     <h1>{{ t('ui.newGame') }}</h1>
 
     <IconButton class="button" @click="handleClearDataClick">
-      <template #icon> <TrashIcon /> </template>{{ t('ui.clearData') }}
+      <template #icon> <IconTrash /> </template>{{ t('ui.clearData') }}
     </IconButton>
 
     <h2>
@@ -276,7 +276,7 @@ function handleClearDataClick(): void {
       @edit-character="handleCreateOrEditCustomCharacter"
     />
     <IconButton class="button" @click="handleAddCustomCharacterClick">
-      <template #icon> <UserAddIcon /> </template
+      <template #icon> <IconUserPlus /> </template
       >{{ t('ui.addCustomCharacter') }}
     </IconButton>
 
@@ -325,7 +325,7 @@ function handleClearDataClick(): void {
     />
 
     <IconButton class="button" @click="handleAddCustomAbilityClick">
-      <template #icon> <ViewGridAddIcon /> </template
+      <template #icon> <IconLayoutGridAdd /> </template
       >{{ t('ui.addCustomAbility') }}
     </IconButton>
 
@@ -334,7 +334,7 @@ function handleClearDataClick(): void {
       main
       @click="handleCreateGame"
     >
-      <template #icon> <SparklesIcon /> </template>{{ t('ui.createGame') }}
+      <template #icon> <IconSparkles /> </template>{{ t('ui.createGame') }}
     </IconButton>
   </main>
 </template>
@@ -365,16 +365,12 @@ function handleClearDataClick(): void {
 }
 
 .go-back {
-  $size: 2.5rem;
-
   display: inline-block;
   color: var(--color-text);
   cursor: pointer;
 
   &__icon-wrapper {
     display: inline-block;
-    width: $size;
-    height: $size;
     padding: 0.5rem;
     border-radius: 100%;
     background-color: var(--color-background-mute);
@@ -382,7 +378,7 @@ function handleClearDataClick(): void {
   }
 
   &__icon {
-    display: inline-block;
+    display: block;
     color: var(--color-text-mute);
   }
 

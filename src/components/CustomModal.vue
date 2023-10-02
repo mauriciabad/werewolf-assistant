@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { VueFinalModal } from 'vue-final-modal'
 
-import { XIcon } from '@heroicons/vue/solid'
+import { IconX } from '@tabler/icons-vue'
 import { computed } from 'vue'
 
 const props = defineProps<{
@@ -40,7 +40,7 @@ function close() {
       <slot name="footer" :close="close"> </slot>
     </div>
     <div role="button" class="modal__close" @click="close">
-      <XIcon />
+      <IconX />
     </div>
   </VueFinalModal>
 </template>

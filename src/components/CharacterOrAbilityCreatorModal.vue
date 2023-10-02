@@ -5,7 +5,7 @@ import type { CustomCharacter } from '@/data/characters.types'
 import { isCustomCharacter } from '@/data/characters.types'
 import type { IlustrationId } from '@/data/ilustrations'
 import { allIlustrationIds } from '@/data/ilustrations'
-import { CheckIcon, XIcon } from '@heroicons/vue/solid'
+import { IconCheck, IconX } from '@tabler/icons-vue'
 import { computed, ref } from 'vue'
 import { watch } from 'vue'
 import { useI18n } from 'vue-i18n'
@@ -174,7 +174,7 @@ function handleConfirm(): void {
 
     <template #footer="{ close }">
       <IconButton @click="close">
-        <template #icon> <XIcon /> </template>{{ t('ui.cancel') }}
+        <template #icon> <IconX /> </template>{{ t('ui.cancel') }}
       </IconButton>
 
       <IconButton
@@ -186,7 +186,7 @@ function handleConfirm(): void {
           }
         "
       >
-        <template #icon> <CheckIcon /> </template>{{ t('ui.confirm') }}
+        <template #icon> <IconCheck /> </template>{{ t('ui.confirm') }}
       </IconButton>
     </template>
   </CustomModal>

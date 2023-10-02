@@ -3,7 +3,7 @@ import { useI18n } from 'vue-i18n'
 import { getLocaleInfo, localesInfo } from '@/i18n'
 import type { LocaleInfo } from '@/i18n'
 import { computed } from 'vue'
-import { ChevronDownIcon } from '@heroicons/vue/solid'
+import { IconChevronDown } from '@tabler/icons-vue'
 
 const { locale } = useI18n()
 
@@ -32,7 +32,7 @@ const currentLocaleInfo = computed<LocaleInfo | undefined>(() =>
     <span class="selector__name">{{
       currentLocaleInfo ? currentLocaleInfo.name : locale
     }}</span>
-    <ChevronDownIcon class="selector__arrow" />
+    <IconChevronDown class="selector__arrow" />
     <select
       id="locale-selector"
       v-model="localeLangOnly"
@@ -73,6 +73,8 @@ const currentLocaleInfo = computed<LocaleInfo | undefined>(() =>
   &__input {
     position: absolute;
     z-index: 1;
+    width: 100%;
+    border-radius: inherit;
     cursor: pointer;
     inset: 0;
     opacity: 0;
@@ -90,7 +92,7 @@ const currentLocaleInfo = computed<LocaleInfo | undefined>(() =>
   }
 
   &__arrow {
-    height: 20px;
+    margin: -7px -5px; // To remove unused space inside the icon
   }
 }
 </style>
