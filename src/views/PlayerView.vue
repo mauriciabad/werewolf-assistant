@@ -118,7 +118,12 @@ const allAbilities = computed<(Ability | CustomAbility | undefined)[]>(() => {
   <CustomLayout locale-selector>
     <template v-if="hasData">
       <template
-        v-if="(character || customCharacter) && allAbilities.every((a): a is Ability | CustomAbility => a !== undefined)"
+        v-if="
+          (character || customCharacter) &&
+          allAbilities.every(
+            (a): a is Ability | CustomAbility => a !== undefined
+          )
+        "
       >
         <p class="name">{{ playerName }}</p>
 
@@ -241,7 +246,8 @@ const allAbilities = computed<(Ability | CustomAbility | undefined)[]>(() => {
   border-radius: 1rem;
   aspect-ratio: 1;
   background-color: #fff;
-  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 10%),
+  box-shadow:
+    0 20px 25px -5px rgb(0 0 0 / 10%),
     0 8px 10px -6px rgb(0 0 0 / 10%);
   cursor: pointer;
   object-fit: contain;
