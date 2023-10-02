@@ -4,7 +4,7 @@ import type { Ability, CustomAbility } from '@/data/abilities.types'
 import { isCustomAbility, isAbility } from '@/data/abilities.types'
 import type { Character, CustomCharacter } from '@/data/characters.types'
 import { isCustomCharacter, isCharacter } from '@/data/characters.types'
-import { XIcon } from '@heroicons/vue/solid'
+import { IconX } from '@tabler/icons-vue'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import IlustrationImg from '@/components/IlustrationImg.vue'
@@ -51,7 +51,7 @@ const showModal = computed<boolean>({
 
     <template #footer="{ close }">
       <IconButton @click="close">
-        <template #icon> <XIcon /> </template>{{ t('ui.close') }}
+        <template #icon> <IconX /> </template>{{ t('ui.close') }}
       </IconButton>
     </template>
   </CustomModal>

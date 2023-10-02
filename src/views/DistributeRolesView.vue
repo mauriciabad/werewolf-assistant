@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useGameConfigStore } from '@/stores/gameConfig'
-import { ChevronLeftIcon, EyeIcon, EyeOffIcon } from '@heroicons/vue/outline'
+import { IconChevronLeft, IconEye, IconEyeOff } from '@tabler/icons-vue'
 import { storeToRefs } from 'pinia'
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
@@ -28,7 +28,7 @@ const showSecretInfo = ref<boolean>(true)
     <div class="header">
       <RouterLink class="go-back" :to="{ name: 'storyteller' }">
         <div class="go-back__icon-wrapper">
-          <ChevronLeftIcon class="go-back__icon" />
+          <IconChevronLeft class="go-back__icon" />
         </div>
         <span class="go-back__text">{{ t('ui.goBack') }}</span>
       </RouterLink>
@@ -41,8 +41,18 @@ const showSecretInfo = ref<boolean>(true)
         @keypress.enter="showSecretInfo = !showSecretInfo"
         @keypress.space="showSecretInfo = !showSecretInfo"
       >
-        <EyeIcon v-if="showSecretInfo" class="secret-info__icon" />
-        <EyeOffIcon v-else class="secret-info__icon" />
+        <IconEye
+          v-if="showSecretInfo"
+          :size="72"
+          :stroke-width="4 / 3"
+          class="secret-info__icon"
+        />
+        <IconEyeOff
+          v-else
+          :size="72"
+          :stroke-width="4 / 3"
+          class="secret-info__icon"
+        />
       </div>
     </div>
 
@@ -78,8 +88,6 @@ const showSecretInfo = ref<boolean>(true)
 }
 
 .go-back {
-  $size: 2.5rem;
-
   position: absolute;
   left: 1rem;
   display: inline-block;
@@ -88,16 +96,14 @@ const showSecretInfo = ref<boolean>(true)
 
   &__icon-wrapper {
     display: inline-block;
-    width: $size;
-    height: $size;
     padding: 0.5rem;
-    background-color: var(--color-background-mute);
     border-radius: 100%;
+    background-color: var(--color-background-mute);
     vertical-align: middle;
   }
 
   &__icon {
-    display: inline-block;
+    display: block;
     color: var(--color-text-mute);
   }
 
@@ -110,15 +116,11 @@ const showSecretInfo = ref<boolean>(true)
 }
 
 .secret-info {
-  $size: clamp(3rem, 20vw, 5rem);
-
   display: inline-block;
-  width: $size;
-  height: $size;
   padding: 0.5rem;
+  border-radius: 100%;
   margin: 0 auto;
   background-color: var(--color-background-mute);
-  border-radius: 100%;
   cursor: pointer;
   user-select: none;
 
