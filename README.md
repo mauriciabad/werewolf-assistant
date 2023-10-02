@@ -4,7 +4,7 @@
 
 🃏 PWA to deal werewolf cards
 
-Use it here: <https://werewolf-assistant.netlify.app/>
+Use it here: <https://wolf.mauri.app/>
 
 This web app lets friends play a custom version of the werewolf game without the need of cards.
 
