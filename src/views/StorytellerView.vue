@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useGameConfigStore } from '@/stores/gameConfig'
-import { RefreshIcon, IdentificationIcon } from '@heroicons/vue/solid'
+import { IconRefresh, IconIdBadge2 } from '@tabler/icons-vue'
 import { storeToRefs } from 'pinia'
 import { useI18n } from 'vue-i18n'
 import { RouterLink, useRouter } from 'vue-router'
@@ -28,7 +28,7 @@ if (players.value.length === 0) {
     <div class="storyteller">
       <div class="links">
         <RouterLink class="link" :to="{ name: 'newGame' }">
-          <RefreshIcon class="link__icon" />{{ t('ui.createNewGame') }}
+          <IconRefresh class="link__icon" />{{ t('ui.createNewGame') }}
         </RouterLink>
       </div>
 
@@ -68,7 +68,7 @@ if (players.value.length === 0) {
         <h1>{{ t('ui.player', 2) }}</h1>
         <div class="links">
           <RouterLink class="link" :to="{ name: 'distributeRoles' }">
-            <IdentificationIcon class="link__icon" />{{
+            <IconIdBadge2 class="link__icon" />{{
               t('ui.distributeCharacters')
             }}
           </RouterLink>
@@ -129,7 +129,6 @@ h1 {
 
   &__icon {
     display: inline-block;
-    height: 20px;
     margin-right: 0.5rem;
     vertical-align: middle;
   }

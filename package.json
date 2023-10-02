@@ -13,7 +13,7 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
   },
   "dependencies": {
-    "@heroicons/vue": "1.0.6",
+    "@tabler/icons-vue": "2.38.0",
     "@vueuse/core": "9.13.0",
     "pinia": "2.1.6",
     "qrcode.vue": "3.4.0",

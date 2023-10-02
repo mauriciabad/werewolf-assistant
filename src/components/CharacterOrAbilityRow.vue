@@ -10,11 +10,7 @@ import {
   type Character,
   type CustomCharacter,
 } from '@/data/characters.types'
-import {
-  InformationCircleIcon,
-  PencilIcon,
-  TrashIcon,
-} from '@heroicons/vue/outline'
+import { IconInfoCircle, IconPencil, IconTrash } from '@tabler/icons-vue'
 import { computed } from 'vue'
 import Popper from 'vue3-popper'
 import useCharacterOrAbilityShowModal from './CharacterOrAbilityShowModal/useCharacterOrAbilityShowModal'
@@ -47,7 +43,7 @@ const isCustom = computed<boolean>(
 
 <template>
   <div class="item__wrapper">
-    <div class="item__name-wrapper">
+    <div class="item__row-wrapper">
       <Popper hover arrow>
         <template #content>
           <span class="toltip-content">{{ description }}</span>
@@ -55,29 +51,31 @@ const isCustom = computed<boolean>(
         <IlustrationImg :id="data.ilustration" class="item__ilustration" />
       </Popper>
 
-      <Popper hover arrow>
-        <template #content>
-          <span class="toltip-content">{{ description }}</span>
-        </template>
-        <label class="item__label">{{ name }}</label>
-      </Popper>
+      <div class="item__name-icons-wrapper">
+        <Popper hover arrow>
+          <template #content>
+            <span class="toltip-content">{{ description }}</span>
+          </template>
+          <label class="item__label">{{ name }}</label>
+        </Popper>
 
-      <InformationCircleIcon
-        class="item__icon item__icon--info"
-        @click="showDetailVew(data)"
-      />
+        <IconInfoCircle
+          class="item__icon item__icon--info"
+          @click="showDetailVew(data)"
+        />
 
-      <TrashIcon
-        v-if="isCustom"
-        class="item__icon item__icon--delete"
-        @click="emit('remove')"
-      />
+        <IconTrash
+          v-if="isCustom"
+          class="item__icon item__icon--delete"
+          @click="emit('remove')"
+        />
 
-      <PencilIcon
-        v-if="isCustom"
-        class="item__icon item__icon--edit"
-        @click="emit('edit')"
-      />
+        <IconPencil
+          v-if="isCustom"
+          class="item__icon item__icon--edit"
+          @click="emit('edit')"
+        />
+      </div>
     </div>
 
     <InputNumber
@@ -99,11 +97,18 @@ const isCustom = computed<boolean>(
     margin-bottom: 0.5rem;
   }
 
-  &__name-wrapper {
+  &__row-wrapper {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 0.5rem;
+  }
+
+  &__name-icons-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.125rem;
   }
 
   &__ilustration {
@@ -125,23 +130,19 @@ const isCustom = computed<boolean>(
   }
 
   &__icon {
-    width: 24px;
     color: var(--color-text-soft);
-    vertical-align: -20%;
+    cursor: pointer;
 
     &--info {
       color: var(--color-text-soft);
-      cursor: pointer;
     }
 
     &--delete {
       color: var(--color-red-soft);
-      cursor: pointer;
     }
 
     &--edit {
       color: var(--color-blue-soft);
-      cursor: pointer;
     }
   }
 }
