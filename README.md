@@ -1,7 +1,5 @@
 # Werewolf Card Dealer
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/71200d24-eda9-4bd5-bc5e-ec9b4ec6b36c/deploy-status)](https://app.netlify.com/sites/werewolf-assistant/deploys)
-
 🃏 PWA to deal werewolf cards
 
 Use it here: <https://wolf.mauri.app/>
@@ -9,6 +7,7 @@ Use it here: <https://wolf.mauri.app/>
 This web app lets friends play a custom version of the werewolf game without the need of cards.
 
 Main features:
+
 - Saves progress if closed.
 - Responsive design (mobile, tablet and desktop).
 - Consistent design.
